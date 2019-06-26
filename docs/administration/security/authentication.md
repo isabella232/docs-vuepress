@@ -1,14 +1,14 @@
-% Authenticating Users
+# Authenticating Users
 
 Rundeck can be configured to use several mechanisms
 to authenticate a user, and determine the user's authorized roles.
 
 Primarily these are:
 
-* [Single Sign On](#single-sign-on)
-* [JAAS](#jetty-and-jaas-authentication)
-* [Container Authentication](#container-authentication-and-authorization)
-* [Preauthenticated Mode](#preauthenticated-mode)
+- [Single Sign On](#single-sign-on)
+- [JAAS](#jetty-and-jaas-authentication)
+- [Container Authentication](#container-authentication-and-authorization)
+- [Preauthenticated Mode](#preauthenticated-mode)
 
 For the default installation (Executable War, RPM, Deb),
 the Servlet Container is Jetty,
@@ -35,12 +35,11 @@ Rundeck has three basic JAAS modules.
 
 By default a new installation uses the realm.properties method.
 
-Each method determines whether the user is authenticated, and what *roles* they have.
+Each method determines whether the user is authenticated, and what _roles_ they have.
 
 The list of roles can be accepted as-is (default), or you can add a prefix to them using the following config in rundeck-config.properties:
 
     rundeck.security.jaasRolePrefix=PREFIX_
-
 
 ## PropertyFileLoginModule
 
@@ -54,54 +53,54 @@ This file is created at the time that you install the server.
 
 Location:
 
-* Executable War: `$RDECK_BASE/server/config/realm.properties`
-* RPM/DEB: `/etc/rundeck/realm.properties`
+- Executable War: `$RDECK_BASE/server/config/realm.properties`
+- RPM/DEB: `/etc/rundeck/realm.properties`
 
 Assuming it wasn't modified, your realm.properties file will
 probably look something like this:
 
-~~~~~~ {.bash .numberLines }
+```{.bash .numberLines }
 #
 # This file defines users passwords and roles for a HashUserRealm
 #
 # The format is
 #  <username>: <password>[,<rolename> ...]
 #
-# Passwords may be clear text, obfuscated or checksummed.  
+# Passwords may be clear text, obfuscated or checksummed.
 #
 # This sets the default user accounts for the Rundeck apps
 #
 admin:admin,user,admin
 user:user,user
-~~~~~~
+```
 
-*Adding additional users*
+_Adding additional users_
 
 You may wish to have additional users with various privileges rather
-than giving out role accounts to groups.  You may also want to avoid
-having the passwords in plaintext within the configuration file.  
+than giving out role accounts to groups. You may also want to avoid
+having the passwords in plaintext within the configuration file.
 
 To accomplish this, you'll need a properly hashed or encrypted
-password to use in the config.  Rundeck has a built in command line utility to
+password to use in the config. Rundeck has a built in command line utility to
 encrypt passwords. The default encryption service is the Jetty password utility.
 
 In this example,
 we'll setup a new user named "jsmith", with a password of "mypass":
 
-~~~~~~ {.bash }
+```{.bash }
 $ java -jar rundeck-3.0.0.war --encryptpwd Jetty
 Required values are marked with: *
 Username (Optional, but necessary for Crypt encoding):
 jsmith    <-----Type this value
 *Value To Encrypt (The text you want to encrypt):
 mypass    <-----Type this value
-~~~~~~
+```
 
-~~~~~~
+```
 obfuscate: OBF:1xfd1zt11uha1ugg1zsp1xfp
 md5: MD5:a029d0df84eb5549c641e04a9ef389e5
 crypt: CRYPT:jsnDAc2Xk4W4o
-~~~~~~
+```
 
 Then add this to the `realm.properties` file with a line like so:
 
@@ -140,8 +139,8 @@ LDAP and Active Directory configurations are created in the same way, but your L
 
 Rundeck includes two JAAS login modules you can use for LDAP directory authentication:
 
-* `JettyCachingLdapLoginModule` Performs LDAP authentication and looks up user roles based on LDAP group membership
-* `JettyCombinedLdapLoginModule` Performs LDAP authentication, and can use "shared authentication credentials" to allow another module to provide authorization lookup for user roles.  See [Login module configuration](#login-module-configuration) and [JettyRolePropertyFileLoginModule](#jettyrolepropertyfileloginmodule) and [Multiple Authentication Modules](#multiple-authentication-modules) below.
+- `JettyCachingLdapLoginModule` Performs LDAP authentication and looks up user roles based on LDAP group membership
+- `JettyCombinedLdapLoginModule` Performs LDAP authentication, and can use "shared authentication credentials" to allow another module to provide authorization lookup for user roles. See [Login module configuration](#login-module-configuration) and [JettyRolePropertyFileLoginModule](#jettyrolepropertyfileloginmodule) and [Multiple Authentication Modules](#multiple-authentication-modules) below.
 
 These are an enhanced version of the default Jetty JAAS Ldap login module that caches authorization results for a period of time.
 
@@ -158,30 +157,30 @@ Configuring LDAP consists of defining a JAAS config file (e.g. "jaas-ldap.conf")
 You can use LDAP user attributes to update the email, first name, and last name properties of your Rundeck users.
 To enable this feature, add the property: `rundeck.security.syncLdapUser=true` to your `rundeck-config.properties` file.
 
-In your JAAS LDAP login module you can specify the ldap user attributes used to source the email, and name properties.  
+In your JAAS LDAP login module you can specify the ldap user attributes used to source the email, and name properties.
 The properties are:
 
     userLastNameAttribute="sn"
     userFirstNameAttribute="givenName"
     userEmailAttribute="mail"
 
-These LDAP attributes will be checked when a user logs in, and their Rundeck user profile will be updated from them.    
+These LDAP attributes will be checked when a user logs in, and their Rundeck user profile will be updated from them.
 
 #### Step 1: Setup the LDAP login module configuration file
 
 Create a `jaas-ldap.conf` file in the same directory as the `jaas-loginmodule.conf` file.
 
-* RPM/Deb install: `/etc/rundeck/`
-* Executable War install: `$RDECK_BASE/server/config`
+- RPM/Deb install: `/etc/rundeck/`
+- Executable War install: `$RDECK_BASE/server/config`
 
-Make sure the name of your Login Module configuration is the same as you use in the next step.  The Login Module configuration is defined like this (e.g. "jaas-ldap.conf" file):
+Make sure the name of your Login Module configuration is the same as you use in the next step. The Login Module configuration is defined like this (e.g. "jaas-ldap.conf" file):
 
-~~~~~~ {.c }
+```{.c }
     ldap {
         // comment line
         ...
     }
-~~~~~~
+```
 
 Where "ldap" is the module name.
 
@@ -191,24 +190,24 @@ To override the default JAAS configuration file, you will need to supply the Run
 
 The JAAS configuration file location is specified differently between the Executable War and the RPM/Deb.
 
-**For the Executable War**:  the `loginmodule.conf.name` Java system property is used to identify the *name* of the config file, which must be located in the `$RDECK_BASE/server/config` dir.
+**For the Executable War**: the `loginmodule.conf.name` Java system property is used to identify the _name_ of the config file, which must be located in the `$RDECK_BASE/server/config` dir.
 
 You can simply specify the system properties on the java commandline:
 
-~~~~~~ {.bash}
+```{.bash}
 java -Drundeck.jaaslogin=true \
      -Dloginmodule.conf.name=jaas-ldap.conf \
      -Dloginmodule.name=ldap \
      -jar rundeck-x.x.war
-~~~~~~
+```
 
 Otherwise, if you are starting the Executable War via the supplied `rundeckd` script, you can modify the `RDECK_JVM` value in the `$RDECK_BASE/etc/profile` file to add two JVM arguments:
 
-~~~~~~ {.bash}
+```{.bash}
 export RDECK_JVM="-Dloginmodule.conf.name=jaas-ldap.conf \
     -Drundeck.jaaslogin=true \
     -Dloginmodule.name=ldap"
-~~~~~~
+```
 
 Note: more information about using the Executable War and useful properties are under [Getting Started - Executable War Options][page:administration/install/jar.md#launcher-options].
 
@@ -216,29 +215,28 @@ Note: more information about using the Executable War and useful properties are 
 
 Declare `RDECK_JVM_OPTS` in `/etc/sysconfig/rundeckd` (rpm) or `/etc/default/rundeckd` (deb):
 
-~~~~~~ {.bash}
+```{.bash}
 RDECK_JVM_OPTS="-Drundeck.jaaslogin=true \
        -Djava.security.auth.login.config=/etc/rundeck/jaas-ldap.conf \
        -Dloginmodule.name=ldap"
-~~~~~~
-
+```
 
 #### Step 3: Restart rundeckd
 
-~~~~~~ {.bash}
+```{.bash}
 sudo /etc/init.d/rundeckd restart
-~~~~~~
+```
 
 #### Step 4: Attempt to logon
 
-If everything was configured correctly, you will be able to access Rundeck using your AD credentials.  If something did not go smoothly, look at `/var/log/rundeck/service.log` for stack traces that may indicate what is wrong.
+If everything was configured correctly, you will be able to access Rundeck using your AD credentials. If something did not go smoothly, look at `/var/log/rundeck/service.log` for stack traces that may indicate what is wrong.
 To make troubleshooting easier, you may want to add the `-Dcom.dtolabs.rundeck.jetty.jaas.LEVEL=DEBUG` Java system property to the `RDECK_JVM` environment variable above, to have enable DEBUG logging for the authentication module.
 
 ### Login module configuration
 
 Here is an example configuration file for the `JettyCachingLdapLoginModule`:
 
-~~~~ {.c .numberLines}
+```{.c .numberLines}
 ldap {
     com.dtolabs.rundeck.jetty.jaas.JettyCachingLdapLoginModule required
       debug="true"
@@ -268,98 +266,97 @@ ldap {
       timeoutConnect="20000"
       nestedGroups="false";
 };
-~~~~
+```
 
 The `JettyCachingLdapLoginModule` has these configuration properties:
 
 `debug`
-:    "true/false" - turn on or off debug output
+: "true/false" - turn on or off debug output
 
 `contextFactory`
-:    The LDAP context factory class, e.g. "com.sun.jndi.ldap.LdapCtxFactory"
+: The LDAP context factory class, e.g. "com.sun.jndi.ldap.LdapCtxFactory"
 
 `providerUrl`
-:    ldap URL for the server, e.g. "ldap://server:389"
+: ldap URL for the server, e.g. "ldap://server:389"
 
 `bindDn`
-:    Optional. If not using "binding" authentication, set this to the root DN that should bind, e.g. "cn=Manager,dc=example,dc=com"
+: Optional. If not using "binding" authentication, set this to the root DN that should bind, e.g. "cn=Manager,dc=example,dc=com"
 
 `bindPassword`
-:    password for root DN. **Note**: The `bindDn` and `bindPassword` must escape any special characters with `\` character. Special characters include `\` (backslash), as well as `!` (exclamation).
+: password for root DN. **Note**: The `bindDn` and `bindPassword` must escape any special characters with `\` character. Special characters include `\` (backslash), as well as `!` (exclamation).
 
 `authenticationMethod`
-:    Authentication method, e.g. "simple"
+: Authentication method, e.g. "simple"
 
 `forceBindingLogin`
-:    "true/false" - if true, bind as the user that is authenticating, otherwise bind as the manager and perform a search to verify user password. NOTE: This module can only verify passwords hashed with `MD5` or `CRYPT`. If your LDAP directory contains other hashes you'll likely need to set this to true to be able to authenticate.
+: "true/false" - if true, bind as the user that is authenticating, otherwise bind as the manager and perform a search to verify user password. NOTE: This module can only verify passwords hashed with `MD5` or `CRYPT`. If your LDAP directory contains other hashes you'll likely need to set this to true to be able to authenticate.
 
 `forceBindingLoginUseRootContextForRoles`
-:    "true/false" - if true and forceBindingLogin is true, then role membership searches will be performed in the root context, rather than in the bound user context.
+: "true/false" - if true and forceBindingLogin is true, then role membership searches will be performed in the root context, rather than in the bound user context.
 
 `userBaseDn`
-:    base DN to search for users, example: "ou=People,dc=test1,dc=example,dc=com"
+: base DN to search for users, example: "ou=People,dc=test1,dc=example,dc=com"
 
 `userRdnAttribute`
-:    Attribute name for username, used when searching for user role membership by DN, default "uid".
+: Attribute name for username, used when searching for user role membership by DN, default "uid".
 
 `userIdAttribute`
-:    Attribute name to identify user by username, default "cn".
+: Attribute name to identify user by username, default "cn".
 
 `userPasswordAttribute`
-:    Attribute name for user password, default "userPassword".
+: Attribute name for user password, default "userPassword".
 
 `userObjectClass`
-:    Attribute name for user object class, default "inetOrgPerson".
+: Attribute name for user object class, default "inetOrgPerson".
 
 `userLastNameAttribute`
-:    Attribute name for user's last name, default "sn".
+: Attribute name for user's last name, default "sn".
 
 `userFirstNameAttribute`
-:    Attribute name for user's first name, default "givenName".
+: Attribute name for user's first name, default "givenName".
 
 `userEmailAttribute`
-:    Attribute name for user's email address, default "mail".
+: Attribute name for user's email address, default "mail".
 
 `roleBaseDn`
-:    Base DN for role membership search, e.g. "ou=Groups,dc=test1,dc=example,dc=com".
+: Base DN for role membership search, e.g. "ou=Groups,dc=test1,dc=example,dc=com".
 
 `roleNameAttribute`
-:    Attribute name for role name, default "roleName".
+: Attribute name for role name, default "roleName".
 
 `roleMemberAttribute`
-:    Attribute name for a role that would contain a user's DN, default "uniqueMember".
+: Attribute name for a role that would contain a user's DN, default "uniqueMember".
 
 `roleUsernameMemberAttribute`
-:    Attribute name for a role that would contain a user's username. If set, this overrides the `roleMemberAttribute` behavior.
+: Attribute name for a role that would contain a user's username. If set, this overrides the `roleMemberAttribute` behavior.
 
 `roleObjectClass`
-:    Object class for role, default "groupOfUniqueNames".
+: Object class for role, default "groupOfUniqueNames".
 
 `rolePrefix`
-:    Prefix string to remove from role names before returning to the application, e.g. "rundeck_".
+: Prefix string to remove from role names before returning to the application, e.g. "rundeck\_".
 
 `cacheDurationMillis`
-:   Duration that authorization should be cached, in milliseconds. Default "0". A value of "0" indicates no caching should be used.
+: Duration that authorization should be cached, in milliseconds. Default "0". A value of "0" indicates no caching should be used.
 
 `reportStatistics`
-:    "true/false" - if true, output cache statistics to the log.
+: "true/false" - if true, output cache statistics to the log.
 
 `supplementalRoles`
-:    Comma-separated list of role names. All of the given role names will be automatically added to authenticated users.  You can use this to provide a "default" role or roles for all users.
+: Comma-separated list of role names. All of the given role names will be automatically added to authenticated users. You can use this to provide a "default" role or roles for all users.
 
 `timeoutRead`
-:    Read timeout value (ms). Default: 0 (no timeout)
+: Read timeout value (ms). Default: 0 (no timeout)
 
 `timeoutConnect`
-:    Connect timeout value (ms). Default: 0 (no timeout)
+: Connect timeout value (ms). Default: 0 (no timeout)
 
 `nestedGroups`
-:    "true/false" - Default: false. If true, will resolve all nested groups for authenticated users. For the first user to login after a fresh start it will take a couple of seconds longer, this is when the cache of all nested groups is built. This will happen as often as the cache is refreshed. Uses the cacheDurationMillis for cache timeout.
+: "true/false" - Default: false. If true, will resolve all nested groups for authenticated users. For the first user to login after a fresh start it will take a couple of seconds longer, this is when the cache of all nested groups is built. This will happen as often as the cache is refreshed. Uses the cacheDurationMillis for cache timeout.
 
 The `JettyCombinedLdapLoginModule` is extends the previous module, so is configured in almost exactly the same way, but adds these additional configuration options:
 
-
-~~~~ {.c .numberLines}
+```{.c .numberLines}
 ldap {
     com.dtolabs.rundeck.jetty.jaas.JettyCombinedLdapLoginModule required
       ...
@@ -369,23 +366,22 @@ ldap {
       useFirstPass="false"
       tryFirstPass="false";
 };
-~~~~
-
+```
 
 `ignoreRoles`
-:    Do not look up role membership via LDAP. May be used with `storePass` and combined with another login module for authorization roles. (See [JettyRolePropertyFileLoginModule](#jettyrolepropertyfileloginmodule))
+: Do not look up role membership via LDAP. May be used with `storePass` and combined with another login module for authorization roles. (See [JettyRolePropertyFileLoginModule](#jettyrolepropertyfileloginmodule))
 
 `storePass`
-:    Store the user/password for use by subsequent login module.
+: Store the user/password for use by subsequent login module.
 
 `clearPass`
-:    Clear the user/password that was stored after login is successful. (This would prevent any subsequent login modules from re-using the stored credentials.  Set it to `false` if you want to continue using the credentials.)
+: Clear the user/password that was stored after login is successful. (This would prevent any subsequent login modules from re-using the stored credentials. Set it to `false` if you want to continue using the credentials.)
 
 `useFirstPass`
-:    Use the stored user/password for authentication, and do not attempt to use other mechanism (e.g. login callback).
+: Use the stored user/password for authentication, and do not attempt to use other mechanism (e.g. login callback).
 
 `tryFirstPass`
-:    Try to use the stored user/password for authentication, if it fails then proceed with normal mechanism.
+: Try to use the stored user/password for authentication, if it fails then proceed with normal mechanism.
 
 ### Combining LDAP with other modules
 
@@ -399,9 +395,9 @@ The [PAM](#pam) section is a useful comparison as it uses the same method to com
 
 ### Active Directory
 
-Here is an example configuration for Active Directory. The string *sAMAccountName* refers to the short user name and is valid in a default Active Directory installation, but may vary in some environments.
+Here is an example configuration for Active Directory. The string _sAMAccountName_ refers to the short user name and is valid in a default Active Directory installation, but may vary in some environments.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.c .numberLines}
+```{.c .numberLines}
 activedirectory {
     com.dtolabs.rundeck.jetty.jaas.JettyCachingLdapLoginModule required
     debug="true"
@@ -423,24 +419,24 @@ activedirectory {
     cacheDurationMillis="300000"
     reportStatistics="true";
 };
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 ### Communicating over secure ldap (ldaps://)
 
-The default port for communicating with active directory is 389, which is insecure.  The secure port is 636, but the LoginModule describe above requires that the AD certificate or organizations CA certificate be placed in a truststore.  The truststore provided with rundeck `/etc/rundeck/ssl/truststore` is used for the local communication between the cli tools and the rundeck server.
+The default port for communicating with active directory is 389, which is insecure. The secure port is 636, but the LoginModule describe above requires that the AD certificate or organizations CA certificate be placed in a truststore. The truststore provided with rundeck `/etc/rundeck/ssl/truststore` is used for the local communication between the cli tools and the rundeck server.
 
-Before you can establish trust, you need to get the CA certificate.  Typically, this would require a request to the organization's security officer to have them send you the certificate.  It's also often found publicly if your organization does secure transactions.
+Before you can establish trust, you need to get the CA certificate. Typically, this would require a request to the organization's security officer to have them send you the certificate. It's also often found publicly if your organization does secure transactions.
 
-Another option is to interrogate the secure ldap endpoint with openssl.  The example below shows a connection to paypal.com on port 443.  The first certificate is the machine and that last is the CA.  Pick the last certificate.  
+Another option is to interrogate the secure ldap endpoint with openssl. The example below shows a connection to paypal.com on port 443. The first certificate is the machine and that last is the CA. Pick the last certificate.
 
-*note* that for Active Directory, the host would be the Active Directory server and port 636.
-*note* Certificates are PEM encoded and start with -----BEGIN CERTIFICATE----- end with -----END CERTIFICATE----- inclusive.
+_note_ that for Active Directory, the host would be the Active Directory server and port 636.
+_note_ Certificates are PEM encoded and start with -----BEGIN CERTIFICATE----- end with -----END CERTIFICATE----- inclusive.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
+```{.bash}
 $ openssl s_client -showcerts -connect paypal.com:443
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 CONNECTED(00000003)
 depth=1 C = US, O = "VeriSign, Inc.", OU = VeriSign Trust Network, OU = Terms of use at https://www.verisign.com/rpa (c)09, CN = VeriSign Class 3 Secure Server CA - G2
 verify error:num=20:unable to get local issuer certificate
@@ -544,58 +540,58 @@ SSL-Session:
     Verify return code: 20 (unable to get local issuer certificate)
 ---
 ^C
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
-Once a certificate has been obtained.  There are two options for adding the certificate.  The first involves updating the truststore for the JRE.  If that is not possible or not desirable, then one can set the truststore to be used by the jvm, using any arbitrary truststore that contains the appropriate certificate.
+Once a certificate has been obtained. There are two options for adding the certificate. The first involves updating the truststore for the JRE. If that is not possible or not desirable, then one can set the truststore to be used by the jvm, using any arbitrary truststore that contains the appropriate certificate.
 
-Both options require importing a certificate.  The following would import a certificate called, AD.cert into the `/etc/rundeck/ssl/truststore`.
+Both options require importing a certificate. The following would import a certificate called, AD.cert into the `/etc/rundeck/ssl/truststore`.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
+```{.bash}
 keytool -import -alias CompanyAD -file AD.cert -keystore  /etc/rundeck/ssl/truststore -storepass adminadmin
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
-To add the certificate to the JRE, locate the file $JAVA_HOME/lib/security/cacerts and run
+To add the certificate to the JRE, locate the file \$JAVA_HOME/lib/security/cacerts and run
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
+```{.bash}
 keytool -import -alias CompanyAD -file AD.cert -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 To verify your CA has been added, run keytool list and look for CompanyAD in the output.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
+```{.bash}
 keytool -list -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 Refer to: https://docs.oracle.com/javase/1.5.0/docs/tooldocs/solaris/keytool.html for more information how how to import a certificate.
 
-Finally, in your `ldap-activedirectory.conf` be sure to change the *providerUrl* to be `ldaps://ad-server`.  Including the port is optional as the default is 686.
+Finally, in your `ldap-activedirectory.conf` be sure to change the _providerUrl_ to be `ldaps://ad-server`. Including the port is optional as the default is 686.
 
 ## PAM
 
 Rundeck includes a [PAM](https://en.wikipedia.org/wiki/Pluggable_authentication_module) JAAS login module, which uses [libpam4j](https://github.com/kohsuke/libpam4j) to authenticate.
 
-In order for Rundeck to have the necessary permissions to check user credentials, the user that runs the Rundeck process must be in the `shadow` group.  
+In order for Rundeck to have the necessary permissions to check user credentials, the user that runs the Rundeck process must be in the `shadow` group.
 This can be done with the command:
 
     $ sudo addgroup rundeck shadow
 
 On debian based systems you need to install libpam4j :
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
+```{.bash}
 apt install libpam4j-java
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 This module can work with existing properties-file based authorization roles by enabling shared credentials between the modules, and introducing a Property file module that can be used only for authorization.
 
 Modules:
 
-* `org.rundeck.jaas.jetty.JettyPamLoginModule` authenticates via PAM, can add a default set of roles to authenticated users, and can use local unix group membership for role info.
-* `org.rundeck.jaas.jetty.JettyAuthPropertyFileLoginModule` authenticates via property file, but does not supply user authorization information.
-* `org.rundeck.jaas.jetty.JettyRolePropertyFileLoginModule` does not authenticate and only uses authorization roles from a property file. Can be combined with previous modules.
+- `org.rundeck.jaas.jetty.JettyPamLoginModule` authenticates via PAM, can add a default set of roles to authenticated users, and can use local unix group membership for role info.
+- `org.rundeck.jaas.jetty.JettyAuthPropertyFileLoginModule` authenticates via property file, but does not supply user authorization information.
+- `org.rundeck.jaas.jetty.JettyRolePropertyFileLoginModule` does not authenticate and only uses authorization roles from a property file. Can be combined with previous modules.
 
 sample jaas config:
 
-~~~~~~ {.c .numberLines}
+```{.c .numberLines}
 RDpropertyfilelogin {
   org.rundeck.jaas.jetty.JettyPamLoginModule requisite
         debug="true"
@@ -609,7 +605,7 @@ RDpropertyfilelogin {
         file="/etc/rundeck/realm.properties";
 
 };
-~~~~~~
+```
 
 When combining the two login modules, note that the `storePass` and
 `useFirstPass` are set to true, allowing the two modules to share the user information necessary for the second module to load the user roles.
@@ -618,20 +614,19 @@ When combining the two login modules, note that the `storePass` and
 
 These JAAS configuration properties are used by all of the Jetty PAM modules:
 
-* `useFirstPass`
-* `tryFirstPass`
-* `storePass`
-* `clearPass`
-* `debug`
+- `useFirstPass`
+- `tryFirstPass`
+- `storePass`
+- `clearPass`
+- `debug`
 
 ### JettyPamLoginModule
 
 Configuration properties:
 
-* `serviceName` - name of the PAM service configuration to use. (Required). Example: "sshd".
-* `useUnixGroups` - true/false. If true, the unix Groups defined for the user will be included as authorization roles. Default: false.
-* `supplementalRoles` - a comma-separated list of additional user roles to add to any authenticated user. Example: 'user,readonly'
-
+- `serviceName` - name of the PAM service configuration to use. (Required). Example: "sshd".
+- `useUnixGroups` - true/false. If true, the unix Groups defined for the user will be included as authorization roles. Default: false.
+- `supplementalRoles` - a comma-separated list of additional user roles to add to any authenticated user. Example: 'user,readonly'
 
 ## JettyRolePropertyFileLoginModule
 
@@ -641,10 +636,10 @@ It then looks the username up in the Properties file, and applies any roles for 
 
 Configuration properties:
 
-* `file` - path to a Java Property formatted file in the format defined under [realm.properties](#PropertyFileLoginModule)
-* `caseInsensitive` - true/false. If true, usernames are converted to lowercase before being looked up in the property file, otherwise they are compared as entered. Default: true.
+- `file` - path to a Java Property formatted file in the format defined under [realm.properties](#PropertyFileLoginModule)
+- `caseInsensitive` - true/false. If true, usernames are converted to lowercase before being looked up in the property file, otherwise they are compared as entered. Default: true.
 
-Note that since the user password is not used for authentication, you can have a dummy value in the password field of the file, but *some value is required* in that position.
+Note that since the user password is not used for authentication, you can have a dummy value in the password field of the file, but _some value is required_ in that position.
 
 Example properties file with dummy passwords and roles:
 
@@ -653,24 +648,24 @@ Example properties file with dummy passwords and roles:
 
 ## JettyAuthPropertyFileLoginModule
 
-This module provides authentication in the same way as the [realm.properties](#PropertyFileLoginModule) mechanism, but does not use any of the role names found in the file.  It can be combined with `JettyRolePropertyFileLoginModule` by using `storePass=true`.
+This module provides authentication in the same way as the [realm.properties](#PropertyFileLoginModule) mechanism, but does not use any of the role names found in the file. It can be combined with `JettyRolePropertyFileLoginModule` by using `storePass=true`.
 
 Configuration properties:
 
-* `hotReload` - `hotReload="true"` enables the ability to modify the user list specified by `file` without having to restart Rundeck. The refresh interval for checking the file is 5 seconds. This is not configurable.
-* `file` - path to a Java Property formatted file in the format defined under [realm.properties](#realm.properties)
+- `hotReload` - `hotReload="true"` enables the ability to modify the user list specified by `file` without having to restart Rundeck. The refresh interval for checking the file is 5 seconds. This is not configurable.
+- `file` - path to a Java Property formatted file in the format defined under [realm.properties](#realm.properties)
 
 ## Multiple Authentication Modules
 
 JAAS configurations can contain multiple LoginModule definitions, which are processed in order and according to the logic of the configuration Flag.
 
-In your config file, separate the LoginModule definitions with a `;` and be sure to select the appropriate Flag for the module, one of `required`, `requisite`, `sufficient`, or `optional`.  
+In your config file, separate the LoginModule definitions with a `;` and be sure to select the appropriate Flag for the module, one of `required`, `requisite`, `sufficient`, or `optional`.
 
 The full syntax and the description of how these Flags work is described in more detail under the [JAAS Configuration Documentation](https://docs.oracle.com/javase/6/docs/api/javax/security/auth/login/Configuration.html).
 
 Here is an example combining an LDAP module flagged as `sufficient`, and a flat file realm.properties config flagged as `required`:
 
-~~~~~~~~ {.c .numberLines}
+```{.c .numberLines}
 multiauth {
 
   com.dtolabs.rundeck.jetty.jaas.JettyCachingLdapLoginModule sufficient
@@ -698,21 +693,21 @@ multiauth {
     debug="true"
     file="/etc/rundeck/realm.properties";
 };
-~~~~~~~~
+```
 
 Based on the flags, JAAS would attempt the following for authentication:
 
 1. Check username/pass against LDAP
-  1. If auth succeeds, finish with successful authentication
-  2. If auth fails, continue to the next module
-2. Check username/pass against the properties file
-  1. If auth succeeds, finish with successful authentication
-  2. If auth fails, finish with failed authentication
+1. If auth succeeds, finish with successful authentication
+1. If auth fails, continue to the next module
+1. Check username/pass against the properties file
+1. If auth succeeds, finish with successful authentication
+1. If auth fails, finish with failed authentication
 
 # Jaas Authorization Testing
 
 If you would like to test your Jaas configuration without restarting Rundeck every time you make a change to
-your Jaas configuration, you can execute the command:  
+your Jaas configuration, you can execute the command:
 
     $ java -jar -Drundeck.jaaslogin=true -Dloginmodule.name=$LOGIN_MODULE_NAME -Drdeck.base=$RD_BASE_DIR rundeck.war --testauth
 
@@ -723,12 +718,12 @@ your Jaas configuration, you can execute the command:
     $ Checking login module: RDpropertyfilelogin
     $ Enter user name: admin
     $ Enter password admin <-- This is masked in actual use
-    $ Login Succeeded!  
+    $ Login Succeeded!
 
-The Jaas configuration file you are testing against will be printed out, along with the name of the login module you are testing.  
-You will be prompted to enter a username and password. These will be compared against your current Jaas configuration.  
-If the login is successful you will see: `Login Succeeded!`  
-If the login fails a stacktrace will be printed out which will contain the details about the failure.  
+The Jaas configuration file you are testing against will be printed out, along with the name of the login module you are testing.
+You will be prompted to enter a username and password. These will be compared against your current Jaas configuration.
+If the login is successful you will see: `Login Succeeded!`
+If the login fails a stacktrace will be printed out which will contain the details about the failure.
 
 # Container authentication and authorization
 
@@ -737,17 +732,16 @@ with a few mechanisms to determine what roles the user has.
 
 `containerPrincipal`
 
-:   JAAS authentication modules define a "Principal"
+: JAAS authentication modules define a "Principal"
 that represents the authenticated user,
 and which can list the "roles" the user has.
 
 `container`
-:   The Container also provides a query mechanism `isUserInRole`.
+: The Container also provides a query mechanism `isUserInRole`.
 
 Both of these methods are used by default,
 although they can be disabled
 with the following configuration flags in `rundeck-config.properties`:
-
 
     rundeck.security.authorization.containerPrincipal.enabled=false
     rundeck.security.authorization.container.enabled=false
@@ -758,7 +752,7 @@ with the following configuration flags in `rundeck-config.properties`:
 
 `preauthenticated`
 
-:   "Preauthenticated" means that the Servlet Container (e.g. Tomcat)
+: "Preauthenticated" means that the Servlet Container (e.g. Tomcat)
 is not being used for authentication/authorization.
 The user name and role list are provided to Rundeck
 from another system, usually a reverse proxy set up "in front"
@@ -767,11 +761,11 @@ Rundeck accepts the "REMOTE_USER" as the username,
 and allows a configurable Request Attribute to contain
 the list of user roles.
 
-**Note**: If you use this method, make sure that *only* your proxy
- has direct access to the ports Rundeck is listening on
- (e.g. firewall them),
- otherwise you are opening access to rundeck
- without requiring authentication.
+**Note**: If you use this method, make sure that _only_ your proxy
+has direct access to the ports Rundeck is listening on
+(e.g. firewall them),
+otherwise you are opening access to rundeck
+without requiring authentication.
 
 This method can be enabled with this config in `rundeck-config.properties`:
 
@@ -785,14 +779,13 @@ This configuration requires some additional setup to enable:
 
 For Tomcat and Apache HTTPd with `mod_proxy_ajp`, here are some additional instructions:
 
-1. Modify the tomcat server.xml, and make sure to set `tomcatAuthentication="false"` on the AJP connector:
+1.  Modify the tomcat server.xml, and make sure to set `tomcatAuthentication="false"` on the AJP connector:
 
         <Connector port="8009" protocol="AJP/1.3" redirectPort="4440" tomcatAuthentication="false"/>
 
-2. Configure Apache to perform the necessary authentication, and to pass an environment variable named "REMOTE_USER_GROUPS", the value should be all colon-separated e.g.: "user:admin:ops" (or using the `delimiter` you have configured.)
+2.  Configure Apache to perform the necessary authentication, and to pass an environment variable named "REMOTE_USER_GROUPS", the value should be all colon-separated e.g.: "user:admin:ops" (or using the `delimiter` you have configured.)
 
 Here is an example using just `mod_proxy_ajp`, and passing a static list of roles. A real solution should use [mod_lookup_identity](https://www.adelton.com/apache/mod_lookup_identity/):
-
 
     <Location /rundeck>
         ProxyPass  ajp://localhost:8009/rundeck
@@ -806,7 +799,7 @@ Here is an example using just `mod_proxy_ajp`, and passing a static list of role
         Require valid-user
     </Location>
 
-**Note**: `mod_proxy_ajp` requires prefixing the environment variable with "AJP_", but `mod_jk` can pass the environment variable directly.
+**Note**: `mod_proxy_ajp` requires prefixing the environment variable with "AJP\_", but `mod_jk` can pass the environment variable directly.
 
 Once authenticated via Apache, you should be able to access rundeck.
 You might see a page saying "You have no authorized access to projects",

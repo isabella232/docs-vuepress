@@ -1,4 +1,4 @@
-% Loadbalancer
+# Loadbalancer Overview
 
 A loadbalancer allows you to achieve high availability in your Rundeck Enterprise
 installation by routing http traffic across several redundant Rundeck Enterprise

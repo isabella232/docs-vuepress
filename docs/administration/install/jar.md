@@ -1,46 +1,45 @@
-% Installing as an executable war
+# Installing as an executable war
 
 Use the executable war as an alternative to a system package:
 
 1. Download the executable war file.
 1. Define RDECK_BASE environment variable to the location of the install
 
-    ~~~~~~~ {.bash}
-    export RDECK_BASE=$HOME/rundeck; # or where you like it
-    ~~~~~~~
+   ```{.bash}
+   export RDECK_BASE=$HOME/rundeck; # or where you like it
+   ```
 
 1. Create the directory for the installation.
 
-    ~~~~~~~ {.bash}
-    mkdir -p $RDECK_BASE
-    ~~~~~~~
+   ```{.bash}
+   mkdir -p $RDECK_BASE
+   ```
 
 1. Copy the executable war to the installation directory.
 
-    ~~~~~~~ {.bash}
-    cp rundeck-3.0.x.war $RDECK_BASE
-    ~~~~~~~
+   ```{.bash}
+   cp rundeck-3.0.x.war $RDECK_BASE
+   ```
 
 1. Change directory and run the WAR.
 
-    ~~~~~~~ {.bash}
-    cd $RDECK_BASE    
-    java -Xmx4g -jar rundeck-3.0.x.war
-    ~~~~~~~
+   ```{.bash}
+   cd $RDECK_BASE
+   java -Xmx4g -jar rundeck-3.0.x.war
+   ```
 
 1. Wait for the Started message.
 
-    ~~~~~~~
-    Grails application running at http://ecto1.local:4440 in environment: production
-    ~~~~~~~
+   ```
+   Grails application running at http://ecto1.local:4440 in environment: production
+   ```
 
 1. Update your shell environment
 
-    ~~~~~~~ {.bash}
-    PATH=$PATH:$RDECK_BASE/tools/bin
-    MANPATH=$MANPATH:$RDECK_BASE/docs/man
-    ~~~~~~~
-
+   ```{.bash}
+   PATH=$PATH:$RDECK_BASE/tools/bin
+   MANPATH=$MANPATH:$RDECK_BASE/docs/man
+   ```
 
 If you get an error message that resembles the one below, you probably
 are using an unsupported Java version.
@@ -48,7 +47,7 @@ are using an unsupported Java version.
     Exception in thread "main" java.lang.UnsupportedClassVersionError: Bad version number in .class file
 
 See the [startup and shutdown][page:administration/maintenance/startup.md] section for
-instructions on using the ``rundeckd`` shell tool to manage the
+instructions on using the `rundeckd` shell tool to manage the
 rundeck server process.
 
 ## Logging in for the first time
@@ -64,23 +63,23 @@ Next, learn how to [create your first Rundeck Enterprise project][page:manual/02
 
 When you need to update rundeck and you can not find the relevant section on the docs you are probably on a quite recent version.
 
-* Stop rundeck
-* download the new war
-* open a prompt, optionally setting RDECK_BASE and launch --installonly
+- Stop rundeck
+- download the new war
+- open a prompt, optionally setting RDECK_BASE and launch --installonly
 
         java -jar rundeck-3.0.x.war --installonly
 
-* copy over your customizations
-* don't forget, e.g., sqljdbc41.jar in `%RDECK_BASE%\server\lib`
-* start rundeck
+- copy over your customizations
+- don't forget, e.g., sqljdbc41.jar in `%RDECK_BASE%\server\lib`
+- start rundeck
 
 ### Executable War Options
 
 The executable war can take a number of options to specify how the server should start. If you execute with a "-h" you will see the usage information:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
+```{.bash}
 java -Xmx4g -jar rundeck-3.0.x.war -h
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
     usage: java [JAVA_OPTIONS] -jar rundeck.war  [-c PATH] [-d]
            [--installonly] [-s PATH] [-b PATH] [-p PATH] [-h] [-x PATH]

@@ -1,5 +1,4 @@
-% Configuration
-
+# Configuration
 
 # Configuration layout
 
@@ -38,6 +37,7 @@ installation methods.
     `-- rundeck-config.properties
 
 # Configuration files
+
 Configuration is specified in a number of standard Rundeck
 configuration files generated during the installation process.
 
@@ -58,34 +58,33 @@ Configuration file used by shell tools and core Rundeck services. This file will
 
 Some important settings:
 
-* `framework.server.hostname`: Hostname of the Rundeck server node
-* `framework.server.name`: Name (identity) of the Rundeck server node
-* `framework.projects.dir`: Path to the directory containing Rundeck Project directories.  Default is `$RDECK_BASE/projects`.
-* `framework.var.dir`: Base directory for output and temp files used by the server and CLI tools. Default is `$RDECK_BASE/var`.
-* `framework.logs.dir`: Directory for log files written by core services and Rundeck Server's Job executions. Default is `$RDECK_BASE/var/logs`
-* `framework.server.username`: Username for connection to the Rundeck server
-* `framework.server.password`: Password for connection to the Rundeck server
-* `framework.rundeck.url`: Base URL for Rundeck server.
-
+- `framework.server.hostname`: Hostname of the Rundeck server node
+- `framework.server.name`: Name (identity) of the Rundeck server node
+- `framework.projects.dir`: Path to the directory containing Rundeck Project directories. Default is `$RDECK_BASE/projects`.
+- `framework.var.dir`: Base directory for output and temp files used by the server and CLI tools. Default is `$RDECK_BASE/var`.
+- `framework.logs.dir`: Directory for log files written by core services and Rundeck Server's Job executions. Default is `$RDECK_BASE/var/logs`
+- `framework.server.username`: Username for connection to the Rundeck server
+- `framework.server.password`: Password for connection to the Rundeck server
+- `framework.rundeck.url`: Base URL for Rundeck server.
 
 SSH Connection settings (See [[page:administration/projects/node-execution/ssh.md]]):
 
-* `framework.ssh.keypath`: Path to the SSH private key file used for SSH connections
-* `framework.ssh.user`: Default username for SSH Connections, if not overridden by Node specific value.
-* `framework.ssh-connection-timeout`: timeout in milliseconds for SSH connections. The default is "0" (no timeout).  You can modify this to change the connect/socket timeout. (Deprecated: `framework.ssh.timeout`.)
-* `framework.ssh-command-timeout`: timeout in milliseconds for SSH commands. The default is "0" (no timeout).  You can modify this to change the maximum time allowed for SSH commands to run.
+- `framework.ssh.keypath`: Path to the SSH private key file used for SSH connections
+- `framework.ssh.user`: Default username for SSH Connections, if not overridden by Node specific value.
+- `framework.ssh-connection-timeout`: timeout in milliseconds for SSH connections. The default is "0" (no timeout). You can modify this to change the connect/socket timeout. (Deprecated: `framework.ssh.timeout`.)
+- `framework.ssh-command-timeout`: timeout in milliseconds for SSH commands. The default is "0" (no timeout). You can modify this to change the maximum time allowed for SSH commands to run.
 
 Other settings:
 
-* `framework.log.dispatch.console.format`: Default format for non-terse node execution logging run by the `dispatch` CLI tool.
-* `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`.  If `false`, the "Inline Script Content" syntax described in [[page:manual/job-workflows.md#context-variables]] is disabled.
-* `communityNews.disabled`: Default is not set, or false. Disables the external polling of Community News feed. Link will persist but will not poll, and clicking this link will open a new browser tab and navigate to the web-based version of Community News.
+- `framework.log.dispatch.console.format`: Default format for non-terse node execution logging run by the `dispatch` CLI tool.
+- `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in [[page:manual/job-workflows.md#context-variables]] is disabled.
+- `communityNews.disabled`: Default is not set, or false. Disables the external polling of Community News feed. Link will persist but will not poll, and clicking this link will open a new browser tab and navigate to the web-based version of Community News.
 
 Static authentication tokens for API access:
 
 You can define the location of a .properties file in framework.properties:
 
-* `rundeck.tokens.file=/etc/rundeck/tokens.properties`
+- `rundeck.tokens.file=/etc/rundeck/tokens.properties`
 
 The `tokens.properties` file should contain static authentication tokens you wish to use, keyed by the associated username:
 
@@ -100,7 +99,6 @@ The token_strings can be used as Authentication tokens to the [API][page:api/run
 Entries in `framework.properties` in the form `framework.globals.X=Y` Adds a variable `X` available in all execution contexts as `${globals.X}`.
 
 Global variables can be overridden in the [`project.properties`](#project.properties) by adding a line in the form of `project.globals.X=Y` and then accessing it as `${globals.X}`.
-
 
 ## log4j.properties
 
@@ -128,41 +126,42 @@ generated at project setup time. Each project has a directory within the Rundeck
 
     $RDECK_BASE/projects/[PROJECT-NAME]/etc/project.properties
 
-Property                                  Description
-----------                                -------------
-`project.name`                            Declare the project name.
-`project.ssh-authentication`              SSH authentication type (eg, privateKey).
-`project.ssh-keypath`                     SSH identify file.
-`service.FileCopier.default.provider`     Default script file copier plugin.
-`service.NodeExecutor.default.provider`   Default node executor plugin.
-`resources.source.N...`                   Defines a Resource model source see [Resource Model Sources][page:manual/09-configure.md#resource-model-sources-configuration].
-`project.globals.X`                       [Defines a Project Global variable](#project-global-execution-variables)
+Property Description
 
+---
+
+`project.name` Declare the project name.
+`project.ssh-authentication` SSH authentication type (eg, privateKey).
+`project.ssh-keypath` SSH identify file.
+`service.FileCopier.default.provider` Default script file copier plugin.
+`service.NodeExecutor.default.provider` Default node executor plugin.
+`resources.source.N...` Defines a Resource model source see [Resource Model Sources][page:manual/09-configure.md#resource-model-sources-configuration].
+`project.globals.X` [Defines a Project Global variable](#project-global-execution-variables)
 
 Here's an example that configures a File source:
 
-~~~~~~~~~~
+```
 resources.source.1.config.file=/var/rundeck/projects/${project.name}/etc/resources.xml
 resources.source.1.config.generateFileAutomatically=true
 resources.source.1.config.includeServerNode=true
 resources.source.1.type=file
-~~~~~~~~~~
+```
 
 Another that configures a URL source:
 
-~~~~~~~~
+```
 resources.source.2.config.cache=true
 resources.source.2.config.timeout=30
 resources.source.2.config.url=http\://example.com/nodes
 resources.source.2.type=url
-~~~~~~~~
+```
 
 And one that configures a Directory source:
 
-~~~~~~~~~~
+```
 resources.source.3.config.directory=/var/rundeck/projects/${project.name}/site_nodes
 resources.source.3.type=directory
-~~~~~~~~~~
+```
 
 Additional sources increment the source number. You can reference the project name by using the `${project.name}` context variable.
 
@@ -187,7 +186,7 @@ specifies the use of the PropertyFileLoginModule:
       file="/etc/rundeck/realm.properties";
     };
 
-[JAAS]: https://wiki.eclipse.org/Jetty/Feature/JAAS
+[jaas]: https://wiki.eclipse.org/Jetty/Feature/JAAS
 
 ## realm.properties
 
@@ -210,41 +209,41 @@ The following sections describe configuration values for this file.
 
 ### Security
 
-* `rundeck.security.useHMacRequestTokens` : `true/false`.  Default: `true`.
-   Switches between HMac based request tokens, and the default grails UUID
-   tokens.  HMac tokens have a timeout, which may cause submitted forms or
-   actions to fail with a message like "Token has expired".
-   If set to false, UUIDs will be used instead of HMac tokens,
-   and they have no timeouts.
-   The default timeout for tokens can be changed with the java system property
-   `-Dorg.rundeck.web.infosec.HMacSynchronizerTokensHolder.DEFAULT_DURATION=[timeout in ms]`.
+- `rundeck.security.useHMacRequestTokens` : `true/false`. Default: `true`.
+  Switches between HMac based request tokens, and the default grails UUID
+  tokens. HMac tokens have a timeout, which may cause submitted forms or
+  actions to fail with a message like "Token has expired".
+  If set to false, UUIDs will be used instead of HMac tokens,
+  and they have no timeouts.
+  The default timeout for tokens can be changed with the java system property
+  `-Dorg.rundeck.web.infosec.HMacSynchronizerTokensHolder.DEFAULT_DURATION=[timeout in ms]`.
 
-* `rundeck.security.apiCookieAccess.enabled`: `true/false`. Default: `true`.
-    Determines whether access to the API is allowed if the API client
-    authenticates via session cookies (i.e. username and password login.)  If
-    set to `false`, the current CLI tools and API libraries will not operate
-    correctly if they use username and password login.
+- `rundeck.security.apiCookieAccess.enabled`: `true/false`. Default: `true`.
+  Determines whether access to the API is allowed if the API client
+  authenticates via session cookies (i.e. username and password login.) If
+  set to `false`, the current CLI tools and API libraries will not operate
+  correctly if they use username and password login.
 
-* `rundeck.api.tokens.duration.max`: Duration string indicating maximum lifetime of API Tokens. If unset, the value
-    will be "30d" (30 days). Format: "##{ydhms}" (years, days, hours, minutes, seconds).
-    If you want to disable the max expiration you can set it to 0 and create token with 0 duration that don't expire.
+- `rundeck.api.tokens.duration.max`: Duration string indicating maximum lifetime of API Tokens. If unset, the value
+  will be "30d" (30 days). Format: "##{ydhms}" (years, days, hours, minutes, seconds).
+  If you want to disable the max expiration you can set it to 0 and create token with 0 duration that don't expire.
 
-* `rundeck.security.csrf.referer.filterMethod`:`NONE|POST|*`. Set HTTP Method to filter based on Referer header.  Can be POST, or "*" for all methods. Default: NONE (disabled)
+- `rundeck.security.csrf.referer.filterMethod`:`NONE|POST|*`. Set HTTP Method to filter based on Referer header. Can be POST, or "\*" for all methods. Default: NONE (disabled)
 
-* `rundeck.security.csrf.referer.allowApi`: `true|false`. Allow /api/* requests without requiring matching Referer header. Default: true.
+- `rundeck.security.csrf.referer.allowApi`: `true|false`. Allow /api/\* requests without requiring matching Referer header. Default: true.
 
-* `rundeck.security.csrf.referer.requireHttps`: `true|false`. If server URL is HTTPS, Require referer header to be from HTTPS version of server URL, if false allow HTTP as well. Default: true.
+- `rundeck.security.csrf.referer.requireHttps`: `true|false`. If server URL is HTTPS, Require referer header to be from HTTPS version of server URL, if false allow HTTP as well. Default: true.
 
-* `rundeck.security.enforceMaxSessions`: `true|false`. Only allow users to log in a configured number of times. Oldest sessions are automatically logged out. `Default: false`.
+- `rundeck.security.enforceMaxSessions`: `true|false`. Only allow users to log in a configured number of times. Oldest sessions are automatically logged out. `Default: false`.
 
-    Note: If you use the rd tool with the RD_USERNAME/RD_PASSWORD authentication this will use an active session each time your run the command. If you log into the
-    user interface then execute rd commands you could be logged out of your web session. If you have multiple long running rd commands and you exceed the maxSessions
-    limit, you may experience unexpected behavior. If you use api tokens with the rd tool it will not log out your interactive session. If you enable this setting and also
-    use the rd tool, it is recommended that you use api tokens with the rd tool.
+  Note: If you use the rd tool with the RD_USERNAME/RD_PASSWORD authentication this will use an active session each time your run the command. If you log into the
+  user interface then execute rd commands you could be logged out of your web session. If you have multiple long running rd commands and you exceed the maxSessions
+  limit, you may experience unexpected behavior. If you use api tokens with the rd tool it will not log out your interactive session. If you enable this setting and also
+  use the rd tool, it is recommended that you use api tokens with the rd tool.
 
-* `rundeck.security.maxSessions`: If enforceMaxSessions is true, this setting controls the number of active sessions a user is allowed to have. `Default: 1`
+- `rundeck.security.maxSessions`: If enforceMaxSessions is true, this setting controls the number of active sessions a user is allowed to have. `Default: 1`
 
-* `rundeck.security.jaasRolePrefix`: Prefix string to add to each *role* determined via [JAAS Authentication][page:administration/security/authentication.md#jetty-and-jaas-authentication]. Default: none.
+- `rundeck.security.jaasRolePrefix`: Prefix string to add to each _role_ determined via [JAAS Authentication][page:administration/security/authentication.md#jetty-and-jaas-authentication]. Default: none.
 
 ### Security HTTP Headers
 
@@ -254,7 +253,7 @@ By default, these headers are enabled, but they can be individually disabled, or
 
 Additionally, custom headers can be enabled if required.
 
-~~~~.properties
+```.properties
 # enable security headers filter to add these headers (default: true)
 rundeck.security.httpHeaders.enabled=true
 
@@ -336,16 +335,16 @@ rundeck.security.httpHeaders.provider.csp.config.form-action=self
 # rundeck.security.httpHeaders.provider.custom.config.value=default-src 'none';
 # rundeck.security.httpHeaders.provider.custom.config.name2=X-other-header
 # rundeck.security.httpHeaders.provider.custom.config.value2=some value
-~~~~
+```
 
 References:
 
-* <https://www.owasp.org/index.php/OWASP_Secure_Headers_Project>
-* <https://content-security-policy.com>
+- <https://www.owasp.org/index.php/OWASP_Secure_Headers_Project>
+- <https://content-security-policy.com>
 
 ### Local Login Form Visibility
 
-* `rundeck.login.localLogin.enabled`:`true/false`. Default `true`
+- `rundeck.login.localLogin.enabled`:`true/false`. Default `true`
 
 If you have Single Sign On enabled(Enterprise only) and you want to prevent the ability
 for your users to login with the non-SSO form, you can set this property to false and it
@@ -353,31 +352,31 @@ will suppress the non-SSO login form.
 
 ### Logout behaviors
 
-* `rundeck.logout.expire.cookies`: comma separated list of cookie names to expire on logout
+- `rundeck.logout.expire.cookies`: comma separated list of cookie names to expire on logout
 
-* `rundeck.logout.redirect.url`: Redirect to this url after logout. This can either be a fully qualified url or a relative path.
+- `rundeck.logout.redirect.url`: Redirect to this url after logout. This can either be a fully qualified url or a relative path.
 
 ### Server Settings
 
-* `server.session.timeout`: timeout in seconds.
+- `server.session.timeout`: timeout in seconds.
 
-Note: This setting applies *only* to the embedded Jetty server, which is used for standalone war launcher, rpm or deb installs. It does not work for Tomcat installation.
+Note: This setting applies _only_ to the embedded Jetty server, which is used for standalone war launcher, rpm or deb installs. It does not work for Tomcat installation.
 
 If you are deploying the Rundeck war file to Tomcat, you can manage the session timeout setting in the `$TomcatBase/conf/web.xml` file. The setting is in minutes.
 
-~~~{.xml}
+```{.xml}
     <session-config> <session-timeout>30</session-timeout> </session-config>
-~~~
+```
 
 ### Execution Mode
 
-* `rundeck.executionMode`:`active/passive`. Default `active`. Set the Execution
+- `rundeck.executionMode`:`active/passive`. Default `active`. Set the Execution
   Mode for the Rundeck server.
 
 Rundeck can be in `active` or `passive` execution mode.
 
-* `active` mode: Jobs, scheduled Jobs, and adhoc executions can be run.
-* `passive` mode: No Jobs or adhoc executions can be run.
+- `active` mode: Jobs, scheduled Jobs, and adhoc executions can be run.
+- `passive` mode: No Jobs or adhoc executions can be run.
 
 Setting Rundeck to `passive` mode prevents users from running anything on the
 system and is useful when managing Rundeck server clusters.
@@ -386,14 +385,14 @@ system and is useful when managing Rundeck server clusters.
 
 The [Project Setup - Project Definitions][page:administration/projects/project-create.md#project-definitions] mechanism is configured within this file, see:
 
-* [Project Storage][page:administration/configuration/storage-facility.md#project-storage]
+- [Project Storage][page:administration/configuration/storage-facility.md#project-storage]
 
 ### Key Storage settings
 
 The [Key storage][page:administration/security/key-storage.md] mechanism is configured within this file, see:
 
-* [Configuring Storage Plugins][page:administration/configuration/plugins/configuring.md#storage-plugins]
-* [Configuring Storage Converter Plugins][page:administration/configuration/plugins/configuring.md#storage-converter-plugins]
+- [Configuring Storage Plugins][page:administration/configuration/plugins/configuring.md#storage-plugins]
+- [Configuring Storage Converter Plugins][page:administration/configuration/plugins/configuring.md#storage-converter-plugins]
 
 ### Notification email settings
 
@@ -407,7 +406,7 @@ See [Email Settings: Custom Email Templates][page:administration/configuration/e
 
 If a sporadic DB connection failure happens when an execution finishes, Rundeck may fail to update the state of the execution in the database, causing the execution to appear is if it is still "running".
 
-Rundeck now attempts to retry the update to correctly register the final state of the execution.  You can tune how many times and how often this retry occurs with these config values:
+Rundeck now attempts to retry the update to correctly register the final state of the execution. You can tune how many times and how often this retry occurs with these config values:
 
     # attempt to retry the final state update
     rundeck.execution.finalize.retryMax=10
@@ -435,7 +434,6 @@ Additional configuration for metrics:
     # use JMX
     rundeck.metrics.jmxEnabled=true/false
 
-
 #### Metrics API Endpoints
 
 Rundeck exposes Metrics data via API endpoints, which are enabled by default.
@@ -450,10 +448,10 @@ You can also selectively disable each endpoing by setting these config values:
 
 Metrics names are:
 
-* `metrics`
-* `threads`
-* `ping`
-* `healthcheck`
+- `metrics`
+- `threads`
+- `ping`
+- `healthcheck`
 
 See: [API > List Metrics][page:api/rundeck-api.md#list-metrics].
 
@@ -520,10 +518,10 @@ Defaults for the Node caches
 
 Enabled: true/false (default true).
 
-:   `rundeck.nodeService.nodeCache.enabled=true` If set to false, no caching is performed.
+: `rundeck.nodeService.nodeCache.enabled=true` If set to false, no caching is performed.
 
 First Load Asynch: true/false
-:   `rundeck.nodeService.nodeCache.firstLoadAsynch=false`  The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load][page:administration/projects/project-create.md#project-nodes] value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
+: `rundeck.nodeService.nodeCache.firstLoadAsynch=false` The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load][page:administration/projects/project-create.md#project-nodes] value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
 
 ### Groovy config format
 
@@ -535,34 +533,34 @@ Make sure you put quotes around all string values, but it is not necessary for t
 
 java properties format:
 
-~~~ {.properties}
+```{.properties}
 some.property=value
-~~~
+```
 
 groovy format:
 
-~~~ {.groovy}
+```{.groovy}
 some.property="value"
-~~~
+```
 
 You can also use nested values using curly brackets, or use dot-notation "a.b.c",
 but since it is not simple text properties, strings have to be quoted.
 
 E.g. : a.b.c="blah" is the same as:
 
-~~~ {.groovy}
+```{.groovy}
 a{
     b{
         c="blah"
     }
 }
-~~~
+```
 
 ### Specify config file location
 
 You will need to point rundeck at the new filename when you start up rundeck:
 
-* Launcher:
+- Launcher:
 
         java -jar -Drundeck.config.name=rundeck-config.groovy rundeck-launcher.jar
 

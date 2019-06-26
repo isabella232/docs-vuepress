@@ -1,4 +1,4 @@
-% Using HAProxy as a loadbalancer
+# Using HAProxy as a loadbalancer
 
 <!---
 Original:

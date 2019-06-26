@@ -1,4 +1,4 @@
-% Installing on Windows
+# Installing on Windows
 
 ### Prerequisites
 

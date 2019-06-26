@@ -1,4 +1,4 @@
-% Rundeck Enterprise Replication
+# Replication
 
 In order to keep a Rundeck Enterprise Cluster in sync, we provide plugins to replicate Rundeck state across instances.
 
@@ -12,15 +12,15 @@ Enable the plugin in the SCM section of the Configuration page for a project.
 
 Endpoint URL
 
-:   Remote Rundeck API URL
+: Remote Rundeck API URL
 
 API Token
 
-:   API Token for authentication to the remote Rundeck
+: API Token for authentication to the remote Rundeck
 
 Project
 
-:   Name of remote Project to use, or `${job.project}` to maintain the same name
+: Name of remote Project to use, or `${job.project}` to maintain the same name
 
 ## Execution Replication File Storage Plugin
 

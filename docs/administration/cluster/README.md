@@ -1,4 +1,4 @@
-% Rundeck Enterprise
+# Cluster Overview
 
 ## Rundeck Enterprise Architecture
 
@@ -58,7 +58,7 @@ Projects need a common resource model that can be accessed from all cluster memb
 
 See: [Node Model Sources][page:administration/projects/resource-model-sources/index.md]
 
-## Features:
+## Features
 
 ### Autotakeover
 

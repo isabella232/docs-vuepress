@@ -1,4 +1,4 @@
-% Logstore
+# Logstore
 
 Rundeck Enterprise Cluster instances must share the same logstore. Job execution output is stored locally to the Rundeck Enterprise instance that ran the job but this output can be loaded into a common storage facility (eg, AWS S3, WebDAV, custom).
 
@@ -12,8 +12,8 @@ All Rundeck Enterprise Cluster members must share the same log storage, this can
 
 So far we have the following plugins for execution log storage:
 
-* [AWS S3][page:administration/cluster/logstore/s3.md]: This plugin works with any storage compatible with AWS S3 API, eg: S3, Minio, etc.
-* [Azure Blob Storage][page:administration/cluster/logstore/azure.md]
+- [AWS S3][page:administration/cluster/logstore/s3.md]: This plugin works with any storage compatible with AWS S3 API, eg: S3, Minio, etc.
+- [Azure Blob Storage][page:administration/cluster/logstore/azure.md]
 
 See [Logging Plugin Development][page:developer/06-logging-plugins.md] to learn how to implement your own log storage.
 

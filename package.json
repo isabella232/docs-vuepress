@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
-    "vue": "^2.6.10"
+    "glob": "^7.1.4",
+    "vue": "^2.6.10",
+    "vuepress-bar": "^0.1.0",
+    "vuepress-sidebar-generator": "^0.1.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",

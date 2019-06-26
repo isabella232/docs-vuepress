@@ -1,4 +1,4 @@
-% System Architecture
+# System Architecture
 
 Rundeck is a server application you host on a system you designate
 a central administrative control point. Internally, Rundeck stores job

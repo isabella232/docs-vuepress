@@ -1,4 +1,4 @@
-## Types of Plugins
+# Types of Plugins
 
 Plugins are files that contain one or more Service Provider implementations. Each
 plugin file could contain multiple Providers for different types of services,

@@ -1,4 +1,4 @@
-% Rundeck Enterprise as a Tomcat servlet
+# Rundeck Enterprise as a Tomcat servlet
 
 ## Installation on Linux
 
@@ -19,25 +19,25 @@ http://support.rundeck.com/customer/en/portal/articles/2859551-authentication-wi
 
 --->
 
-* Install Tomcat on your environment, as a service or just using the binaries (as for this example).
-* [Download](https://rundeck.org/downloads.html) the latest version of Rundeck war file and place it in $tomcat.base/webapps/ as e.g. rundeck.war
-* Create $tomcat.base/bin/setenv.sh
+- Install Tomcat on your environment, as a service or just using the binaries (as for this example).
+- [Download](https://rundeck.org/downloads.html) the latest version of Rundeck war file and place it in \$tomcat.base/webapps/ as e.g. rundeck.war
+- Create \$tomcat.base/bin/setenv.sh
 
 ```
 $ cat setenv.sh
    JAVA_OPTS="$JAVA_OPTS -XX:MaxPermSize=512m -Xmx2048m -Xms512m -server -Drdeck.base=/path/to/rundeck.base -Drundeck.config.location=/path/to/rundeck.base/server/config/rundeck-config.properties"
 ```
 
-* Create /path/to/rundeck.base
-* Start Tomcat
-* Go to http://localhost:8080/rundeck, then at login screen: stop Tomcat
-* Edit $rdeck.base/server/config/rundeck-config.properties to match Tomcat's url:
+- Create /path/to/rundeck.base
+- Start Tomcat
+- Go to http://localhost:8080/rundeck, then at login screen: stop Tomcat
+- Edit \$rdeck.base/server/config/rundeck-config.properties to match Tomcat's url:
 
 ```
 grails.serverURL=http://localhost:8080/rundeck
 ```
 
-* Edit $rdeck.base/etc/framework.properties to match Tomcat's url:
+- Edit \$rdeck.base/etc/framework.properties to match Tomcat's url:
 
 ```
 framework.server.name = localhost
@@ -46,15 +46,14 @@ framework.server.port = 8080
 framework.server.url = http://localhost:8080/rundeck
 ```
 
-* Start Tomcat
-* Go to http://localhost:8080/rundeck and login.
-
+- Start Tomcat
+- Go to http://localhost:8080/rundeck and login.
 
 ## Installation on Windows
 
-* Install Tomcat on your environment, as a service or just using the binaries (as for this example).
-* [Download](https://rundeck.org/downloads.html) the latest version of Rundeck war file and place it in tomcat.base\\webapps\\ as e.g. rundeck.war
-* Create tomcat.base\\bin\\setenv.bat
+- Install Tomcat on your environment, as a service or just using the binaries (as for this example).
+- [Download](https://rundeck.org/downloads.html) the latest version of Rundeck war file and place it in tomcat.base\\webapps\\ as e.g. rundeck.war
+- Create tomcat.base\\bin\\setenv.bat
 
 ```
 setenv.bat content:
@@ -62,16 +61,16 @@ setenv.bat content:
    set "JAVA_OPTS=-XX:MaxPermSize=512m -Xmx2048m -Xms512m -server -Drdeck.base=C:\path\to\rundeck.base -Drundeck.config.location=C:\path\to\rundeck.base\server\config\rundeck-config.properties"
 ```
 
-* Create C:\\path\\to\\rundeck.base
-* Start Tomcat
-* Go to http://localhost:8080/rundeck, then at login screen: stop Tomcat
-* Edit rdeck.base\\server\\config\\rundeck-config.properties to match Tomcat's url:
+- Create C:\\path\\to\\rundeck.base
+- Start Tomcat
+- Go to http://localhost:8080/rundeck, then at login screen: stop Tomcat
+- Edit rdeck.base\\server\\config\\rundeck-config.properties to match Tomcat's url:
 
 ```
 grails.serverURL=http://localhost:8080/rundeck
 ```
 
-* Edit rdeck.base\\etc\\framework.properties to match Tomcat's url:
+- Edit rdeck.base\\etc\\framework.properties to match Tomcat's url:
 
 ```
 framework.server.name = localhost
@@ -80,8 +79,8 @@ framework.server.port = 8080
 framework.server.url = http://localhost:8080/rundeck
 ```
 
-* Start Tomcat
-* Go to http://localhost:8080/rundeck and login.
+- Start Tomcat
+- Go to http://localhost:8080/rundeck and login.
 
 ## Custom JNDI
 
@@ -89,7 +88,7 @@ framework.server.url = http://localhost:8080/rundeck
 
 This setting allow Rundeck to use JNDI database connections instead of the default grails settings.
 
-* Add the following entry on `$tomcat.base/conf/server.xml` under the `<GlobalNamingResources>` tag:
+- Add the following entry on `$tomcat.base/conf/server.xml` under the `<GlobalNamingResources>` tag:
 
 ```
 <!-- Global JNDI resources
@@ -120,7 +119,7 @@ This setting allow Rundeck to use JNDI database connections instead of the defau
 </GlobalNamingResources>
 ```
 
-* Add the Resource link on `$tomcat.base/conf/context.xml`
+- Add the Resource link on `$tomcat.base/conf/context.xml`
 
 ```
 <ResourceLink name="jdbc/rundeckdb"
@@ -128,19 +127,19 @@ This setting allow Rundeck to use JNDI database connections instead of the defau
                         type="javax.sql.DataSource"/>
 ```
 
-* on `$rundeck.base/server/config/rundeck-config.properties` add the `dataSource.jndiName` entry:
+- on `$rundeck.base/server/config/rundeck-config.properties` add the `dataSource.jndiName` entry:
 
 ```
 dataSource.jndiName=java:/comp/env/jdbc/rundeckdb
 ```
 
-This will replace the dataSource.* entries
+This will replace the dataSource.\* entries
 
 ### Using JNDI Database to manage the authentication
 
 To use a custom authentication method using database tables:
 
-* It is necessary to have tables like this:
+- It is necessary to have tables like this:
 
 ```
 create table users (
@@ -159,7 +158,7 @@ insert into user_roles values('samuel','user');
 insert into user_roles values('samuel','admin');
 ```
 
-* Define the Resource connection in `$tomcat.base/conf/server.xml`:
+- Define the Resource connection in `$tomcat.base/conf/server.xml`:
 
 ```
 <!-- Global JNDI resources
@@ -183,13 +182,13 @@ insert into user_roles values('samuel','admin');
                        maxWait="10000"
                        username="rundeckauth"
                        password="password"
-                       driverClassName="com.mysql.jdbc.Driver"                   
+                       driverClassName="com.mysql.jdbc.Driver"
                        url="jdbc:mysql://localhost:3306/userauthdb?autoReconnect=true"/>
 
   </GlobalNamingResources>
 ```
 
-* Define the JNDI entry in `$tomcat.base/conf/server.xml`:
+- Define the JNDI entry in `$tomcat.base/conf/server.xml`:
 
 ```
      <!-- Use the LockOutRealm to prevent attempts to guess user passwords
@@ -207,24 +206,24 @@ insert into user_roles values('samuel','admin');
                   dataSourceName="jdbc/testDB"
      userTable="users"
      userNameCol="user_name"
-     userCredCol="user_pass" 
-     userRoleTable="user_roles" 
+     userCredCol="user_pass"
+     userRoleTable="user_roles"
      roleNameCol="role_name"/>
 ```
 
 Further information:
 
-* [https://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html#DataSourceRealm](https://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html#DataSourceRealm)
-* [https://tomcat.apache.org/tomcat-7.0-doc/jndi-datasource-examples-howto.html#MySQL_DBCP_Example](https://tomcat.apache.org/tomcat-7.0-doc/jndi-datasource-examples-howto.html#MySQL_DBCP_Example)
+- [https://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html#DataSourceRealm](https://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html#DataSourceRealm)
+- [https://tomcat.apache.org/tomcat-7.0-doc/jndi-datasource-examples-howto.html#MySQL_DBCP_Example](https://tomcat.apache.org/tomcat-7.0-doc/jndi-datasource-examples-howto.html#MySQL_DBCP_Example)
 
 ## Users authentication
 
 Note for Linux and Windows installations: users are no longer in Tomcat's configuration files, at this point, users should be configured as in a [launcher installation](https://rundeck.org/docs/administration/security/authenticating-users.html) and java options should be append to the setenv.sh or setenv.bat file:
 
-
 ## Known issue
 
 If ldap/AD authentication is configured, you will need to copy below file (use proper path on Windows) and then restart Tomcat:
+
 ```
 cp $tomcat.base/webapps/rundeck/WEB-INF/lib-provided/jetty-util-9.4.11.v20180605.jar $tomcat.base/webapps/rundeck/WEB-INF/lib/
 ```

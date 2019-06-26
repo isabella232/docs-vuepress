@@ -1,4 +1,4 @@
-% Tuning Rundeck
+# Tuning Rundeck
 
 ### File descriptors
 
@@ -12,47 +12,45 @@ like the one shown below in your [service.log][page:administration/maintenance/l
 
     Too many open files
 
-
 _On Linux nodes_
 
 List the current limit with the [ulimit](https://ss64.com/bash/ulimit.html) command:
 
-~~~~~ {.bash}
+```{.bash}
 ulimit -n
-~~~~~~
+```
 
-If the limit is low (eg ``1024``) it should be raised.
+If the limit is low (eg `1024`) it should be raised.
 
 You can get the current number of open file descriptors used by the
 Rundeck server process with [lsof](https://linux.die.net/man/8/lsof):
 
-~~~~~ {.bash}
+```{.bash}
 lsof -p <rundeck pid> | wc -l
-~~~~~
+```
 
 Increase the limit for a wide margin.
 Edit [/etc/security/limits.conf](https://ss64.com/bash/limits.conf.html) file
-to raise the hard and soft limits. Here they are raised to ``65535`` for
+to raise the hard and soft limits. Here they are raised to `65535` for
 the "rundeck" system account:
 
-~~~~~ {.bash}
+```{.bash}
 rundeck hard nofile 65535
 rundeck soft nofile 65535
-~~~~~
-
+```
 
 The system file descriptor limit is set in /proc/sys/fs/file-max.
 The following command will increase the limit to 65535:
 
-~~~~~ {.bash}
+```{.bash}
 echo 65535 > /proc/sys/fs/file-max
-~~~~~
+```
 
 In a new shell, run the ulimit command to set the new level:
 
-~~~~~ {.bash}
+```{.bash}
 ulimit -n 65535
-~~~~~
+```
 
 The ulimit setting can be set in the [rundeckd][page:administration/maintenance/startup.md#launcher]
 startup script, or [profile][page:administration/configuration/config-file-reference.md#profile].
@@ -61,7 +59,7 @@ Restart Rundeck.
 
 ### Java heap size
 
-The ``rundeckd`` startup script sets initial and maximum heap sizes
+The `rundeckd` startup script sets initial and maximum heap sizes
 for the server process. For many installations it will be sufficient.
 
 If the Rundeck JVM runs out of memory, the following error occurs:
@@ -69,24 +67,23 @@ If the Rundeck JVM runs out of memory, the following error occurs:
     Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
 
 Heap size is governed by the following startup parameters:
-``-Xms<initial heap size>`` and ``-Xmx<maximum heap size>``
-
+`-Xms<initial heap size>` and `-Xmx<maximum heap size>`
 
 You can increase these by updating the Rundeck [profile][page:administration/configuration/config-file-reference.md#profile].
-To see the current values, grep the ``profile`` for
+To see the current values, grep the `profile` for
 the Xmx and Xms patterns:
 
 **Launcher installs:**
 
-~~~~~ {.bash}
+```{.bash}
 egrep '(Xmx|Xms)' $RDECK_BASE/etc/profile
-~~~~~
+```
 
 **RPM and DEB installs:**
 
-~~~~~ {.bash}
+```{.bash}
 egrep '(Xmx|Xms)' /etc/rundeck/profile
-~~~~~
+```
 
 The default settings initialized by the installer sets these to 1024 megabytes maximum and 256 megabytes initial.
 
@@ -94,29 +91,31 @@ _Sizing advice_
 
 Several factors drive memory usage in Rundeck:
 
-* User sessions
-* Concurrent threads
-* Concurrent jobs
-* Number of managed nodes
+- User sessions
+- Concurrent threads
+- Concurrent jobs
+- Number of managed nodes
 
 For example, if your installation has dozens of active users that manage a large environment (1000+ nodes), and has sufficient system memory, the following sizings might be more suitable:
 
-In the **Launcher Install** you can edit the ``$RDECK_BASE/etc/profile`` file.
+In the **Launcher Install** you can edit the `$RDECK_BASE/etc/profile` file.
 
-In **RPM** create/edit ``/etc/sysconfig/rundeckd`` and add below line.
-~~~~~ {.bash}
-RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Xmx4096m -Xms1024m"
-~~~~~
+In **RPM** create/edit `/etc/sysconfig/rundeckd` and add below line.
 
-In **DEB** create/edit ``/etc/default/rundeckd`` and add below line.
-~~~~~ {.bash}
+```{.bash}
 RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Xmx4096m -Xms1024m"
-~~~~~
+```
+
+In **DEB** create/edit `/etc/default/rundeckd` and add below line.
+
+```{.bash}
+RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Xmx4096m -Xms1024m"
+```
 
 ### Quartz job threadCount
 
 The maximum number of threads used by Rundeck for concurrent jobs
-by default is set to ``10``.
+by default is set to `10`.
 
 You can change this value, by updating the
 `rundeck-config.properties` file.
@@ -124,7 +123,7 @@ You can change this value, by updating the
 Please refer to the Quartz site for detailed information:
 [Quartz - Configure ThreadPool Settings][1].
 
-[1]:http://www.quartz-scheduler.org/documentation/quartz-2.x/configuration/ConfigThreadPool.html#configure-threadpool-settings
+[1]: http://www.quartz-scheduler.org/documentation/quartz-2.x/configuration/ConfigThreadPool.html#configure-threadpool-settings
 
 #### Update rundeck-config
 
@@ -132,9 +131,9 @@ Use the properties mentioned in the Quartz documentation, but **replace** the `o
 
 e.g. in `rundeck-config.properties` :
 
-~~~ {.properties}
+```{.properties}
 quartz.threadPool.threadCount = 20
-~~~
+```
 
 Set the threadCount value to the max number of threads you want to run concurrently.
 
@@ -150,22 +149,24 @@ via JMX managed beans - MBeans for short.
 _Note_: For more background information on JMX, see
 "[Java theory and practice: Instrumenting applications with JMX.](https://www.ibm.com/developerworks/library/j-jtp09196/)".
 
-Enable local JMX monitoring by adding the ``com.sun.management.jmxremote``
+Enable local JMX monitoring by adding the `com.sun.management.jmxremote`
 flag to the startup parameters in the [profile][page:administration/configuration/config-file-reference.md#profile] for **Launcher Install**.
 
-~~~~~ {.bash}
+```{.bash}
 export RDECK_JVM="$RDECK_JVM -Dcom.sun.management.jmxremote"
-~~~~~
+```
 
-For **RPM** create/edit ``/etc/sysconfig/rundeckd`` and add below line.
-~~~~~ {.bash}
-RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Dcom.sun.management.jmxremote"
-~~~~~
+For **RPM** create/edit `/etc/sysconfig/rundeckd` and add below line.
 
-For **DEB** create/edit ``/etc/default/rundeckd`` and add below line.
-~~~~~ {.bash}
+```{.bash}
 RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Dcom.sun.management.jmxremote"
-~~~~~
+```
+
+For **DEB** create/edit `/etc/default/rundeckd` and add below line.
+
+```{.bash}
+RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Dcom.sun.management.jmxremote"
+```
 
 You use a JMX client to monitor JMX agents.
 This can be a desktop GUI like JConsole run locally.
@@ -183,9 +184,9 @@ If you are executing commands across many hundreds or thousands of hosts, the bu
 
 If you are interested in using the built in [SSH plugins][page:administration/projects/node-execution/ssh.md], here are some details about how it performs when executing commands across very large numbers of nodes. For these tests, Rundeck was running on an 8 core, 32GB RAM m2.4xlarge AWS EC2 instance.
 
-We chose the `rpm -q` command which checks against the rpm database to see if a particular package was installed.  For 1000 nodes we saw an average execution of 52 seconds.  A 4000 node cluster  took roughly 3.5 minutes, and 8000 node cluster about 7 minutes.
+We chose the `rpm -q` command which checks against the rpm database to see if a particular package was installed. For 1000 nodes we saw an average execution of 52 seconds. A 4000 node cluster took roughly 3.5 minutes, and 8000 node cluster about 7 minutes.
 
-The main limitation appears to be memory of the JVM instance relative to the number of concurrent requests.  We tuned the max memory to be 12GB with a 1000 Concurrent Dispatch Threads to 1GB of Memory.  GC appears to behave well during the runs given the "bursty" nature of them.
+The main limitation appears to be memory of the JVM instance relative to the number of concurrent requests. We tuned the max memory to be 12GB with a 1000 Concurrent Dispatch Threads to 1GB of Memory. GC appears to behave well during the runs given the "bursty" nature of them.
 
 ### SSL and HTTPS performance
 

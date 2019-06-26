@@ -1,4 +1,4 @@
-% Localization
+# Localization
 
 Rundeck customization and localization/internationalization.
 
@@ -27,7 +27,7 @@ need to do so like this: `?lang=zh_cn`
 
 ### Missing Strings
 
-Not all of the Rundeck GUI uses localized strings yet.  If you find a page in Rundeck that doesn't seem to use
+Not all of the Rundeck GUI uses localized strings yet. If you find a page in Rundeck that doesn't seem to use
 appropriate localization of English text,
 please [Submit an issue report](https://github.com/rundeck/rundeck/issues/new?title=Missing%20i18n%20Text%3A%20___&body=i18n%20support%20is%20missing%20on%20page%3A%20___%0A%0AText%3A%20___&labels[]=i18n).
 
@@ -44,9 +44,9 @@ Changing the Date formats shown in the Activity page of Rundeck:
 
 These messages entries determine the formats shown:
 
-* `jobslist.date.format` default `M/d/yy h:mm a`
-* `jobslist.date.format.ko` default `M/DD/YY h:mm a`
-* `jobslist.running.format.ko` default `h:mm a`
+- `jobslist.date.format` default `M/d/yy h:mm a`
+- `jobslist.date.format.ko` default `M/DD/YY h:mm a`
+- `jobslist.running.format.ko` default `h:mm a`
 
 The `jobslist.date.format` uses [Java SimpleDateFormat](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html?is-external=true).
 

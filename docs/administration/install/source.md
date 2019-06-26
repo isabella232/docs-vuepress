@@ -1,4 +1,4 @@
-%  Installing from Source
+# Installing from Source
 
 ## Installing from Source
 
@@ -10,7 +10,7 @@ You can build either the executable war (self-running archive), or a RPM/Deb.
 
 Creates artifacts:
 
-* `rundeckapp/build/libs/rundeck-X.Y.war`
+- `rundeckapp/build/libs/rundeck-X.Y.war`
 
 Build the RPM (requires `rpm` command):
 

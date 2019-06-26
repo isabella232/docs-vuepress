@@ -1,4 +1,4 @@
-% Rundeck Enterprise Licensing and Support
+# Rundeck Enterprise Licensing and Support
 
 ## Licensing
 
