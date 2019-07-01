@@ -6,6 +6,7 @@ module.exports = [{
     {
       title: 'Installation',
       collapsable: true,
+      sidebarDepth: 1,
       children: [
         '/administration/install/',
         '/administration/install/system-requirements',
@@ -21,7 +22,7 @@ module.exports = [{
     {
       title: 'Configuration',
       collapsable: true,
-      sidebarDepth: 1,
+      sidebarDepth: 0,
       children: [
         '/administration/configuration/license',
         {

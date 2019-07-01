@@ -1,5 +1,11 @@
+// sidebars
 const sidebarAdmin = require('./sidebar-menus/administration')
 const sidebarUserGuide = require('./sidebar-menus/user-guide')
+const sidebarCommandLineTools = require('./sidebar-menus/command-line-tools')
+// navbars
+const navbarAdmin = require('./navbar-menus/administration')
+const navbarUserGuide = require('./navbar-menus/user-guide')
+const navbarTutorials = require('./navbar-menus/tutorials')
 
 module.exports = {
   title: 'Rundeck Docs',
@@ -23,91 +29,59 @@ module.exports = {
   themeConfig: {
     logo: '/images/rundecklogo-black.png',
     displayAllHeaders: true,
-    nav: [{
-        text: 'Home',
-        link: '/'
-      },
+    nav: [
+      // {
+      //   text: 'Home',
+      //   link: '/'
+      // },
       {
         text: 'User Guide',
-        items: [{
-            link: '/manual/01-introduction',
-            text: 'Introduction'
-          },
-          {
-            link: '/manual/02-getting-help',
-            text: 'Getting Help'
-          },
-          {
-            link: '/manual/03-getting-started',
-            text: 'Getting Started'
-          },
-          {
-            link: '/manual/04-jobs',
-            text: 'Jobs'
-          },
-          {
-            link: '/manual/05-nodes',
-            text: 'Nodes'
-          },
-          {
-            link: '/manual/06-commands',
-            text: 'Commands'
-          },
-          {
-            link: '/manual/07-executions',
-            text: 'Executions'
-          },
-          {
-            link: '/manual/08-activity',
-            text: 'Activity'
-          },
-          {
-            link: '/manual/09-configure',
-            text: 'Configure'
-          },
-          {
-            link: '/manual/10-user',
-            text: 'User'
-          },
-          {
-            link: '/manual/11-node-filters',
-            text: 'Node Filters'
-          }
-        ]
-      }, {
+        items: navbarUserGuide
+      },
+      {
+        text: 'Tutorials',
+        items: navbarTutorials
+      },
+      {
         text: 'Administration',
+        items: navbarAdmin
+      },
+      {
+        text: 'Enterprise',
+        items: navbarAdmin
+      },
+      {
+        text: 'Development',
         items: [{
-            text: 'Overview',
-            link: '/administration/'
-          },
-          {
-            text: 'Installation',
-            link: '/administration/install/'
-          },
-          {
-            text: 'Configuration',
-            link: '/administration/configuration/'
-          },
-          {
-            text: 'Security',
-            link: '/administration/security/default-users'
-          },
-          {
-            text: 'Maintenance',
-            link: '/administration/maintenance/index'
-          }, {
-            text: 'Cluster',
-            link: '/administration/cluster/index'
-          }, {
-            text: 'Projects',
-            link: '/administration/projects/index'
-          }
-        ]
+          text: 'API',
+          link: '/api/rundeck-api'
+        }, {
+          text: 'Plugin Development',
+          link: '/developer/index'
+        }, {
+          text: 'Command Line Tools',
+          link: '/manual/command-line-tools/'
+        }, {
+          text: 'Change Log',
+          link: '/history/index'
+        }]
+      },
+      {
+        text: 'Plugins',
+        items: navbarAdmin
       }
     ],
     sidebarDepth: 2,
     sidebar: {
       '/administration/': sidebarAdmin,
+      '/manual/command-line-tools/': [{
+        title: 'Command Line Tools',
+        collapsable: false,
+        sidebarDepth: 1,
+        children: [
+          '/manual/command-line-tools/rd-acl'
+        ]
+      }],
       '/manual': sidebarUserGuide,
       '/': [
         ''

@@ -1,4 +1,4 @@
-% Command Line Tools
+# Command Line Tools
 
 Rundeck includes a single CLI tool installed with the Rundeck Server, called `rd-acl`.
 
