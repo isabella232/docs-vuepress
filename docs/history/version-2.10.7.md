@@ -11,7 +11,7 @@ Name: <span style="color: Crimson"><span class="glyphicon glyphicon-sunglasses">
 
 ## Upgrading from Earlier versions
 
-* See the [Upgrading Guide][page:upgrading/upgrading.md]
+* See the [Upgrading Guide](/upgrading/upgrading.md)
 
 ## Notes
 
@@ -19,7 +19,7 @@ Some bugfixes, and some improvements to Git SCM plugin:
 
 * Export: Option to Synchronize automatically during fetch (default: false)
 * Import: Option to Pull automatically when fetching (default: true)
-* new Clean button in the GUI: allows removing local git repo 
+* new Clean button in the GUI: allows removing local git repo
 * Import: automatic Tracking init during Setup, if you use a regular expression
 	* API improvement: does not require a second step after setup to initialize Git Import
 * Export: Push Remotely is checked by default when making commits

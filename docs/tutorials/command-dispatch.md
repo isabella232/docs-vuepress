@@ -9,7 +9,7 @@ You can execute commands via the GUI or using rundeck command line interface.
 
 ## Using the GUI
 
-First go to the [Commands page][page:manual/06-commands.md].
+First go to the [Commands page](/manual/06-commands.md).
 
 ### Filter nodes
 

@@ -1,4 +1,4 @@
-% RESOURCE-JSON 
+% RESOURCE-JSON
 % Greg Schueler
 % February 25, 2011
 
@@ -34,7 +34,7 @@ Map example:
     ...
   }
 }
-~~~~~~~~ 
+~~~~~~~~
 
 Array example:
 
@@ -49,7 +49,7 @@ Array example:
     ...
   }
 ]
-~~~~~~~~ 
+~~~~~~~~
 
 
 ## Node Entry
@@ -110,7 +110,7 @@ Optional Entries:
 
 :    Specify any custom attributes about node using a string value.
 
-* For more information about using the `editUrl`/`remoteUrl` see the [Rundeck User Manual][page:administration/projects/resource-model-sources/resource-editor.md#resource-editor].
+* For more information about using the `editUrl`/`remoteUrl` see the [Rundeck User Manual](/administration/projects/resource-model-sources/resource-editor.md#resource-editor].
 
 ## Examples
 
@@ -143,4 +143,4 @@ attributes discussed above.
     "osName": "Mac OS X"
   }
 }
-~~~~~~~~ 
+~~~~~~~~

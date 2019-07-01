@@ -53,10 +53,10 @@ log event, and mark it as `application/json` data type.
 ### Configuration
 
 Data type
-:     Enter a data type to use by default for all output from the 
+:     Enter a data type to use by default for all output from the
 	  step. If not set, the BEGIN and END markers will be looked for.
 
 
 ### See Also
 
-* [[page:manual/content-converters/index.md]]
+* (/manual/content-converters/index.md)

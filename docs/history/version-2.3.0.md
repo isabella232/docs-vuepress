@@ -7,19 +7,19 @@ Release 2.3.0
 
 Date: 2014-10-28
 
-* Improved support for use of Windows, both as a Rundeck server 
+* Improved support for use of Windows, both as a Rundeck server
     and a remote node.
     * Fixed outstanding issues with CLI .bat scripts
     * Support powershell scripts by allowing configuration
-        of file extension to be used in workflow script steps. 
-        E.g use ".ps1" because powershell will not execute a script 
+        of file extension to be used in workflow script steps.
+        E.g use ".ps1" because powershell will not execute a script
         that doesn't end in .ps1.
     * Other fixes for issues with script-based plugins and Windows paths.
-* Added support for storing Passwords in the Key Storage facility.  
-    The built-in SSH execution and SCP file copy 
+* Added support for storing Passwords in the Key Storage facility.
+    The built-in SSH execution and SCP file copy
     both now support using stored passwords.
     Note: the Key Storage facility is not encrypted by default, see
-    [Key Storage][page:administration/security/key-storage.md].
+    [Key Storage](/administration/security/key-storage.md).
 * Added a new GUI for uploading Passwords and public/private keys
     to the Key Storage facility
 * Bug fixes

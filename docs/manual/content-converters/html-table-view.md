@@ -3,10 +3,10 @@
 
 Note: this plugin accepts Intermediate data types and produces `text/html`
 
-Renders structured data as a Table in HTML. The input should be a List or Map. If the List 
+Renders structured data as a Table in HTML. The input should be a List or Map. If the List
 contains Maps, the first item's keys will be the table headers.
 
-See: [[page:manual/content-converters/index.md#sanitized-html-output]].
+See: (/manual/content-converters/index.md#sanitized-html-output]].
 
 ## Input Data Types
 
@@ -38,6 +38,6 @@ These metadata values can be set in the Log metadata with a prefix of `content-m
 
 ## Related Plugins
 
-* [[page:manual/content-converters/json.md]]
-* [[page:manual/content-converters/properties.md]]
-* [[page:manual/content-converters/tabular-data.md]]
+* (/manual/content-converters/json.md)
+* (/manual/content-converters/properties.md)
+* (/manual/content-converters/tabular-data.md)

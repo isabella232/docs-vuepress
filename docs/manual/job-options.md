@@ -1,7 +1,9 @@
-% Job options
+# Job options
+
+---
 
 Rundeck Jobs can be configured to prompt a user for input by defining
-one or more named *options*. An *option* models a named parameter that
+one or more named _options_. An _option_ models a named parameter that
 can be required or optional and include a range of choices that will
 be presented to the user when the Job is run.
 
@@ -33,11 +35,11 @@ It is worth spending a moment to consider how options become
 part of the user interface to Jobs and give some thought to this next
 level of procedure formalization.
 
-* Naming and description convention: Visualize how the user will read
+- Naming and description convention: Visualize how the user will read
   the option name and judge its purpose from the description you supply.
-* Required options: Making an option required means the Job will fail
+- Required options: Making an option required means the Job will fail
   if a user does not specify a non-blank value. In other words, a blank or missing value is not allowed for the option.
-* Input restrictions and validation: If you need to make the option
+- Input restrictions and validation: If you need to make the option
   value be somewhat open ended consider how you can create
   safeguards to control their choice.
 
@@ -47,10 +49,9 @@ Option Input Types define how the option is presented in the GUI, and how it is 
 
 Input types:
 
-* "Plain" - a normal option which is shown in clear text
-* "Secure" - a secure option which is obscured at user input time, and the value of which is not stored in the database. See [secure-options](#secure-options).
-*  "Secure Remote Authentication" - a secure option which is used only for remote authentication and is not exposed in scripts or commands. See [secure-remote-authentication-options](#secure-remote-authentication-options).
-
+- "Plain" - a normal option which is shown in clear text
+- "Secure" - a secure option which is obscured at user input time, and the value of which is not stored in the database. See [secure-options](#secure-options).
+- "Secure Remote Authentication" - a secure option which is used only for remote authentication and is not exposed in scripts or commands. See [secure-remote-authentication-options](#secure-remote-authentication-options).
 
 ## Options editor
 
@@ -63,7 +64,7 @@ ones or edit existing ones.
 The option summary shows each option and its default value if it defines
 them.
 
-Clicking the  "edit" link opens the options editor.
+Clicking the "edit" link opens the options editor.
 
 ![Option editor](/figures/fig0503.png)
 
@@ -81,7 +82,7 @@ Clicking the "edit" link opens a new form that lets you modify all
 aspects of that option.
 
 Options can also be defined as part of a job definition and later
-loaded to the Rundeck server. See [job-xml][page:manpages/man5/job-v20.md] and [job-yaml][page:manpages/man5/job-yaml-v12.md] and
+loaded to the Rundeck server. See [job-xml](/manpages/man5/job-v20.md) and [job-yaml](/manpages/man5/job-yaml-v12.md) and
 [rd jobs][https://rundeck.github.io/rundeck-cli/commands/#jobs] pages if you prefer using an textual Job definition.
 
 ## Defining an option
@@ -99,65 +100,63 @@ The option definition form is organized into several areas:
 
 Identification
 
-:    Here you provide the option's name and description. The name
-     becomes part of acceptable arguments to the Job while the
-     description will be provided as help text to users running the Job.
+: Here you provide the option's name and description. The name
+becomes part of acceptable arguments to the Job while the
+description will be provided as help text to users running the Job.
 
      The Default Value will be pre-selected in the GUI when the option is presented.
 
 Input Type
 
-:   Choose between "Plain", "Date", "Secure" and "Secure Remote Authentication". For input types other than "Plain", the multi-valued option will be disabled.
+: Choose between "Plain", "Date", "Secure" and "Secure Remote Authentication". For input types other than "Plain", the multi-valued option will be disabled.
 
 Date Format
 
-:   If "Date" Input Type is chosen, you can enter a date format to use when selecting the date
+: If "Date" Input Type is chosen, you can enter a date format to use when selecting the date
 in the user interface. Using the [momentjs format](https://momentjs.com/docs/#/displaying/format/).
 
 Default Value
 
-:    A Default Value will automatically be set for the option if it is not otherwise specified by the user, even if not specified among the arguments when executing a job via the command-line or API.  Note that a blank value can be specified via the command-line or API, which will override the use of the Default Value.
+: A Default Value will automatically be set for the option if it is not otherwise specified by the user, even if not specified among the arguments when executing a job via the command-line or API. Note that a blank value can be specified via the command-line or API, which will override the use of the Default Value.
 
 Allowed values
 
-:    Allowed values provide a model of possible choices.
-     This can contain a static list of values or a URL to a server
-     providing option data. Values can be specified as a comma
-     separated list as seen above but can also be requested from an
-     external source using a "remote URL".
-
+: Allowed values provide a model of possible choices.
+This can contain a static list of values or a URL to a server
+providing option data. Values can be specified as a comma
+separated list as seen above but can also be requested from an
+external source using a "remote URL".
 
 Restrictions
 
-:    Defines criteria on which input to accept or present. Option
-     choices can be controlled using the "Enforced from values"
-     restriction. When set "true", Rundeck will only present a
-     popup menu. If set "false", a text field will also be presented.
-     Enter a regular expression in the "Match Regular Expression"
-     field the Job will evaluate when run.
+: Defines criteria on which input to accept or present. Option
+choices can be controlled using the "Enforced from values"
+restriction. When set "true", Rundeck will only present a
+popup menu. If set "false", a text field will also be presented.
+Enter a regular expression in the "Match Regular Expression"
+field the Job will evaluate when run.
 
 Requirement
 
-:    Indicates if the Job can only run if a non-blank value is provided for
-     that Option. Choose "No" to indicate that a blank value is allowed, and
-     choose "Yes" to indicate that a blank value is not allowed.
+: Indicates if the Job can only run if a non-blank value is provided for
+that Option. Choose "No" to indicate that a blank value is allowed, and
+choose "Yes" to indicate that a blank value is not allowed.
 
      If a Default Value is set, then it will be used when no value is provided, unless a blank value is allowed and is explicitly specified.
-
 
 ![Option Multivalued Form](/figures/fig-option-multival.png)
 
 Multi-valued
 
-:    Defines if the user input can consist of multiple values. Choosing "No" states that only a single value can chosen as input. Choosing "Yes" states that the user may select multiple input values from the Allowed values and/or enter multiple values of their own.
+: Defines if the user input can consist of multiple values. Choosing "No" states that only a single value can chosen as input. Choosing "Yes" states that the user may select multiple input values from the Allowed values and/or enter multiple values of their own.
 
 Delimiter
 
-:    The delimiter string will be used to separate the multiple values when the Job is run.
+: The delimiter string will be used to separate the multiple values when the Job is run.
 
 Select All Values by Default
 
-:    If checked, and no default value(s) are specified, all of the remote or local values will be selected by default.
+: If checked, and no default value(s) are specified, all of the remote or local values will be selected by default.
 
 Once satisfied with the option definition, press the "Save" button to
 add it to the Job definition. Pressing the "Cancel" button will
@@ -177,10 +176,9 @@ The Option Name and Description can be entered.
 
 Required
 
-:    Choose whether to require the option have a value.
+: Choose whether to require the option have a value.
 
 File option usage:
-
 
 The `option.NAME` variable will contain a unique ID identifying the uploaded file.
 
@@ -195,7 +193,7 @@ The `option.NAME` variable will contain a unique ID identifying the uploaded fil
 Option values can be passed to scripts as an argument or referenced
 inside the script via a named token. Each option value is defined in the Options context variables as `option.NAME`.
 
-See the [Context Variables][page:manual/job-workflows.md#context-variables] Section.
+See the [Context Variables](/manual/job-workflows.md#context-variables] Section.
 
 **Example:**
 
@@ -210,12 +208,12 @@ The arguments passed to the script are defined as `${option.message}`.
 Here's the content of this simple script that shows the various
 forms to access the value of the "message" option.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash .numberLines}
+```{.bash .numberLines}
 #!/bin/sh
 echo envvar=$RD_OPTION_MESSAGE ;# access message as environment variable.
 echo args=$1                   ;# read value passed into argument vector
 echo message=@option.message@  ;# access message via replacement token syntax
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 When the user runs the "hello" job they will be prompted for the
 "message" value.
@@ -225,23 +223,23 @@ When the user runs the "hello" job they will be prompted for the
 Let's assume they chose the word "howdy" in response.
 The output of the Job will be:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
+```{.bash}
 envar=howdy
 args=howdy
 message=howdy
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
-If you define the option to be *Required*, then the Job will fail to run unless the user supplies a value that is not blank.
+If you define the option to be _Required_, then the Job will fail to run unless the user supplies a value that is not blank.
 
-If you define the option to not be *Required*, then the option value is allowed to be blank, and specifying a blank value would result in:
+If you define the option to not be _Required_, then the option value is allowed to be blank, and specifying a blank value would result in:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
+```{.bash}
 envar=
 args=
 message=
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
-You can use the *Default Value* of an option to provide a value in the case where the user doesn't specify it.  In the GUI, the *Default Value* will automatically be presented in the Job Execution page.  From the CLI or API, leaving off a `-option` argument to a job will use the default value.
+You can use the _Default Value_ of an option to provide a value in the case where the user doesn't specify it. In the GUI, the _Default Value_ will automatically be presented in the Job Execution page. From the CLI or API, leaving off a `-option` argument to a job will use the default value.
 
 You can also handle default values within a script, if your option doesn't specify one, or the user specifies a blank value for the option:
 
@@ -251,16 +249,16 @@ As a precaution you might test existence for the variable and
 perhaps set a default value.
 To test its existence you might use:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
+```{.bash}
 test -s "$RD_OPTION_NAME"
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 You might also use a Bash feature that tests and defaults it to a
 value:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
+```{.bash}
 ${RD_OPTION_NAME:=mydefault}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 **Replacement token:**
 
@@ -268,13 +266,13 @@ If the option is blank or unset the token will be replaced with a blank
 string. You might write your script a bit more defensively and
 change the implementation like so:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
+```{.bash}
 message="@option.message@"
 if [ -z "$message" ]
 then
    message=mydefault
 fi
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 > Note, The replacement token syntax is only supported in inline script steps (ie, not script file or command steps).
 
@@ -283,13 +281,13 @@ fi
 If you want to use the `@` char in a way that looks like a replacement token
 you can escape it using `@@`, i.e. doubling it.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
+```{.bash}
 # escaping of @ sign to avoid expansion before the @option.domain@
 email="user@@mail.@option.domain@"
 
 # If the first @ sign comes right before the token, use three @
 email="user@@@option.domain@"
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 In this example, the `@@@option.domain@` will result in `@mydomain`,
 and `@@mail.@option.domain2@` will result in `@mail.mydomain`.
@@ -298,13 +296,13 @@ If you do not escape the `@` in the second example, then `@mail.@`
 will be expanded to a missing value, resulting in a blank string.
 
 You do not need to escape the `@` sign in all cases, only when it might look
-like an expansion token.  If there are any whitespace characters
+like an expansion token. If there are any whitespace characters
 before the next `@` sign, it does not need to be escaped:
 
-~~~~ {.bash}
+```{.bash}
 # first @ sign does not need to be escaped
 text="Hi user@somewhere, @option.greeting@!"
-~~~~
+```
 
 ## Escaped values
 
@@ -318,33 +316,32 @@ You should also be careful in how arguments to scripts are used within a script.
 
 For example, if you have a Shell script step with argument string `${option.message}`, and script:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
+```{.bash}
 #!/bin/bash
 
 echo $1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 Then this script will partially expand the `${option.message}` value a second time, even though it was correctly quoted to pass to your script.
 
 You should do something like this instead:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
+```{.bash}
 #!/bin/bash
 
 echo "$1"
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 Which allows the shell will correctly handle the input value by quoting it.
 
-
 ## Secure Options
 
-Options can be marked as Secure, to show a password prompt in the GUI, instead of a normal text field or drop down menu.  Secure option values are not stored with the Execution as are the other option values.
+Options can be marked as Secure, to show a password prompt in the GUI, instead of a normal text field or drop down menu. Secure option values are not stored with the Execution as are the other option values.
 
 There are two types of Secure options:
 
-* Secure - these option values are exposed in scripts and commands.
-* Secure Remote Authentication - these option values *are not* exposed in scripts and commands, and are only used by Node Executors to authenticate to Nodes and execute commands.
+- Secure - these option values are exposed in scripts and commands.
+- Secure Remote Authentication - these option values _are not_ exposed in scripts and commands, and are only used by Node Executors to authenticate to Nodes and execute commands.
 
 Secure Options do not support Multi-valued input.
 
@@ -353,28 +350,28 @@ Secure Options cannot be used as authentication input to Node Executors, you mus
 **Important Note**
 
 "Secure" option values are not stored in the Rundeck database when the Job is executed, but the value that is entered
-is exposed to use in scripts and commands.  Make sure you acknowledge these security implications before using them. Secure options are available for use in scripts and command like any other option value:
+is exposed to use in scripts and commands. Make sure you acknowledge these security implications before using them. Secure options are available for use in scripts and command like any other option value:
 
-* as plaintext arguments using `${option.name}`
-    * Using the option value as an argument to a command could expose the plaintext value in the system process table
-* as plaintext environment variables in remote and local script execution as `$RD_OPTION_NAME`
-    * Local and possibly remote scripts may be passed this value into their environment
-* as plaintext tokens expanded in remote scripts as `@option.name@`.
-    * Inline Script workflow steps that contain a token expansion will be expanded into a temporary file, and the temp file will contain the plaintext option value.
+- as plaintext arguments using `${option.name}`
+  - Using the option value as an argument to a command could expose the plaintext value in the system process table
+- as plaintext environment variables in remote and local script execution as `$RD_OPTION_NAME`
+  - Local and possibly remote scripts may be passed this value into their environment
+- as plaintext tokens expanded in remote scripts as `@option.name@`.
+  - Inline Script workflow steps that contain a token expansion will be expanded into a temporary file, and the temp file will contain the plaintext option value.
 
-> Note, When passed as arguments to Job References, they can only be passed as the value of another Secure option.  See [Using Secure Options with Job References](#using-secure-options-with-job-references).
+> Note, When passed as arguments to Job References, they can only be passed as the value of another Secure option. See [Using Secure Options with Job References](#using-secure-options-with-job-references).
 
 ### Secure Remote Authentication Options
 
-The built-in [SSH Provider][page:administration/projects/node-execution/ssh.md] for node execution allows using passwords for SSH and/or Sudo authentication mechanisms, and the passwords are supplied by Secure Remote Authentication Options defined in a Job.
+The built-in [SSH Provider](/administration/projects/node-execution/ssh.md) for node execution allows using passwords for SSH and/or Sudo authentication mechanisms, and the passwords are supplied by Secure Remote Authentication Options defined in a Job.
 
 Secure Remote Authentication Options have some limitations compared to Plain and Secure options:
 
-* The values entered by the user are not available for normal script and command option value expansion. This means that they can only be used for the purposes of the Remote Authentication.
+- The values entered by the user are not available for normal script and command option value expansion. This means that they can only be used for the purposes of the Remote Authentication.
 
 ### Using Secure Options with Job References
 
-When you [define a Job Reference step in a workflow][page:manual/node-steps/builtin.md#job-reference-step], you can specify the arguments that are passed to it. You can pass Secure Option values and Secure Remote Authentication Option values from a top-level job to a Job Reference, but option values *cannot be passed into another option of a different type*. So a parent job can only pass option values to the Job reference if the option type is the same between the jobs.
+When you [define a Job Reference step in a workflow](/manual/node-steps/builtin.md#job-reference-step], you can specify the arguments that are passed to it. You can pass Secure Option values and Secure Remote Authentication Option values from a top-level job to a Job Reference, but option values _cannot be passed into another option of a different type_. So a parent job can only pass option values to the Job reference if the option type is the same between the jobs.
 
 This constraint is to maintain the security design of these options:
 
@@ -383,51 +380,50 @@ This constraint is to maintain the security design of these options:
 
 As an example, here is are two jobs, Job A and Job B, which define some options:
 
-* Job A
-    * Option "plain1" - Plain
-    * Option "secure1" - Secure
-    * Option "auth1" - Secure remote authentication
-* Job B
-    * Option "plain2" - Plain
-    * Option "secure2" - Secure
-    * Option "auth2" - Secure remote authentication
+- Job A
+  - Option "plain1" - Plain
+  - Option "secure1" - Secure
+  - Option "auth1" - Secure remote authentication
+- Job B
+  - Option "plain2" - Plain
+  - Option "secure2" - Secure
+  - Option "auth2" - Secure remote authentication
 
 If Job A defines a Job reference to call Job B, then the only valid mapping is shown below:
 
-* plain1 -> plain2
-* secure1 -> secure2
-* auth1 -> auth2
+- plain1 -> plain2
+- secure1 -> secure2
+- auth1 -> auth2
 
 So the arguments for the Job Reference might look like this:
 
     -plain2 ${option.plain1} -secure2 ${option.secure1} -auth2 ${option.auth1}
 
-> Note, If you define arguments in the wrong manner, then the Secure and Secure Remote Authentication options will not be set when the Job reference is called.  Plain options will behave the way they do in Command or Script arguments, and be left as-is as uninterpreted property references.
+> Note, If you define arguments in the wrong manner, then the Secure and Secure Remote Authentication options will not be set when the Job reference is called. Plain options will behave the way they do in Command or Script arguments, and be left as-is as uninterpreted property references.
 
 ### Secure Options using Key Storage
 
-Secure options can specify a Storage Path in lieu of a default value.  This path to the [Key Storage Facility][page:administration/security/key-storage.md]
+Secure options can specify a Storage Path in lieu of a default value. This path to the [Key Storage Facility](/administration/security/key-storage.md)
 will be loaded as the option value when one is not supplied.
 
 The path must indicate a stored `password` entry in the storage facility.
-
 
 ![Storage Path for Secure Option](/figures/jobs-options-secure-storage-path.png)
 
 ## Remote option values
 
 A model of option values can be retrieved from an external source
-called an *option model provider*.
+called an _option model provider_.
 When the `valuesUrl` is specified for an Option, then the model of
 allowed values is retrieved from the specified URL.
 
 This is useful in a couple of scenarios when Rundeck is used to
 coordinate process that depend on other systems:
 
-* Deploying packages or artifacts produced by a build or CI server, e.g. Jenkins.
-    * A list of recent Jenkins build artifacts can be imported as Options data, so that a User can pick an appropriate package name to deploy from a list.
-* Selecting from a set of available environments, defined in a CMDB
-* Any situation in which input variables for your Jobs must be selected from some set of values produced by a different system.
+- Deploying packages or artifacts produced by a build or CI server, e.g. Jenkins.
+  - A list of recent Jenkins build artifacts can be imported as Options data, so that a User can pick an appropriate package name to deploy from a list.
+- Selecting from a set of available environments, defined in a CMDB
+- Any situation in which input variables for your Jobs must be selected from some set of values produced by a different system.
 
 ## Option model provider
 
@@ -435,19 +431,19 @@ The Option model provider is a mechanism to allow the Options defined for a Job 
 
 Option model providers are configured on a per-Option basis (where a Job may have zero or more Options).
 
-### Requirements ###
+### Requirements
 
 1. Options model data must be [JSON formatted](http://www.json.org).
 2. It must be accessible via HTTP(S) or on the local disk for the Rundeck server.
-3. It must be in one of two JSON structures, *either*:
-    * An array of string values
-    * OR, an array of Maps, each with two entries, `name` and `value`.
+3. It must be in one of two JSON structures, _either_:
+   - An array of string values
+   - OR, an array of Maps, each with two entries, `name` and `value`.
 4. By default, the HTTP(S) response must include the `application/json` content type in the header.
    In case this cannot be controlled, the attribute `project.jobs.disableRemoteOptionJsonCheck` can be set to `true` in the project settings.
 
-### Configuration ###
+### Configuration
 
-Each Option entry for a Job can be configured to get the set of possible values from a remote URL.  If you are authoring the Jobs via [job.xml file format][page:manpages/man5/job-v20.md#option], simply add a `valuesUrl` attribute for the `<option>`.  If you are modifying the Job in the Rundeck web GUI, you can entry a URL in the "Remote URL" field for the Option.
+Each Option entry for a Job can be configured to get the set of possible values from a remote URL. If you are authoring the Jobs via [job.xml file format](/manpages/man5/job-v20.md#option], simply add a `valuesUrl` attribute for the `<option>`. If you are modifying the Job in the Rundeck web GUI, you can entry a URL in the "Remote URL" field for the Option.
 
 e.g.:
 
@@ -459,37 +455,35 @@ The value data must be returned in JSON data format described below.
 
 ### JSON format
 
-Three styles of return data are supported: simple list, simple object, and a name/value list. For a simple list, the list values will be displayed in a pop-up list when running the Job.  If a simple object or name/value pairs are returned, then the `name` will be displayed in the list, but the `value` will be used as the input.
+Three styles of return data are supported: simple list, simple object, and a name/value list. For a simple list, the list values will be displayed in a pop-up list when running the Job. If a simple object or name/value pairs are returned, then the `name` will be displayed in the list, but the `value` will be used as the input.
 
-*Examples*
+_Examples_
 
 Simple List:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.json}
+```{.json}
 ["x value for test","y value for test"]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+```
 
 This will populate the select menu with the given values.
 
 Simple Object:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.json}
+```{.json}
 { "Name": "value1", "Name2":"value2" }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+```
 
 This will populate the select menu to show the names and use the values.
 
 Name Value List:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.json}
+```{.json}
 [
   {"name":"X Label", "value":"x value"},
   {"name":"Y Label", "value":"y value"},
   {"name":"A Label", "value":"a value"}
 ]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 For multivalued options, if the result is a list of objects and some have a `selected` property of `true`,
 those values will be selected by default.
@@ -498,48 +492,48 @@ For a single valued option, the first result with `selected=true` will be select
 
 Name Value List with default selections:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.json}
+```{.json}
 [
   {"name":"X Label", "value":"x value", "selected": true},
   {"name":"Y Label", "value":"y value"},
   {"name":"A Label", "value":"a value", "selected": true}
 ]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 ### URL connection parameters
 
-You can configure timeouts globally as described in [Configuration - Job Remote Option URL connection parameters][page:administration/configuration/config-file-reference.md#rundeck-config.properties].
+You can configure timeouts globally as described in [Configuration - Job Remote Option URL connection parameters](/administration/configuration/config-file-reference.md#rundeck-config.properties].
 
 You can also specify these connection parameters on a per-URL basis:
 
 `timeout`
-:   socket timeout in seconds
+: socket timeout in seconds
 
 `contimeout`
-:   connection timeout in seconds
+: connection timeout in seconds
 
 `retry`
-:   retry count if no response from server
+: retry count if no response from server
 
 To set this in an Option's remote URL, add them as the "fragment" portion of the URL, after the `#` character like so:
 
-	http://host/mypath#timeout=60;contimeout=5;retry=1
+    http://host/mypath#timeout=60;contimeout=5;retry=1
 
 Use `key=value` for a parameter, and separate multiple parameters with the `;` character.
 
 ### Cascading Remote Options
 
 Cascading options allow an option's Remote values URL to embed the values
-entered by the user for other options when executing a Job.  When the user
+entered by the user for other options when executing a Job. When the user
 enters or selects a value for one of the other options, then the remote JSON is
 refreshed for the current option.
 
 This provides a mechanism for declaring hierarchical or dependent sets of option
 values.
 
-E.g. if you wanted one option to choose a "repository", and  another option to
-select a specific "branch" within that repository.  Define your option provider
-to respond correctly based on the  selected "repository" value, and define your
+E.g. if you wanted one option to choose a "repository", and another option to
+select a specific "branch" within that repository. Define your option provider
+to respond correctly based on the selected "repository" value, and define your
 Remote option URL to include a reference to the "repository" option value. The
 Rundeck GUI will then reload the JSON values from the remote URL and insert the
 correct value of the "repository" option when loading the "branch" option
@@ -548,8 +542,8 @@ be automatically refreshed.
 
 You can declare a
 dependency of one option to another by embedding property references within the
-remote values URL.  The property reference is of the form
-`${option.[name].value}`.  If you declare an option with a remote values URL
+remote values URL. The property reference is of the form
+`${option.[name].value}`. If you declare an option with a remote values URL
 like "http://server/options?option2=${option.option2.value}", then that option
 will depend on the value of the "option2" option.
 
@@ -558,13 +552,13 @@ remote values for option1 will only be loaded once a value has been selected for
 option2, and the value will be placed in the URL when it is loaded.
 
 If an option has dependencies on other options that do not have a value set,
-then the  embedded references will evaluate to "" (empty string) when loading
+then the embedded references will evaluate to "" (empty string) when loading
 the URL.
 
 If an option has dependencies on other options and the remote values [JSON
 data](#json-format) is empty (empty list or empty object), then the option shown in
 the GUI will indicate that the user should select values for the necessary
-options.  This allows Option model providers to indicate that some or all of the
+options. This allows Option model providers to indicate that some or all of the
 dependent option values are necessary for the current option before showing the
 input for the option.
 
@@ -572,7 +566,7 @@ It is possible to have dependencies on more than one option, and any change to
 one of the dependencies will cause the option values to be reloaded from the
 remote URL.
 
-> Note, It is also possible to declare a cycle of dependencies between option values, which will cause the automatic reloading to be disabled.  In this case the user must manually click the reload button to reload the option values if a dependency has changed.
+> Note, It is also possible to declare a cycle of dependencies between option values, which will cause the automatic reloading to be disabled. In this case the user must manually click the reload button to reload the option values if a dependency has changed.
 
 ### Variable expansion in remote URLs
 
@@ -588,31 +582,30 @@ To include job information in the URL, specify a variable of the form
 
 Properties available for Job context:
 
-* `name`: Name of the Job
-* `group`: Group of the Job
-* `description`: Job description
-* `project`: Project name
-* `user.name`: User executing the job
-* `rundeck.nodename`: Name of the Rundeck server node
-* `rundeck.serverUUID`: UUID of the Rundeck server node (cluster mode)
-* `rundeck.basedir`: File path of the Rundeck base dir (`file://` URLs only)
+- `name`: Name of the Job
+- `group`: Group of the Job
+- `description`: Job description
+- `project`: Project name
+- `user.name`: User executing the job
+- `rundeck.nodename`: Name of the Rundeck server node
+- `rundeck.serverUUID`: UUID of the Rundeck server node (cluster mode)
+- `rundeck.basedir`: File path of the Rundeck base dir (`file://` URLs only)
 
 Additionally the `rundeck.*` properties can be specified without the `job.` prefix, e.g. `${rundeck.basedir}`.
 
 To include Option information in the URL, specify a variable of the
-form ${option._property_}:
+form \${option._property_}:
 
 Properties available for Option context:
 
-* `name`: Name of the current option
-
+- `name`: Name of the current option
 
 To include [Cascading remote option](#cascading-remote-options) values information in the URL, specify a variable of the
-form ${option._name_.value}:
+form \${option._name_.value}:
 
-* `option.[name].value`: substitutes the selected value of another option by name. If the option is not set, then a blank string ("") will be substituted.
+- `option.[name].value`: substitutes the selected value of another option by name. If the option is not set, then a blank string ("") will be substituted.
 
-*Examples*
+_Examples_
 
     http://server.com/test?name=${option.name}
 
@@ -643,7 +636,7 @@ You can create a URL to link to a specific Job, and pre-fill some of the option 
 
 Query Parameters format for options:
 
-* `opt.NAME` : provide a value for an option named `NAME`
+- `opt.NAME` : provide a value for an option named `NAME`
 
 For example, if the URL for the Job is:
 
@@ -656,6 +649,5 @@ Then you can pre-fill the values for `myopt1` and `myotheropt` by appending this
 The result would be:
 
     http://rundeck:4440/project/MyProject/job/show/ab698597-9753-4e98-bdab-90ebf395b0d0?opt.myopt1=some+value&opt.myotheropt=another+value
-
 
 Note: be sure to properly escape the strings for option values, and if necessary for the option names as well.

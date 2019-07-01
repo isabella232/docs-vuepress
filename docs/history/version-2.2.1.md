@@ -9,9 +9,9 @@ Date: 2014-07-30
 
 Bugfix release.
 
-*Upgrade notes:* 
+*Upgrade notes:*
 
-See the [Upgrading Guide][page:upgrading/upgrading.md].
+See the [Upgrading Guide](/upgrading/upgrading.md).
 
 ## Contributors
 

@@ -11,7 +11,7 @@ Name: <span style="color: FireBrick"><span class="glyphicon glyphicon-grain"></s
 
 ## Upgrading from Earlier versions
 
-* See the [Upgrading Guide][page:upgrading/upgrading.md]
+* See the [Upgrading Guide](/upgrading/upgrading.md)
 
 ## Notes
 
@@ -19,7 +19,7 @@ This release contains a number of enhancements:
 
 For more detail see [2.9.0 Changes](https://github.com/rundeck/rundeck/issues/2577)
 
-1. Data Capture/Data Passing between steps 
+1. Data Capture/Data Passing between steps
 	* Data capture plugin to match a regular expression in a step's log output and pass the values to later steps
 2. Log Filter Plugins
 	* These plugins can be applied to individual steps, or to the entire workflow
@@ -27,7 +27,7 @@ For more detail see [2.9.0 Changes](https://github.com/rundeck/rundeck/issues/25
 	* Mask Passwords plugin removes any values from secure input options before it is logged
 	* Highlighting/quelling: highlight keywords or selectively quell output from verbose scripts
 	* (And of course, you can write your own plugins...)
-2. New Job and Project features: 
+2. New Job and Project features:
 	* Export a project to another Rundeck instance
 	* Copy a Job to another Project
 	* Reference a Job in another Project

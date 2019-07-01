@@ -2,7 +2,7 @@
 % Greg Schueler
 % December 10, 2012
 
-## About 
+## About
 
 There are two types of steps in a workflow:
 
@@ -33,12 +33,12 @@ There are several reasons to create a Step Plugin:
 
 ## Define a plugin provider class
 
-Refer to the [Plugin Development - Java Plugins][page:developer/01-plugin-development.md#java-plugin-development]
+Refer to the [Plugin Development - Java Plugins](/developer/01-plugin-development.md#java-plugin-development)
  section for information about correct
 definition of a [Plugin](${javadocbase}/com/dtolabs/rundeck/core/plugins/Plugin.html) class, including packaging as a Jar and annotation.
 
 Be sure to use the `@Plugin` annotation on your provider implementation class
-to let it be recognized by Rundeck (See [Plugin Annotations][page:developer/02-plugin-annotations.md]). 
+to let it be recognized by Rundeck (See [Plugin Annotations](/developer/02-plugin-annotations.md)).
 
 Your `service` name should be one of the
 three listed below.  The class
@@ -56,7 +56,7 @@ Each plugin type has an associated Java interface.
 
 ### Plugin properties
 
-See [Plugin Development - Java Plugins - Descriptions][page:developer/01-plugin-development.md#plugin-descriptions]
+See [Plugin Development - Java Plugins - Descriptions](/developer/01-plugin-development.md#plugin-descriptions)
 to learn how to create configuration properties for your plugin using Java annotations.
 
 ### WorkflowStep Plugin
@@ -110,7 +110,7 @@ These are a specialized use-case of the Node Step
 plugin.  They allow you to simply define a command or a script that should be
 executed on the remote nodes, and Rundeck will handle the remote execution of the
 command/script via the appropriate services.
-    
+
 Annotate your class with `@Plugin` and use the service name `RemoteScriptNodeStep`
 
 Implement the interface [RemoteScriptNodeStepPlugin](${javadocbase}/com/dtolabs/rundeck/plugins/step/RemoteScriptNodeStepPlugin.html):
@@ -131,7 +131,7 @@ public GeneratedScript generateScript(final PluginStepContext context,
     throws NodeStepException;
 ~~~~~~~
 
-Your implementation should return a [GeneratedScript](${javadocbase}/com/dtolabs/rundeck/plugins/step/GeneratedScript.html) object.  You can make use of the 
+Your implementation should return a [GeneratedScript](${javadocbase}/com/dtolabs/rundeck/plugins/step/GeneratedScript.html) object.  You can make use of the
 [GeneratedScriptBuilder](${javadocbase}/com/dtolabs/rundeck/plugins/step/GeneratedScriptBuilder.html) class to generate the appropriate return type using these
 two factory methods:
 
@@ -143,7 +143,7 @@ two factory methods:
  * @param args   the arguments for the script
  */
 public static GeneratedScript script(final String script, final String[] args);
- 
+
 /**
  * Create a command
  *
@@ -171,7 +171,7 @@ public interface PluginStepContext {
      * Return the data context
      */
     public Map<String, Map<String, String>> getDataContext();
- 
+
     /**
      * Return the nodes used for this execution
      */
@@ -192,7 +192,7 @@ public interface PluginStepContext {
 See the source directory `examples/example-java-step-plugin` for
 examples of all three provider types.
 
-* On github: [example-java-step-plugin](https://github.com/rundeck/rundeck/tree/development/examples/example-java-step-plugin) 
+* On github: [example-java-step-plugin](https://github.com/rundeck/rundeck/tree/development/examples/example-java-step-plugin)
 
 ## Script Plugin Type
 
@@ -201,7 +201,7 @@ examples of all three provider types.
 * Node Steps - the plugin will execute the script *locally* on the Rundeck server for each node
 * Remote Script Node Steps - the plugin will execute the script *remotely* on each node
 
-See the [Script Plugin Development][page:developer/01-plugin-development.md#script-plugin-development] 
+See the [Script Plugin Development](/developer/01-plugin-development.md#script-plugin-development]
 for the basics of developing script-based plugins for Rundeck.
 
 Use the service name for the plugin type:
@@ -209,15 +209,15 @@ Use the service name for the plugin type:
 * `WorkflowNodeStep`
 * `RemoteScriptNodeStep`
 
-For configuration properties, see the [Resource Model Source Plugin - Plugin Properties][page:developer/03-model-source-format-parser-generator-plugins.md].
+For configuration properties, see the [Resource Model Source Plugin - Plugin Properties](/developer/03-model-source-format-parser-generator-plugins.md).
 
-Two additional [provider metadata properties][page:developer/01-plugin-development.md#provider-metadata] are available for `RemoteScriptNodeStep` plugins:
+Two additional [provider metadata properties](/developer/01-plugin-development.md#provider-metadata] are available for `RemoteScriptNodeStep` plugins:
 
-* `use-original-extension` - (`true/false`, default `true`), whether to force the remotely 
+* `use-original-extension` - (`true/false`, default `true`), whether to force the remotely
   copied script to have the same file extension as the original specified by `script-file`.
 * `script-file-extension` - A file extension to use for the remotely copied script.
 
-To define [property scopes][page:developer/02-plugin-annotations.md#property-scopes], 
+To define [property scopes](/developer/02-plugin-annotations.md#property-scopes],
 add a `scope` entry in the map for a configuration property:
 
 ~~~~ {.yaml}

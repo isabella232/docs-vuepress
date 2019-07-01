@@ -15,8 +15,8 @@ The default separator is a comma, but another separator can be specified with th
 * `vertbar` - vertical bar character (`|`)
 * `<anything>` - any string
 
-If the `header` parameter is `true`, Or if the second row of data is all `-` (hyphen) characters, the first row of 
-data will be used as the header names. 
+If the `header` parameter is `true`, Or if the second row of data is all `-` (hyphen) characters, the first row of
+data will be used as the header names.
 
 Additionally if the data type contains `;header=present` a header is assumed present.
 
@@ -32,4 +32,4 @@ Additionally if the data type contains `;header=present` a header is assumed pre
 
 ## Related Plugins
 
-* [[page:manual/content-converters/html-table-view.md]]
+* (/manual/content-converters/html-table-view.md)

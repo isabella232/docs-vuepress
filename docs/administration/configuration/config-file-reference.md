@@ -50,7 +50,7 @@ document.
 
 This file governs the access for the "admin" group and role.
 
-See [role based access control][page:administration/security/authorization.md] for information about setting up policy files for other user groups.
+See [role based access control](/administration/security/authorization.md) for information about setting up policy files for other user groups.
 
 ## framework.properties
 
@@ -67,7 +67,7 @@ Some important settings:
 - `framework.server.password`: Password for connection to the Rundeck server
 - `framework.rundeck.url`: Base URL for Rundeck server.
 
-SSH Connection settings (See [[page:administration/projects/node-execution/ssh.md]]):
+SSH Connection settings (See (/administration/projects/node-execution/ssh.md)):
 
 - `framework.ssh.keypath`: Path to the SSH private key file used for SSH connections
 - `framework.ssh.user`: Default username for SSH Connections, if not overridden by Node specific value.
@@ -77,7 +77,7 @@ SSH Connection settings (See [[page:administration/projects/node-execution/ssh.m
 Other settings:
 
 - `framework.log.dispatch.console.format`: Default format for non-terse node execution logging run by the `dispatch` CLI tool.
-- `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in [[page:manual/job-workflows.md#context-variables]] is disabled.
+- `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in (/manual/job-workflows.md#context-variables) is disabled.
 - `communityNews.disabled`: Default is not set, or false. Disables the external polling of Community News feed. Link will persist but will not poll, and clicking this link will open a new browser tab and navigate to the web-based version of Community News.
 
 Static authentication tokens for API access:
@@ -92,7 +92,7 @@ The `tokens.properties` file should contain static authentication tokens you wis
     username2: token_string2
     ...
 
-The token_strings can be used as Authentication tokens to the [API][page:api/rundeck-api.md#token-authentication].
+The token_strings can be used as Authentication tokens to the [API](/api/rundeck-api.md#token-authentication].
 
 ### Global execution variables
 
@@ -135,7 +135,7 @@ Property Description
 `project.ssh-keypath` SSH identify file.
 `service.FileCopier.default.provider` Default script file copier plugin.
 `service.NodeExecutor.default.provider` Default node executor plugin.
-`resources.source.N...` Defines a Resource model source see [Resource Model Sources][page:manual/09-configure.md#resource-model-sources-configuration].
+`resources.source.N...` Defines a Resource model source see [Resource Model Sources](/manual/09-configure.md#resource-model-sources-configuration].
 `project.globals.X` [Defines a Project Global variable](#project-global-execution-variables)
 
 Here's an example that configures a File source:
@@ -197,13 +197,13 @@ used. Specified from [jaas-loginmodule.conf](#jaas-loginmodule.conf).
 
 See [rundeck-config.properties > Server Settings](#server-settings)
 
-Or set `server.session.timeout` via [[page:administration/configuration/system-properties.md]].
+Or set `server.session.timeout` via (/administration/configuration/system-properties.md).
 
 ## rundeck-config.properties
 
 This is the primary Rundeck webapp configuration file. Defines default
 loglevel, datasource configuration, and
-[GUI customization][page:administration/configuration/gui-customization.md].
+[GUI customization](/administration/configuration/gui-customization.md).
 
 The following sections describe configuration values for this file.
 
@@ -243,7 +243,7 @@ The following sections describe configuration values for this file.
 
 - `rundeck.security.maxSessions`: If enforceMaxSessions is true, this setting controls the number of active sessions a user is allowed to have. `Default: 1`
 
-- `rundeck.security.jaasRolePrefix`: Prefix string to add to each _role_ determined via [JAAS Authentication][page:administration/security/authentication.md#jetty-and-jaas-authentication]. Default: none.
+- `rundeck.security.jaasRolePrefix`: Prefix string to add to each _role_ determined via [JAAS Authentication](/administration/security/authentication.md#jetty-and-jaas-authentication]. Default: none.
 
 ### Security HTTP Headers
 
@@ -383,24 +383,24 @@ system and is useful when managing Rundeck server clusters.
 
 ### Project Configuration Storage settings
 
-The [Project Setup - Project Definitions][page:administration/projects/project-create.md#project-definitions] mechanism is configured within this file, see:
+The [Project Setup - Project Definitions](/administration/projects/project-create.md#project-definitions] mechanism is configured within this file, see:
 
-- [Project Storage][page:administration/configuration/storage-facility.md#project-storage]
+- [Project Storage](/administration/configuration/storage-facility.md#project-storage)
 
 ### Key Storage settings
 
-The [Key storage][page:administration/security/key-storage.md] mechanism is configured within this file, see:
+The [Key storage](/administration/security/key-storage.md) mechanism is configured within this file, see:
 
-- [Configuring Storage Plugins][page:administration/configuration/plugins/configuring.md#storage-plugins]
-- [Configuring Storage Converter Plugins][page:administration/configuration/plugins/configuring.md#storage-converter-plugins]
+- [Configuring Storage Plugins](/administration/configuration/plugins/configuring.md#storage-plugins)
+- [Configuring Storage Converter Plugins](/administration/configuration/plugins/configuring.md#storage-converter-plugins)
 
 ### Notification email settings
 
-See [Email Settings: Notification email settings][page:administration/configuration/email-settings.md#notification-email-settings]
+See [Email Settings: Notification email settings](/administration/configuration/email-settings.md#notification-email-settings)
 
 ### Custom Email Templates
 
-See [Email Settings: Custom Email Templates][page:administration/configuration/email-settings.md#custom-email-templates]
+See [Email Settings: Custom Email Templates](/administration/configuration/email-settings.md#custom-email-templates)
 
 ### Execution finalize retry settings
 
@@ -453,7 +453,7 @@ Metrics names are:
 - `ping`
 - `healthcheck`
 
-See: [API > List Metrics][page:api/rundeck-api.md#list-metrics].
+See: [API > List Metrics](/api/rundeck-api.md#list-metrics].
 
 ### Pagination defaults
 
@@ -463,7 +463,7 @@ Default paging size for the Activity page and results from execution API queries
 
 ### Job Remote Option URL connection parameters
 
-Change the defaults for for [Job Remote Option Value URLs][page:manual/job-options.md#remote-option-values] loading.
+Change the defaults for for [Job Remote Option Value URLs](/manual/job-options.md#remote-option-values] loading.
 
 **Socket read timeout**
 
@@ -521,7 +521,7 @@ Enabled: true/false (default true).
 : `rundeck.nodeService.nodeCache.enabled=true` If set to false, no caching is performed.
 
 First Load Asynch: true/false
-: `rundeck.nodeService.nodeCache.firstLoadAsynch=false` The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load][page:administration/projects/project-create.md#project-nodes] value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
+: `rundeck.nodeService.nodeCache.firstLoadAsynch=false` The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load](/administration/projects/project-create.md#project-nodes] value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
 
 ### Groovy config format
 

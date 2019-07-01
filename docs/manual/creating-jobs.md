@@ -1,4 +1,6 @@
-% Creating jobs
+# Creating jobs
+
+---
 
 ## Creating a job
 
@@ -13,7 +15,7 @@ Like in the earlier example, begin by pressing the "New Job" menu item.
 
 Within the new job form:
 
-For "Job Name", enter "info" and for the "Group", enter     "adm/resources".
+For "Job Name", enter "info" and for the "Group", enter "adm/resources".
 If you want to specify your own UUID you can enter it in the field.
 Otherwise a unique value will be set for you.
 Providing a description will be come helpful to other users to understand the intent and purpose for the Job.
@@ -54,7 +56,7 @@ Press the progress bar in the Activity area to go to the execution follow page.
 
 ### Multiple Executions
 
-By default, a job runs as a "Single Execution" -- it can only have a single execution running at a time.  This is useful if the steps the Job performs might be interfered with if another separate process was also performing them on the same Node(s).
+By default, a job runs as a "Single Execution" -- it can only have a single execution running at a time. This is useful if the steps the Job performs might be interfered with if another separate process was also performing them on the same Node(s).
 
 However, in some cases it is useful to allow a Job to be executed more than once simultaneously.
 
@@ -64,15 +66,15 @@ You can make a job allow "Multiple Executions" by toggling the value to Yes in t
 
 ### Timeout
 
-You can set a maximum runtime for a job.  If the runtime exceeds this value, the job will be halted (as if a user had killed it.) (Note: Timeout only affects the job if is invoked directly, not if it is used as a Job Reference.)
+You can set a maximum runtime for a job. If the runtime exceeds this value, the job will be halted (as if a user had killed it.) (Note: Timeout only affects the job if is invoked directly, not if it is used as a Job Reference.)
 
 ![Job Timeout field](/figures/jobs-timeout-field.png)
 
 The value for the timeout can be:
 
-* A number of seconds, such as `240`
-* A string indicating numbers and units, such as "1d 12h 30m 24s". Each number must have a unit letter next to it.  The total timeout duration will be the sum of the values.  Available units are "d" (days) "h" (hours) "m" (minutes) and "s" (seconds, default if unspecified.)
-* An embedded property reference such as `${option.timeout}`.  This allows a Job Option to be used to change the timeout for the job.
+- A number of seconds, such as `240`
+- A string indicating numbers and units, such as "1d 12h 30m 24s". Each number must have a unit letter next to it. The total timeout duration will be the sum of the values. Available units are "d" (days) "h" (hours) "m" (minutes) and "s" (seconds, default if unspecified.)
+- An embedded property reference such as `${option.timeout}`. This allows a Job Option to be used to change the timeout for the job.
 
 ### Retry
 
@@ -85,18 +87,18 @@ until it succeeds. (Note: Retry only affects the job if is invoked directly, not
 
 The value for the retry can be:
 
-* A specific integer number
-* An embedded property reference such as `${option.retryMax}`.  This allows a Job Option to be used to change the retry count for the job.
+- A specific integer number
+- An embedded property reference such as `${option.retryMax}`. This allows a Job Option to be used to change the retry count for the job.
 
 Each execution will be started with context variables
 indicating the current retry attempt and whether it was a retry.
-See [Context Variables][page:manual/job-workflows.md#context-variables].
+See [Context Variables](/manual/job-workflows.md#context-variables].
 
 Optionally a delay between retries can be established:
 
-* A number of seconds, such as `30`
-* A string indicating numbers and units, such as "1d 12h 30m 24s". Each number must have a unit letter next to it.  The total timeout duration will be the sum of the values.  Available units are "d" (days) "h" (hours) "m" (minutes) and "s" (seconds, default if unspecified.)
-* An embedded property reference such as `${option.delay}`.  This allows a Job Option to be used to change the delay between retries for the job.
+- A number of seconds, such as `30`
+- A string indicating numbers and units, such as "1d 12h 30m 24s". Each number must have a unit letter next to it. The total timeout duration will be the sum of the values. Available units are "d" (days) "h" (hours) "m" (minutes) and "s" (seconds, default if unspecified.)
+- An embedded property reference such as `${option.delay}`. This allows a Job Option to be used to change the delay between retries for the job.
 
 ![Job Delay between retries field](/figures/jobs-retry-delay-field.png)
 
@@ -107,48 +109,47 @@ the Job produces.
 
 The limit can be set in one of three ways:
 
-* Maximum total number of log lines
-* Maximum total log file size
-* Maximum number of log lines for a single node
+- Maximum total number of log lines
+- Maximum total log file size
+- Maximum number of log lines for a single node
 
 ![Job Log limit](/figures/jobs-loglimit-field.png)
 
 Enter a value in the "Log Output Limit" field.
 The syntax of the value you enter determines the type of limit:
 
-* `###` If you specify a number, that is treated as the "Maximum total number of log lines"
-* `###/node` If you specify a number followed by `/node`, the number is treated as the "Maximum number of log lines for a single node"
-* `###[GMK]B` If you specify a number followed by a filesize suffix, that is treated as the "total log file size".  The file size suffixes allowed are "GB" (gigabyte), "MB" (megabyte), "KB" (kilobyte) and "B" (byte).
+- `###` If you specify a number, that is treated as the "Maximum total number of log lines"
+- `###/node` If you specify a number followed by `/node`, the number is treated as the "Maximum number of log lines for a single node"
+- `###[GMK]B` If you specify a number followed by a filesize suffix, that is treated as the "total log file size". The file size suffixes allowed are "GB" (gigabyte), "MB" (megabyte), "KB" (kilobyte) and "B" (byte).
 
 And one of three actions can be performed if the limit is exceeded:
 
-* Halt - the job will halt with a certain status
-    * Enter a status string in the field, such as "failed" or "aborted", or any custom status
-* Truncate and Continue - the job will not halt, but no more log output will be produced.
+- Halt - the job will halt with a certain status
+  - Enter a status string in the field, such as "failed" or "aborted", or any custom status
+- Truncate and Continue - the job will not halt, but no more log output will be produced.
 
 ![Job Log limit action](/figures/jobs-loglimit-action.png)
-
 
 ### Node dispatching and filtering
 
 When you create a job you can choose between either running the job only locally (on the Rundeck server), or dispatching it to multiple nodes (including the Rundeck server if you want).
 
-In the GUI, the "Dispatch to Nodes" checkbox lets you enable node dispatching.  When you click this box you are presented with the Node Filtering interface:
+In the GUI, the "Dispatch to Nodes" checkbox lets you enable node dispatching. When you click this box you are presented with the Node Filtering interface:
 
 ![Node Filtering interface](/figures/fig0305-b.png)
 
 #### Filters
 
-You can click the different filter fields "Name", and "Tags" to enter filter values for those fields.  As you update the values you will see the "Matched Nodes" section updated to reflect the list of nodes that will match the inputs.  You can click "More" to see more of the available inclusion filters, and you can click "Extended Filters" to enter
+You can click the different filter fields "Name", and "Tags" to enter filter values for those fields. As you update the values you will see the "Matched Nodes" section updated to reflect the list of nodes that will match the inputs. You can click "More" to see more of the available inclusion filters, and you can click "Extended Filters" to enter
 exclusion filters for the same fields.
 
 #### Threadcount
 
-You can set the maximum number of simultaneous threads to use by changing the "Thread Count" box.  A value of 1 means all node dispatches happen sequentially, and any greater value means that the node dispatches will happen in parallel.
+You can set the maximum number of simultaneous threads to use by changing the "Thread Count" box. A value of 1 means all node dispatches happen sequentially, and any greater value means that the node dispatches will happen in parallel.
 
 #### Rank order
 
-You can change the order in which nodes are executed on by setting the "Rank Attribute" and "Rank Order".  By default nodes are ordered by name ("nodename" attribute) in ascending order.  You can change the node attribute to sort on by entering it here, for example "rank", and you can change the order to descending to sort in reverse.
+You can change the order in which nodes are executed on by setting the "Rank Attribute" and "Rank Order". By default nodes are ordered by name ("nodename" attribute) in ascending order. You can change the node attribute to sort on by entering it here, for example "rank", and you can change the order to descending to sort in reverse.
 
 If the attribute you use has an integer number value, then the nodes will be sorted numerically by that attribute, rather than lexically. Otherwise the sort is based on the string value rather than the integer value.
 
@@ -156,7 +157,7 @@ Any nodes without the specified attribute will then be sorted by their names.
 
 #### Keepgoing
 
-If you set "Keep going on error?" to "Yes", then if any node dispatches fail for any reason, the rest will continue to be executed until all have been executed.  At the end of the workflow for all nodes, the Job Execution will fail if any of the nodes had failed.
+If you set "Keep going on error?" to "Yes", then if any node dispatches fail for any reason, the rest will continue to be executed until all have been executed. At the end of the workflow for all nodes, the Job Execution will fail if any of the nodes had failed.
 
 If you leave it at the default value of "No", then if any node dispatches fail for any reason, no further dispatches will be executed and the Job Execution will fail immediately.
 
@@ -165,7 +166,7 @@ If you leave it at the default value of "No", then if any node dispatches fail f
 In addition to entering static values that match the nodes, you can also use
 more dynamic values.
 
-If you have defined Options for the Job (see [Job Options][page:manual/job-options.md]), you
+If you have defined Options for the Job (see [Job Options](/manual/job-options.md)), you
 can use the values submitted by the user when the job is executed as part of the
 node filtering.
 
@@ -174,7 +175,7 @@ Simply set the filter value to `${option.name}`, where "name" is the name of the
 When the job is executed, the user will be prompted to enter the value of the option, and
 that will then be used in the node filter to determine the nodes to dispatch to.
 
-> Note, Since the dynamic option value is not set yet, the "Matched Nodes" shown in the node filtering input may indicate that there are "None" matched.  Also, when the Job is executed, you may see a message saying "Warning: The Node filters specified for this Job do not match any nodes, execution may fail." The nodes matched will be determined after the user enters the option values.
+> Note, Since the dynamic option value is not set yet, the "Matched Nodes" shown in the node filtering input may indicate that there are "None" matched. Also, when the Job is executed, you may see a message saying "Warning: The Node filters specified for this Job do not match any nodes, execution may fail." The nodes matched will be determined after the user enters the option values.
 
 #### Orchestrator
 
@@ -182,14 +183,14 @@ Orchestrators define how a Job orchestrates the dispatching of executions to mul
 
 The default behavior is to dispatch based on these Job configuration values:
 
-* Threadcount: how many nodes to process in parallel
-* Rank Order: which node attribute to use to sort the nodes (default is the node name.), and whether to sort ascending or descending
+- Threadcount: how many nodes to process in parallel
+- Rank Order: which node attribute to use to sort the nodes (default is the node name.), and whether to sort ascending or descending
 
 You can select an Orchestrator plugin to use instead, which can choose its own logic
 for how many and what order to process the nodes.
 
 To learn how to develop your own Orchestrator plugin
-see [Plugin Developer Guide - Orchestrator Plugin][page:developer/09-orchestrator-plugin.md].
+see [Plugin Developer Guide - Orchestrator Plugin](/developer/09-orchestrator-plugin.md).
 
 ### Scheduled Jobs
 
@@ -239,9 +240,9 @@ and choose the notifier, using a builtin like mail, or webhook. Click the checkb
 
 When the Job starts, all "start" notifications will be triggered.
 
-When the Job finishes executing, all "success" notifications will be triggered if the Job is successful.  Otherwise, all "failure" notifications will be triggered if the Job fails or is cancelled.
+When the Job finishes executing, all "success" notifications will be triggered if the Job is successful. Otherwise, all "failure" notifications will be triggered if the Job fails or is cancelled.
 
-For a full list of notification plugins, see [Job Plugins - Notifications][page:manual/job-plugins.md#notifications]
+For a full list of notification plugins, see [Job Plugins - Notifications](/manual/job-plugins.md#notifications)
 
 ## Deleting Jobs
 
@@ -281,7 +282,7 @@ choose either XML or YAML format to download the definition.
 Click the preferred format to initiate the file download to your
 browser.
 
-To export jobs to a git repository, see the [Git plugin][page:administration/projects/scm/git.md#configuring-git-export]
+To export jobs to a git repository, see the [Git plugin](/administration/projects/scm/git.md#configuring-git-export)
 
 ## Importing Job definitions
 
@@ -301,19 +302,19 @@ Click the Choose File button and choose your job definition file to upload.
 Choose an option where it says "When a job with the same name already
 exists:":
 
-* Update - this means that a job defined in the xml will overwrite any
+- Update - this means that a job defined in the xml will overwrite any
   existing job with the same name.
-* Skip - this means that a job defined in the xml will be skipped over
+- Skip - this means that a job defined in the xml will be skipped over
   if there is an existing job with the same name
-* Create - this means that the job defined in the xml will be used to
+- Create - this means that the job defined in the xml will be used to
   create a new job if there is an existing job with the same name.
 
 Choose an option where it says "Imported Jobs:":
 
-* Preserve UUIDs - this means that UUIDs defined in the imported jobs will be used when importing them.  UUIDs must be unique, so if you have a Job with the same UUID defined in any project, your import may fail.
-* Remove UUIDs - this means that imported Job UUIDs will be ignored, and the imported jobs will either *update* an existing job, or be created with a new UUID.
+- Preserve UUIDs - this means that UUIDs defined in the imported jobs will be used when importing them. UUIDs must be unique, so if you have a Job with the same UUID defined in any project, your import may fail.
+- Remove UUIDs - this means that imported Job UUIDs will be ignored, and the imported jobs will either _update_ an existing job, or be created with a new UUID.
 
 Click the Upload button. If there are any errors with the Job
 definitions in the XML file, they will show up on the page.
 
-To import jobs from a git repository, see the [Git plugin][page:administration/projects/scm/git.md#git-import-configuration]
+To import jobs from a git repository, see the [Git plugin](/administration/projects/scm/git.md#git-import-configuration)

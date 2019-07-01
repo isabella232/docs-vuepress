@@ -9,11 +9,11 @@ about the hosts deployed in their networks. These tools have
 interfaces to not just view but also modify the data about these
 hosts. Though there is no widely used common standard adopted by users
 of these tools, it is possible to map the data to meet the needs of
-[Rundeck resource models](#resource-model-source). 
+[Rundeck resource models](#resource-model-source).
 
 ### Definition ###
 
-The [Rundeck resource model document format][page:manpages/man5/resource-v13.md] and the [resource-yaml-v13][page:manpages/man5/resource-yaml-v13.md] format provide two attributes that help connect the dots between the
+The [Rundeck resource model document format](/manpages/man5/resource-v13.md) and the [resource-yaml-v13](/manpages/man5/resource-yaml-v13.md) format provide two attributes that help connect the dots between the
 Rundeck UI and the editing interface provided by the external data
 management tool. They can use `editUrl` or `remoteUrl` attributes to specify the remote URL.  The URLs can embed properties about the node to expand prior to being loaded, which allows you to e.g. submit query parameters using the node name.
 
@@ -23,7 +23,7 @@ management tool. They can use `editUrl` or `remoteUrl` attributes to specify the
 
 [`remoteUrl`](#using-remoteurl)
 
-:    Specifies a URL for a remote site which will be loaded in an iframe within a Rundeck page.  Clicking the "Edit" link for the Node will load content from the site within the current Rundeck page, allow you to perform your edit at the remote site, and has optional JavaScript hooks to report the state of the editing process back to the Rundeck page for a more streamlined user interface. 
+:    Specifies a URL for a remote site which will be loaded in an iframe within a Rundeck page.  Clicking the "Edit" link for the Node will load content from the site within the current Rundeck page, allow you to perform your edit at the remote site, and has optional JavaScript hooks to report the state of the editing process back to the Rundeck page for a more streamlined user interface.
 
 ### Using properties ###
 
@@ -51,7 +51,7 @@ If you want the user interface in Rundeck to be more streamlined, you will have 
 
 If the remote site implements some Javascript messaging conforming to a simple optional protocol, then the user interface between Rundeck and the remote site can be made more seamless.
 
-Rundeck lets the remote site inform it when the following steps occur: 
+Rundeck lets the remote site inform it when the following steps occur:
 
 * The user begins editing a Node
 * The user saves the Node changes successfully and is finished
@@ -69,7 +69,7 @@ The remote page can send these messages simply with this javascript:
     </script>
 
 `window.parent` will be the enclosing browser window when the site is loaded within an iframe.  This script simply checks whether the page is loaded in an iframe before sending the message.
-    
+
 The first argument to `postMessage` is one of the message codes shown below.  The second argument is the expected "origin", meaning the URL scheme, server and port of the server receiving the message.  You can specify "*" to include any site that may be loading the content, but you may want to restrict it to your Rundeck installation's scheme, hostname and port.
 
 Rundeck can receive the following messages sent by the remote site:
@@ -79,15 +79,15 @@ Rundeck can receive the following messages sent by the remote site:
 
 `rundeck:node:edit:error` or `rundeck:node:edit:error:An error message`
   ~ Sent if some error occurs.  The remote editing form will close and the error message (if any) will be shown.  You would probably send this on the "edit" or "view" page if there is an error locating the targeted Node or loading anything required for the edit process.
- 
+
 The next two messages are only valid after the "started" message has already been received:
 
 `rundeck:node:edit:finished:true`
   ~ Sent after the remote form has been saved without errors.  This indicates that the editing process is done and has completed with saved changes.  You would probably send this on the "view" or "show" page for the targeted node if the save operation was successful.
-  
+
 `rundeck:node:edit:finished:false`
   ~ Sent after the remote form has been either cancelled or discarded without changes.  This indicates that the editing process is done but no changes were made.  You would probably send this on the "view" or "show" for the targeted node (if your site simply shows the node view again) or "list" page (if your site goes back to a list of resources) if the user hits "cancel".
-  
+
 Any message not shown here that is received by Rundeck after it has received the "started" message will be considered unexpected and the editing process will close the iframe.
 
 The user will also have the option to close and cancel the remote editing process at any time.
@@ -104,25 +104,25 @@ Specify a simple URL for editing, which will simply produce a link:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.xml}
 <node name="venkman" editUrl="http://mycmdb:8080/node/edit" ... />
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
-   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Specify a URL for editing, with embedded "name" property as a parameter:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.xml}
 <node name="venkman" editUrl="http://mycmdb:8080/node/edit?name=${node.name}" ... />
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
-   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Specify a remote URL with embedded "name" and "project" properties as parameters:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.xml}
 <node name="venkman" remoteUrl="http://mycmdb:8080/node/edit?name=${node.name}&amp;project=${node.project}" ... />
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
-   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Specify a remote URL with embedded "name" property as part of the path:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.xml}
 <node name="venkman" remoteUrl="http://mycmdb:8080/node/edit/${node.name}"  ... />
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In YAML, some examples:
 
@@ -132,7 +132,7 @@ Specify a remote URL with embedded "name" and "project" properties as parameters
 venkman:
   nodename: venkman
   remoteUrl: http://mycmdb:8080/node/edit?name=${node.name}&amp;project=${node.project}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Specify a remote URL with embedded "name" property as part of the path:
 
@@ -140,7 +140,7 @@ Specify a remote URL with embedded "name" property as part of the path:
 venkman:
   nodename: venkman
   remoteUrl: "http://mycmdb:8080/node/edit/${node.name}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #### Simple site integration ####
 
@@ -180,5 +180,5 @@ So the JavaScript for integrating with Rundeck is then added to the following pa
 
 To complete the round-trip of editing a Node and then showing the results back in Rundeck, the ndbtest project would have to export XML formatted Resource data, and then your Rundeck project.properties file would have to point to the appropriate URL.  (This is left as an exercise to the reader.)
 
-[Tutorial][page:tutorials/index.md]
+[Tutorial](/tutorials/index.md)
 

@@ -1,7 +1,9 @@
-% Activity
-% Alex Honor; Greg Schueler
-% January 30, 2014
+# Activity
 
+---
+
+
+% January 30, 2014
 
 Execution history for commands and Jobs is stored by the Rundeck server. Execution history can be filtered and viewed inside the "Activity" page.
 
@@ -15,13 +17,13 @@ expand or limit the executions.
 
 The filter form contains a number of fields to limit search:
 
-* Within: Time range. Choices include 1 day, 1 week, 1 month or other
+- Within: Time range. Choices include 1 day, 1 week, 1 month or other
   (given a start after/before to ended after/before).
-* Job Name: Job title name.
-* User: User initiating action.
-* Filter: The node filter used . You can enter just one node name to see if was executed against that node or use the node filter formats. Refer to the [User Guide - Node Filters][page:manual/11-node-filters.md] Documentation.
-* Ad hoc command: Command typed into the command bar or via `dispatch`.
-* Result: Success or failure status.
+- Job Name: Job title name.
+- User: User initiating action.
+- Filter: The node filter used . You can enter just one node name to see if was executed against that node or use the node filter formats. Refer to the [User Guide - Node Filters](/manual/11-node-filters.md) Documentation.
+- Ad hoc command: Command typed into the command bar or via `dispatch`.
+- Result: Success or failure status.
 
 ![History filter form](/figures/fig0212.png)
 
@@ -68,7 +70,7 @@ If you have access, you can click the "Bulk Delete" button to enable bulk-edit m
 
 ![Activity page bulk delete](/figures/fig08-activity-bulk-delete.png)
 
-Select the Executions you want to delete by clicking on them.  You can also click on the "Toggle all", "Select All" or "Select None" links to change the selection.
+Select the Executions you want to delete by clicking on them. You can also click on the "Toggle all", "Select All" or "Select None" links to change the selection.
 
 ![Activity page bulk edit mode](/figures/fig08-activity-bulk-edit-mode.png)
 

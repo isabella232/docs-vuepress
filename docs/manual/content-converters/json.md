@@ -3,7 +3,7 @@
 
 Parses JSON text into a a Java object.
 
-The [[page:manual/content-converters/html-table-view.md]] plugin can render 
+The (/manual/content-converters/html-table-view.md) plugin can render
 this as a HTML Table.
 
 ## Input Types
@@ -16,4 +16,4 @@ this as a HTML Table.
 
 ## Related Plugins
 
-* [[page:manual/content-converters/html-table-view.md]]
+* (/manual/content-converters/html-table-view.md)

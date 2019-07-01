@@ -49,9 +49,9 @@ Rundeck's jars are published to the central Maven repository, and [jCenter](http
 
 * `rundeck-core` is the primary build dependency for most plugin types
     * [org.rundeck:rundeck-core:${VERSION_FULL}](https://search.maven.org/artifact/org.rundeck/rundeck-core/${VERSION_FULL}/jar)
-* `rundeck-storage-api` is also required for [[page:developer/07-storage-plugin.md]].
+* `rundeck-storage-api` is also required for (/developer/07-storage-plugin.md).
     * [org.rundeck:rundeck-storage-api:${VERSION_FULL}](https://search.maven.org/artifact/org.rundeck/rundeck-storage-api/${VERSION_FULL}/jar)
-  
+
 
 For gradle, use:
 
@@ -120,30 +120,30 @@ Resource model services:
 * `ResourceFormatParser` - parses a document into a set of Node resources [javadoc](${javadocbase}/com/dtolabs/rundeck/core/resources/format/ResourceFormatParser.html).
 * `ResourceFormatGenerator` - generates a document from a set of Node resources [javadoc](${javadocbase}/com/dtolabs/rundeck/core/resources/format/ResourceFormatGenerator.html).
 
-Workflow Step services (described in [Workflow Step Plugin][page:developer/03-step-plugins.md]):
+Workflow Step services (described in [Workflow Step Plugin](/developer/03-step-plugins.md)):
 
 * `WorkflowStep` - runs a single step in a workflow.
 * `WorkflowNodeStep` - runs a single step for each node in a workflow.
 * `RemoteScriptNodeStep` - generates a script or command to execute remotely for each node in a workflow.
 
-Notification services (described in [Notification Plugin][page:developer/05-notification-plugins.md]):
+Notification services (described in [Notification Plugin](/developer/05-notification-plugins.md)):
 
 * `Notification` - performs an action after a Job state trigger.
 
 Storage services:
 
-* `Storage` - backend for storing data: [Storage Plugin][page:developer/07-storage-plugin.md]
-* `StorageConverter` - modifies stored content or metadata: [Storage Converter Plugin][page:developer/08-storage-converter-plugins.md]
+* `Storage` - backend for storing data: [Storage Plugin](/developer/07-storage-plugin.md)
+* `StorageConverter` - modifies stored content or metadata: [Storage Converter Plugin](/developer/08-storage-converter-plugins.md)
 
 Logging services:
 
-* `ExecutionFileStorage` - stores and retrieves execution files to another location: [Execution File Storage Plugin][page:developer/06-logging-plugins.md]
-* `StreamingLogWriter` - writes execution log events to a destination: [Streaming Log Writer Plugin][page:developer/06-logging-plugins.md]
-* `StreamingLogReader` - reads execution log events from a destination: [Streaming Log Reader Plugin][page:developer/06-logging-plugins.md]
+* `ExecutionFileStorage` - stores and retrieves execution files to another location: [Execution File Storage Plugin](/developer/06-logging-plugins.md)
+* `StreamingLogWriter` - writes execution log events to a destination: [Streaming Log Writer Plugin](/developer/06-logging-plugins.md)
+* `StreamingLogReader` - reads execution log events from a destination: [Streaming Log Reader Plugin](/developer/06-logging-plugins.md)
 
 Orchestrator:
 
-* `Orchestrator` - orchestrates node dispatching: [Orchestrator Plugin][page:developer/09-orchestrator-plugin.md]
+* `Orchestrator` - orchestrates node dispatching: [Orchestrator Plugin](/developer/09-orchestrator-plugin.md)
 
 
 ### Provider Classes
@@ -240,17 +240,17 @@ construct one by using the
 **Description Annotations**
 
 Newer plugin types support using java annotations to create a Description object.
-See [Plugin Annotations][page:developer/02-plugin-annotations.md].
+See [Plugin Annotations](/developer/02-plugin-annotations.md).
 
 **Provider Metadata**
 
-See [[page:developer/02-plugin-annotations.md#plugin-provider-metadata]].
+See (/developer/02-plugin-annotations.md#plugin-provider-metadata]].
 
 #### Description Properties
 
 Within a Description object you can define a set of Property objects, which represent the input properties for the plugin.
 
-Some plugin types support using Java Annotations to define properties, see [Plugin Annotations][page:developer/02-plugin-annotations.md].
+Some plugin types support using Java Annotations to define properties, see [Plugin Annotations](/developer/02-plugin-annotations.md).
 
 For the remaining plugin types, the Properties must be defined using the other interfaces described above, typically with the use of a [PropertyBuilder](${javadocbase}/com/dtolabs/rundeck/plugins/util/PropertyBuilder.html).
 
@@ -295,7 +295,7 @@ rundeckPlugin(NotificationPlugin){
 }
 ~~~~~~~
 
-In this case we use the same `NotificationPlugin` interface used for Java [Notification Plugins][page:developer/05-notification-plugins.md].
+In this case we use the same `NotificationPlugin` interface used for Java [Notification Plugins](/developer/05-notification-plugins.md).
 
 However, for other plugin types you would specify the correct Java interface for the specific plugin type.
 
@@ -367,7 +367,7 @@ Each property has several attributes you can define, but only `name` and `type` 
 * `description` - a string describing the property
 * `required` - whether the property is required to have a value
 * `defaultValue` - any default value for the property
-* `scope` - defines the scope for the property.  Allowed values are described under the chapter [Plugin Annotations - Property Scopes][page:developer/02-plugin-annotations.md#property-scopes]. You may also simply use a String matching the name of the scope, e.g. "Instance".  The default scope if unspecified is "Instance".
+* `scope` - defines the scope for the property.  Allowed values are described under the chapter [Plugin Annotations - Property Scopes](/developer/02-plugin-annotations.md#property-scopes]. You may also simply use a String matching the name of the scope, e.g. "Instance".  The default scope if unspecified is "Instance".
 
 In addition to these properties, for `Select` or `FreeSelect` type, you can define:
 
@@ -385,14 +385,14 @@ phone_number(title: "Phone number"){
 
 The user is presented with any `Instance` scoped properties in the Rundeck GUI when defining a Job, and any invalid configuration values will present an error when saving the Job.  This includes failing to set a value for a "required" property.  However, if you have properties that are scoped for `Project` or lower, those properties will not be shown in the GUI. In that case, the validation will not be checked for the properties when saving the Job definition, and will only be performed when the plugin is invoked.
 
-### Supported Groovy Plugin Types 
+### Supported Groovy Plugin Types
 
-* [[page:developer/05-notification-plugins.md#groovy-plugin-type]]
-* [Streaming Log Reader][page:developer/06-logging-plugins.md#groovy-streaminglogreader]
-* [Streaming Log Writer][page:developer/06-logging-plugins.md#groovy-streaminglogwriter]
-* [Execution File Storage][page:developer/06-logging-plugins.md#groovy-executionfilestorage]
-* [Log Filter][page:developer/log-filter-plugins.md#groovy-logfilter]
-* [Content Converter Plugin][page:developer/content-converter-plugins.md#groovy-contentconverter]
+* (/developer/05-notification-plugins.md#groovy-plugin-type])
+* [Streaming Log Reader](/developer/06-logging-plugins.md#groovy-streaminglogreader)
+* [Streaming Log Writer](/developer/06-logging-plugins.md#groovy-streaminglogwriter)
+* [Execution File Storage](/developer/06-logging-plugins.md#groovy-executionfilestorage)
+* [Log Filter](/developer/log-filter-plugins.md#groovy-logfilter)
+* [Content Converter Plugin](/developer/content-converter-plugins.md#groovy-contentconverter)
 
 ## Script Plugin Development
 
@@ -401,16 +401,16 @@ with a script that is invoked in an external system processes by the JVM.
 
 These Services support Script Plugins:
 
-* [NodeExecutor][page:developer/04-node-execution-plugins.md#script-plugin-type]
-* [FileCopier][page:developer/04-file-copier-plugins.md#script-plugin-type]
-* [ResourceModelSource][page:developer/03-model-source-plugins.md#script-plugin-type]
-* [WorkflowNodeStep][page:developer/03-step-plugins.md#script-plugin-type] and RemoteScriptNodeStep
+* [NodeExecutor](/developer/04-node-execution-plugins.md#script-plugin-type)
+* [FileCopier](/developer/04-file-copier-plugins.md#script-plugin-type)
+* [ResourceModelSource](/developer/03-model-source-plugins.md#script-plugin-type)
+* [WorkflowNodeStep](/developer/03-step-plugins.md#script-plugin-type] and RemoteScriptNodeStep
 
 ### UI Plugin Development
 
 UI Plugins are supported with a `ui` plugin type, which is similar to a Script Plugin.
 
-See: [UI Plugins][page:developer/11-ui-plugins.md].
+See: [UI Plugins](/developer/11-ui-plugins.md).
 
 
 ### Script plugin zip structure
@@ -502,14 +502,14 @@ Required provider entries:
     * `ResourceModelSource`
     * `WorkflowNodeStep`
     * `RemoteScriptNodeStep`
-* `plugin-type` - must be `script` for these types (or `ui` for [UI Plugins][page:developer/11-ui-plugins.md])
+* `plugin-type` - must be `script` for these types (or `ui` for [UI Plugins](/developer/11-ui-plugins.md))
 * `plugin-meta` - an optional Map defining additional [Provider Metadata] entries. (Since rundeck 3.0.14)
 * `script-file` - must be the name of a file relative to the `contents` directory
 
 For `ResourceModelSource` service, this additional entry is required:
 
 * `resource-format` - Must be the name of one of the supported
-[Resource Model Document Formats][page:administration/projects/resource-model-sources/builtin.md#resource-model-document-formats].
+[Resource Model Document Formats](/administration/projects/resource-model-sources/builtin.md#resource-model-document-formats].
 
 Optional entries:
 
@@ -769,7 +769,7 @@ Available rendering option keys:
 * `instance-scope-node-attribute`
     - Value is the name of a Node attribute to use for instance-scoped properties for *Node Services* plugins `NodeExecutor` and `FileCopier` only.
 * `selectionAccessor`, values:
-    - `STORAGE_PATH` - display an additional input to select a Storage Path string from Rundeck's [Key Storage Facility][page:administration/security/key-storage.md].
+    - `STORAGE_PATH` - display an additional input to select a Storage Path string from Rundeck's [Key Storage Facility](/administration/security/key-storage.md).
 * `storage-path-root`
     - Value is a Storage Path indicating the root to use if the selectionAccessor is `STORAGE_PATH`.
 * `storage-file-meta-filter`
@@ -853,7 +853,7 @@ The following message Codes will be used:
 * `property.NAME.title` Title for configuration property named "NAME"
 * `property.NAME.description` Description for configuration property named "NAME"
 
-(*Note*: SCM Plugins have additional message codes.  See: [SCM Plugins - Localization][page:developer/10-scm-plugins.md#localization]).
+(*Note*: SCM Plugins have additional message codes.  See: [SCM Plugins - Localization](/developer/10-scm-plugins.md#localization]).
 
 Additionally, if a property has a [Property Rendering Option](#property-rendering-options) marking it as `STATIC_TEXT`
 normally the `defaultValue` of the property is used to render it as text or HTML.  This value can be localized as well:

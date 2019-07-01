@@ -205,7 +205,7 @@ providers:
           valueConversion: "STORAGE_PATH_AUTOMATIC_READ"
 ~~~~~
 
-Note the `renderingOptions:valueConversion: "STORAGE_PATH_AUTOMATIC_READ"` settings on the credential values. That lets us pass in Key Storage paths and the plugin will pull the values and pass it into the script. For a more detailed tutorial on custom script step plugins, see [[page:tutorials/custom-script-plugin-hello-world.md]].
+Note the `renderingOptions:valueConversion: "STORAGE_PATH_AUTOMATIC_READ"` settings on the credential values. That lets us pass in Key Storage paths and the plugin will pull the values and pass it into the script. For a more detailed tutorial on custom script step plugins, see (/tutorials/custom-script-plugin-hello-world.md).
 
 ## Create the job
 

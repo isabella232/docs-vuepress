@@ -51,7 +51,7 @@ The "launcher jar" for Rundeck 2 is gone (long live the launcher jar). However t
 
 *Official Docker Image*
 
-Still "incubating", we have published an offical docker image. Please give us your feedback on this 
+Still "incubating", we have published an offical docker image. Please give us your feedback on this
 development effort.
 
 * [Official docker image](https://hub.docker.com/r/rundeck/rundeck/)
@@ -67,7 +67,7 @@ Pre-authentication modes should work as they did before.
 
 *SSO Integration*
 
-Okta integration is included in Rundeck Pro. See [Rundeck SSO][page:administration/security/sso.md]
+Okta integration is included in Rundeck Pro. See [Rundeck SSO](/administration/security/sso.md)
 
 ## Thanks
 

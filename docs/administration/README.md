@@ -6,4 +6,4 @@
 
 This the Rundeck Administration Guide.
 
-For information about using Rundeck, see the [User Manual][page:manual/index.md].
+For information about using Rundeck, see the [User Manual](/manual/index.md).

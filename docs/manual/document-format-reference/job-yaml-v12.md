@@ -12,14 +12,14 @@ This file can be batch loaded via [rd] jobs load command:
 
 ~~~~~~~~ {.bash}
 rd jobs load -p project --file /path/to/jobs.yaml -F yaml
-~~~~~~~~ 
+~~~~~~~~
 
 Rundeck job definitions can be dumped and saved to a file via
 rd jobs list command:
 
 ~~~~~~~~ {.bash}
 rd jobs list -p project --file /tmp/jobs.yaml -F yaml
-~~~~~~~~ 
+~~~~~~~~
 
 [rd]: https://rundeck.github.io/rundeck-cli/
 
@@ -32,7 +32,7 @@ The YAML document can contain multiple Job definitions, in a sequence:
   name: ...
 - # job 2
   name: ...
-~~~~~~~~ 
+~~~~~~~~
 
 Each Job definition is a Map consisting of some required and some optional entries, as listed below.
 
@@ -63,7 +63,7 @@ If the description contains more than one line of text, then the first line is u
 The HTML is sanitized to remove disallowed tags before rendering to the browser (such as `<script>`, etc.).
 You can disable all extended description HTML rendering
 via a configuration flag.
-See [GUI Customization][page:administration/configuration/gui-customization.md].
+See [GUI Customization](/administration/configuration/gui-customization.md).
 
 [`sequence`](#sequence)
 
@@ -75,10 +75,10 @@ A minimal job definition example:
 - name: job name
   description: ''
   loglevel: INFO
-  sequence: 
+  sequence:
     commands:
       - exec: a command
-~~~~~~~~ 
+~~~~~~~~
 
 Extended description using yaml 'literal' scalar string format (beginning with a `|`). Make sure each line is indented to the correct level.
 
@@ -86,21 +86,21 @@ Extended description using yaml 'literal' scalar string format (beginning with a
 - name: job name
   description: |
     Performs a service
-    
+
     This is <b>html</b>
     <ul><li>bulleted list</li></ul>
-    
+
     <a href="/">Top</a>
-    
+
     1. this is a markdown numbered list
     2. second item
-    
+
     [a link](http://example.com)
   loglevel: INFO
-  sequence: 
+  sequence:
     commands:
       - exec: a command
-~~~~~~~~ 
+~~~~~~~~
 
 In addition, these optional entries can be present:
 
@@ -123,7 +123,7 @@ In addition, these optional entries can be present:
     * `120` - indicates 120 seconds
     * `6h 30m` indicates 6 hours and 30 minutes
     * `${option.timeout}` reference to a job option value
-    
+
 `retry`
 
 :    Number of times to retry the job if it fails or times out. Allowed values:
@@ -132,34 +132,34 @@ In addition, these optional entries can be present:
     * `${option.retry}` reference to a job option value
 
    Alternatively the retry can be set with delay between retries:
-   
+
     * `120` - indicates 120 seconds
     * `6h 30m` indicates 6 hours and 30 minutes
     * `${option.delay}` reference to a job option value
-   
+
    Example of retry with delay:
 
 ~~~~~~~~ {.yaml}
   retry:
       delay: 1h1m1s
       retry: '${option.retry}'
-~~~~~~~~ 
+~~~~~~~~
 
    Example of simple retry:
 
 ~~~~~~~~ {.yaml}
   retry: ${option.retry}
-~~~~~~~~ 
+~~~~~~~~
 
 `loglimit`
 
 :    An optional logging limit.
-(See [Jobs - Log Limit][page:manual/04-jobs.md#log-limit]). Allowed values:
+(See [Jobs - Log Limit](/manual/04-jobs.md#log-limit]). Allowed values:
 
     * `###` If you specify a number, that is treated as the "Maximum total number of log lines"
     * `###/node` If you specify a number followed by `/node`, the number is treated as the "Maximum number of log lines for a single node"
     * `###[GMK]B` If you specify a number followed by a filesize suffix, that is treated as the "total log file size".  The file size suffixes allowed are "GB" (gigabyte), "MB" (megabyte), "KB" (kilobyte) and "B" (byte).
-    
+
 `loglimitAction`
 
 :    The action to perform if the `loglimit` value is exceeded.
@@ -171,13 +171,13 @@ In addition, these optional entries can be present:
 
 `loglimitStatus`
 
-:    The status for the Job when halted. If no `loglimitStatus` is set, it will default to a 
+:    The status for the Job when halted. If no `loglimitStatus` is set, it will default to a
      value of `failed`. Allowed values:
 
     * `failed`
     * `aborted`
     * (any string)
-    
+
 [`options`](#options)
 
 :    Set of Options for the Job
@@ -196,7 +196,7 @@ In addition, these optional entries can be present:
 
 *Note:* The UUID can be set manually (if
 you are writing the job definition from scratch), or will be assigned at job
-creation time by the Rundeck server using a random UUID.  This string should be 
+creation time by the Rundeck server using a random UUID.  This string should be
 as unique as possible if you set it manually.
 
 This identifier is used to uniquely identify jobs when ported between Rundeck
@@ -212,7 +212,7 @@ Example:
   sequence:
     keepgoing: true
     strategy: node-first
-    commands: 
+    commands:
     - exec: ...
     - script: ...
       args: ...
@@ -226,10 +226,10 @@ Example:
         args: args
     - nodeStep: true/false
       type: plugin-type
-      configuration: 
+      configuration:
         key: value
         another: value
-~~~~~~~~ 
+~~~~~~~~
 
 The sequence has these required entries:
 
@@ -239,7 +239,7 @@ The sequence has these required entries:
 
 `strategy`
 
-:    "node-first" or "step-first".  Determines the strategy for executing the sequence across a set of nodes.  See the [Rundeck User Manual][page:manual/04-jobs.md#workflow-control-settings] for more info.
+:    "node-first" or "step-first".  Determines the strategy for executing the sequence across a set of nodes.  See the [Rundeck User Manual](/manual/04-jobs.md#workflow-control-settings] for more info.
 
 `commands`
 
@@ -267,7 +267,7 @@ fails. An Error Handler is a map keyed with the name:
 
 `errorhandler`
 
-The Error Handler contents can be exactly the same as a [Command](#command), except it 
+The Error Handler contents can be exactly the same as a [Command](#command), except it
 cannot contain another Error Handler.  The contents are defined by one of these types:
 
 * [Simple command execution entry](#simple-command-entry)
@@ -282,8 +282,8 @@ The errorhandler has this additional optional entry:
 :    "true/false" - If true, and the error handler succeeds, the workflow sequence will continue even if the workflow `keepgoing` is false.
 
 ### description
- 
-Defines a description for a step. 
+
+Defines a description for a step.
 
 `description`
 
@@ -318,7 +318,7 @@ Example:
       echo this is a script
       echo this is option value: @option.test@
     args: arguments passed to the script
-~~~~~~~~ 
+~~~~~~~~
 
 ### Script File Execution Entry
 
@@ -337,7 +337,7 @@ Example:
 ~~~~~~~~ {.yaml}
   - scriptfile: /path/to/script
     args: arguments to script
-~~~~~~~~ 
+~~~~~~~~
 
 ### Script URL Execution Entry
 
@@ -356,7 +356,7 @@ Example:
 ~~~~~~~~ {.yaml}
   - scripturl: http://example.com/path/to/script
     args: arguments to script
-~~~~~~~~ 
+~~~~~~~~
 
 ### Script Interpreter
 
@@ -376,7 +376,7 @@ Example:
       echo this is option value: @option.test@
     args: arguments passed to the script
     scriptInterpreter: interpreter -flag
-~~~~~~~~ 
+~~~~~~~~
 
 This script will then be executed as:
 
@@ -415,7 +415,7 @@ This [Command](#command) executes another Rundeck Job.
     :    Execute as a Node Step (optional). `true/false`.
 
     [nodefilters](#job-reference-nodefilters)
- 
+
     :    Overriding node filters and dispatch options.
 
 Example:
@@ -447,7 +447,7 @@ A `nodefilters` map entry specifies the Nodes to use for the referenced job,  an
     `threadcount`
 
     :    Number of threads to use for parallel dispatch (default "1")
-    
+
     `rankAttribute`
 
     :    Name of the Node attribute to use for ordering the sequence of nodes (default is the node name)
@@ -455,8 +455,8 @@ A `nodefilters` map entry specifies the Nodes to use for the referenced job,  an
     `rankOrder`
 
     :    Order direction for node ranking. Either "ascending" or "descending" (default "ascending")
-    
-The `nodefilters` should contain a `filter` entry.  The value is a string defining a node filter. See [User Guide - Node Filters][page:manual/11-node-filters.md].
+
+The `nodefilters` should contain a `filter` entry.  The value is a string defining a node filter. See [User Guide - Node Filters](/manual/11-node-filters.md).
 
 `filter`
 
@@ -501,7 +501,7 @@ Example:
     type: jenkins-build
     configuration:
       job: "${option.job}"
-~~~~~~~~ 
+~~~~~~~~
 
 ### Options
 
@@ -511,7 +511,7 @@ Options for a job can be specified with a list of Maps. Each map contains a `nam
   options:
   - {definition..}
   - {definition..}
-~~~~~~~~ 
+~~~~~~~~
 
 Note: for backwards compatibility, a Map format is also accepted on import:
 
@@ -521,7 +521,7 @@ Note: for backwards compatibility, a Map format is also accepted on import:
       {definition..}
     optname2:
       {definition..}
-~~~~~~~~ 
+~~~~~~~~
 
 ### Option
 
@@ -616,7 +616,7 @@ Example:
     - cvalue
     multivalued: true
     delimiter: ','
-~~~~~~~~ 
+~~~~~~~~
 
 Example using multiple lines for the description:
 
@@ -636,16 +636,16 @@ Example using multiple lines for the description:
     - cvalue
     multivalued: true
     delimiter: ','
-~~~~~~~~ 
+~~~~~~~~
 
 
-#### valuesUrl JSON 
+#### valuesUrl JSON
 
 The data returned from the valuesUrl can be formatted as a list of values:
 
 ~~~~~~~~ {.json}
 ["x value","y value"]
-~~~~~~~~ 
+~~~~~~~~
 
 or as Name-value list:
 
@@ -654,10 +654,10 @@ or as Name-value list:
   {name:"X Label", value:"x value"},
   {name:"Y Label", value:"y value"},
   {name:"A Label", value:"a value"}
-] 
+]
 ~~~~~~~~
 
-* See the [Jobs Guide][page:manual/04-jobs.md#remote-option-values] for more info.
+* See the [Jobs Guide](/manual/04-jobs.md#remote-option-values] for more info.
 
 ### Schedule
 
@@ -724,7 +724,7 @@ Example using structure:
       year: '*'
       weekday:
         day: FRI,MON,TUE
-~~~~~~~~ 
+~~~~~~~~
 
 ### Nodefilters
 
@@ -745,7 +745,7 @@ Specifies the Nodes to use for the job,  and the node-dispatch options.  Contain
     `threadcount`
 
     :    Number of threads to use for parallel dispatch (default "1")
-    
+
     `rankAttribute`
 
     :    Name of the Node attribute to use for ordering the sequence of nodes (default is the node name)
@@ -753,8 +753,8 @@ Specifies the Nodes to use for the job,  and the node-dispatch options.  Contain
     `rankOrder`
 
     :    Order direction for node ranking. Either "ascending" or "descending" (default "ascending")
-    
-The `nodefilters` should contain a `filter` entry.  The value is a string defining a node filter. See [User Guide - Node Filters][page:manual/11-node-filters.md].
+
+The `nodefilters` should contain a `filter` entry.  The value is a string defining a node filter. See [User Guide - Node Filters](/manual/11-node-filters.md).
 
 `filter`
 
@@ -771,7 +771,7 @@ Example:
       rankAttribute: rank
       rankOrder: descending
     filter: 'tags: web name: web-.* !os-family: windows'
-~~~~~~~~ 
+~~~~~~~~
 
 **Note:** The `include` and `exclude` map entries are deprecated and will be removed in a later version of Rundeck.
 
@@ -824,7 +824,7 @@ Deprecated Example:
       name: web-.*
     exclude:
       os-family: windows
-~~~~~~~~ 
+~~~~~~~~
 
 ### Notification
 
@@ -838,9 +838,9 @@ Defines a notification for the job.  You can include any of `onsuccess`, `onfail
     `recipients`
 
     :    A comma-separated list of Email addresses
-    
+
     `urls`
-    
+
     :    A comma-separated list of URLs to use as webhooks
 
     [`plugin`](#plugin)
@@ -879,9 +879,9 @@ Example:
       plugin:
         configuration: {}
         type: MinimalNotificationPlugin
-~~~~~~~~ 
+~~~~~~~~
 
-* For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks][page:manual/04-jobs.md#webhooks].
+* For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](/manual/04-jobs.md#webhooks].
 
 #### plugin
 
@@ -897,7 +897,7 @@ Defines a plugin notification section, can contain a single Map, or a Sequence o
 
 # SEE ALSO
 
-[rd jobs][page:manual/04-jobs.md]
+[rd jobs](/manual/04-jobs.md)
 
 <http://yaml.org/>
 

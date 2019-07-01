@@ -275,4 +275,4 @@ Another thing to notice is that even though we've securely passed the secret to 
 
 ## Next: a real world use case
 
-Now that we understand the basics of how a custom script plugin works, we can use it to solve a real world use case: [rotating database credentials][page:tutorials/custom-script-plugin-db-cred-rotation.md].
+Now that we understand the basics of how a custom script plugin works, we can use it to solve a real world use case: [rotating database credentials](/tutorials/custom-script-plugin-db-cred-rotation.md).

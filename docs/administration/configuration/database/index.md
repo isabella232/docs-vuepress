@@ -1,10 +1,10 @@
 # Database Overview
 
-- [MySQL][page:administration/configuration/database/mysql.md]
-- [PostgreSQL][page:administration/configuration/database/postgres.md]
-- [Oracle][page:administration/configuration/database/oracle.md]
-- [MS SQL Server][page:administration/configuration/database/mssql.md]
-- [Security Mode for MS SQL Server][page:administration/configuration/database/secure_mssql.md]
+- [MySQL](/administration/configuration/database/mysql.md)
+- [PostgreSQL](/administration/configuration/database/postgres.md)
+- [Oracle](/administration/configuration/database/oracle.md)
+- [MS SQL Server](/administration/configuration/database/mssql.md)
+- [Security Mode for MS SQL Server](/administration/configuration/database/secure_mssql.md)
 
 ### Default database
 

@@ -1,22 +1,25 @@
-% Jobs
-% Alex Honor; Greg Schueler
+# Jobs
+
+---
+
+
 % November 20, 2010
 
-This chapter covers how to run and create *Jobs*.
+This chapter covers how to run and create _Jobs_.
 
 Why create a Job?
 
-* One might find certain command executions are done repeatedly, and
+- One might find certain command executions are done repeatedly, and
   perhaps, represent what has become a routine procedure.
-* Another user in your group needs a simple self-service interface to
+- Another user in your group needs a simple self-service interface to
   run a procedure across a set of nodes.
-* Routine processes need to be encapsulated and become the basis for
+- Routine processes need to be encapsulated and become the basis for
   other routine procedures.
 
 ## Overview
 
 Jobs provide a means to encapsulate a process.
-A *Job* is a configuration representing input options,
+A _Job_ is a configuration representing input options,
 the steps in the process, a filter expression that matches the nodes where
 those steps will execute, and execution
 control parameters that specify if steps are run in parallel
@@ -42,7 +45,7 @@ later sections, the topic of Job creation will be covered where
 you will learn about steps and job options
 
 If you want to skip ahead, you can go straight to
-[Creating Jobs][page:manual/creating-jobs.md].
+[Creating Jobs](/manual/creating-jobs.md).
 
 ## Job groups
 
@@ -53,11 +56,11 @@ corresponding to the group structure your jobs define.
 
 Beyond organizing jobs, groups assist in defining access control
 policy, covered in the
-[Administrator guide - Access Control Policy][page:administration/security/authorization.md].
+[Administrator guide - Access Control Policy](/administration/security/authorization.md).
 
 ## Job UUIDs
 
-When created, each new job will be assigned a unique universal identifier (UUID).  If you are writing the Job definition using one of the supported formats you can assign the UUID yourself.
+When created, each new job will be assigned a unique universal identifier (UUID). If you are writing the Job definition using one of the supported formats you can assign the UUID yourself.
 
 You can use the UUID to make sure that when you rename or change the group for
 your job in your job definition, it will modify the correct job in the server.
@@ -93,10 +96,10 @@ Click the "Filter" link to show the filter options:
 
 This will show the Filter fields. Enter a value in any of the filter fields:
 
-* Job Name: the name of the job
-* Group: the name of the job group
-* Description: Job description text
-* Scheduled: Include jobs that have been scheduled.
+- Job Name: the name of the job
+- Group: the name of the job group
+- Description: Job description text
+- Scheduled: Include jobs that have been scheduled.
 
 You can type a substring or a regular expression in any of these
 fields.
@@ -111,7 +114,6 @@ and change the filter fields.
 
 To reset the filter and go back to the full job page, click the
 "Clear" button in the Filter fields.
-
 
 ## Running a Job
 
@@ -146,7 +148,7 @@ proceeding with the execution.
 
 When you are ready, press "Run Job Now". The job will enter
 the execution queue and you can track its execution in the
-Activity section of the page, or by going to the [Activity][page:manual/08-activity.md] page.
+Activity section of the page, or by going to the [Activity](/manual/08-activity.md) page.
 
 ### Following Running Jobs
 
@@ -161,23 +163,21 @@ and click the execution ID's progress bar.
 If you pressed the "run" button from the Job's detail page, or you selected to "Follow execution" when you ran the job, your
 browser will already have been directed to the Execution Follow page.
 
-
 ## Viewing Job detail
 
-A Job's definition  can be shown by clicking on the Definition
+A Job's definition can be shown by clicking on the Definition
 tab in the Job Show page or in the Execution page.
 
 ![Job definition](/figures/fig0320.png)
 
-
 The information in the Job detail view includes:
 
-* Steps the job will execute
-* Options presented to the user at the time of job run
-* Node filter expression with a button to show the matched nodes
-* Job UUID
-* Creation date
-* Statistics about the job executions
+- Steps the job will execute
+- Options presented to the user at the time of job run
+- Node filter expression with a button to show the matched nodes
+- Job UUID
+- Creation date
+- Statistics about the job executions
 
 Pressing the "Show Matches" link will display the list of Nodes where the Job will run.
 

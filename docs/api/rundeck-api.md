@@ -1,5 +1,5 @@
 % API Reference | Version ${APIVERS}
-% Alex Honor; Greg Schueler
+
 % November 20, 2010
 
 Rundeck provides a Web API for use with your application.
@@ -482,7 +482,7 @@ Some endpoints also support using a `format` query parameter to specify the expe
 Authentication can be done in two different ways, either with Token based authentication,
 or with a username and password.
 
-Note that in either case, **it is recommended that you enable SSL Support for the Rundeck server** so that communication is encrypted at all times. For more information about using SSL, see [Security - Configuring Rundeck for SSL][page:administration/security/ssl.md].
+Note that in either case, **it is recommended that you enable SSL Support for the Rundeck server** so that communication is encrypted at all times. For more information about using SSL, see [Security - Configuring Rundeck for SSL](/administration/security/ssl.md).
 
 ### Token Authentication
 
@@ -493,14 +493,14 @@ To obtain an API Token, you must first log in to the Rundeck GUI using a user ac
 Click on your username in the header of the page, and you will be shown your User Profile page.
 From this page you can manage your API Tokens.
 
-**Note**: You must have appropriate authorization to generate a token. See [API Token Authorization][page:administration/security/authorization.md#api-token-authorization].
+**Note**: You must have appropriate authorization to generate a token. See [API Token Authorization](/administration/security/authorization.md#api-token-authorization].
 
 Depending on what authorization level you have, you can generate a token with a certain set of *Authorization Roles*
 and an *Expiration Period*.
 
 Click "Generate API Token" to create a new one. The unique string that is shown is the API Token.
 
-Alternately you can define tokens in static file, by setting the `rundeck.tokens.file` in [framework.properties][page:administration/configuration/config-file-reference.md#framework.properties].
+Alternately you can define tokens in static file, by setting the `rundeck.tokens.file` in [framework.properties](/administration/configuration/config-file-reference.md#framework.properties].
 
 You must include one of the following with every HTTP request to the API:
 
@@ -545,7 +545,7 @@ With these parameters:
 
 If the response includes a redirect chain which includes or results in `$RUNDECK_SERVER_URL/user/login` or `$RUNDECK_SERVER_URL/user/error`, then the authentication request failed.
 
-Otherwise, if the response is a redirect chain which results in `200 successful` response,  then the authentication was successful.  
+Otherwise, if the response is a redirect chain which results in `200 successful` response,  then the authentication was successful.
 
 The response should set a cookie named `JSESSIONID`.
 
@@ -842,7 +842,7 @@ The user specified must either be part of the URL, or be part of the request con
 **For API v18 and earlier**: by default the role `api_token_group` is set for the generated token,
 and the duration will be the maximum allowed token duration.  If `user` is present in the URL, then the request content is ignored and can be empty.
 
-**For API v19 and later**: A content body is expected, and `roles` must be specified, and `duration` is optional.  
+**For API v19 and later**: A content body is expected, and `roles` must be specified, and `duration` is optional.
 
 If unset, duration will be the maximum allowed token duration.
 
@@ -1222,11 +1222,11 @@ List enabled Metrics endpoints.
 
 *Configuration*
 
-The Metrics endpoints are enabled by default, but can be disabled based on application configuration.  See: [Administration > Configuration File Reference][page:administration/configuration/config-file-reference.md#metrics-api-endpoints].
+The Metrics endpoints are enabled by default, but can be disabled based on application configuration.  See: [Administration > Configuration File Reference](/administration/configuration/config-file-reference.md#metrics-api-endpoints].
 
 *ACL Requirement*
 
-They require `read` access to the `system` application scope resource.  See: [Access Control Policy > Application Scope][page:administration/security/authorization.md#application-scope-resources-and-actions].
+They require `read` access to the `system` application scope resource.  See: [Access Control Policy > Application Scope](/administration/security/authorization.md#application-scope-resources-and-actions].
 
 **Request:**
 
@@ -2467,7 +2467,7 @@ The same format as [Listing Jobs](#listing-jobs).
 
 ## ACLs
 
-Manage the system system ACL policy files stored in the database.  
+Manage the system system ACL policy files stored in the database.
 
 The files managed via the API **do not** include the files located on disk, however these policy files will be merged with
 any policy files in the normal filesystem locations (e.g. `$RDECK_BASE/etc`).
@@ -2477,7 +2477,7 @@ any policy files in the normal filesystem locations (e.g. `$RDECK_BASE/etc`).
 For more information about ACL Policies see:
 
 * [ACLPOLICY format][ACLPOLICY]
-* [Access Control Policy][page:administration/security/authorization.md]
+* [Access Control Policy](/administration/security/authorization.md)
 
 ### List System ACL Policies
 
@@ -2529,7 +2529,7 @@ Otherwise if XML or JSON is requested, the YAML text will be wrapped within that
 
 **Response:**
 
-`Content-Type: application/yaml` or `Content-Type: text/plain`:  
+`Content-Type: application/yaml` or `Content-Type: text/plain`:
 
 ~~~~~ {.yaml}
 description: "my policy"
@@ -2542,7 +2542,7 @@ by:
   group: build
 ~~~~~
 
-`Content-Type: application/json`:  
+`Content-Type: application/json`:
 
 ~~~~ {.json}
 {
@@ -2917,9 +2917,9 @@ The following parameters can also be used to narrow down the result set.
 
 **Response:**
 
-If you specify `format=xml`, then the output will be in [job-xml][page:manpages/man5/job-v20.md] format.
+If you specify `format=xml`, then the output will be in [job-xml](/manpages/man5/job-v20.md) format.
 
-If you specify `format=yaml`, then the output will be in [job-yaml][page:manpages/man5/job-yaml-v12.md] format.
+If you specify `format=yaml`, then the output will be in [job-yaml](/manpages/man5/job-yaml-v12.md) format.
 
 If an error occurs, then the output will be in XML format, using the common `result` element described in the [Response Format][] section.
 
@@ -3028,9 +3028,9 @@ Optional parameters:
 
 **Response:**
 
-If you specify `format=xml`, then the output will be in [job-xml][page:manpages/man5/job-v20.md] format.
+If you specify `format=xml`, then the output will be in [job-xml](/manpages/man5/job-v20.md) format.
 
-If you specify `format=yaml`, then the output will be in [job-yaml][page:manpages/man5/job-yaml-v12.md] format.
+If you specify `format=yaml`, then the output will be in [job-yaml](/manpages/man5/job-yaml-v12.md) format.
 
 If an error occurs, then the output will be in XML format, using the common `result` element described in the [Response Format][] section.
 
@@ -3105,7 +3105,7 @@ If successful, then the `result` will contain a `deleteJobs` element with two se
 
 The response may contain only one of `succeeded` or `failed`, depending on the result.
 
-The `succeeded` and `failed` sections contain multiple `deleteJobRequest` elements.  
+The `succeeded` and `failed` sections contain multiple `deleteJobRequest` elements.
 
 Each `deleteJobRequest` under the `succeeded` section will contain:
 
@@ -3259,7 +3259,7 @@ If successful, then the `result` will contain a `toggleExecution` element with t
 
 The response may contain only one of `succeeded` or `failed`, depending on the result.
 
-The `succeeded` and `failed` sections contain multiple `toggleExecutionResult` elements.  
+The `succeeded` and `failed` sections contain multiple `toggleExecutionResult` elements.
 
 Each `toggleExecutionResult` under the `succeeded` section will contain:
 
@@ -3356,7 +3356,7 @@ If successful, then the `result` will contain a `toggleSchedule` element with tw
 
 The response may contain only one of `succeeded` or `failed`, depending on the result.
 
-The `succeeded` and `failed` sections contain multiple `toggleScheduleResult` elements.  
+The `succeeded` and `failed` sections contain multiple `toggleScheduleResult` elements.
 
 Each `toggleScheduleResult` under the `succeeded` section will contain:
 
@@ -3438,7 +3438,7 @@ A single object:
 
 ### Upload a File for a Job Option
 
-Job Options of type `file` require a file input. You can upload multiple files individually, or en-masse.  
+Job Options of type `file` require a file input. You can upload multiple files individually, or en-masse.
 Each uploaded file is assigned a unique "file key" identifier.
 You can then [Run the Job][/api/V/job/[ID]/run] using the "file key" as the option value.
 
@@ -4042,7 +4042,7 @@ Delete an execution by ID.
 
 *Authorization requirement*:
 
-* Requires the `delete_execution` action allowed for a `project` in the `application` context. See: [Administration - Access Control Policy - Application Scope Resources and Actions][page:administration/security/authorization.md#application-scope-resources-and-actions]
+* Requires the `delete_execution` action allowed for a `project` in the `application` context. See: [Administration - Access Control Policy - Application Scope Resources and Actions](/administration/security/authorization.md#application-scope-resources-and-actions)
 
 ### Bulk Delete Executions
 
@@ -4768,7 +4768,7 @@ value will be within the `log` attribute.
 ##### Log Entries in Compacted Form (API v21+)
 
 As of API v21, you can specify `compacted=true` in the URL parameters, which will send the Output Content in "compacted" form. This will be indicated by the `compacted`=`true` value in
-the result data.  
+the result data.
 
 In this mode, Log Entries are compacted by only including the changed values from the
 previous Log Entry in the list.  The first Log Entry in the results will always have complete information.  Subsequent entries may include only changed values.
@@ -5124,7 +5124,7 @@ new execution by ID:
 ## Key Storage ###
 
 Upload and manage public and private key files and passwords.
-For more information see the [Administration - Key Storage][page:administration/security/key-storage.md] document.
+For more information see the [Administration - Key Storage](/administration/security/key-storage.md) document.
 
 Keys are stored via Rundeck's *Storage* facility.  This is a path-based interface to manage files.  The underlying storage may be on disk or in a database.
 
@@ -5887,7 +5887,7 @@ The resource model data in the format requested via the `Accept:` header.
 
 The `readme.md` and `motd.md` files,
 which are Markdown formatted and displayed in the Project listing page,
-can be managed via the API. (See [Project Readme.md](http://rundeck.org/docs/administration/project-setup.html#project-readme.md).)
+can be managed via the API. (See [Project Readme.md)(http://rundeck.org/docs/administration/project-setup.html#project-readme.md).)
 
 **Request:**
 
@@ -5953,7 +5953,7 @@ however the URL is rooted under the Project's URL path: `/api/13/project/[PROJEC
 For more information about ACL Policies see:
 
 * [ACLPOLICY format][ACLPOLICY]
-* [Access Control Policy][page:administration/security/authorization.md]
+* [Access Control Policy](/administration/security/authorization.md)
 
 #### List Project ACL Policies
 
@@ -6128,7 +6128,7 @@ List or query the resources for a project.
 
 Optional Parameters:
 
-* `format` : Result format. Can use "xml", "yaml" or "json", or an installed ResourceFormat plugin name.  
+* `format` : Result format. Can use "xml", "yaml" or "json", or an installed ResourceFormat plugin name.
     * Default is 'json' (API v23 and later)
     * Default is 'xml' (API v22 and earlier)
 * Node Filter parameters: You can select resources to include and exclude in the result set, see [Using Node Filters](#using-node-filters) below.
@@ -6141,7 +6141,7 @@ Specify a MIME type via the `Accept:` header to specify the requested format.
 
 **Response:**
 
-Depending on the `format` parameter, a value of "xml" will return [resource-xml][page:manpages/man5/resource-v13.md] and "yaml" will return [resource-yaml][page:manpages/man5/resource-yaml-v13.md], and "json" will return [resource-json][page:manpages/man5/resource-json-v10.md] formatted results.  Any other supported format value will return content in the specified format.
+Depending on the `format` parameter, a value of "xml" will return [resource-xml](/manpages/man5/resource-v13.md) and "yaml" will return [resource-yaml](/manpages/man5/resource-yaml-v13.md), and "json" will return [resource-json](/manpages/man5/resource-json-v10.md) formatted results.  Any other supported format value will return content in the specified format.
 
 ### Getting Resource Info
 
@@ -6155,19 +6155,19 @@ Get a specific resource within a project.
 
 Optional Parameters:
 
-* `format` : Result format. Can use "xml", "yaml" or "json", or an installed ResourceFormat plugin name.  
+* `format` : Result format. Can use "xml", "yaml" or "json", or an installed ResourceFormat plugin name.
     * Default is 'json' (API v23 and later)
     * Default is 'xml' (API v22 and earlier)
 
 **Response:**
 
-Depending on the `format` parameter, a value of "xml" will return [resource-xml][page:manpages/man5/resource-v13.md] and "yaml" will return [resource-yaml][page:manpages/man5/resource-yaml-v13.md], and "json" will return [resource-json][page:manpages/man5/resource-json-v10.md] formatted results.
+Depending on the `format` parameter, a value of "xml" will return [resource-xml](/manpages/man5/resource-v13.md) and "yaml" will return [resource-yaml](/manpages/man5/resource-yaml-v13.md), and "json" will return [resource-json](/manpages/man5/resource-json-v10.md) formatted results.
 
 The result will contain a single item for the specified resource.
 
 ### Using Node Filters
 
-Refer to the [User Guide - Node Filters][page:manual/11-node-filters.md] Documentation for information on
+Refer to the [User Guide - Node Filters](/manual/11-node-filters.md) Documentation for information on
 the node filter syntax and usage.
 
 A basic node filter looks like:
@@ -6213,7 +6213,7 @@ If using only exclusion filters, the result set will be only those resources whi
 
 When using both types of filters, the result will depend on the `exclude-precedence` value (default true).
 
-* When `exclude-precedence` is true:  
+* When `exclude-precedence` is true:
     1. First select the resources which *do not* match the **exclusion** filters.
     2. Then select from those the resources which *do* match the **inclusion** filters.
 
@@ -6390,7 +6390,7 @@ Input fields have a number of properties:
 
 ### Setup SCM Plugin for a Project
 
-Configure and enable a plugin for a project.  
+Configure and enable a plugin for a project.
 
 The request body is expected to contain entries for all of the `required` input fields for the plugin.
 
@@ -6644,7 +6644,7 @@ Otherwise the response contains:
 
 ### Get Project SCM Action Input Fields
 
-Get the input fields and selectable items for a specific action.  
+Get the input fields and selectable items for a specific action.
 
 Each action may have a set of Input Fields describing user-input values.
 
@@ -6781,7 +6781,7 @@ Perform the action for the SCM integration plugin, with a set of input parameter
 selected Jobs, or Items, or Items to delete.
 
 Depending on the [available Input Fields for the action](#get-project-scm-action-input-fields), the action will
-expect a set of `input` values.  
+expect a set of `input` values.
 
 The set of `jobs` and `items` to choose from will be included in the Input Fields response,
 however where an Item has an associated Job, you can supply either the Job ID, or the Item ID.
@@ -6982,7 +6982,7 @@ For `application/xml`, the `diffContent` will use a CDATA section to preserve wh
 
 ### Get Job SCM Action Input Fields
 
-Get the input fields and selectable items for a specific action for a job.  
+Get the input fields and selectable items for a specific action for a job.
 
 Each action may have a set of Input Fields describing user-input values.
 
@@ -7237,7 +7237,7 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 * `GET` [Project Archive Export Async Download](#project-archive-export-async-download)
 
-[/api/V/project/[PROJECT]/[FILE.md]][]
+[/api/V/project/[PROJECT]/[FILE.md)[]
 
 * `GET` [GET Readme File](#get-readme-file)
 * `PUT` [PUT Readme File](#put-readme-file)
@@ -7543,9 +7543,9 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [/api/V/project/[PROJECT]/export/download/[TOKEN]]:#project-archive-export-async-download
 
 
-[/api/V/project/[PROJECT]/[FILE.md]]:#get-readme-file
-[PUT /api/V/project/[PROJECT]/[FILE.md]]:#put-readme-file
-[DELETE /api/V/project/[PROJECT]/[FILE.md]]:#delete-readme-file
+[/api/V/project/[PROJECT]/[FILE.md):#get-readme-file
+[PUT /api/V/project/[PROJECT]/[FILE.md):#put-readme-file
+[DELETE /api/V/project/[PROJECT]/[FILE.md):#delete-readme-file
 
 [/api/V/project/[PROJECT]/history]:#listing-history
 

@@ -39,13 +39,13 @@ If you want to continue using filesystem storage for project config/readme/motd 
 
 Upgrading an existing `filesystem` configuration to `db` is automatic, and project configs/readme/motd will be loaded into DB storage at system startup.
 
-To encrypt the DB storage, you will need to [enable encryption for the "Project Configuration" storage layer][page:administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin].
+To encrypt the DB storage, you will need to [enable encryption for the "Project Configuration" storage layer](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin].
 
 ## Upgrading to Rundeck 2.8.1 from 2.8.0
 
-### Important Note 
+### Important Note
 
-If you have previously installed Rundeck 2.8.0, using Mysql or H2 database, the 2.8.1 update 
+If you have previously installed Rundeck 2.8.0, using Mysql or H2 database, the 2.8.1 update
 will not work correctly. A DB schema change was required to fix a bug with Postgres and other databases:
  (`user` is a reserved word).
 
@@ -70,7 +70,7 @@ After running this script, you can proceed with the 2.8.1 upgrade.
 For H2, you will need to do the following:
 
 1. Shut down Rundeck.
-2. (backup your H2 database contents, see [Backup and Recovery][page:administration/maintenance/backup.md].
+2. (backup your H2 database contents, see [Backup and Recovery](/administration/maintenance/backup.md).
 3. Use the h2 [`RunScript`](http://h2database.com/javadoc/org/h2/tools/RunScript.html) command
 to run the following SQL script.
 
@@ -84,7 +84,7 @@ To run the script you will need:
    working directory, such as `jdbc:h2:file:$RDECK_BASE/server/data/grailsdb`.
 * File path to the `h2-1.4.x.jar` jar file, which is in the expanded war contents of the Rundeck install.
     * For RPM/DEB installs it is `/var/lib/rundeck/exp/webapp/WEB-INF/lib/h2-1.4.193.jar`.
-    * For launcher install it will under your `$RDECK_BASE`, such as: 
+    * For launcher install it will under your `$RDECK_BASE`, such as:
     `$RDECK_BASE/server/exp/webapp/WEB-INF/lib/h2-1.4.193.jar`
 
 Save this into a file `upgrade-2.8.1.sql`:
@@ -130,7 +130,7 @@ Rundeck server now requires Java 8.
 Well, not technically *required* for Rundeck server so much as heavily frowned upon. You should upgrade, consider Java 7 no longer supported.  We may switch to actually requiring it soon.
 
 ### Default database (H2) upgraded to 1.4.x
-    
+
 The new version uses a different storage format ("mv_store") so switching back to 2.6 after creating a DB with 2.7 may not work.
 
 In-place upgrade with the old storage format do seem to work, however if necessary to keep compatibility with an existing older h2 database, you can update your dataSource.url in rundeck-config.properties to add `;mv_store=false`
@@ -140,7 +140,7 @@ In-place upgrade with the old storage format do seem to work, however if necessa
 * You can remove `;TRACE_LEVEL_FILE=4` from the dataSource.url in rundeck-config.properties
 
 ### CLI tools are gone
-      
+
 We have removed the "rd-*" and "dispatch" and "run" tools from the install, although the "rd-acl" tool is still available.
 
 You should use the new "rd" tool available separately, see <https://rundeck.github.io/rundeck-cli/>.
@@ -148,19 +148,19 @@ You should use the new "rd" tool available separately, see <https://rundeck.gith
 However, `rd` *does* require Java 8.  (See, gotcha.)
 
 ### Debian/RPM startup script changes
-      
+
 The file `/etc/rundeck/profile` was modified and will probably not work with your existing install.
 (This change was snafu'd into 2.6.10 and reverted in 2.6.11)
 
 If you have customized `/etc/rundeck/profile`, look at the new contents and move your custom env var changes to a file in `/etc/sysconfig/rundeckd`.
 
 ### Inline script token expansion changes
-      
+
 (This is another change tha had some hiccups in the 2.6.10 release.)
 
 You must now use `@@` (two at-signs) to produce a literal `@` in an inline script when it might be interpreted as a token, i.e. `@word@` looks like a token, but `@word space@` is ok.
 
-You can globally disable inline script token expansion, see [framework.properties][page:administration/configuration/config-file-reference.md#framework.properties].
+You can globally disable inline script token expansion, see [framework.properties](/administration/configuration/config-file-reference.md#framework.properties].
 
 ### Jetty embedded server was upgraded to 9.0.x
 
@@ -197,22 +197,22 @@ This release adds some new DB tables but does not alter the schema of other tabl
 ### Project definitions stored in DB
 
 Rundeck 2.4 and earlier used the filesystem to store Projects and their configuration.
-Rundeck 2.5 can now use the DB to store project definition and configuration, 
-but this is not enabled by default. 
+Rundeck 2.5 can now use the DB to store project definition and configuration,
+but this is not enabled by default.
 
 If you have projects that exist on the filesystem, when you upgrade to Rundeck 2.5, these projects
 and their configuration files can be automatically imported into the DB.  This means that
 the contents of `project.properties` will be copied to the DB,
-using Rundeck's [Storage Facility][page:administration/configuration/storage-facility.md].
+using Rundeck's [Storage Facility](/administration/configuration/storage-facility.md).
 
 In addition, there is *no encryption by default*, if you want the contents of your project.properties
-to be encrypted in the DB, you must configure 
-[Storage Converter Plugins][page:administration/configuration/plugins/configuring.md#storage-converter-plugins] 
-to use an encryption plugin.  There is now a [Jasypt Encryption Plugin][page:administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin] included with Rundeck which can be used.
+to be encrypted in the DB, you must configure
+[Storage Converter Plugins](/administration/configuration/plugins/configuring.md#storage-converter-plugins]
+to use an encryption plugin.  There is now a [Jasypt Encryption Plugin](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin] included with Rundeck which can be used.
 
 **Enable project DB storage**:
 
-You can configure Rundeck to use the Database by adding the following to 
+You can configure Rundeck to use the Database by adding the following to
 `rundeck-config.properties` before starting it up:
 
     rundeck.projectsStorageType=db
@@ -251,12 +251,12 @@ then re-apply your changes to `<role-name>`.
 ### Database schema
 
 If you are upgrading from 2.0.x, be sure to perform backups prior to upgrading.
-This release adds a new DB table 
+This release adds a new DB table
 but does not alter the schema of other tables.
 
 ### ACL policy additions
 
-Project access via API has been improved, and new authorizations are now required for project access.  See [Adminstration - Access Control Policy][page:administration/security/authorization.md#application-scope-resources-and-actions].
+Project access via API has been improved, and new authorizations are now required for project access.  See [Adminstration - Access Control Policy](/administration/security/authorization.md#application-scope-resources-and-actions].
 
 * project access adds `configure`,`delete`,`import`,`export` actions
 * `admin` access still allows all actions
@@ -298,7 +298,7 @@ The default apitoken aclpolicy file allows this access:
 
 Rundeck 2.0 has some under-the-hood changes, so please follow this guide when upgrading from Rundeck 1.6.x.
 
-The first step is always to make a backup of all important data for your existing Rundeck installation.  Refer to the [Administration - Backup and Recovery][page:administration/maintenance/backup.md] section.
+The first step is always to make a backup of all important data for your existing Rundeck installation.  Refer to the [Administration - Backup and Recovery](/administration/maintenance/backup.md) section.
 
 ## Clean install
 
@@ -344,6 +344,6 @@ Copy the file to `$RDECK_BASE/server/lib` (launcher jar) or `/var/lib/rundeck/bo
 
 ## Upgrading an existing Mysql or other Database
 
-Rundeck 2.0 will add some columns to the existing tables, but should allow in-place migration of the mysql database.  
+Rundeck 2.0 will add some columns to the existing tables, but should allow in-place migration of the mysql database.
 
 However, make sure you take appropriate backups of your data prior to upgrading.

@@ -23,4 +23,4 @@ You can overwrite an old plugin with a newer version to update it.
 
 ## Included Plugins
 
-See [Bundled Plugins][page:administration/configuration/plugins/bundled-plugins.md].
+See [Bundled Plugins](/administration/configuration/plugins/bundled-plugins.md).

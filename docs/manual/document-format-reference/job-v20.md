@@ -1,5 +1,5 @@
 % JOB-XML
-% Alex Honor
+
 % November 20, 2010
 
 # NAME
@@ -13,32 +13,32 @@ current Rundeck "jobs" XML.
 
 This file can be batch loaded via [rd] jobs load command:
 
-~~~~~~~~ {.bash}
+```{.bash}
 rd jobs load -p project --file /path/to/jobs.xml
-~~~~~~~~ 
+```
 
 Rundeck job definitions can be dumped and saved to a file via
 rd jobs list command:
 
-~~~~~~~~ {.bash}
+```{.bash}
 rd jobs list -p project --file /tmp/jobs.xml
-~~~~~~~~ 
+```
 
 [rd]: https://rundeck.github.io/rundeck-cli/
 
-# joblist 
+# joblist
 
-The root (aka "top-level") element of the jobs XML file. 
+The root (aka "top-level") element of the jobs XML file.
 
-*Nested elements*
+_Nested elements_
 
-[job](#job)*
+[job](#job)\*
 
-:    declares a single job
+: declares a single job
 
-*Example*
+_Example_
 
-~~~~~~~~ {.xml}
+```{.xml}
 <joblist>
   <job>
    ...
@@ -47,7 +47,7 @@ The root (aka "top-level") element of the jobs XML file.
    ...
   </job>
 </joblist>
-~~~~~~~~~~~
+```
 
 ## job
 
@@ -57,70 +57,70 @@ executable in Rundeck.
 The following elements are used to describe the job. Only one of each
 element is allowed.
 
-*Nested elements*
+_Nested elements_
 
 [uuid](#uuid)
 
-:    unique UUID to identify the job
+: unique UUID to identify the job
 
 [name](#name-1)
 
-:    the job name
+: the job name
 
 [description](#description)
 
-:    the job description
+: the job description
 
 [group](#group)
 
-:    group name
+: group name
 
 [multipleExecutions](#multipleexecutions)
 
-:    If the job can be executed multiple times simultaneously
+: If the job can be executed multiple times simultaneously
 
 [context](#context)
 
-:    command context
+: command context
 
 [dispatch](#dispatch)
 
-:    dispatch options
+: dispatch options
 
 [sequence](#sequence)
 
-:    workflow sequence
+: workflow sequence
 
 [notification](#notification)
 
-:    notifications of execution success/failure, via email or webhook
+: notifications of execution success/failure, via email or webhook
 
 [nodefilters](#nodefilters)
 
-:    node filtering expressions
+: node filtering expressions
 
 [loglevel](#loglevel)
 
-:    the logging level
+: the logging level
 
 [logging](#logging)
 
-:    limit on the amount of log output
+: limit on the amount of log output
 
-*Job command modes*
-     
+_Job command modes_
+
 Jobs execute a sequence of commands. Commands come in several styles:
 
-* System command
-* A script
-* A script file or URL
-* Another defined job
+- System command
+- A script
+- A script file or URL
+- Another defined job
 
-*Examples*
+_Examples_
 
 Execute the Unix 'who' command
 
-~~~~~~~~ {.xml .numberLines}
+```{.xml .numberLines}
 <joblist>
   <job>
     <name>who's logged in?</name>
@@ -146,11 +146,11 @@ Execute the Unix 'who' command
     </dispatch>
   </job>
 </joblist>
-~~~~~~~~ 
+```
 
 Execute a Bash script
 
-~~~~~~~~ {.xml .numberLines}
+```{.xml .numberLines}
 <joblist>
   <job>
     <name>a simple script</name>
@@ -173,11 +173,11 @@ exit 0 ]]></script>
     </dispatch>
   </job>
 </joblist>
-~~~~~~~~ 
+```
 
 Execute a sequence of other commands, scripts and jobs:
 
-~~~~~~~~ {.xml .numberLines}
+```{.xml .numberLines}
 <joblist>
   <job>
     <name>test coreutils</name>
@@ -185,7 +185,7 @@ Execute a sequence of other commands, scripts and jobs:
     <context>
       <project>default</project>
     </context>
-    <sequence>         
+    <sequence>
      <!-- the Unix 'who' command -->
      <command>
         <exec>who</exec>
@@ -201,41 +201,41 @@ Execute a sequence of other commands, scripts and jobs:
     </dispatch>
   </job>
 </joblist>
-~~~~~~~~ 
+```
 
 ## uuid
 
 The UUID is a sub-element of [job](#job). This string can be set manually (if
 you are writing the job definition from scratch), or will be assigned at job
-creation time by the Rundeck server using a random UUID.  This string should be 
+creation time by the Rundeck server using a random UUID. This string should be
 as unique as possible if you set it manually.
 
 This identifier is used to uniquely identify jobs when ported between Rundeck
 instances.
 
-## name 
+## name
 
-The job name is a sub-element of [job](#job). The combination of  'name'
-and  [group](#group) and [project](#project) must be unique if the [uuid](#uuid) identifier is not
+The job name is a sub-element of [job](#job). The combination of 'name'
+and [group](#group) and [project](#project) must be unique if the [uuid](#uuid) identifier is not
 included.
-     
-## description 
+
+## description
 
 The job description is a sub-element of [job](#job) and allows a short
-description of the job.  
+description of the job.
 
-If the description contains more than one line of text, then the first line is used as the "short description" of the job, and rendered exactly as text. The remaining lines are the "extended description", rendered using Markdown format as HTML in the Rundeck GUI. Markdown can also embed HTML directly if you like.  See [Wikipedia - Markdown](https://en.wikipedia.org/wiki/Markdown#Example).
+If the description contains more than one line of text, then the first line is used as the "short description" of the job, and rendered exactly as text. The remaining lines are the "extended description", rendered using Markdown format as HTML in the Rundeck GUI. Markdown can also embed HTML directly if you like. See [Wikipedia - Markdown](https://en.wikipedia.org/wiki/Markdown#Example).
 
-The HTML is sanitized to remove disallowed tags before rendering to the browser (such as `<script>`, etc.). 
+The HTML is sanitized to remove disallowed tags before rendering to the browser (such as `<script>`, etc.).
 You can disable all extended description HTML rendering
 via a configuration flag.
-See [GUI Customization][page:administration/configuration/gui-customization.md].
+See [GUI Customization](/administration/configuration/gui-customization.md).
 
 **Note**: To preserve formatting when defining the extended job description in XML, you should be sure to use a CDATA section. Wrap the contents in `<![CDATA[` and `]]>`.
 
-*Example Extended description*
+_Example Extended description_
 
-~~~~~~~~ {.xml }
+```{.xml }
 <job>
     <name>My Job</name>
     <description><![CDATA[Performs a service
@@ -252,37 +252,36 @@ This is <b>html</b>
 
 ]]></description>
 </job>
-~~~~~~~~ 
+```
 
+## group
 
-## group 
-
-The group is a sub-element of [job](#job) and defines the  job's group
+The group is a sub-element of [job](#job) and defines the job's group
 identifier. This is a "/" (slash) separated string that mimics a
-directory structure. 
+directory structure.
 
-*Example*
+_Example_
 
-~~~~~~~~ {.xml }
+```{.xml }
 <job>
     <name>who</name>
     <description>who is logged in?</description>
     <group>/sysadm/users</group>
 </job>
-~~~~~~~~ 
+```
 
 ## multipleExecutions
 
-Boolean value: 'true/false'.  If 'true', then the job can be run multiple times at once.  Otherwise, the Job can only have a single execution at a time.
+Boolean value: 'true/false'. If 'true', then the job can be run multiple times at once. Otherwise, the Job can only have a single execution at a time.
 
-~~~~~~~~ {.xml }
+```{.xml }
 <job>
     <name>who</name>
     <description>who is logged in?</description>
     <group>/sysadm/users</group>
     <multipleExecutions>true</multipleExecutions>
 </job>
-~~~~~~~~ 
+```
 
 ## timeout
 
@@ -290,135 +289,130 @@ Timeout string indicating the maximum allowed runtime for a job. After this time
 
 The format is:
 
-* `123` a simple number, indicating seconds
-* `[number][unit]` where "number" is a valid decimal number, and "unit" is one of:
-    * `s` - seconds
-    * `m` - minutes
-    * `h` - hours
-    * `d` - days
-* Any sequence of `[number][unit]` pairs.  The total time will be the added value of all the units.  Any other text in the string is ignored, so the pairs can be separated by spaces or other descriptive text.
+- `123` a simple number, indicating seconds
+- `[number][unit]` where "number" is a valid decimal number, and "unit" is one of:
+  - `s` - seconds
+  - `m` - minutes
+  - `h` - hours
+  - `d` - days
+- Any sequence of `[number][unit]` pairs. The total time will be the added value of all the units. Any other text in the string is ignored, so the pairs can be separated by spaces or other descriptive text.
 
 These are all valid values:
 
-* `1d 6h` - 1 day and 6 hours
-* `120m` - 120 minutes
-* `${option.timeout}` reference to a job option value
+- `1d 6h` - 1 day and 6 hours
+- `120m` - 120 minutes
+- `${option.timeout}` reference to a job option value
 
-
-~~~~~~~~ {.xml }
+```{.xml }
 <job>
     <name>who</name>
     <description>who is logged in?</description>
     <group>/sysadm/users</group>
     <timeout>1d 6h</timeout>
 </job>
-~~~~~~~~ 
+```
 
 ## retry
 
-Retry count indicating the maximum number of times to retry the job if it fails or times out. 
+Retry count indicating the maximum number of times to retry the job if it fails or times out.
 You can also set a delay between retries.
 
 Allowed values:
 
-*  An integer number, indicating maximum number of retries
-* `${option.retry}` reference to a job option value
-* Optional delay attribute, with the same format as [timeout](#timeout)
+- An integer number, indicating maximum number of retries
+- `${option.retry}` reference to a job option value
+- Optional delay attribute, with the same format as [timeout](#timeout)
 
-
-~~~~~~~~ {.xml }
+```{.xml }
 <job>
     <name>iffy job</name>
     <description>Job which might need to be retried</description>
     <retry delay='1h1m1s'>${option.retry}</retry>
 </job>
-~~~~~~~~ 
-
+```
 
 ## logging
 
 An optional logging limit, and the action to perform if the limit is reached.
-(See [Jobs - Log Limit][page:manual/04-jobs.md#log-limit]).
+(See [Jobs - Log Limit](/manual/04-jobs.md#log-limit]).
 
-~~~~ {.xml}
+```{.xml}
 <logging limit='1KB' limitAction='halt' status='aborted' />
-~~~~
+```
 
 If no `limitAction` is set, it will default to a value of `halt` and a status of `failed`.
 
 The syntax for `limit` is:
 
-* `###` If you specify a number, that is treated as the "Maximum total number of log lines"
-* `###/node` If you specify a number followed by `/node`, the number is treated as the "Maximum number of log lines for a single node"
-* `###[GMK]B` If you specify a number followed by a filesize suffix, that is treated as the "total log file size".  The file size suffixes allowed are "GB" (gigabyte), "MB" (megabyte), "KB" (kilobyte) and "B" (byte).
+- `###` If you specify a number, that is treated as the "Maximum total number of log lines"
+- `###/node` If you specify a number followed by `/node`, the number is treated as the "Maximum number of log lines for a single node"
+- `###[GMK]B` If you specify a number followed by a filesize suffix, that is treated as the "total log file size". The file size suffixes allowed are "GB" (gigabyte), "MB" (megabyte), "KB" (kilobyte) and "B" (byte).
 
 The allowed values for `limitAction` are:
 
-* `halt` - halt the job with an optional `status`
-* `truncate` - do not halt the job, and truncate all further output
+- `halt` - halt the job with an optional `status`
+- `truncate` - do not halt the job, and truncate all further output
 
 The allowed values for `status` are any status string:
 
-* `failed` - halt and fail the job
-* `aborted` - halt and abort the job
-* `<anything>` - a custom status string
-
+- `failed` - halt and fail the job
+- `aborted` - halt and abort the job
+- `<anything>` - a custom status string
 
 ## schedule
-     
+
 <code>schedule</code> is a sub-element of [job](#job) and specifies
-periodic job execution using the stated schedule.  The schedule can be
+periodic job execution using the stated schedule. The schedule can be
 specified using embedded elements as shown below, or using a single
 [crontab](#crontab) attribute to set a full crontab expression.
 
-*Nested elements*
+_Nested elements_
 
 [time](#time)
 
-:    the hour and minute and seconds
+: the hour and minute and seconds
 
 [weekday](#weekday)
 
-:    day(s) of week
+: day(s) of week
 
 [month](#month)
 
-:    month(s)
+: month(s)
 
 [year](#year)
 
-:    year
+: year
 
-*Attributes*
+_Attributes_
 
 [crontab](#crontab)
 
-:   a full crontab expression
+: a full crontab expression
 
-
-*Example*
+_Example_
 
 Run the job every morning at 6AM, 7AM and 8AM.
 
-~~~~~~~~ {.xml}
+```{.xml}
 <schedule>
   <time hour="06,07,08" minute="00"/>
   <weekday day="*"/>
   <month month="*"/>
 </schedule>
-~~~~~~~~ 
+```
 
 Run the job every morning at 6:00:02AM, 7:00:02AM and 8:00:02AM only
 in the year 2010:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <schedule>
   <time hour="06,07,08" minute="00" seconds="02"/>
   <weekday day="*"/>
   <month month="*"/>
   <year year="2010"/>
 </schedule>
-~~~~~~~~ 
+```
 
 Run the job every morning at 6:00:02AM, 7:00:02AM and 8:00:02AM only
 in the year 2010, using a single crontab attribute to express it:
@@ -428,8 +422,7 @@ in the year 2010, using a single crontab attribute to express it:
 For more information, see
 http://www.quartz-scheduler.org/documentation/quartz-2.2.x/tutorials/tutorial-lesson-06.html
 
-
-### crontab ###
+### crontab
 
 Attribute of the [schedule](#schedule), sets the schedule with a full
 crontab string. For more information, see
@@ -441,320 +434,313 @@ If specified, then the embedded schedule elements are not used.
 
 The [schedule](#schedule) time to run the job
 
-*Attributes*
+_Attributes_
 
 hour
 
-:    values: 00-23
+: values: 00-23
 
 minute
 
-:    values: 00-59
+: values: 00-59
 
- 
 ### weekday
-     
+
 The [schedule](#schedule) weekday to run the job
 
-*Attributes*
+_Attributes_
 
 day
 
-:   values: `*` - all ; `1-5` days "sun-sat" ; `1,2,3-5` - days "sun,mon,tue-thu", etc
+: values: `*` - all ; `1-5` days "sun-sat" ; `1,2,3-5` - days "sun,mon,tue-thu", etc
 
+### month
 
-### month 
-     
 The [schedule](#schedule) month to run the job
 
-*Attributes*
+_Attributes_
 
 month
 
-:    values: * - all 1-10 - month jan-oct 1,2,3-5 - months jan,feb,mar-may, etc.
+: values: \* - all 1-10 - month jan-oct 1,2,3-5 - months jan,feb,mar-may, etc.
 
 day
 
-:    day of the month: * - all; 1-31 specific days
+: day of the month: \* - all; 1-31 specific days
 
 ### year
 
 The [schedule](#schedule) year to run the job
 
-*Attributes*
+_Attributes_
 
 year
 
-:    year: * - all; specific year
+: year: \* - all; specific year
 
-## context 
-     
+## context
+
 The [job](#job) context.
 
-*Nested elements*
+_Nested elements_
 
 [options](#options)
 
-:    job options. specifies one or more option elements
+: job options. specifies one or more option elements
 
-
-### project 
+### project
 
 The [context](#context) project name. Ignored. Project name must be specified at import time.
 
 ### options
-     
+
 The [context](#context) options for user input.
 
 preserveOrder
 
-  :  If set to "true", then the order of the [option](#option) elements will be preserved in
-     the Rundeck GUI.  Otherwise the options will be shown in alphabetical order.
+: If set to "true", then the order of the [option](#option) elements will be preserved in
+the Rundeck GUI. Otherwise the options will be shown in alphabetical order.
 
-*Nested elements*
+_Nested elements_
 
 [option](#option)
 
-:    an option element
+: an option element
 
-*Example*
+_Example_
 
-~~~~~~~~ {.xml}
+```{.xml}
 <options>
     <option name="detail" value="true"/>
 </options>
-~~~~~~~~ 
+```
 
 #### option
 
 Defines one option within the [options](#options).
 
-*Attributes*
+_Attributes_
 
-name               
+name
 
-:    the option name 
+: the option name
 
 value
 
-:    the default value
+: the default value
 
 values
 
-:    comma separated list of values
+: comma separated list of values
 
 valuesUrl
 
-:    URL to a list of JSON values
+: URL to a list of JSON values
 
 enforcedvalues
 
-:    Boolean specifying that must pick from one of values
+: Boolean specifying that must pick from one of values
 
 regex
 
-:    Regex pattern of acceptable value
+: Regex pattern of acceptable value
 
 description
 
-:    Description of the option, will be rendered as Markdown.
+: Description of the option, will be rendered as Markdown.
 
 required
 
-:    Boolean specifying that the option is required
+: Boolean specifying that the option is required
 
 multivalued
 
-:    "true/false" - whether the option supports multiple input values
+: "true/false" - whether the option supports multiple input values
 
 delimiter
 
-:    A string used to conjoin multiple input values.  (Required if `multivalued` is "true")
+: A string used to conjoin multiple input values. (Required if `multivalued` is "true")
 
 multivalueAllSelected
 
-:    "true/false" - whether all values should be selected by default
+: "true/false" - whether all values should be selected by default
 
 secure
 
-:   "true/false" - whether the option is a secure input option. Not compatible with "multivalued"
+: "true/false" - whether the option is a secure input option. Not compatible with "multivalued"
 
 valueExposed
 
-:   "true/false" - whether a secure input option value is exposed to scripts or not. `false` means the option will be used only as a Secure Remote Authentication option.  default: `false`.
+: "true/false" - whether a secure input option value is exposed to scripts or not. `false` means the option will be used only as a Secure Remote Authentication option. default: `false`.
 
 storagePath
 
-:    for a secure option, a storage path to password value to use as default
+: for a secure option, a storage path to password value to use as default
 
 isDate
 
-:    "true/false" - the option should display as a date/time input field
+: "true/false" - the option should display as a date/time input field
 
 dateFormat
 
-:    The date/time format to use in the UI. Using the [momentjs format](https://momentjs.com/docs/#/displaying/format/).
+: The date/time format to use in the UI. Using the [momentjs format](https://momentjs.com/docs/#/displaying/format/).
 
-*Example*
+_Example_
 
-Define defaults for the "port" option, requiring regex match. 
+Define defaults for the "port" option, requiring regex match.
 
-~~~~~~~~ {.xml}
+```{.xml}
 <option name="port" value="80" values="80,8080,8888" regex="\d+"/>
-~~~~~~~~ 
+```
 
 Define defaults for the "port" option, enforcing the values list.
 
-~~~~~~~~ {.xml}
+```{.xml}
 <option name="port" value="80" values="80,8080,8888" enforcedvalues="true" />
-~~~~~~~~ 
+```
 
 Define defaults for the "ports" option, allowing multiple values separated by ",".
 
-~~~~~~~~ {.xml}
-<option name="port" value="80" values="80,8080,8888" enforcedvalues="true" 
+```{.xml}
+<option name="port" value="80" values="80,8080,8888" enforcedvalues="true"
         multivalued="true" delimiter="," />
-~~~~~~~~ 
+```
 
-Use a multi-line description inside a CDATA section to preserve 
+Use a multi-line description inside a CDATA section to preserve
 whitespace. Wrap the content in `<![CDATA[` and `]]>`:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <option name='example'>
   <description><![CDATA[example option description
 
 * this content will be rendered
 * as markdown]]></description>
 </option>
-~~~~~~~~ 
+```
 
-
-#### valuesUrl JSON 
+#### valuesUrl JSON
 
 The data returned from the valuesUrl can be formatted as a list of values:
 
-~~~~~~~~ {.json}
+```{.json}
 ["x value","y value"]
-~~~~~~~~ 
+```
 
 or as Name-value list:
 
-~~~~~~~~ {.json .numberLines}
+```{.json .numberLines}
 [
   {name:"X Label", value:"x value"},
   {name:"Y Label", value:"y value"},
   {name:"A Label", value:"a value"}
-] 
-~~~~~~~~ 
+]
+```
 
-## dispatch 
+## dispatch
 
-     
 The [job](#job) dispatch options. See the [Dispatcher options] for
 general information.
 
-*Nested elements*
+_Nested elements_
 
 [threadcount](#threadcount)
 
-:    dispatch up to threadcount
+: dispatch up to threadcount
 
 [keepgoing](#keepgoing)
 
-:    keep going flag
+: keep going flag
 
 [rankAttribute](#rankattribute)
 
-:    Name of the Node attribute to use for ordering the sequence of nodes (default is "nodename")
+: Name of the Node attribute to use for ordering the sequence of nodes (default is "nodename")
 
 [rankOrder](#rankorder)
 
-:    Order direction for node ranking. Either "ascending" or "descending" (default "ascending")
+: Order direction for node ranking. Either "ascending" or "descending" (default "ascending")
 
-*Example*
+_Example_
 
-~~~~~~~~ {.xml}
+```{.xml}
 <dispatch>
   <threadcount>1</threadcount>
   <keepgoing>false</keepgoing>
   <rankAttribute>nodename</rankAttribute>
   <rankOrder>descending</rankOrder>
 </dispatch>
-~~~~~~~~ 
+```
 
 ### threadcount
 
 Defines the number of threads to execute within [dispatch](#dispatch). Must be
 a positive integer.
 
-### keepgoing 
+### keepgoing
 
 Boolean describing if the [dispatch](#dispatch) should continue of an error
 occurs (true/false). If true, continue if an error occurs.
 
 ### rankAttribute
 
-This is the name of a Node attribute that determines the order in which the Nodes are traversed.  The default value of "nodename" will rank the nodes based on their names.
+This is the name of a Node attribute that determines the order in which the Nodes are traversed. The default value of "nodename" will rank the nodes based on their names.
 
-This can be any attribute of a Node, even attributes that do not exist on some nodes.  For example you can set it to "rank", then any Nodes with a "rank" attribute will be ordered before any other nodes, and they will be used in the order of the rank attribute value.
+This can be any attribute of a Node, even attributes that do not exist on some nodes. For example you can set it to "rank", then any Nodes with a "rank" attribute will be ordered before any other nodes, and they will be used in the order of the rank attribute value.
 
-The values in the rank attribute are compared first numerically if they are valid integers, but otherwise they are compared alphanumerically.  Nodes which do not have the specified rank attribute will be ordered by node name and treated as if they come after all nodes which do have the rank attribute (if in ascending order).
+The values in the rank attribute are compared first numerically if they are valid integers, but otherwise they are compared alphanumerically. Nodes which do not have the specified rank attribute will be ordered by node name and treated as if they come after all nodes which do have the rank attribute (if in ascending order).
 
 ### rankOrder
 
 This determines whether the rank attribute should be used to order the nodes in ascending or descending order.
 
-Possible values: "ascending", or "descending".  The default if not specified is "ascending".
+Possible values: "ascending", or "descending". The default if not specified is "ascending".
 
-## loglevel 
+## loglevel
 
 The [job](#job) logging level. The lower the more profuse the messages.
 
-* DEBUG
-* VERBOSE
-* INFO
-* WARN
-* ERROR
+- DEBUG
+- VERBOSE
+- INFO
+- WARN
+- ERROR
 
 ## nodefilters
-     
+
 The [job](#job) nodefilters options.
 
-*Attributes*
+_Attributes_
 
 excludeprecedence
 
-:    boolean value: true or false
+: boolean value: true or false
 
-*Nested elements*
+_Nested elements_
 
 [filter](#filter)
 
-:    node filter string
+: node filter string
 
 [include](#include)
 
-:    include filter (deprecated)
+: include filter (deprecated)
 
 [exclude](#exclude)
 
-:    exclude filter (deprecated)
+: exclude filter (deprecated)
 
+_Example_
 
-*Example*
-
-~~~~~~~~ {.xml}
+```{.xml}
 <nodefilters excludeprecedence="true">
   <filter>.*</filter>
 </nodefilters>
-~~~~~~~~ 
-
+```
 
 ### filter
 
 The filter string to select matching nodes.
 
-The content of this element is the full node filter string. See [User Guide - Node Filters][page:manual/11-node-filters.md].
+The content of this element is the full node filter string. See [User Guide - Node Filters](/manual/11-node-filters.md).
 
 ### include
 
@@ -764,72 +750,70 @@ See [Include/exclude patterns](#includeexclude-patterns)
 
 See [Include/exclude patterns](#includeexclude-patterns)
 
-### Include/exclude patterns 
+### Include/exclude patterns
 
-The [nodefilters](#nodefilters) include and exclude patterns.  
+The [nodefilters](#nodefilters) include and exclude patterns.
 
-**Note:** These elements are deprecated and will be removed in a later version of Rundeck.  Use the [filter](#filter) string.
+**Note:** These elements are deprecated and will be removed in a later version of Rundeck. Use the [filter](#filter) string.
 
-*Nested elements*
+_Nested elements_
 
 hostname
 
-:    node hostname
+: node hostname
 
 name
 
-:    node resource name
+: node resource name
 
 type
 
-:    node type
+: node type
 
 tags
 
-:    node tags. comma separated
+: node tags. comma separated
 
 os-name
 
-:    operating system name (eg, Linux, Mac OS X)
+: operating system name (eg, Linux, Mac OS X)
 
 os-family
 
-:    operating system family (eg, unix, windows)
+: operating system family (eg, unix, windows)
 
 os-arch
 
-:    operating system architecture (eg i386,sparc)
+: operating system architecture (eg i386,sparc)
 
 os-version
 
-:    operating system version
+: operating system version
 
+## sequence
 
-## sequence 
+The [job](#job) workflow sequence.
 
-The [job](#job) workflow sequence.  
-
-*Attributes*
+_Attributes_
 
 keepgoing
 
-:    true/false. (default false). If true, the workflow sequence will continue even if there is a failure 
+: true/false. (default false). If true, the workflow sequence will continue even if there is a failure
 
 strategy
 
-:    node-first/step-first. (default "node-first"). The strategy to use for executing the workflow across nodes.
+: node-first/step-first. (default "node-first"). The strategy to use for executing the workflow across nodes.
 
 The strategy attribute determines the way that the workflow is
 executed. "node-first" means execute the full workflow on each node
-prior to the next.  "step-first" means execute each step across all
+prior to the next. "step-first" means execute each step across all
 nodes prior to the next step.
 
-*Nested elements*
+_Nested elements_
 
 [command](#command)
 
-:    a sequence step
-
+: a sequence step
 
 ### command
 
@@ -839,9 +823,9 @@ The different types of sequence steps are defined in different ways.
 
 See:
 
-* [Script sequence step](#script-sequence-step)
-* [Job sequence step](#job-sequence-step)
-* [Plugin step](#plugin-step)
+- [Script sequence step](#script-sequence-step)
+- [Job sequence step](#job-sequence-step)
+- [Plugin step](#plugin-step)
 
 A command can embed a [errorhandler](#errorhandler) to define
 an action to run if the step fails.
@@ -852,124 +836,122 @@ A command can have a [description](#description) element to set the step descrip
 
 Defines an action to handle an error in a [command](#command).
 
-The contents of an `<errorhandler>` are exactly the same as for a 
+The contents of an `<errorhandler>` are exactly the same as for a
 [command](#command) except it cannot contain any errorhandler itself.
 
 The different types of errorhandler steps are defined in different ways.
 
-*Attributes*
+_Attributes_
 
 `keepgoingOnSuccess`
 
-:    true/false. (default false). If true, and the error handler succeeds, the workflow sequence will continue even if the workflow `keepgoing` is false.
+: true/false. (default false). If true, and the error handler succeeds, the workflow sequence will continue even if the workflow `keepgoing` is false.
 
 See:
 
-* [Script sequence step](#script-sequence-step)
-* [Job sequence step](#job-sequence-step)
-* [Plugin step](#plugin-step)
+- [Script sequence step](#script-sequence-step)
+- [Job sequence step](#job-sequence-step)
+- [Plugin step](#plugin-step)
 
 Example:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <errorhandler>
    <exec>echo this is a shell command</exec>
 </errorhandler>
-~~~~~~~~ 
+```
 
-Inline script.  Note that using CDATA section will preserve linebreaks
-in the script.  Simply put the script within a <code>script</code>
+Inline script. Note that using CDATA section will preserve linebreaks
+in the script. Simply put the script within a <code>script</code>
 element:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <errorhandler>
     <script><![CDATA[#!/bin/bash
 echo this is a test
 echo whatever
 exit 2 ]></script>
 </errorhandler>
-~~~~~~~~ 
-
+```
 
 Script File:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <errorhandler>
     <scriptfile>/path/to/a/script</scriptfile>
     <scriptargs>-whatever something</scriptargs>
-</errorhandler>      
-~~~~~~~~
+</errorhandler>
+```
 
 Example job reference:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <errorhandler >
     <jobref group="My group" name="My Job">
        <arg line="-option value -option2 value2"/>
     </jobref>
-</errorhandler>      
-~~~~~~~~ 
+</errorhandler>
+```
 
 ### description
- 
-Defines a description for a step. 
+
+Defines a description for a step.
 
 Example:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <command>
    <exec>echo this is a shell command</exec>
    <description>Demonstrate echo command</description>
 </command>
-~~~~~~~~ 
+```
 
-### Script sequence step 
+### Script sequence step
 
 Script steps can be defined in three ways within a command element:
 
-* Simple shell command using <code>exec</code> element.
-* Embedded script using <code>script</code> element.
-* Script file using <code>scriptfile</code> and <code>scriptargs</code> elements.
+- Simple shell command using <code>exec</code> element.
+- Embedded script using <code>script</code> element.
+- Script file using <code>scriptfile</code> and <code>scriptargs</code> elements.
 
 Example exec step:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <command>
    <exec>echo this is a shell command</exec>
 </command>
-~~~~~~~~ 
+```
 
-Inline script.  Note that using CDATA section will preserve linebreaks
-in the script.  Simply put the script within a <code>script</code>
+Inline script. Note that using CDATA section will preserve linebreaks
+in the script. Simply put the script within a <code>script</code>
 element:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <command>
     <script><![CDATA[#!/bin/bash
 echo this is a test
 echo whatever
 exit 2 ]></script>
 </command>
-~~~~~~~~
-
+```
 
 Script File:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <command >
     <scriptfile>/path/to/a/script</scriptfile>
     <scriptargs>-whatever something</scriptargs>
-</command>      
-~~~~~~~~ 
+</command>
+```
 
 Script URL:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <command >
     <scripturl>http://example.com/path/to/a/script</scripturl>
     <scriptargs>-whatever something</scriptargs>
-</command>      
-~~~~~~~~ 
+</command>
+```
 
 #### Script Interpreter
 
@@ -977,92 +959,91 @@ When using `<script>`, or `<scriptfile>`, you can declare an interpreter to use 
 
 Add `<scriptinterpreter>` to the `<command>`:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <command >
     <scriptinterpreter>sudo -u usera</scriptinterpreter>
     <scripturl>http://example.com/path/to/a/script</scripturl>
     <scriptargs>-whatever something</scriptargs>
 </command>
-~~~~~~~~ 
+```
 
 This will be executed effectively with this commandline:
 
-~~~~~~~~ {.bash}
+```{.bash}
 sudo -u usera script.sh -whatever something
-~~~~~~~~ 
+```
 
 If the filename and arguments need to be quoted when passed to the interpreter, you can declare `argsQuoted='true'`:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <command >
     <scriptinterpreter argsquoted='true'>sudo -u usera sh -c </scriptinterpreter>
     <scripturl>http://example.com/path/to/a/script</scripturl>
     <scriptargs>-whatever something</scriptargs>
 </command>
-~~~~~~~~ 
+```
 
 This will execute as:
 
-~~~~~~~~ {.bash}
+```{.bash}
 sudo -u usera sh -c 'script.sh -whatever something'
-~~~~~~~~ 
+```
 
 ### Job sequence step
 
 Define a [jobref](#jobref) element within the [command](#command) element
 
-#### jobref 
+#### jobref
 
-*Attributes*
+_Attributes_
 
 name
 
-:    the job name
+: the job name
 
 group
 
-:    the group name
+: the group name
 
 nodeStep
 
-:    `true/false` whether the Job reference step should run for each node
+: `true/false` whether the Job reference step should run for each node
 
-
-*Nested elements*
+_Nested elements_
 
 Optional "arg" element can be embedded:
 
 ##### arg
 
-:    option arguments to the script or job
+: option arguments to the script or job
 
 Example passing arguments to the job:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <command >
     <jobref group="My group" name="My Job">
        <arg line="-option value -option2 value2"/>
     </jobref>
-</command>      
-~~~~~~~~ 
+</command>
+```
 
-If `nodeStep` is set to "true", then the Job Reference step will operate as a *Node Step* instead of the
-default.  As a *Node Step* it will execute once for each matched node in the containing Job workflow, and
+If `nodeStep` is set to "true", then the Job Reference step will operate as a _Node Step_ instead of the
+default. As a _Node Step_ it will execute once for each matched node in the containing Job workflow, and
 can use node attribute variable expansion in the arguments to the job reference.
 
 #### nodefilters (jobref)
 
 The node filters to override for the [jobref](#jobref).
 
-*Nested elements*
+_Nested elements_
 
 [filter](#filter)
 
-:    node filter string. See [User Guide - Node Filters][page:manual/11-node-filters.md].
+: node filter string. See [User Guide - Node Filters](/manual/11-node-filters.md).
 
 Example:
 
-~~~ {.xml}
+```{.xml}
 <jobref group="My group" name="My Job">
   <dispatch>
     <threadcount>1</threadcount>
@@ -1074,7 +1055,7 @@ Example:
     <filter>tags: production+appserver</filter>
   </nodefilters>
 </jobref>
-~~~
+```
 
 #### dispatch (jobref)
 
@@ -1088,33 +1069,32 @@ There are two types of plugin steps that can be defined: Node steps, and workflo
 
 Define either one within the [command](#command) element:
 
-* [node-step-plugin](#node-step-plugin)
-* [step-plugin](#step-plugin)
+- [node-step-plugin](#node-step-plugin)
+- [step-plugin](#step-plugin)
 
 Both have the following contents:
 
-*Attributes*
+_Attributes_
 
 type
 
-:    The plugin provider type identifier
+: The plugin provider type identifier
 
-*Nested elements*
+_Nested elements_
 
 Optional 'configuration' can be embedded containing a list of 'entry' key/value pairs:
 
 [configuration](#configuration)
 
-:    Defines plugin configuration entries
+: Defines plugin configuration entries
 
 [entry](#entry)
 
-:    Defines a key/value pair for the configuration.
-
+: Defines a key/value pair for the configuration.
 
 Example node step plugin definition:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <command>
     <node-step-plugin type="my-node-step-plugin">
        <configuration>
@@ -1122,12 +1102,12 @@ Example node step plugin definition:
         <entry key="timout" value="2000"/>
        </configuration>
     </node-step-plugin>
-</command> 
-~~~~~~~~ 
+</command>
+```
 
 Example workflow step plugin definition:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <command>
     <step-plugin type="my-step-plugin">
        <configuration>
@@ -1135,8 +1115,8 @@ Example workflow step plugin definition:
         <entry key="debug" value="true"/>
        </configuration>
     </step-plugin>
-</command>     
-~~~~~~~~ 
+</command>
+```
 
 #### node-step-plugin
 
@@ -1154,46 +1134,46 @@ Contains the key/value pair entries for plugin configuration, within a [node-ste
 
 Defines a key/value pair within a [configuration](#configuration).
 
-*Attributes*:
+_Attributes_:
 
 key
 
-:    Key for the pair
+: Key for the pair
 
 value
 
-:    Textual value
+: Textual value
 
-## notification 
+## notification
 
 Defines email, webhook or plugin notifications for Job success and failure, with in a
 [job](#job) definition.
 
-*Nested elements*
+_Nested elements_
 
 [onsuccess][]
 
-:    define notifications for success result
+: define notifications for success result
 
 [onfailure][]
 
-:    define notifications for failure/kill result
+: define notifications for failure/kill result
 
 [onstart][]
 
-:    define notifications for job start
+: define notifications for job start
 
 [onavgduration][]
 
-:    define notifications when exceed average duration
+: define notifications when exceed average duration
 
 [onretryablefailure][]
 
-:    define notifications when job fails but will be retried
+: define notifications when job fails but will be retried
 
-*Example*
+_Example_
 
-~~~~~~~~ {.xml}
+```{.xml}
 <notification>
     <onfailure>
         <email recipients="test@example.com,foo@example.com" />
@@ -1216,11 +1196,10 @@ Defines email, webhook or plugin notifications for Job success and failure, with
     <onfailure>
         <email recipients="test@example.com,foo@example.com" subject='Job will be retried' />
     </onfailure>
-</notification>      
-~~~~~~~~ 
+</notification>
+```
 
- 
-### onsuccess 
+### onsuccess
 
 Embed an [email](#email) element to send email on success, within
 [notification](#notification).
@@ -1231,7 +1210,7 @@ Embed an [webhook](#webhook) element to perform a HTTP POST to some URLs, within
 Embed an [plugin](#plugin) element to perform a custom action, within
 [notification](#notification).
 
-### onfailure 
+### onfailure
 
 Embed an [email](#email) element to send email on failure or kill,
 within [notification](#notification).
@@ -1242,7 +1221,7 @@ Embed an [webhook](#webhook) element to perform a HTTP POST to some URLs, within
 Embed an [plugin](#plugin) element to perform a custom action, within
 [notification](#notification).
 
-### onstart 
+### onstart
 
 Embed an [email](#email) element to send email on failure or kill,
 within [notification](#notification).
@@ -1253,7 +1232,7 @@ Embed an [webhook](#webhook) element to perform a HTTP POST to some URLs, within
 Embed an [plugin](#plugin) element to perform a custom action, within
 [notification](#notification).
 
-### onavgduration 
+### onavgduration
 
 Embed an [email](#email) element to send email on success, within
 [notification](#notification).
@@ -1275,17 +1254,17 @@ Embed an [webhook](#webhook) element to perform a HTTP POST to some URLs, within
 Embed an [plugin](#plugin) element to perform a custom action, within
 [notification](#notification).
 
-### email 
+### email
 
 Define email recipients for Job execution result, within [onsuccess][], [onfailure][], [onstart][], [onavgduration][], or [onretryablefailure][].
 
-*Attributes*
+_Attributes_
 
 recipients
 
-:    comma-separated list of email addresses
+: comma-separated list of email addresses
 
-*Example*
+_Example_
 
             <email recipients="test@example.com,dev@example.com" />
 
@@ -1293,48 +1272,45 @@ recipients
 
 Define URLs to submit a HTTP POST to containing the job execution result, within [onsuccess][], [onfailure][], [onstart][], [onavgduration][], or [onretryablefailure][].
 
-
-*Attributes*
+_Attributes_
 
 urls
 
-:   comma-separated list of URLs
+: comma-separated list of URLs
 
+_Example_
 
-*Example*
-
-~~~~~~~~ {.xml }
+```{.xml }
 <webhook urls="http://server/callback?id=${execution.id}&status=${execution.status}&trigger=${notification.trigger}"/>
-~~~~~~~~ 
+```
 
-* For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks][page:manual/04-jobs.md#webhooks].
+- For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](/manual/04-jobs.md#webhooks].
 
 ### plugin
 
 Defines a configuration for a plugin to perform a Notification, within [onsuccess][], [onfailure][], [onstart][], [onavgduration][], or [onretryablefailure][].
 
-*Attributes*
+_Attributes_
 
 type
 
-:    The plugin provider type identifier
+: The plugin provider type identifier
 
-*Nested elements*
+_Nested elements_
 
 Optional 'configuration' can be embedded containing a list of 'entry' key/value pairs:
 
 [configuration](#configuration-1)
 
-:    Defines plugin configuration entries
+: Defines plugin configuration entries
 
 [entry](#entry-1)
 
-:    Defines a key/value pair for the configuration.
-
+: Defines a key/value pair for the configuration.
 
 Example notification plugin definition:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <onstart>
     <plugin type="my-notification-plugin">
        <configuration>
@@ -1342,8 +1318,8 @@ Example notification plugin definition:
         <entry key="timout" value="2000"/>
        </configuration>
     </plugin>
-</onstart> 
-~~~~~~~~ 
+</onstart>
+```
 
 #### configuration
 
@@ -1353,24 +1329,22 @@ Contains the key/value pair entries for plugin configuration, within a [plugin](
 
 Defines a key/value pair within a [configuration](#configuration-1).
 
-*Attributes*:
+_Attributes_:
 
 key
 
-:    Key for the pair
+: Key for the pair
 
 value
 
-:    Textual value
-
+: Textual value
 
 # SEE ALSO
 
-`[rd-jobs][page:manual/04-jobs.md]`
+`[rd-jobs](/manual/04-jobs.md)`
 
 The Rundeck source code and all documentation may be downloaded from
 <https://github.com/rundeck/rundeck/>.
-
 
 [onsuccess]: #onsuccess
 [onfailure]: #onfailure

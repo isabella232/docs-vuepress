@@ -7,7 +7,7 @@ This workflow step plugin clones existing VMs.
 Configuration
 
 
-* **Source VM Name**: VM Name that will be clone 
+* **Source VM Name**: VM Name that will be clone
 * **New VM Name**: Destination VM Name
 * **DataCenter**: DataCenter Name. If the DataCenter is not set, the VM will be searching on the root folder
 
@@ -17,7 +17,7 @@ Authentication Options
 * **URL Server**:  URL of the Server, eg: https://vmware-server
 * **Username**: Login Username
 * **Password**: Username Password
-* **Ignore SSL certificate**:  Connecting with the server ignoring the SSL certificate. If this is false, you will need to add the certificate to the truststore ([see here][page:administration/projects/resource-model-sources/vmware.md#connecting-using-certificate]).
+* **Ignore SSL certificate**:  Connecting with the server ignoring the SSL certificate. If this is false, you will need to add the certificate to the truststore ([see here](/administration/projects/resource-model-sources/vmware.md#connecting-using-certificate]).
 
 
 ## Create VM Workflow Step
@@ -26,7 +26,7 @@ This workflow step plugin creates a new VM.
 
 Configuration
 
-* **Source VM Name**: VM Name that will be clone 
+* **Source VM Name**: VM Name that will be clone
 * **DataCenter Name**: DataCenter name where the new VM will be created
 * **VMWare Host**: (Optional)  If the host is not defined, it will take the first on the DataCenter
 * **DataStore Name**: (Optional) If DataStore, it will take one from the host
@@ -45,7 +45,7 @@ Authentication Options
 * **URL Server**:  URL of the Server, eg: https://vmware-server
 * **Username**: Login Username
 * **Password**: Username Password
-* **Ignore SSL certificate**:  Connecting with the server ignoring the SSL certificate. If this is false, you will need to add the certificate to the truststore ([see here][page:administration/projects/resource-model-sources/vmware.md#connecting-using-certificate]).
+* **Ignore SSL certificate**:  Connecting with the server ignoring the SSL certificate. If this is false, you will need to add the certificate to the truststore ([see here](/administration/projects/resource-model-sources/vmware.md#connecting-using-certificate]).
 
 
 
@@ -55,7 +55,7 @@ This workflow step plugin re-config a VM.
 
 Configuration
 
-* **Source VM Name**: VM Name that will be modify 
+* **Source VM Name**: VM Name that will be modify
 * **DataCenter Name**: DataCenter Name. If the DataCenter is not set, the VM will be searching on the root folder
 * **Memory Size (MB)**: new Memory Size
 * **Number CPU**: new CPU number
@@ -72,5 +72,5 @@ Authentication Options
 * **URL Server**:  URL of the Server, eg: https://vmware-server
 * **Username**: Login Username
 * **Password**: Username Password
-* **Ignore SSL certificate**:  Connecting with the server ignoring the SSL certificate. If this is false, you will need to add the certificate to the truststore ([see here][page:administration/projects/resource-model-sources/vmware.md#connecting-using-certificate]).
+* **Ignore SSL certificate**:  Connecting with the server ignoring the SSL certificate. If this is false, you will need to add the certificate to the truststore ([see here](/administration/projects/resource-model-sources/vmware.md#connecting-using-certificate]).
 

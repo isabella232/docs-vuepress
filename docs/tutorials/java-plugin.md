@@ -332,11 +332,11 @@ Then re-run the job from the Rundeck GUI and you should see it print out a list 
 
 Success!
 
-If you want to try your plugin on your live Rundeck server instead of on your workstation, see [Installing plugins][page:administration/configuration/plugins/installing.md]
+If you want to try your plugin on your live Rundeck server instead of on your workstation, see [Installing plugins](/administration/configuration/plugins/installing.md)
 
 ## References
 
-* [Workflow Step Plugin Developer Guide][page:developer/03-step-plugins.md]
-* [Installing plugins][page:administration/configuration/plugins/installing.md]
+* [Workflow Step Plugin Developer Guide](/developer/03-step-plugins.md)
+* [Installing plugins](/administration/configuration/plugins/installing.md)
 * [Rundeck Playground](https://github.com/clofresh/rundeck-playground)
 * [Rundeck Plugin Bootstrap](https://github.com/rundeck/plugin-bootstrap)

@@ -46,7 +46,7 @@ are using an unsupported Java version.
 
     Exception in thread "main" java.lang.UnsupportedClassVersionError: Bad version number in .class file
 
-See the [startup and shutdown][page:administration/maintenance/startup.md] section for
+See the [startup and shutdown](/administration/maintenance/startup.md) section for
 instructions on using the `rundeckd` shell tool to manage the
 rundeck server process.
 
@@ -57,7 +57,7 @@ rundeck server process.
 
 Rundeck is now up and running!
 
-Next, learn how to [create your first Rundeck Enterprise project][page:manual/02-getting-started.md#project-setup]
+Next, learn how to [create your first Rundeck Enterprise project](/manual/02-getting-started.md#project-setup)
 
 ### Updating
 
@@ -107,6 +107,6 @@ working directory where the executable war is located.
 
 ### System Properties
 
-See [[page:administration/configuration/system-properties.md]]
+See (/administration/configuration/system-properties.md)
 
-For more information about using SSL, see [Configuring Rundeck for SSL][page:administration/security/ssl.md].
+For more information about using SSL, see [Configuring Rundeck for SSL](/administration/security/ssl.md).

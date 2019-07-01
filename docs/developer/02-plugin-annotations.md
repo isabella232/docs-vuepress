@@ -4,7 +4,7 @@
 
 ## About
 Some Rundeck Plugins allow you to use annotations to add
-[description metadata][page:developer/01-plugin-development.md#plugin-descriptions]
+[description metadata](/developer/01-plugin-development.md#plugin-descriptions)
 about your plugin to the class
 definition itself, and Rundeck will extract that metadata for use in
 displaying the plugin information and configuration properties in the GUI, as
@@ -38,7 +38,7 @@ no descriptive text when displayed.
 
 ## Plugin Provider Metadata
 
-You can supply additional metadata about the plugin implementation, using the 
+You can supply additional metadata about the plugin implementation, using the
 [\@PluginMetadata][] annotation.
 You can provide multiple metadata entries with a [\@PluginMeta](${javadocbase}/com/dtolabs/rundeck/plugins/descriptions/PluginMeta.html)
 annotation, which can contain multiple [\@PluginMetadata][] values.
@@ -64,7 +64,7 @@ public class MyPlugin implements StepPlugin{
 }
 ~~~~~~
 
-See [Provider Metadata][page:developer/01-plugin-development.md#provider-metadata-1] for information about what metadata keys may be used.
+See [Provider Metadata](/developer/01-plugin-development.md#provider-metadata-1] for information about what metadata keys may be used.
 
 
 [\@PluginMetadata]: ${javadocbase}/com/dtolabs/rundeck/plugins/descriptions/PluginMetadata.html
@@ -125,4 +125,4 @@ You can define the scope for a property by adding `scope` to the PluginProperty 
 
 The default effective scope if you do not specify it in the annotation is `InstanceOnly`.
 
-For more information see [Property Scopes][page:developer/01-plugin-development.md#property-scopes].
+For more information see [Property Scopes](/developer/01-plugin-development.md#property-scopes].

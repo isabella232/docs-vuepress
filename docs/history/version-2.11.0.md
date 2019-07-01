@@ -11,17 +11,17 @@ Name: <span style="color: Olive"><span class="glyphicon glyphicon-music"></span>
 
 ## Upgrading from Earlier versions
 
-* See the [Upgrading Guide][page:upgrading/upgrading.md]
+* See the [Upgrading Guide](/upgrading/upgrading.md)
 
 ## Notes
 
 New Features:
 
-* SCM/Git plugin: 
+* SCM/Git plugin:
 	* works in Cluster mode
 	* improvements to jobs page load speed
 	* can disable SCM status checks in the GUI
-* Projects: 
+* Projects:
 	* Set a Label to display instead of the name
 	* new default: projectsStorageType defaults to `db` (see below)
 * Job reference steps:
@@ -33,7 +33,7 @@ New Features:
 	* Timeout for referenced jobs is enforced
 	* Choose behavior if the referenced job is disabled: fail or pass
 	* (see [#3040](https://github.com/rundeck/rundeck/pull/3040))
-* Job Options: 
+* Job Options:
 	* Set a Label to display instead of the name
 	* Multivalue option delimiter is available in data context as `${option.name.delimiter}`/`$RD_OPTION_NAME_DELIMITER`
 * Plugins: admins can disable/enable plugins for a project in the GUI or via project config [#3122](https://github.com/rundeck/rundeck/pull/3122)
@@ -93,7 +93,7 @@ If you want to continue using filesystem storage for project config/readme/motd 
 
 Upgrading an existing `filesystem` configuration to `db` is automatic, and project configs/readme/motd will be loaded into DB storage at system startup.
 
-To encrypt the DB storage, you will need to [enable encryption for the "Project Configuration" storage layer][page:plugins/index.md#jasypt-encryption-plugin].
+To encrypt the DB storage, you will need to [enable encryption for the "Project Configuration" storage layer](/plugins/index.md#jasypt-encryption-plugin].
 
 ## Contributors
 

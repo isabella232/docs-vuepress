@@ -36,7 +36,7 @@ and the plugin `transitionState` method is called with a state of `Deleted`.
 
 ## Configuration
 
-To enable the plugin, The plugin provider is specified in [rundeck-config.properties][page:administration/configuration/config-file-reference.md#rundeck-config.properties]:
+To enable the plugin, The plugin provider is specified in [rundeck-config.properties](/administration/configuration/config-file-reference.md#rundeck-config.properties]:
 
     rundeck.fileupload.plugin.type=[provider]
 
@@ -44,7 +44,7 @@ To enable the plugin, The plugin provider is specified in [rundeck-config.proper
 
 (Note: currently "Project" scoped properties are not supported.)
 
-"Framework" scoped properties of the plugin you can add configuration values to the framework scope are set in [framework.properties][page:administration/configuration/config-file-reference.md#framework.properties]
+"Framework" scoped properties of the plugin you can add configuration values to the framework scope are set in [framework.properties](/administration/configuration/config-file-reference.md#framework.properties)
 
     framework.plugin.FileUpload.[provider].[property]=value
 

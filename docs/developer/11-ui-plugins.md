@@ -8,7 +8,7 @@
 UI Plugins provide a way to include Javascript and CSS files
 in various parts of the Rundeck GUI's HTML pages.
 You can define which pages of the GUI should include your plugin files,
-and use the Javascript and CSS to modify or add new features to the GUI. 
+and use the Javascript and CSS to modify or add new features to the GUI.
 
 UI Plugins that are installed are loaded on all applicable pages by default.
 
@@ -72,7 +72,7 @@ This is the list of available pages which can load UI plugins:
 
 ## Zip Plugin Type
 
-See the [Plugin Development - Script plugin zip structure][page:developer/01-plugin-development.md#script-plugin-zip-structure]
+See the [Plugin Development - Script plugin zip structure](/developer/01-plugin-development.md#script-plugin-zip-structure)
 for the basics of Zip plugin structure.
 
 The structure of the zip file is:
@@ -120,7 +120,7 @@ providers:
             - js/lib/my-main.js
           requires: 'some-other-provider'
         - pages: ['some/path']
-          styles: 
+          styles:
           	- css/mystyles.css
 ~~~~~~~~~~~~
 
@@ -142,15 +142,15 @@ See [Javascript API](#javascript-api) for additional Javascript information.
 
 ### Localization
 
-For the basics of zip plugin localization see: [Plugin Development - Internationalization/Localization for Zip files][page:developer/01-plugin-development.md#internationalizationlocalization-for-zip-files].
+For the basics of zip plugin localization see: [Plugin Development - Internationalization/Localization for Zip files](/developer/01-plugin-development.md#internationalizationlocalization-for-zip-files].
 
 ### Icon
 
-See [Plugin Icons][page:developer/01-plugin-development.md#plugin-icons].
+See [Plugin Icons](/developer/01-plugin-development.md#plugin-icons].
 
 ## Java Plugin Type
 
-* *Note*: Refer to [Java Development][page:developer/01-plugin-development.md#java-plugin-development] for information about developing a Java plugin for Rundeck.
+* *Note*: Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development] for information about developing a Java plugin for Rundeck.
 
 The plugin interface is [UIPlugin][].
 
@@ -203,19 +203,19 @@ The methods of the plugin are used as follows:
 * `styleResourcesForPath`: return the list of CSS resources for the path
 * `requires`: return a list of other UI plugin names which this plugin requires, used to order the loading of plugin resources.
 
-Resources should be included in your plugin Jar file under a `resources/` directory. 
+Resources should be included in your plugin Jar file under a `resources/` directory.
 
 ### Localization
 
-For the basics of Java plugin localization see: [Plugin Development - Plugin Localization][page:developer/01-plugin-development.md#plugin-localization]
+For the basics of Java plugin localization see: [Plugin Development - Plugin Localization](/developer/01-plugin-development.md#plugin-localization)
 
 ### Icon
 
-See [Plugin Icons][page:developer/01-plugin-development.md#plugin-icons].
+See [Plugin Icons](/developer/01-plugin-development.md#plugin-icons].
 
 ## Javascript API
 
-When loaded in a Rundeck GUI page, your Javascript code can use a simple Javascript API to 
+When loaded in a Rundeck GUI page, your Javascript code can use a simple Javascript API to
 get more information about the Rundeck application, and your plugin.
 
 Note: Rundeck makes use of [Knockout][] and [jQuery][] on all GUI pages, so they can be used by your plugins. Knockout is useful to understand when interacting with the JS already included on a Rundeck page.
@@ -233,7 +233,7 @@ Note: the `rundeckPage` object may have other methods, but any methods not docum
 
 ### Loading resources
 
-You can load other resources from your plugin by using the `pluginBaseUrl` for your plugin. 
+You can load other resources from your plugin by using the `pluginBaseUrl` for your plugin.
 
 Example using jQuery:
 
@@ -244,7 +244,7 @@ function loadHtmlTemplate(file){
 	var pluginUrl = rundeckPage.pluginBaseUrl(myProvider);
     var fullUrl = pluginUrl + '/html/' + file + ".html";
     jQuery.get(fullUrl, function (text) {
-    	//do something with the HTML contents         
+    	//do something with the HTML contents
     });
 }
 ~~~
@@ -253,7 +253,7 @@ function loadHtmlTemplate(file){
 
 The `rundeckPage.pluginBasei18nUrl(..)` method will return the base URL for loading i18n resources.
 
-Rundeck Plugin Localization/Internationalization uses java `.properties` formatted files. (See [Plugin Localization][page:developer/01-plugin-development.md#plugin-localization]). However, your i18n resources don't have to be `.properties` files.
+Rundeck Plugin Localization/Internationalization uses java `.properties` formatted files. (See [Plugin Localization](/developer/01-plugin-development.md#plugin-localization]). However, your i18n resources don't have to be `.properties` files.
 
 Requesting resources via this URL provides two features to help with i18n:
 
@@ -291,7 +291,7 @@ function loadi18nHtmlTemplate(file){
 	var plugini18nBase = rundeckPage.pluginBasei18nUrl(myProvider);
     var fullUrl = plugini18nBase + '/html/' + file + ".html";
     jQuery.get(fullUrl, function (text) {
-    	//do something with the HTML contents         
+    	//do something with the HTML contents
     });
 }
 ~~~

@@ -15,12 +15,12 @@ reduces the complexity of each file.  The default path is
 
 Policy files are parsed using YAML and while the structure is rigid,
 additional information can be added and safely ignored.  So creating arbitrary
-elements for documentation or organizational purposes is gracefully parsed.  
+elements for documentation or organizational purposes is gracefully parsed.
 The resulting file must be a valid yaml file.
 
 For more information about the exact resources and actions you need to
 authorize for the Rundeck application, see the
-[Administration Guide - Authorization][page:administration/security/authorization.md#rundeck-resource-authorizations].
+[Administration Guide - Authorization](/administration/security/authorization.md#rundeck-resource-authorizations].
 
 ## Authorizing a certain action on a resource
 
@@ -106,7 +106,7 @@ by:
 
 An .aclpolicy supports multiple policy definitions in the form of YAML
 documents using the `---` separator.  There are four elements that make a
-policy definition: `decription`, `context`, `for`, `by`.  
+policy definition: `decription`, `context`, `for`, `by`.
 
 It's recommended that this description be short and descriptive as it appears
 in the log output.
@@ -238,7 +238,7 @@ multiple entries.
 
 Regular expressions are supported in the username or group.
 
-A single match will result in further evaluation of the policy.  
+A single match will result in further evaluation of the policy.
 
 Examples:
 
@@ -263,7 +263,7 @@ Examples:
 
 ## `notBy`
 
-`notBy` is a variation of the `by` clause that only works on `deny`, it follow the same pattern using `username` and `group` 
+`notBy` is a variation of the `by` clause that only works on `deny`, it follow the same pattern using `username` and `group`
 entries but in this case, the policy applies to anyone not in the group or with a different username.
 
 Each entry can contain a single string, or a sequence of strings to define

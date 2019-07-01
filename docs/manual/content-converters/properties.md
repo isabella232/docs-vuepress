@@ -3,7 +3,7 @@
 
 Parses Java style Properties data into a Java object.
 
-The [[page:manual/content-converters/html-table-view.md]] plugin can render this as a HTML Table.
+The (/manual/content-converters/html-table-view.md) plugin can render this as a HTML Table.
 
 ## Input Types
 
@@ -15,4 +15,4 @@ The [[page:manual/content-converters/html-table-view.md]] plugin can render this
 
 ## Related Plugins
 
-* [[page:manual/content-converters/html-table-view.md]]
+* (/manual/content-converters/html-table-view.md)

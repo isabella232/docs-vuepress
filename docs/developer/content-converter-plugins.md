@@ -13,16 +13,16 @@ also be rendered into a `<ol>` in the final output due to the first plugin.
 
 Each Content Converter Plugin can be asked for "Data Types" that it can accept, and also describes the Output "Data Types" that it can produce.
 
-A "Data Type" consist of a Java type (class), and a String such as `text/html`. 
+A "Data Type" consist of a Java type (class), and a String such as `text/html`.
 
 ## Behavior
 
 Content Converter plugins are applied automatically to Log Output when viewing it in the Rundeck GUI.
 
 However, the Log output must have certain metadata entries set for the Log Events.  Plain log output will not be
-rendered in any special way (aside from ANSI Color rendering.)  
+rendered in any special way (aside from ANSI Color rendering.)
 
-For this reason, usually a [Log Filter Plugin][page:developer/log-filter-plugins.md] is used to annotate the log output with the correct data type when
+For this reason, usually a [Log Filter Plugin](/developer/log-filter-plugins.md) is used to annotate the log output with the correct data type when
 used with Rundeck's Command or Script steps,
 however custom Step plugins can add this metadata in the logs they emit.
 
@@ -31,7 +31,7 @@ however custom Step plugins can add this metadata in the logs they emit.
 Log events have Metadata (key/value strings) associated with them.
 
 If a Log event has a `content-data-type` metadata value, Rundeck will attempt to chain together up to two Content Converter Plugins
-to convert the specified data type into `text/html` for rendering in the GUI.  
+to convert the specified data type into `text/html` for rendering in the GUI.
 
 Using a Log Filter plugin such as the "Render Formatted Data" built-in Log Filter Plugin allows adding adding the `content-data-type` to the output
 of Commands or Script steps.
@@ -64,7 +64,7 @@ rundeckPlugin(ContentConverterPlugin){
 }
 ~~~~~~
 
-To define metadata about your plugin, see the [Plugin Development - Groovy Plugin Development][page:developer/01-plugin-development.md#groovy-plugin-development] chapter.
+To define metadata about your plugin, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development] chapter.
 
 The `ContentConverterPlugin` Groovy DSL supports defining conversions between data types.
 
@@ -83,12 +83,12 @@ Call `convert` using explicit data types and a closure to define the conversion:
 /**
  * Converts two data types
  */
-convert(dataType(String,'application/x-my-data'), dataType(String,'text/html')) { 
+convert(dataType(String,'application/x-my-data'), dataType(String,'text/html')) {
     //properties available via delegation:
     // data: the input data
     // metadata: input metadata map
     // dataType: input DataType
-    
+
     //return type must match the output Java class in the DataType:
     return "hello ${data}, it seems you are ${metadata.mood?:'happy'}."
 }
@@ -101,7 +101,7 @@ and simply pass the dataType string:
 /**
  * Called to convert two data types
  */
-convert('application/x-my-data', 'text/html') { 
+convert('application/x-my-data', 'text/html') {
 	//data is a String, and we should return a String
 	return '<b>'+data+' more data</b>'
 }
@@ -113,7 +113,7 @@ And if you are going to return `text/html` the output declaration can be skipped
 /**
  * Called to convert two data types
  */
-convert('application/x-my-data') { 
+convert('application/x-my-data') {
 	//return type defaults to String and datatype 'text/html'
 	return '<b>'+data+' more data</b>'
 }
@@ -127,14 +127,14 @@ an intermediate type.
 /**
  * Convert a string into an intermediate java type
  */
-convert('application/x-my-data-type', dataType(SomeClass,'application/x-another-type')) { 
+convert('application/x-my-data-type', dataType(SomeClass,'application/x-another-type')) {
 	//use an intermediate object
 	return new SomeClass(data)
 }
 /**
  * Expect the intermediate type as input, and default to HTML output
  */
-convert(dataType(SomeClass,'application/x-another-type')) { 
+convert(dataType(SomeClass,'application/x-another-type')) {
 	//now `data` will be a SomeClass object
 	return data.generateHtml()
 }
@@ -143,7 +143,7 @@ convert(dataType(SomeClass,'application/x-another-type')) {
 
 ## Localization
 
-For the basics of plugin localization see: [Plugin Development - Plugin Localization][page:developer/01-plugin-development.md#plugin-localization].
+For the basics of plugin localization see: [Plugin Development - Plugin Localization](/developer/01-plugin-development.md#plugin-localization].
 
 ## Example
 
@@ -164,4 +164,4 @@ See the [JsonConverterPlugin] for an example.
 
 See <https://github.com/rundeck/rundeck/tree/master/examples/example-groovy-content-converter-plugins>.
 
-[Plugin Development - Plugin Localization][page:developer/01-plugin-development.md#plugin-localization]
+[Plugin Development - Plugin Localization](/developer/01-plugin-development.md#plugin-localization)

@@ -1,15 +1,17 @@
-% Commands
-% Alex Honor; Greg Schueler
+# Commands
+
+---
+
+
 % January 30, 2014
 
 A _command_ is a single executable string executed on a Node.
-Rundeck invokes commands on nodes via a *node executor*
+Rundeck invokes commands on nodes via a _node executor_
 which evaluates the command string and executes it.
 Node executors evaluate the command string in a data context
 containing information about the Node resource. Command strings
 can reference this data and thus avoid hard coding node or environment
 specific values.
-
 
 The Rundeck graphical console provides the ability to execute
 commands to a set of filtered Node resources.
@@ -17,7 +19,7 @@ The Command page can accept any command string you might run
 via an SSH command or via the [rd adhoc](https://rundeck.github.io/rundeck-cli/commands/#adhoc) shell tool.
 
 > Note, your ability to view Nodes and execute commands on them
-depends on your ACL policy.
+> depends on your ACL policy.
 
 ## Commands tab overview
 
@@ -36,11 +38,9 @@ The screenshot above shows the elements of the Commands page user interface.
 5. Run command button - Execute command for command string and matched nodes.
 6. Activity views - Historical views of command executions.
 
-
 ## Enter a command
 
 ![Input command string](/figures/fig0207-a.png)
-
 
 Enter the command string you wish to execute on the Nodes. This command
 string must be a valid command statement that can be executed on the nodes.
@@ -52,8 +52,8 @@ string must be a valid command statement that can be executed on the nodes.
 The dispatch settings let you control the amount of concurrency and error
 handling for the command execution.
 
-* Thread count: Number of concurrent command executions. By default the value is 1 which causes a sequential execution.
-* On node failure: If a command execution fails on the node, you can choose to continue (default) or stop immediately at the failed node.
+- Thread count: Number of concurrent command executions. By default the value is 1 which causes a sequential execution.
+- On node failure: If a command execution fails on the node, you can choose to continue (default) or stop immediately at the failed node.
 
 ## Select the nodes
 
@@ -103,27 +103,24 @@ Commands page or a separate execution follow page discussed later.
 1. Kill job button: You can kill the execution by pressing this button.
 2. Execution status bar: If you dismissed the output view, you can continue monitoring progress in the "running" tab in the Activity section.
 
-
 ### Output view options
 
 This page section provides several views to read the output using different formats.
 
 ![View options](/figures/fig0209.png)
 
-
 Log view
 
-:   Displays output messages from the command execution as if you were
-    running the Unix `tail -f` command on the output log file.
-    ![Execution output](/figures/fig0208.png)
+: Displays output messages from the command execution as if you were
+running the Unix `tail -f` command on the output log file.
+![Execution output](/figures/fig0208.png)
 
 By Node
 
-:   Output messages are sorted into Node specific sections and are not
-    interlaced. By default, the messages are collapsed but can be
-    revealed by pressing the disclosure icon to the right.
-    ![Collapsed output](/figures/fig0210.png)
-
+: Output messages are sorted into Node specific sections and are not
+interlaced. By default, the messages are collapsed but can be
+revealed by pressing the disclosure icon to the right.
+![Collapsed output](/figures/fig0210.png)
 
 ### Execution follow page
 
@@ -131,7 +128,6 @@ Sometimes it is useful to have a page where just the execution output
 is displayed separately. One purpose is to share a link to others
 interested in following the output messages. Click the progress bar
 in the "Activity" section to go to the execution follow page.
-
 
 ![Execution follow view](/figures/fig0207-d.png)
 
@@ -141,24 +137,22 @@ contains the execution ID (EID) and has a form like:
 
      http://rundeckserver/project/prod/execution/show/{EID}
 
-
 After execution completes, the command will have a status:
 
-* Successful: No errors occurred during execution of the command
+- Successful: No errors occurred during execution of the command
   across the filtered Node set
-* Failed: One or more errors occurred. A list of Nodes that incurred
+- Failed: One or more errors occurred. A list of Nodes that incurred
   an error is displayed. The page will also contain a link "Retry
   Failed Nodes..." in case you would like to retry the command.
 
-
-
 ## Execution history
+
 The Commands page provides several views about execution history.
 
-* running: Shows any currently running command executions.
-* recent: Shows any executions from the last 24 hours.
-* failed: Shows failed executions from last 24 hours.
-* by you: Shows executions started by you.
+- running: Shows any currently running command executions.
+- recent: Shows any executions from the last 24 hours.
+- failed: Shows failed executions from last 24 hours.
+- by you: Shows executions started by you.
 
 ![Recent history](/figures/fig0207-e.png)
 
@@ -167,8 +161,7 @@ You can further search activity history by clicking the "Filter activity..." lin
 ## Related Command line tools
 
 [rd adhoc](https://rundeck.github.io/rundeck-cli/commands/#adhoc)
-  ~ Execute ad hoc commands and scripts to matching nodes.
+~ Execute ad hoc commands and scripts to matching nodes.
 
 [rd executions](https://rundeck.github.io/rundeck-cli/commands/#executions)
-  ~ List running executions, attach and follow their output, or kill them.
-
+~ List running executions, attach and follow their output, or kill them.

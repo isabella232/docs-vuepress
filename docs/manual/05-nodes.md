@@ -1,10 +1,13 @@
-% Nodes
-% Alex Honor; Greg Schueler
+# Nodes
+
+---
+
+
 % January 30, 2014
 
 ## Overview
 
-A _Node_  is a resource that is either a physical or virtual instance
+A _Node_ is a resource that is either a physical or virtual instance
 of a network accessible host.
 Nodes have a few basic attributes but a Node's attributes can be
 extended to include arbitrary named key/value pairs. Attributes typically
@@ -12,7 +15,7 @@ describe the properties of a node or reflect the state of the node.
 One of a Node's built in attributes is called "tags" which is a list
 of classifications or categories about that Node.
 
-To add nodes to your Rundeck instances, see [[page:manual/09-configure.md#resource-model-sources-configuration]]
+To add nodes to your Rundeck instances, see (/manual/09-configure.md#resource-model-sources-configuration])
 
 ## Nodes tab overview
 
@@ -32,7 +35,7 @@ The screenshot above shows the elements of the Nodes page user interface.
 
 ## Attribute name spaces
 
-Because nodes might have many attributes, it can be helpful to use a naming convention that groups them into namespaces.  The naming convention is simple:
+Because nodes might have many attributes, it can be helpful to use a naming convention that groups them into namespaces. The naming convention is simple:
 
     {namespace}:{name} = {value}
 
@@ -42,8 +45,8 @@ When Rundeck sees an attribute with a name containing a colon it automatically g
 
 The two attributes are:
 
-* web:pid = 4872
-* web:state = RUNNING
+- web:pid = 4872
+- web:state = RUNNING
 
 This naming convention is really just a graphical treatment to reduce the amount of data being shown all at once. This convention also helps add structure to your resource model.
 
@@ -64,7 +67,7 @@ The screenshot below shows a case where two nodes were found that were tagged "w
 1. Clicking the single node view icon filters the list down to just that node.
 2. Find nodes with this Tag (e,g just nodes with tagged "www").
 3. Find nodes with this Attribute name (e.g., any node with the "web:pid" attribute).
-4. Find nodes with this Attribute value  (e.g., any node with attribute "web:state=RUNNING" ).
+4. Find nodes with this Attribute value (e.g., any node with attribute "web:state=RUNNING" ).
 
 The next screenshot shows a single node view. Notice the nodes unique name is entered in the filter form.
 
@@ -72,8 +75,8 @@ The next screenshot shows a single node view. Notice the nodes unique name is en
 
 ## Node filtering
 
-A *node filter* is a search pattern that matches a set of nodes.
-Rundeck  node filters let you match Nodes based on a pattern like "tags" or any node attribute. You can define node filters that include and exclude nodes based on sets of patterns. While a node filter can specifically reference nodes using their unique name, filter patterns are more resilient to changes in your environment and better handle dynamically provisioned servers.
+A _node filter_ is a search pattern that matches a set of nodes.
+Rundeck node filters let you match Nodes based on a pattern like "tags" or any node attribute. You can define node filters that include and exclude nodes based on sets of patterns. While a node filter can specifically reference nodes using their unique name, filter patterns are more resilient to changes in your environment and better handle dynamically provisioned servers.
 
 ![Filtered nodes](/figures/fig0204-c.png)
 
@@ -84,7 +87,7 @@ Rundeck  node filters let you match Nodes based on a pattern like "tags" or any 
 
 The filter expression syntax is very simple. You can find a list of nodes by entering their names, or by attribute name and value. Values can also be regular expressions.
 
-For full syntax information see the [Node Filters][page:manual/10-user.md] chapter.
+For full syntax information see the [Node Filters](/manual/10-user.md) chapter.
 
 If you forget the syntax, press the help button in the filter form and a dialog containing a cheat sheet will be displayed (see screenshot below).
 
@@ -113,8 +116,8 @@ The saved filters become available in the Filters menu in other parts of rundeck
 
 Often times you are browsing and filtering nodes because you want to do something with the list. The Node Actions menu contains links to
 
-* Run a command. Choosing this menu item will forward your browser to the Commands page.
-* Create a job. Choosing this menu item will forward you to the Job create page and enter the filter expression in the edit form.
+- Run a command. Choosing this menu item will forward your browser to the Commands page.
+- Create a job. Choosing this menu item will forward you to the Job create page and enter the filter expression in the edit form.
 
 ![Node actions menu](/figures/fig0204-f.png)
 
@@ -126,6 +129,5 @@ The example below shows that the user can't create Job for those nodes.
 
 ## Related Command line tools
 
-[dispatch][page:manpages/man1/index.md]
-  ~ List nodes or execute commands and scripts.
-
+[dispatch](/manpages/man1/index.md)
+~ List nodes or execute commands and scripts.

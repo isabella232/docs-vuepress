@@ -7,7 +7,7 @@ Email settings are located in the rundeck-config.properties file. Depending on t
 - RPM/DEB: /etc/rundeck/rundeck-config.properties
 - Launcher: \$RDECK_BASE/server/config/rundeck-config.properties
 
-Refer to the appropriate configuration file paths from [Configuration -> Configuration Layout][page:administration/configuration/config-file-reference.md#configuration-layout] to locate the Rundeck configuration paths depending on your install.
+Refer to the appropriate configuration file paths from [Configuration -> Configuration Layout](/administration/configuration/config-file-reference.md#configuration-layout] to locate the Rundeck configuration paths depending on your install.
 
 ## SMTP server settings
 
@@ -30,11 +30,11 @@ see the grails Mail plugin configuration:
 
 The caveat for using this is that in our experience it requires using a .groovy formatted configuration file to support the extended configuration properties.
 
-See [Groovy config format][page:administration/configuration/config-file-reference.md#groovy-config-format].
+See [Groovy config format](/administration/configuration/config-file-reference.md#groovy-config-format].
 
 ## Notification email settings
 
-The URL and From: address used in [Job email notifications][page:manual/creating-jobs.md#job-notifications] are managed via the settings located in the rundeck-config.properties file.
+The URL and From: address used in [Job email notifications](/manual/creating-jobs.md#job-notifications] are managed via the settings located in the rundeck-config.properties file.
 
 The two properties are:
 
@@ -67,7 +67,7 @@ You can define these properties to customize the email notifications. Each prope
 
 If a template filepath ends with `.md` or `.markdown`, then it will be interpreted as a Markdown formatted template. Otherwise it is expected that the template file contains HTML.
 
-The Subject line, filepath, and file contents can all contain embedded property references of the form `${group.key}`. The available properties are mostly the same as those available for Notification Plugins, including the `execution.*` and `job.*` values. See [[page:developer/05-notification-plugins.md#execution-data]].
+The Subject line, filepath, and file contents can all contain embedded property references of the form `${group.key}`. The available properties are mostly the same as those available for Notification Plugins, including the `execution.*` and `job.*` values. See (/developer/05-notification-plugins.md#execution-data).
 
 The "Context Variables" values used within the execution are available just as they are in the execution, so options would be available as `${option.name}`.
 
@@ -100,4 +100,4 @@ rundeck.mail.<TRIGGER>.template.log.contentType=text/html
 
 ## Troubleshooting
 
-See the [service.log][page:administration/maintenance/logs.md#service.log] for mail error messages.
+See the [service.log](/administration/maintenance/logs.md#service.log] for mail error messages.

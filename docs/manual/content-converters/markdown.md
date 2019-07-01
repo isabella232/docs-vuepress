@@ -4,7 +4,7 @@
 Renders Markdown as HTML.
 
 
-See: [[page:manual/content-converters/index.md#sanitized-html-output]].
+See: (/manual/content-converters/index.md#sanitized-html-output]].
 
 ## Input Data Types
 

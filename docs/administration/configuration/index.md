@@ -1,14 +1,14 @@
 # Rundeck Configuration
 
-- [License (Enterprise)][page:administration/configuration/license.md]
-- [Database][page:administration/configuration/database/index.md]
-- [Remote Job Execution (Enterprise)][page:administration/configuration/remote-job-execution.md]
-- [Email Settings][page:administration/configuration/email-settings.md]
-- [GUI Customization][page:administration/configuration/gui-customization.md]
-- [Localization][page:administration/configuration/localization.md]
-- [Configuration File Reference][page:administration/configuration/config-file-reference.md]
-- [[page:administration/configuration/system-properties.md]]
-- [Encryptable Config Properties (Enterprise)][page:administration/configuration/encryptable-properties.md]
-- [Plugins][page:administration/configuration/plugins/index.md]
-- [Storage Facility][page:administration/configuration/storage-facility.md]
-- [Repository][page:administration/configuration/repository.md]
+- [License (Enterprise)](/administration/configuration/license.md)
+- [Database](/administration/configuration/database/index.md)
+- [Remote Job Execution (Enterprise)](/administration/configuration/remote-job-execution.md)
+- [Email Settings](/administration/configuration/email-settings.md)
+- [GUI Customization](/administration/configuration/gui-customization.md)
+- [Localization](/administration/configuration/localization.md)
+- [Configuration File Reference](/administration/configuration/config-file-reference.md)
+- (/administration/configuration/system-properties.md)
+- [Encryptable Config Properties (Enterprise)](/administration/configuration/encryptable-properties.md)
+- [Plugins](/administration/configuration/plugins/index.md)
+- [Storage Facility](/administration/configuration/storage-facility.md)
+- [Repository](/administration/configuration/repository.md)

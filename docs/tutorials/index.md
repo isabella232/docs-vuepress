@@ -1,5 +1,5 @@
 % Tutorials
-% Alex Honor; Greg Schueler
+
 % November 20, 2010
 
 This chapter presents working examples reflecting a variety of
@@ -7,9 +7,9 @@ solutions you can create with Rundeck. Helping you apply concepts
 and features introduced in earlier chapters is the focus of these examples.
 To give them some context, the examples are about solutions used
 by Acme Anvils, a fictitious organization that manages an online
-e-commerce application. 
+e-commerce application.
 
-## Acme Anvils 
+## Acme Anvils
 
 Acme Anvils is a hypothetical start up selling new and used anvils from
 their web site.  Two teams inside the company are involved with the
@@ -20,7 +20,7 @@ has led to mistakes and outages. Because the senior management is so
 enthusiastic, they drive the teams to deliver new features as
 frequently as possible. Unfortunately, this has led to another
 problem: the Acme Anvil web tier sometimes locks up and other
-times runs out of memory requiring occasional restarts.  
+times runs out of memory requiring occasional restarts.
 
 There are actually two methods to the restart procedure depending
 on the problem: "force" versus "normal". The "force" restart is required

@@ -1,4 +1,4 @@
-% Rundeck Enterprise
+# Rundeck Enterprise
 
 ## Overview
 
@@ -35,30 +35,30 @@ granted if a user's group membership meets the requirements of the policy.
 
 ## License
 
-See: [Rundeck Enterprise Licensing and Support][page:administration/configuration/license.md]
+See: [Rundeck Enterprise Licensing and Support](/administration/configuration/license.md)
 
 ## General configuration
 
-Rundeck Enterprise supports all properties described in the [OSS version][page:administration/configuration/config-file-reference.md].
+Rundeck Enterprise supports all properties described in the [OSS version](/administration/configuration/config-file-reference.md).
 
 ## Node Model Sources
 
 Node Sources allow you to import metadata about the nodes you want to run
 Rundeck jobs on. Node Sources are configured on Rundeck Enterprise in the same was as
-the OSS version, described in [Node Model Sources][page:administration/projects/resource-model-sources/index.md].
+the OSS version, described in [Node Model Sources](/administration/projects/resource-model-sources/index.md).
 
 ## Authentication
 
 Similar to OSS Rundeck, Rundeck Enterprise uses Servlet Container Authentication to
 determine the logged in user name and the user's authorized roles.
 
-For more details, see [Authenticating Users][page:administration/security/authentication.md]
+For more details, see [Authenticating Users](/administration/security/authentication.md)
 
 ## Key storage
 
 Similar to OSS Rundeck, Rundeck Enterprise can securely store private keys that the Rundeck Node Executor and use for sessions.
 
-For momre details, see [Key Storage][page:administration/security/key-storage.md]
+For momre details, see [Key Storage](/administration/security/key-storage.md)
 
 ## Remote job execution
 
@@ -69,13 +69,13 @@ multiple profiles and assign different projects to different profiles. If a job
 is executed in a project which is not assigned to a specific profile, the
 default policy is used.
 
-For more details, see [Remote Job Execution][page:administration/configuration/remote-job-execution.md]
+For more details, see [Remote Job Execution](/administration/configuration/remote-job-execution.md)
 
 ## High availability
 
 ### Database
 
-See: [Database Backends][page:administration/configuration/database/index.md].
+See: [Database Backends](/administration/configuration/database/index.md).
 
 ### Loadbalancer
 
@@ -83,22 +83,22 @@ A loadbalancer allows you to achieve high availability in your Rundeck Enterpris
 installation by routing http traffic across several redundant Rundeck Enterprise
 instances.
 
-To learn how to set up a loadbalancer for Rundeck Enterprise, see [Loadbalancer][page:administration/cluster/loadbalancer/index.md]
+To learn how to set up a loadbalancer for Rundeck Enterprise, see [Loadbalancer](/administration/cluster/loadbalancer/index.md)
 
 ### Autotakeover
 
 If a cluster member goes down, all scheduled jobs on that cluster member must be moved to another cluster node. This process can be performed automatically using the heartbeat and Autotakeover features in Rundeck Enterprise version 2.1.0 and later releases.
 
-To learn how to set up Autotakeover, see [Autotakeover][page:administration/cluster/autotakeover/index.md]
+To learn how to set up Autotakeover, see [Autotakeover](/administration/cluster/autotakeover/index.md)
 
 ### Logstore
 
 All Cluster members must share the same log storage, this can be achieved in two ways:
 
-* Shared file system: You can set the shared file system path with
-`framework.logs.dir` in the `framework.properties` file. This changes must be
-done in all the cluster members.
-* Plugins: Using an Execution log storage plugin.
+- Shared file system: You can set the shared file system path with
+  `framework.logs.dir` in the `framework.properties` file. This changes must be
+  done in all the cluster members.
+- Plugins: Using an Execution log storage plugin.
 
 Some plugins that can be used:
 
@@ -110,19 +110,19 @@ It is based on the open source [Rundeck S3 Log Storage Plugin](https://github.co
 
 It adds the additional feature:
 
-* *Checkpoint log storage*:  This enables viewing the execution logs while the execution is running.
+- _Checkpoint log storage_: This enables viewing the execution logs while the execution is running.
 
 ##### Configuration
 
 Enable the ExecutionFileStorage provider named `com.rundeck.rundeckpro.amazon-s3` in your rundeck-config file:
 
-	rundeck.execution.logs.fileStoragePlugin=com.rundeck.rundeckpro.amazon-s3
+    rundeck.execution.logs.fileStoragePlugin=com.rundeck.rundeckpro.amazon-s3
 
 The "checkpoint log storage" feature is enabled by default.
 
 If you wish to disable it you can set this in your framework.properties:
 
-	framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.checkpoint=false
+    framework.plugin.ExecutionFileStorage.com.rundeck.rundeckpro.amazon-s3.checkpoint=false
 
 Please refer to the [open source plugin](https://github.com/rundeck-plugins/rundeck-s3-log-plugin) for other configuration. **Note**: Be sure to use `com.rundeck.rundeckpro.amazon-s3` in place of `org.rundeck.amazon-s3`.
 

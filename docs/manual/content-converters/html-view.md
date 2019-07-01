@@ -5,7 +5,7 @@ Allows HTML embedded in log data to be rendered.
 
 Note: this plugin performs no changes, but passes HTML to be sanitized and rendered.
 
-See: [[page:manual/content-converters/index.md#sanitized-html-output]].
+See: (/manual/content-converters/index.md#sanitized-html-output]].
 
 ## Input Data Types
 

@@ -11,18 +11,18 @@ Name: <span style="color: Purple"><span class="glyphicon glyphicon-gift"></span>
 
 ## Upgrading from 2.8.0
 
-**Important Note**: please see the [Upgrading Guide][page:upgrading/upgrading.md] if you are using Mysql or H2 database,
+**Important Note**: please see the [Upgrading Guide](/upgrading/upgrading.md) if you are using Mysql or H2 database,
 and are upgrading from Rundeck 2.8.0.
 
 A DB schema change requires a manual fix before upgrading.
 
 ## Upgrading from Earlier versions
 
-* See the [Upgrading Guide][page:upgrading/upgrading.md]
+* See the [Upgrading Guide](/upgrading/upgrading.md)
 
 ## Notes
 
-This release is primarily bug fixes. 
+This release is primarily bug fixes.
 
 ## Contributors
 

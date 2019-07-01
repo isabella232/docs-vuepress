@@ -8,13 +8,13 @@ and are installed in the `libext` dir automatically at installation time.
 
 Defines SSH Node Executor and SCP File Copier.
 
-- See [SSH Plugins][page:administration/projects/node-execution/ssh.md]
+- See [SSH Plugins](/administration/projects/node-execution/ssh.md)
 
 File: _none_ (built-in)
 
 ## Built-in Resource Model Sources
 
-Rundeck comes with four built-in Resource Model Source providers, see [Resource Model Source Plugins][page:administration/projects/resource-model-sources/builtin.md]:
+Rundeck comes with four built-in Resource Model Source providers, see [Resource Model Source Plugins](/administration/projects/resource-model-sources/builtin.md):
 
 - File: Parses a file in one of the supported [Model Source Formats](#built-in-resource-model-formats)
 - Directory: Scans all files in a directory in one of the supported formats
@@ -24,11 +24,11 @@ File: _none_ (built-in)
 
 ## Built-in Resource Model Formats
 
-Rundeck comes with three Resource Model Format plugins, see [Resource Model Source Plugins][page:administration/projects/resource-model-sources/builtin.md#resource-model-document-formats]:
+Rundeck comes with three Resource Model Format plugins, see [Resource Model Source Plugins](/administration/projects/resource-model-sources/builtin.md#resource-model-document-formats]:
 
-- XML: the [resourcexml][page:manpages/man5/resource-v13.md] format
-- YAML: the [resourceyaml][page:manpages/man5/resource-yaml-v13.md] format
-- JSON: the [resourcejson][page:manpages/man5/resource-json-v10.md] format
+- XML: the [resourcexml](/manpages/man5/resource-v13.md) format
+- YAML: the [resourceyaml](/manpages/man5/resource-yaml-v13.md) format
+- JSON: the [resourcejson](/manpages/man5/resource-json-v10.md) format
 
 File: _none_ (built-in)
 
@@ -36,9 +36,9 @@ File: _none_ (built-in)
 
 Defines Script Node Executor and Script File Copier.
 
-For more detail see [Script Plugin][page:administration/projects/node-execution/script.md].
+For more detail see [Script Plugin](/administration/projects/node-execution/script.md).
 
-Executes an external script file to perform the command, useful for developing your own plugin with the [Script Plugin Development][page:developer/01-plugin-development.md#script-plugin-development] model.
+Executes an external script file to perform the command, useful for developing your own plugin with the [Script Plugin Development](/developer/01-plugin-development.md#script-plugin-development] model.
 
 File: `rundeck-script-plugin-${VERSION_FULL}.jar`
 
@@ -52,7 +52,7 @@ The `stub-plugin` includes these providers:
 - `stub` for the FileCopier service
 - `stub` for the ResourceModelSource service
 
-(Refer to [Configuring - Node Execution][page:administration/configuration/plugins/configuring.md#node-execution] to enable them.)
+(Refer to [Configuring - Node Execution](/administration/configuration/plugins/configuring.md#node-execution] to enable them.)
 
 This plugin does not actually perform any remote file copy or command execution,
 instead it simply echoes the command that was supposed to be executed, and
@@ -100,7 +100,7 @@ File: `rundeck-flow-control-plugin-${VERSION_FULL}.jar`
 
 ## Jasypt Encryption Plugin {#jasypt-encryption-plugin}
 
-Provides an encryption [storage converter][page:administration/configuration/storage-facility.md#storage-converters] for the Storage facility. Can be used to encrypt the contents of Key Storage,
+Provides an encryption [storage converter](/administration/configuration/storage-facility.md#storage-converters] for the Storage facility. Can be used to encrypt the contents of Key Storage,
 and Project Configuration stored in the DB or on disk.
 
 This plugin provides password based encryption for storage contents.
@@ -111,9 +111,9 @@ It uses the [Jasypt][] encryption library. The built in Java JCE is used unless 
 
 Password, algorithm, provider, etc can be specified directly, or via environment variables (the `*EnvVarName` properties), or Java System properties (the `*SysPropName` properties).
 
-To enable it, see [Configuring - Storage Converter Plugins][page:administration/configuration/plugins/configuring.md#storage-converter-plugins].
+To enable it, see [Configuring - Storage Converter Plugins](/administration/configuration/plugins/configuring.md#storage-converter-plugins].
 
-See also: [Key Storage][page:administration/security/key-storage.md]
+See also: [Key Storage](/administration/security/key-storage.md)
 
 Provider type: `jasypt-encryption`
 
@@ -173,7 +173,7 @@ File: `rundeck-jasypt-encryption-plugin-${VERSION_FULL}.jar`
 
 ## Git Plugin
 
-- See [SCM Git Plugin][page:administration/projects/scm/git.md]
+- See [SCM Git Plugin](/administration/projects/scm/git.md)
 
 Provides SCM Export and SCM Import providers for Git.
 

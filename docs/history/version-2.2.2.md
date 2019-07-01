@@ -30,16 +30,16 @@ you will see an "Invalid token" error.
 If this becomes a problem for you
 you can either change the expiration time for these tokens,
 or switch to using non-expiring tokens.
-See [Administration - Configuration File Reference - Security][page:administration/configuration/config-file-reference.md#security].
+See [Administration - Configuration File Reference - Security](/administration/configuration/config-file-reference.md#security].
 
-To add a Password field definition to your plugin, 
-see [Plugin Development - Description Properties][page:developer/01-plugin-development.md#description-properties]. 
-(Note that currently using property annotations is not supported 
+To add a Password field definition to your plugin,
+see [Plugin Development - Description Properties](/developer/01-plugin-development.md#description-properties].
+(Note that currently using property annotations is not supported
 for the three plugin types that can use Password properties.)
 
-*Upgrade notes:* 
+*Upgrade notes:*
 
-See the [Upgrading Guide][page:upgrading/upgrading.md].
+See the [Upgrading Guide](/upgrading/upgrading.md).
 
 
 ## Contributors

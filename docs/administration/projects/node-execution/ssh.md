@@ -9,7 +9,7 @@ The SSH plugin expects each node definition to have the following properties in 
 
 In addition, for both SSH and SCP, you must either configure a public/private keypair for the remote node or configure the node for SSH Password authentication.
 
-Out of the box typical node configuration to make use of these is simple. 
+Out of the box typical node configuration to make use of these is simple.
 
 * Set the `hostname` attribute for the nodes.  It can be in the format "hostname:port" to indicate that a non-default port should be used. The default port is 22.
 * Set the `username` attribute for the nodes to the username to connect to the remote node.
@@ -37,15 +37,15 @@ All SSH Keys and Passwords are stored under the `keys/` top-level path.
 
 **Note:** In general if a "key storage path" and another configuration option are both specified, the "key storage path" will be used.
 
-You can embed context property references within the key storage path such as `${job.project}`. See [[page:manual/job-workflows.md#context-variables]].
+You can embed context property references within the key storage path such as `${job.project}`. See (/manual/job-workflows.md#context-variables]].
 
 
 ### SCP File Copier
 
-In addition to the general SSH configuration mentioned for in this section, some additional configuration can be done for SCP. 
+In addition to the general SSH configuration mentioned for in this section, some additional configuration can be done for SCP.
 
 When a Script is executed on a remote node, it is copied over via SCP first, and then executed.  In addition to the SSH connection properties, some attributes
-can be configured.  See [File Copier destination directory][page:administration/projects/node-execution/builtin.md#file-copier-destination-directory].
+can be configured.  See [File Copier destination directory](/administration/projects/node-execution/builtin.md#file-copier-destination-directory].
 
 ###  Authentication types
 
@@ -98,12 +98,12 @@ SSH config options can be specified by setting the following properties:
 
 ### Specifying SSH Timeout options
 
-SSH timeout options can be specified.  The timeout values are in milliseconds.  
+SSH timeout options can be specified.  The timeout values are in milliseconds.
 A value of 0 means the timeout will be indefinite.
-The precedence level is Node > Project > Rundeck.  
+The precedence level is Node > Project > Rundeck.
 
 1. **Node level**: attribute on the Node. Applies only to the target node.
-    
+
     * `ssh-connection-timeout` connection timeout
     * `ssh-command-timeout` command timeout
 
@@ -111,11 +111,11 @@ The precedence level is Node > Project > Rundeck.
 
     * `project.ssh-connection-timeout`  connection timeout
     * `project.ssh-command-timeout` command timeout
-    
-3. **Rundeck level**: Applies to all projects by default. Set property in `framework.properties`. 
 
-    * `framework.ssh-connection-timeout` connection timeout 
-    * `framework.ssh-command-timeout` command timeout 
+3. **Rundeck level**: Applies to all projects by default. Set property in `framework.properties`.
+
+    * `framework.ssh-connection-timeout` connection timeout
+    * `framework.ssh-command-timeout` command timeout
 
 
 Deprecated: The framework property `framework.ssh.timeout` will also be used for Connection timeout if set.
@@ -143,7 +143,7 @@ When connecting to the remote node, Rundeck will look for a property/attribute s
 
 If you private key is encrypted with a passphrase, then you can use a "Secure Remote Authentication Option" to prompt the user to enter the passphrase when executing on the Node.  See below.
 
-You can embed context property references within the keypath such as `${job.project}`. See [[page:manual/job-workflows.md#context-variables]].
+You can embed context property references within the keypath such as `${job.project}`. See (/manual/job-workflows.md#context-variables]].
 
 
 #### SSH Private Key Storage
@@ -329,7 +329,7 @@ The Sudo password(s) can be provided in two ways:
 To enable Sudo Password Authentication, set the `sudo-command-enabled` property/attribute to `true`.
 
 You can configure the way the Sudo Password Authentication works by setting these properties at the Node, Project or Rundeck scopes. Simply set the attribute name on a Node, the `project.NAME` in project.properties, or `framework.NAME` in framework.properties:
- 
+
 * `sudo-command-enabled` - set to "true" to enable Sudo Password Authentication.
 * `sudo-command-pattern` - a regular expression to detect when a command execution should expect to require Sudo authentication. Default pattern is `^sudo$`.
 * `sudo-password-option` - an option reference ("option.NAME") to define which secure remote authentication option value to use as password.  The default is `option.sudoPassword`.
@@ -381,7 +381,7 @@ Job:
         <context>
           <project>project</project>
           <options>
-            <option required='true' name='sudoPassword2' secure='true' 
+            <option required='true' name='sudoPassword2' secure='true'
                     description="Sudo authentication password"/>
           </options>
         </context>
@@ -431,27 +431,27 @@ If a value for "sudo2-password-option" is not set, then a default value of
 
 **A note about the "sudo2-command-pattern":**
 
-The sudo authentication mechanism uses two regular expressions to test whether it should be 
+The sudo authentication mechanism uses two regular expressions to test whether it should be
 invoked.
 
 For the first sudo authentication, the "sudo-command-pattern" value is matched against
 the **first component of the command being executed**. The default value for this pattern is `^sudo$`.
-So a command like "sudo -u user1 some command" will match correctly.  You can modify the 
-regular expression (e.g. to support "su"), but it will always only match against the first 
+So a command like "sudo -u user1 some command" will match correctly.  You can modify the
+regular expression (e.g. to support "su"), but it will always only match against the first
 part of the command.
 
-If "sudo2-command-enabled" is "true", then the "sudo2-command-pattern" is also checked 
+If "sudo2-command-enabled" is "true", then the "sudo2-command-pattern" is also checked
 and if it matches then another sudo authentication is enabled.
 However this regular expression is tested against the **entire command string**
-to make it possible to determine whether it should be enabled. The default value is 
+to make it possible to determine whether it should be enabled. The default value is
 `^sudo .+? sudo .*$`. If necessary you should customize the value.
 
 ### SSH Agent support
 
 Note: **Incubator feature**
 
-This will start /usr/bin/ssh-agent on each command step execution 
-(if enabled), 
+This will start /usr/bin/ssh-agent on each command step execution
+(if enabled),
 inject the private key the job would normally use in the agent,
 make the agent available on the newly created jsch connection
 and enable agent forwarding on the connection.
@@ -490,9 +490,9 @@ local-ttl-ssh-agent=<time in sec>
 ## SSH System Configuration
 
 * The SSH configuration requires that the Rundeck server machine can
-  ssh commands to the client machines. 
+  ssh commands to the client machines.
 * SSH is assumed to be installed and configured appropriately to allow
-  this access.   
+  this access.
 * SSH can be configured for either *password* based authentication or *public/private key* based authentication.
 * For public/private key authentication:
     * There are many resources
@@ -509,14 +509,14 @@ instead of passwords such as:
 
 * The Rundeck installation can be configured to use RSA _or_ DSA
   type keys.
-  
+
 Here's an example of SSH RSA key generation on a Linux system:
 
     $ ssh-keygen -t rsa
     Generating public/private rsa key pair.
-    Enter file in which to save the key (/home/demo/.ssh/id_rsa): 
-    Enter passphrase (empty for no passphrase): 
-    Enter same passphrase again: 
+    Enter file in which to save the key (/home/demo/.ssh/id_rsa):
+    Enter passphrase (empty for no passphrase):
+    Enter same passphrase again:
     Your identification has been saved in /home/demo/.ssh/id_rsa.
     Your public key has been saved in /home/demo/.ssh/id_rsa.pub.
     The key fingerprint is:
@@ -534,20 +534,20 @@ Here's an example of SSH RSA key generation on a Linux system:
     |                 |
     +-----------------+
 
-### Configuring remote machine for SSH 
+### Configuring remote machine for SSH
 
 To be able to directly ssh to remote machines, the SSH public key of
 the client should be shared to the remote machine.
-  
+
 Follow the steps given below to enable ssh to remote machines.
 
 The ssh public key should be copied to the `authorized_keys` file of
 the remote machine. The public key will be available in
 `~/.ssh/id_rsa.pub` file.
-  
+
 The `authorized_keys` file should be created in the `.ssh` directory of
 the remote machine.
-  
+
 The file permission of the authorized key should be read/write for
 the user and nothing for group and others. To do this check the
 permission and change it as shown below.
@@ -556,14 +556,14 @@ permission and change it as shown below.
     $ ls -la
     -rw-r--r--   1 raj  staff     0 Nov 22 18:14 authorized_keys
 
-    $ chmod 600 authorized_keys 
+    $ chmod 600 authorized_keys
     $ ls -la
     -rw-------   1 raj  staff     0 Nov 22 18:14 authorized_keys
 
 The permission for the .ssh directory of the remote machine should
 be read/write/execute for the user and nothing for the group and
 others. To do this, check the permission and change it as shown
-below.  
+below.
 
     $ ls -la
     drwxr-xr-x   2 raj  staff    68 Nov 22 18:19 .ssh
@@ -584,7 +584,7 @@ environment.
 To pass environment variables through remote command
 dispatches, it is required to properly configure the SSH server on the
 remote end. See the `AcceptEnv` directive in the "sshd\_config(5)"
-manual page for instructions. 
+manual page for instructions.
 
 Use a wild card pattern to permit `RD_` prefixed variables to provide
 open access to Rundeck generated environment variables.

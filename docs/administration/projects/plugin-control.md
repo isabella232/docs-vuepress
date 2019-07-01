@@ -1,7 +1,7 @@
 % Plugin Control
 
 By default all plugins are enabled for each project.
-You may need to restrict access to plugins for certain projects. 
+You may need to restrict access to plugins for certain projects.
 
 Only enabled plugins are visible to job writers in the Job Edit page.
 
@@ -25,9 +25,9 @@ rd projects configure set -p MyProject -- \
 
 ## API Usage
 
-Project configuration can be achieved via the [API][page:api/rundeck-api.md].
+Project configuration can be achieved via the [API](/api/rundeck-api.md).
 
-[Project configuration][page:api/rundeck-api.md#project-configuration]
+[Project configuration](/api/rundeck-api.md#project-configuration)
 
     PUT /api/13/project/MyProject/config
     Content-Type: application/json

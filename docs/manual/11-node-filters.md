@@ -1,22 +1,23 @@
-% Node Filters
+# Node Filters
+
+---
+
 % Greg Schueler
 % February 10, 2014
 
 ## Node Filter Syntax
 
-The basic format is a sequence of `attributename: value` pairs to select nodes which match.  You can negate a match by using `!attributename: value`.  If you do not specify an attribute name, then the `nodename` is matched against the bare value.
+The basic format is a sequence of `attributename: value` pairs to select nodes which match. You can negate a match by using `!attributename: value`. If you do not specify an attribute name, then the `nodename` is matched against the bare value.
 
 The `value` can be:
 
-* a [regular-expression][] results in all nodes matching the regular expression for the attribute.
-	- e.g. `www.*`
-* a comma-separated list of values, in which case each item is treated as an *exact match*, results in all nodes matching any of the exact values for the attribute.
-	- e.g.: `web1,web2`
-* for the special `tags` attribute, a set of values, results in all nodes with a set of tags that match.
-    - a comma-separated list of values to OR together
-    - a `+`-separated list of values to AND together
-    - e.g. `a+b` (match node with both tags `a` and `b`)
-    - e.g. `a+b,x` (match node with both tags `a` and `b`, or tag `x`)
+- a [regular-expression][] results in all nodes matching the regular expression for the attribute. - e.g. `www.*`
+- a comma-separated list of values, in which case each item is treated as an _exact match_, results in all nodes matching any of the exact values for the attribute. - e.g.: `web1,web2`
+- for the special `tags` attribute, a set of values, results in all nodes with a set of tags that match.
+  - a comma-separated list of values to OR together
+  - a `+`-separated list of values to AND together
+  - e.g. `a+b` (match node with both tags `a` and `b`)
+  - e.g. `a+b,x` (match node with both tags `a` and `b`, or tag `x`)
 
 The result is all nodes which match all of the clauses.
 
@@ -28,13 +29,13 @@ which will not use regular-expression matching for any of those values.
 
 Is the same as:
 
-	name: web1,web2
+    name: web1,web2
 
-This *does not* use regular-expression matching.  If you want to combine multiple regular expressions,
+This _does not_ use regular-expression matching. If you want to combine multiple regular expressions,
 refer to the [regular-expression][] syntax. For example, you could use `anode.*|bnode.*` to match all
 nodes starting with "anode" or "bnode".
 
-*Examples:*
+_Examples:_
 
 Match a set of nodes by name, includes all the node names listed:
 

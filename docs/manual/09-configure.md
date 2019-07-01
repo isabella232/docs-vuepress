@@ -1,3 +1,6 @@
+# Configurations
+
+---
 
 The Rundeck GUI has a Configuration Page which contains lets you view and manage some configuration settings.
 
@@ -8,7 +11,6 @@ If you have `admin` role access, when you log in you will see the "Configure" ic
 This page contains links to manage Project configuration as well as system level configuration information.
 
 ![Configure menu](/figures/fig0702.png)
-
 
 ## Project Configuration
 
@@ -42,11 +44,11 @@ Each item you add will be shown in the list:
 
 ![Configured Source](/figures/fig0708.png)
 
-To edit an item in the list click the "Edit" button.  To delete an item in the list click the "Delete" button.
+To edit an item in the list click the "Edit" button. To delete an item in the list click the "Delete" button.
 
 Each type of Resource Model Source will have different configuration settings of its own. The built-in Resource Model Source providers are shown below.
 
-You can install more sources as plugins, see [Resource Model Source Plugins][page:administration/projects/resource-model-sources/builtin.md#resource-model-source-plugins].
+You can install more sources as plugins, see [Resource Model Source Plugins](/administration/projects/resource-model-sources/builtin.md#resource-model-source-plugins].
 
 #### File Resource Model Source
 
@@ -54,16 +56,16 @@ This is the File Resource Model Source configuration form:
 
 ![File Resource Model Source](/figures/fig0707.png)
 
-See [File Resource Model Source Configuration][page:administration/projects/resource-model-sources/builtin.md#file-resource-model-source-configuration] for more configuration information.
+See [File Resource Model Source Configuration](/administration/projects/resource-model-sources/builtin.md#file-resource-model-source-configuration] for more configuration information.
 
 #### Directory Resource Model Source
 
 Allows a directory to be scanned for resource document files. All files
-with an extension supported by one of the [Resource Model Document Formats][page:administration/projects/resource-model-sources/builtin.md#resource-model-document-formats] are included.
+with an extension supported by one of the [Resource Model Document Formats](/administration/projects/resource-model-sources/builtin.md#resource-model-document-formats] are included.
 
 ![Directory Resource Model Source](/figures/fig0709.png)
 
-See [Directory Resource Model Source Configuration][page:administration/projects/resource-model-sources/builtin.md#directory-resource-model-source-configuration] for more configuration information.
+See [Directory Resource Model Source Configuration](/administration/projects/resource-model-sources/builtin.md#directory-resource-model-source-configuration] for more configuration information.
 
 #### Script Resource Model Source
 
@@ -72,7 +74,7 @@ definitions.
 
 ![Script Resource Model Source](/figures/fig0710.png)
 
-See [Script Resource Model Source Configuration][page:administration/projects/resource-model-sources/builtin.md#script-resource-model-source-configuration] for more configuration information.
+See [Script Resource Model Source Configuration](/administration/projects/resource-model-sources/builtin.md#script-resource-model-source-configuration] for more configuration information.
 
 #### URL Resource Model Source
 
@@ -81,7 +83,7 @@ resource definitions.
 
 ![URL Resource Model Source](/figures/fig0711.png)
 
-See [URL Resource Model Source Configuration][page:administration/projects/resource-model-sources/builtin.md#url-resource-model-source-configuration] for more configuration information.
+See [URL Resource Model Source Configuration](/administration/projects/resource-model-sources/builtin.md#url-resource-model-source-configuration] for more configuration information.
 
 ### Default Node Executor Configuration
 
@@ -93,7 +95,7 @@ Select the Default Node Executor you wish to use for all remote Nodes for the pr
 
 ![Default Node Executor Choice](/figures/fig0712.png)
 
-You can install more types of Node Executors as plugins, see [Node Execution Plugins][page:manual/job-plugins.md#node-execution].
+You can install more types of Node Executors as plugins, see [Node Execution Plugins](/manual/job-plugins.md#node-execution].
 
 ### Default File Copier Configuration
 
@@ -106,14 +108,14 @@ Select the Default File Copier you wish to use for all remote Nodes for the proj
 
 ![Default File Copier Choice](/figures/fig0713.png)
 
-You can install more types of File Copiers as plugins, see [Node Execution Plugins][page:manual/job-plugins.md#node-execution].
+You can install more types of File Copiers as plugins, see [Node Execution Plugins](/manual/job-plugins.md#node-execution].
 
 ## Key Storage
 
-The Key Storage facility provides an [API][page:api/rundeck-api.md#key-storage] and GUI to manage public, private keys and passwords.
+The Key Storage facility provides an [API](/api/rundeck-api.md#key-storage] and GUI to manage public, private keys and passwords.
 These stored keys are used by both Node Executor and File Copier plugins.
 Project configuration settings allow you to reference a key path for both the default Node Executor and File Copier
-([see above][page:manual/09-configure.md#default-node-executor-configuration]).
+([see above](/manual/09-configure.md#default-node-executor-configuration]).
 
 Keys can be stored either using an uploaded file or as text input. Public key data can be retrieved once stored. Private key and password data is only available to the node execution plugins.
 
@@ -126,10 +128,9 @@ Here's an example convention that uses three fields to manage keys.
 
 The fields in the pattern provide slots to allow multiple projects and users.
 
-* project: project name
-* node: might be a specific node or could be a class name like 'www'.
-* identity: the name of the user.
-
+- project: project name
+- node: might be a specific node or could be a class name like 'www'.
+- identity: the name of the user.
 
 ### Add Private Key with text
 
@@ -148,7 +149,6 @@ Key data can be added using the content of an uploaded file or as text input.
 Choose the "Enter text" option. Paste the key content here.
 
 You will also need to enter the storage path and give the key a name.
-
 
 ![Add a key and enter text](/figures/fig0721.png)
 
@@ -182,6 +182,7 @@ Modify the associated configuration file to change a configuration setting.
 ![System settings](/figures/fig0715.png)
 
 ## Security
+
 System security is managed through configuration files. This page describes the current settings the files to change them.
 
 ![Security settings](/figures/fig0716.png)
@@ -192,9 +193,10 @@ The System Report page gives you a breakdown of some of the Rundeck server's sys
 
 ![System Report Page](/figures/fig0703.png)
 
-This information is also available via the API: [API > System Info][page:api/rundeck-api.md#system-info]
+This information is also available via the API: [API > System Info](/api/rundeck-api.md#system-info)
 
 ## List Plugins
+
 This page lists the installed and bundled plugins.
 
 ![Installed plugins](/figures/fig0714.png)
@@ -202,4 +204,3 @@ This page lists the installed and bundled plugins.
 ## Licenses
 
 This page lists the Rundeck and third party library licenses.
-

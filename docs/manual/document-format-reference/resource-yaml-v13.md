@@ -1,4 +1,4 @@
-% RESOURCE-YAML 
+% RESOURCE-YAML
 % Greg Schueler
 % February 25, 2011
 
@@ -20,7 +20,7 @@ Example:
 - somenode: ...
   ...
 - somenode2: ...
-~~~~~~~~ 
+~~~~~~~~
 
 OR
 
@@ -30,7 +30,7 @@ somenode:
    ...
 somenode2:
    hostname: ...
-~~~~~~~~ 
+~~~~~~~~
 
 In the second case, the `nodename` entry is not required.
 
@@ -92,7 +92,7 @@ Optional Entries:
 
 :    Specify any custom attributes about node using a string value.
 
-* For more information about using the `editUrl`/`remoteUrl` see the [Rundeck User Manual][page:administration/projects/resource-model-sources/resource-editor.md#resource-editor].
+* For more information about using the `editUrl`/`remoteUrl` see the [Rundeck User Manual](/administration/projects/resource-model-sources/resource-editor.md#resource-editor].
 
 ## Examples
 
@@ -110,12 +110,12 @@ Venkman.local:
   osVersion: 10.6.6
   tags: ''
   username: greg
-~~~~~~~~ 
+~~~~~~~~
 
 Tags are very useful for node filtering and can be used
 to describe the role, environment, group, or class to which a node belongs.
 The Homestar.local example below describes a node that plays the role of a redis server in the
-production environment. 
+production environment.
 
 ~~~~~~~~ {.yaml}
 Homestar.local:
@@ -127,7 +127,7 @@ Homestar.local:
   osName: Linux
   tags: 'redis_server,production'
   username: greg
-~~~~~~~~ 
+~~~~~~~~
 
 Here's a node, bartholemew, that specifies some custom attributes (app-port, https-port):
 
@@ -140,7 +140,7 @@ bartholemew:
   username: greg
   app-port: 8080
   https-port: 8443
-~~~~~~~~ 
+~~~~~~~~
 
 Here is the same two nodes but in the sequence style syntax:
 
@@ -159,7 +159,7 @@ Here is the same two nodes but in the sequence style syntax:
   username: greg
   app-port: 8080
   https-port: 8443
-~~~~~~~~ 
+~~~~~~~~
 
 
 The Rundeck source code and all documentation may be downloaded from

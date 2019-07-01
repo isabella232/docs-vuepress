@@ -1,6 +1,6 @@
 % Use case: database credential rotation
 
-Now that we know how to create custom workflow step script plugin in the [hello world tutorial][page:tutorials/custom-script-plugin-hello-world.md], let's walk through a real world use case: rotation database credentials. Credential rotation has traditionally been a complicated, thankless administrative chore. It's the type of work that might be labeled [toil](https://landing.google.com/sre/book/chapters/eliminating-toil.html) and exactly the kind of work that Rundeck has been designed to streamline.
+Now that we know how to create custom workflow step script plugin in the [hello world tutorial](/tutorials/custom-script-plugin-hello-world.md), let's walk through a real world use case: rotation database credentials. Credential rotation has traditionally been a complicated, thankless administrative chore. It's the type of work that might be labeled [toil](https://landing.google.com/sre/book/chapters/eliminating-toil.html) and exactly the kind of work that Rundeck has been designed to streamline.
 
 The end result of this tutorial as well as a Docker environment to run it in can be found on [GitHub](https://github.com/clofresh/rundeck-playground)
 
