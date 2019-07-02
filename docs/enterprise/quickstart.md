@@ -16,19 +16,22 @@ What differentiates Rundeck Enterprise from the OSS Rundeck version is . . . .
 1. Click on `➤ Cluster` and click on the the file ending in `.jar` to start the download.
 1. Once the download is finished verify that the file's checksum matches the expected checksum:
 
-    ```
-    shasum -a 1 ~/Downloads/rundeckpro-launcher-cluster-${VERSION_FULL}.jar
-    ```
+   ```
+   shasum -a 1 ~/Downloads/rundeckpro-launcher-cluster-${VERSION_FULL}.jar
+   ```
+
 1. Run the `.jar` file:
 
-    ```
-    java -XX:MaxPermSize=256m -Xmx1024m -jar ~/Downloads/rundeckpro-launcher-cluster-${VERSION_FULL}.jar
-    ```
+   ```
+   java -XX:MaxPermSize=256m -Xmx1024m -jar ~/Downloads/rundeckpro-launcher-cluster-${VERSION_FULL}.jar
+   ```
+
 1. Once you see something similar to following log output, you know the server is ready:
 
-    ```
-    2018-04-23 16:18:58.889:INFO:oejs.ServerConnector:main: Started ServerConnector@2dcf960d{HTTP/1.1}{0.0.0.0:4440}
-    ```
+   ```
+   2018-04-23 16:18:58.889:INFO:oejs.ServerConnector:main: Started ServerConnector@2dcf960d{HTTP/1.1}{0.0.0.0:4440}
+   ```
+
 1. Navigate to [http://localhost:4440/](http://localhost:4440/user/login) in a browser
 1. Log in with the username **admin** and password **admin**
 
@@ -44,4 +47,4 @@ Further information about encrypted key/config storage on [this](/administration
 
 ### What is next?
 
-Next, learn how to [create your first Rundeck Enterprise project](/manual/02-getting-started.md#project-setup)
+Next, learn how to [create your first Rundeck Enterprise project](/manual/03-getting-started.md#project-setup)

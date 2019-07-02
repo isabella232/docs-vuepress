@@ -77,4 +77,4 @@ The service is ready once you see something similar to:
 
 Rundeck is now up and running!
 
-Next, learn how to [create your first Rundeck Enterprise project](/manual/02-getting-started.md#project-setup)
+Next, learn how to [create your first Rundeck Enterprise project](/manual/03-getting-started.md#project-setup)

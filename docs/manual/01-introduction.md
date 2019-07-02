@@ -58,4 +58,4 @@ Rundeck is developed by Rundeck, Inc. and the Rundeck community. All new users a
 - Use any scripting language
 
 Already itching to install it? Jump ahead to
-[Installing Rundeck](/manual/02-getting-started.md#download-and-installation].
+[Installing Rundeck](/manual/03-getting-started.md#download-and-installation].

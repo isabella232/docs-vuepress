@@ -16,6 +16,7 @@ const navbarDevelopment = require('./navbar-menus/development')
 module.exports = {
   title: 'Rundeck Docs',
   description: '',
+  base: '/docs-vuepress/',
   configureWebpack: {
     resolve: {
       alias: {

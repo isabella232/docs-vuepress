@@ -10,7 +10,7 @@ For information about Rundeck Administration, see the [Administrator Guide](/adm
 
 - [Introduction](/manual/01-introduction.md)
 - [Getting Help](/manual/02-getting-help.md)
-- [Getting Started](/manual/02-getting-started.md)
+- [Getting Started](/manual/03-getting-started.md)
 - Jobs
   - [Running Jobs](/manual/04-jobs.md)
   - [Creating Jobs](/manual/creating-jobs.md)
