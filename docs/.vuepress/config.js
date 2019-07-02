@@ -3,15 +3,19 @@ const sidebarAdmin = require('./sidebar-menus/administration')
 const sidebarUserGuide = require('./sidebar-menus/user-guide')
 const sidebarCommandLineTools = require('./sidebar-menus/command-line-tools')
 const sidebarEnterprise = require('./sidebar-menus/enterprise')
+const sidebarDeveloper = require('./sidebar-menus/plugin-development')
+const sidebarTutorials = require('./sidebar-menus/tutorials')
+const sidebarHistory = require('./sidebar-menus/history')
 // navbars
-const navbarAdmin = require('./navbar-menus/administration')
 const navbarUserGuide = require('./navbar-menus/user-guide')
 const navbarTutorials = require('./navbar-menus/tutorials')
+const navbarAdmin = require('./navbar-menus/administration')
 const navbarEnterprise = require('./navbar-menus/enterprise')
+const navbarDevelopment = require('./navbar-menus/development')
 
 module.exports = {
   title: 'Rundeck Docs',
-  description: 'Just playing around',
+  description: '',
   configureWebpack: {
     resolve: {
       alias: {
@@ -49,19 +53,7 @@ module.exports = {
       },
       {
         text: 'Development',
-        items: [{
-          text: 'API',
-          link: '/api/rundeck-api'
-        }, {
-          text: 'Plugin Development',
-          link: '/developer/index'
-        }, {
-          text: 'Command Line Tools',
-          link: '/manual/command-line-tools/'
-        }, {
-          text: 'Change Log',
-          link: '/history/index'
-        }]
+        items: navbarDevelopment
       }
     ],
     sidebarDepth: 2,
@@ -70,6 +62,12 @@ module.exports = {
       '/enterprise/': sidebarEnterprise,
       '/manual/command-line-tools/': sidebarCommandLineTools,
       '/manual': sidebarUserGuide,
+      '/tutorials/': sidebarTutorials,
+      '/developer/': sidebarDeveloper,
+      '/history/': sidebarHistory,
+      '/api/': [
+        '/api/rundeck-api.md'
+      ],
       '/': [
         ''
       ]
