@@ -1,17 +1,16 @@
-% SCM Plugins
-% Greg Schueler
-% October 28, 2016
+# SCM Plugins
 
+Updated October 28, 2016
 
 ## About
 
 SCM Plugins come in two flavors: `ScmExport` and `ScmImport`.
 
 `ScmExport`
-:    Allows exporting Job changes.
+: Allows exporting Job changes.
 
 `ScmImport`
-:    Allows importing Job changes.
+: Allows importing Job changes.
 
 The two types can be combined or used separately.
 
@@ -23,13 +22,12 @@ This is done in the SCM Configuration page in the Rundeck GUI.
 
 Alternately, you can use the [Rundeck API - SCM](/api/rundeck-api.md#scm].
 
-SCM Configuration for a project is *not* stored in the `project.properties`
+SCM Configuration for a project is _not_ stored in the `project.properties`
 configuration contents.
-
 
 ## Java Plugin Type
 
-* *Note*: Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development] for information about developing a Java plugin for Rundeck.
+- _Note_: Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development] for information about developing a Java plugin for Rundeck.
 
 The plugin interface is [ScmExportPluginFactory](${javadocbase}/com/dtolabs/rundeck/plugins/scm/ScmExportPluginFactory.html).
 This factory type should produce a [ScmExportPlugin][] object.
@@ -37,8 +35,8 @@ This factory type should produce a [ScmExportPlugin][] object.
 The plugin interface is [ScmImportPluginFactory](${javadocbase}/com/dtolabs/rundeck/plugins/scm/ScmImportPluginFactory.html).
 This factory type should produce a [ScmImportPlugin][] object.
 
-[ScmExportPlugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/scm/ScmExportPlugin.html
-[ScmImportPlugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/scm/ScmImportPlugin.html
+[scmexportplugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/scm/ScmExportPlugin.html
+[scmimportplugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/scm/ScmImportPlugin.html
 
 ## Localization
 
@@ -51,13 +49,13 @@ as well as a set of "setup" properties.
 The codes for these properties can be defined in your "messages.properties"
 file using the following patterns:
 
-* `setup.property.NAME.title` Title for setup property named "NAME"
-* `setup.property.NAME.description` Description for setup property named "NAME"
-* `action.ID.title` Title for action view with ID "ID"
-* `action.ID.description` Description for action view with ID "ID"
-* `action.ID.buttonTitle` Button Title for action view with ID "ID"
-* `action.ID.property.NAME.title` Title for property named "NAME" for action view with ID "ID"
-* `action.ID.property.NAME.description` Description for property named "NAME" for action view with ID "ID"
+- `setup.property.NAME.title` Title for setup property named "NAME"
+- `setup.property.NAME.description` Description for setup property named "NAME"
+- `action.ID.title` Title for action view with ID "ID"
+- `action.ID.description` Description for action view with ID "ID"
+- `action.ID.buttonTitle` Button Title for action view with ID "ID"
+- `action.ID.property.NAME.title` Title for property named "NAME" for action view with ID "ID"
+- `action.ID.property.NAME.description` Description for property named "NAME" for action view with ID "ID"
 
 ## Example
 

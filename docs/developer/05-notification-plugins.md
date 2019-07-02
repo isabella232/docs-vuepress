@@ -1,6 +1,6 @@
-% Notification Plugin
-% Greg Schueler
-% April 18, 2013
+# Notification Plugin
+
+Updated April 18, 2013
 
 ## About
 
@@ -8,11 +8,11 @@ Notifications are actions that are performed when a Job starts or finishes.
 
 Currently there are three conditions that can trigger notifications:
 
-* `onstart` - the Job started
-* `onsuccess` - the Job completed without error
-* `onfailure` - the Job failed or was aborted
-* `onavgduration` - The Execution exceed the average duration of the Job
-* `onretryablefailure` - the Job failed but will be retried
+- `onstart` - the Job started
+- `onsuccess` - the Job completed without error
+- `onfailure` - the Job failed or was aborted
+- `onavgduration` - The Execution exceed the average duration of the Job
+- `onretryablefailure` - the Job failed but will be retried
 
 Rundeck has two built-in notification types that can be configured for Jobs:
 
@@ -39,13 +39,13 @@ The specific data values of the Configuration section are allowed to have
 embedded Property References as described in the
 [Jobs - Context Variables](/manual/job-workflows.md#context-variables] section.
 
-For example, when a user configures your plugin, they could embed an option value using: `${option.myoption}`.  This value will be replaced with the runtime option value before being passed to your plugin.
+For example, when a user configures your plugin, they could embed an option value using: `${option.myoption}`. This value will be replaced with the runtime option value before being passed to your plugin.
 
 When defining Configuration properties that use custom Validation, keep in mind
 that the value set by a user may have such an embedded property reference and
-therefore may not pass the validation rules you have defined.  If you want to
+therefore may not pass the validation rules you have defined. If you want to
 allow these property references for a Configuration property, it must be a String type property, and any custom validation code should allow the embedded
-property references, for example by looking for a '${' sequence and allowing
+property references, for example by looking for a '\${' sequence and allowing
 the value.
 
 ### Execution data
@@ -115,14 +115,14 @@ The following values may be available after the job is finished (not available f
 
 `execution.context.option`: a Map containing the Job Option keys/values.
 
-`job`: a Map containing the Job context data, as provided to executions.  This map will contain some duplicate information as the `execution.job` map previously described.
+`job`: a Map containing the Job context data, as provided to executions. This map will contain some duplicate information as the `execution.job` map previously described.
 
 In Groovy, you can simply reference any values in the Execution data maps using
 [Groovy Gpath](http://groovy-lang.org/processing-xml.html#_gpath), e.g.:
 
-~~~~ {.java}
+```{.java}
 println execution.context.option.myoption
-~~~~~~~
+```
 
 ## Plugin configuration properties
 
@@ -145,12 +145,12 @@ Currently "script-based" plugins (shell scripts, that is) are not supported.
 See the source directory `examples/example-groovy-notification-plugins` for
 examples of Notification plugins written in Groovy.
 
-* On github: [example-groovy-notification-plugins](https://github.com/rundeck/rundeck/tree/development/examples/example-groovy-notification-plugins)
+- On github: [example-groovy-notification-plugins](https://github.com/rundeck/rundeck/tree/development/examples/example-groovy-notification-plugins)
 
 See the source directory `examples/example-java-notification-plugin` for
 Java examples.
 
-* On github: [example-java-notification-plugin](https://github.com/rundeck/rundeck/tree/development/examples/example-java-notification-plugin)
+- On github: [example-java-notification-plugin](https://github.com/rundeck/rundeck/tree/development/examples/example-java-notification-plugin)
 
 ## Java Plugin Type
 
@@ -159,7 +159,7 @@ Java-based plugins can be developed just as any other Rundeck plugin, as describ
 These plugin classes should implement the interface
 [NotificationPlugin](${javadocbase}/com/dtolabs/rundeck/plugins/notification/NotificationPlugin.html):
 
-~~~~~~ {.java}
+```{.java}
 public interface NotificationPlugin {
     /**
      * Post a notification for the given trigger, dataset, and configuration
@@ -169,13 +169,13 @@ public interface NotificationPlugin {
      */
     public boolean postNotification(String trigger,Map executionData,Map config);
 }
-~~~~~~~~~~~
+```
 
 To define configuration properties for your plugin, you use the same mechanisms as for Workflow Steps, described under the chapter [Plugin Development - Plugin Descriptions](/developer/01-plugin-development.md#plugin-descriptions].
 
 The simplest way to do this is to use [Plugin Annotations](/developer/02-plugin-annotations.md). Here is an example class annotated to describe it to the Rundeck GUI:
 
-~~~~~~ {.java}
+```{.java}
 @Plugin(service="Notification", name="example")
 @PluginDescription(title="Example Plugin", description="An example Plugin for Rundeck Notifications.")
 public class ExampleNotificationPlugin implements NotificationPlugin{
@@ -189,7 +189,7 @@ public class ExampleNotificationPlugin implements NotificationPlugin{
         return true;
     }
 }
-~~~~~~~~~
+```
 
 ## Groovy Plugin Type
 
@@ -207,12 +207,12 @@ You must restart rundeck to make the plugin available the first time, but you ca
 
 Within the Groovy script, you define your plugin by calling the `rundeckPlugin` method, and pass it both the Class of the type of plugin, and a Closure used to build the plugin object.
 
-~~~~~~~ {.java}
+```{.java}
 import  com.dtolabs.rundeck.plugins.notification.NotificationPlugin
 rundeckPlugin(NotificationPlugin){
     //plugin definition goes here...
 }
-~~~~~~~~~~
+```
 
 In this case we use the same `NotificationPlugin` interface used for Java plugins.
 
@@ -222,7 +222,7 @@ For a `NotificationPlugin`, you can define custom handlers for each of the notif
 
 Simply define a closure with the given trigger name, and return a true value if your action was successful:
 
-~~~~~~ {.java}
+```{.java}
 onstart{ Map execution, Map configuration ->
     //perform an action using the execution and configuration
     println "Job ${execution.job.name} has been started by ${execution.user}..."
@@ -248,7 +248,7 @@ onretryablefailure{ Map execution, Map configuration ->
     println "Job ${execution.job.name} failed but will be retried."
     return true
 }
-~~~~~~~~
+```
 
 If your closure returns a `false` value, then Rundeck will log an error in the server log.
 
@@ -258,7 +258,7 @@ Here is a minimal example:
 
 **MinimalNotificationPlugin.groovy**:
 
-~~~~~ {.java}
+```{.java}
 import com.dtolabs.rundeck.plugins.notification.NotificationPlugin;
 
 rundeckPlugin(NotificationPlugin){
@@ -285,14 +285,14 @@ rundeckPlugin(NotificationPlugin){
         true
     }
 }
-~~~~~~~~~~
+```
 
 Here is a full example showing plugin GUI metadata, configuration properties, and
 alternate closure parameter lists:
 
 **MyNotificationPlugin.groovy**:
 
-~~~~~~ {.java}
+```{.java}
 import com.dtolabs.rundeck.plugins.notification.NotificationPlugin;
 
 rundeckPlugin(NotificationPlugin) {
@@ -361,4 +361,4 @@ rundeckPlugin(NotificationPlugin) {
     }
 }
 
-~~~~~~~~~
+```

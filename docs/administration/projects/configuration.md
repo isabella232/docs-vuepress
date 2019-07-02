@@ -1,4 +1,4 @@
-% Project Configuration
+# Project Configuration
 
 ## Storage types
 
@@ -18,7 +18,7 @@ or
 
     rundeck.projectsStorageType=filesystem
 
-If you wish to use *filesystem* storage you must add this configuration entry.
+If you wish to use _filesystem_ storage you must add this configuration entry.
 
 If you have existing filesystem-based projects, and you start Rundeck
 with the `db` storage type, those projects will be automatically imported to the Database.
@@ -26,7 +26,7 @@ The import process copies the contents of `etc/project.properties`, `readme.md` 
 Finally, the `etc/project.properties` file will be renamed on disk to `etc/project.properties.imported`.
 
 The DB storage type also uses the Rundeck **Storage Facility** to store the file contents, which can be
-configured to use an Encryption plugin.  See [Storage Facility - Using Encryption](/administration/configuration/storage-facility.md#using-encryption].
+configured to use an Encryption plugin. See [Storage Facility - Using Encryption](/administration/configuration/storage-facility.md#using-encryption].
 
 ## Graphical Interface
 
@@ -41,11 +41,10 @@ change all property keys.
 
 The `rd projects configure set` command allows you to set configuration properties.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.bash}
+```{.bash}
 rd projects configure set -p MyProject -- \
    --project.ssh-keypath":"/home/rundeck/.ssh/id_rsa
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+```
 
 ## API Usage
 
@@ -64,11 +63,9 @@ Project configuration can be achieved via the [API](/api/rundeck-api.md).
 
 ## Filesystem
 
-When using *filesystem* storage type, each Project has a configuration file called
+When using _filesystem_ storage type, each Project has a configuration file called
 [project.properties](/administration/configuration/config-file-reference.md#project.properties],
 located at this path:
 
-* rpm/deb: /var/rundeck/projects/_project_/etc/project.properties
-* launcher: $RDECK_BASE/projects/_project_/etc/project.properties
-
-
+- rpm/deb: /var/rundeck/projects/_project_/etc/project.properties
+- launcher: \$RDECK*BASE/projects/\_project*/etc/project.properties

@@ -1,8 +1,8 @@
-% Version 1.5.1
-% greg
-% 04/30/2013
+# Version 1.5.1
 
-Release 1.5.1
+
+
+# Release 1.5.1
 ===========
 
 Date: 2013-04-30

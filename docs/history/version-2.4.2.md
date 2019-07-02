@@ -1,8 +1,8 @@
-% Version 2.4.2
-% greg
-% 02/13/2015
+# Version 2.4.2
 
-Release 2.4.2
+
+
+# Release 2.4.2
 =============
 
 Date: 2015-02-13

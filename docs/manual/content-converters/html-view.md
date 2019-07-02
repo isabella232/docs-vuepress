@@ -1,5 +1,4 @@
-% HTML View Converter
-% Greg Schueler
+# HTML View Converter
 
 Allows HTML embedded in log data to be rendered.
 
@@ -9,8 +8,8 @@ See: (/manual/content-converters/index.md#sanitized-html-output]].
 
 ## Input Data Types
 
-* `text/html` - `String`
+- `text/html` - `String`
 
 ## Output Data Types
 
-* `text/html` - `String`
+- `text/html` - `String`

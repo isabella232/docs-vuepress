@@ -1,5 +1,4 @@
-% JSON Data Converter
-% Greg Schueler
+# JSON Data Converter
 
 Parses JSON text into a a Java object.
 
@@ -8,12 +7,12 @@ this as a HTML Table.
 
 ## Input Types
 
-* `application/json` - `String`
+- `application/json` - `String`
 
 ## Output Types
 
-* `application/x-java-map-or-list` - `Map` or `List`
+- `application/x-java-map-or-list` - `Map` or `List`
 
 ## Related Plugins
 
-* (/manual/content-converters/html-table-view.md)
+- (/manual/content-converters/html-table-view.md)

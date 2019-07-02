@@ -1,8 +1,8 @@
-% Version 2.6.10
-% greg
-% 11/10/2016
+# Version 2.6.10
 
-Release 2.6.10
+
+
+# Release 2.6.10
 ===========
 
 Date: 2016-11-10

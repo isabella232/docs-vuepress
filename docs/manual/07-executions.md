@@ -2,8 +2,7 @@
 
 ---
 
-
-% January 30, 2014
+Updated January 30, 2014
 
 An _execution_ is a representation of the activity of a running or completed
 command or job. The data about the execution is used in rundeck to monitor

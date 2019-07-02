@@ -1,8 +1,8 @@
-% Version 2.8.3
-% greg
-% 06/30/2017
+# Version 2.8.3
 
-Release 2.8.3
+
+
+# Release 2.8.3
 ===========
 
 Date: 2017-06-30

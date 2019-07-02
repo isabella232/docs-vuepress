@@ -1,8 +1,8 @@
-% Version 3.0.22
-% greg
-% 05/13/2019
+# Version 3.0.22
 
-Release 3.0.22
+
+
+# Release 3.0.22
 ===========
 
 Date: 2019-05-12

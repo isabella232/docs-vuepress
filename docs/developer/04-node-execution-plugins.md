@@ -1,6 +1,6 @@
-% Node Executor Plugin
-% Greg Schueler, Alex Honor
-% November 20, 2010
+# Node Executor Plugin
+
+Updated November 20, 2010
 
 ## About
 
@@ -12,18 +12,17 @@ local node.
 Your provider class must implement the interface
 [NodeExecutor](${javadocbase}/com/dtolabs/rundeck/core/execution/service/NodeExecutor.html):
 
-~~~~~ {.java}
+```{.java}
 public interface NodeExecutor {
      public NodeExecutorResult executeCommand(ExecutionContext context,
               String[] command, INodeEntry node);
 }
-~~~~~~~~~
+```
 
 ### Plugin properties
 
 See [Plugin Development - Java Plugins - Descriptions](/developer/01-plugin-development.md#plugin-descriptions)
 to learn how to create configuration properties for your plugin.
-
 
 ## Script Plugin Type
 
@@ -36,7 +35,7 @@ The data context used in the script plugin definition can use these additional p
 
 `${exec.command}`
 
-  : The user command to execute.
+: The user command to execute.
 
 For example, in the `metadata.yaml`, you could pass the command string to your script implementation as:
 
@@ -48,10 +47,9 @@ The specific service has expectations about the way your provider script behaves
 
 #### Script Exit Code
 
-* Exit code of 0 indicates success.
-* Any other exit code indicates failure.
+- Exit code of 0 indicates success.
+- Any other exit code indicates failure.
 
 #### Script Output
 
 All output to `STDOUT`/`STDERR` will be captured for the job's output.
-

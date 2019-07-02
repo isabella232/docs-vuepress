@@ -1,8 +1,8 @@
-% Version 2.4.0
+# Version 2.4.0
 % jenkins
-% 12/16/2014
 
-Release 2.4.0
+
+# Release 2.4.0
 =============
 
 Date: 2014-12-16

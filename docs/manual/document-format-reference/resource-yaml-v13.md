@@ -1,6 +1,6 @@
-% RESOURCE-YAML
-% Greg Schueler
-% February 25, 2011
+# RESOURCE-YAML
+
+Updated February 25, 2011
 
 # NAME
 
@@ -16,21 +16,21 @@ The resource format supports two structures: either a Yaml Sequence of [Node def
 
 Example:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
 - somenode: ...
   ...
 - somenode2: ...
-~~~~~~~~
+```
 
 OR
 
-~~~~~~~~ {.yaml}
+```{.yaml}
 somenode:
    hostname: ...
    ...
 somenode2:
    hostname: ...
-~~~~~~~~
+```
 
 In the second case, the `nodename` entry is not required.
 
@@ -42,64 +42,64 @@ Required Entries:
 
 `nodename`
 
-:    Name of the node, this must be a unique Identifier across nodes within a project
+: Name of the node, this must be a unique Identifier across nodes within a project
 
 `hostname`
 
-:    Hostname of the node.  This can be any IP Address or hostname to address the node.
-     Since hostname is used to make SSH connections, it is possible to overload the value
-     to include port number. (eg, hostname:port).
+: Hostname of the node. This can be any IP Address or hostname to address the node.
+Since hostname is used to make SSH connections, it is possible to overload the value
+to include port number. (eg, hostname:port).
 
 `username`
 
-:    User name to connect to the node via SSH.
+: User name to connect to the node via SSH.
 
 Optional Entries:
 
 `description`
 
-:    A description of the Node
+: A description of the Node
 
 `tags`
 
-:    A literal with comma-separated tag strings, or a Sequence of literals. Tags are used for filtering nodes and often represent server role, environment, class, or group.
+: A literal with comma-separated tag strings, or a Sequence of literals. Tags are used for filtering nodes and often represent server role, environment, class, or group.
 
 `osFamily`
 
-:    OS Family
+: OS Family
 
 `osArch`
 
-:    OS Architecture
+: OS Architecture
 
 `osName`
 
-:    OS Name
+: OS Name
 
 `osVersion`
 
-:    OS Version
+: OS Version
 
 `editUrl`
 
-:    URL to an external resource model service.
+: URL to an external resource model service.
 
 `remoteUrl`
 
-:    URL to an external resource model editor service.
+: URL to an external resource model editor service.
 
-*Anything*
+_Anything_
 
-:    Specify any custom attributes about node using a string value.
+: Specify any custom attributes about node using a string value.
 
-* For more information about using the `editUrl`/`remoteUrl` see the [Rundeck User Manual](/administration/projects/resource-model-sources/resource-editor.md#resource-editor].
+- For more information about using the `editUrl`/`remoteUrl` see the [Rundeck User Manual](/administration/projects/resource-model-sources/resource-editor.md#resource-editor].
 
 ## Examples
 
 Here's a node, Venkman.local, described with several of the required and optional
 attributes discussed above.
 
-~~~~~~~~ {.yaml}
+```{.yaml}
 Venkman.local:
   description: Rundeck server node
   hostname: Venkman.local
@@ -110,14 +110,14 @@ Venkman.local:
   osVersion: 10.6.6
   tags: ''
   username: greg
-~~~~~~~~
+```
 
 Tags are very useful for node filtering and can be used
 to describe the role, environment, group, or class to which a node belongs.
 The Homestar.local example below describes a node that plays the role of a redis server in the
 production environment.
 
-~~~~~~~~ {.yaml}
+```{.yaml}
 Homestar.local:
   description: The production redis server.
   hostname: Homestar.local
@@ -127,11 +127,11 @@ Homestar.local:
   osName: Linux
   tags: 'redis_server,production'
   username: greg
-~~~~~~~~
+```
 
 Here's a node, bartholemew, that specifies some custom attributes (app-port, https-port):
 
-~~~~~~~~ {.yaml}
+```{.yaml}
 bartholemew:
   description: Webapp node
   hostname: bartholemew
@@ -140,11 +140,11 @@ bartholemew:
   username: greg
   app-port: 8080
   https-port: 8443
-~~~~~~~~
+```
 
 Here is the same two nodes but in the sequence style syntax:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
 - Homestar.local:
   description: The production redis server.
   hostname: Homestar.local
@@ -159,8 +159,7 @@ Here is the same two nodes but in the sequence style syntax:
   username: greg
   app-port: 8080
   https-port: 8443
-~~~~~~~~
-
+```
 
 The Rundeck source code and all documentation may be downloaded from
 <https://github.com/rundeck/rundeck/>.

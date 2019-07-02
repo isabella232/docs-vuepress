@@ -1,6 +1,6 @@
-% Tutorials
+# Tutorials
 
-% November 20, 2010
+Updated November 20, 2010
 
 This chapter presents working examples reflecting a variety of
 solutions you can create with Rundeck. Helping you apply concepts
@@ -12,7 +12,7 @@ e-commerce application.
 ## Acme Anvils
 
 Acme Anvils is a hypothetical start up selling new and used anvils from
-their web site.  Two teams inside the company are involved with the
+their web site. Two teams inside the company are involved with the
 development and support of the anvil sales application. Being a new
 company, there isn't much control over access to
 the live environment. Either team can push changes to systems which

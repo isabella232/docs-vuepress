@@ -1,6 +1,6 @@
-% Changelog
-% greg
-% 05/13/2019
+# Changelog
+
+Updated 05/13/2019
 
 Release 3.0.22
 ===========
@@ -1413,7 +1413,7 @@ The "launcher jar" for Rundeck 2 is gone (long live the launcher jar). However t
 
 *Official Docker Image*
 
-Still "incubating", we have published an offical docker image. Please give us your feedback on this 
+Still "incubating", we have published an offical docker image. Please give us your feedback on this
 development effort.
 
 * [Official docker image](https://hub.docker.com/r/rundeck/rundeck/)
@@ -1804,11 +1804,11 @@ Name: <span style="color: Olive"><span class="glyphicon glyphicon-music"></span>
 
 New Features:
 
-* SCM/Git plugin: 
+* SCM/Git plugin:
 	* works in Cluster mode
 	* improvements to jobs page load speed
 	* can disable SCM status checks in the GUI
-* Projects: 
+* Projects:
 	* Set a Label to display instead of the name
 	* new default: projectsStorageType defaults to `db` (see below)
 * Job reference steps:
@@ -1820,7 +1820,7 @@ New Features:
 	* Timeout for referenced jobs is enforced
 	* Choose behavior if the referenced job is disabled: fail or pass
 	* (see [#3040](https://github.com/rundeck/rundeck/pull/3040))
-* Job Options: 
+* Job Options:
 	* Set a Label to display instead of the name
 	* Multivalue option delimiter is available in data context as `${option.name.delimiter}`/`$RD_OPTION_NAME_DELIMITER`
 * Plugins: admins can disable/enable plugins for a project in the GUI or via project config [#3122](https://github.com/rundeck/rundeck/pull/3122)
@@ -2091,7 +2091,7 @@ Some bugfixes, and some improvements to Git SCM plugin:
 
 * Export: Option to Synchronize automatically during fetch (default: false)
 * Import: Option to Pull automatically when fetching (default: true)
-* new Clean button in the GUI: allows removing local git repo 
+* new Clean button in the GUI: allows removing local git repo
 * Import: automatic Tracking init during Setup, if you use a regular expression
 	* API improvement: does not require a second step after setup to initialize Git Import
 * Export: Push Remotely is checked by default when making commits
@@ -2680,7 +2680,7 @@ This release contains a number of enhancements:
 
 For more detail see [2.9.0 Changes](https://github.com/rundeck/rundeck/issues/2577)
 
-1. Data Capture/Data Passing between steps 
+1. Data Capture/Data Passing between steps
 	* Data capture plugin to match a regular expression in a step's log output and pass the values to later steps
 2. Log Filter Plugins
 	* These plugins can be applied to individual steps, or to the entire workflow
@@ -2688,7 +2688,7 @@ For more detail see [2.9.0 Changes](https://github.com/rundeck/rundeck/issues/25
 	* Mask Passwords plugin removes any values from secure input options before it is logged
 	* Highlighting/quelling: highlight keywords or selectively quell output from verbose scripts
 	* (And of course, you can write your own plugins...)
-2. New Job and Project features: 
+2. New Job and Project features:
 	* Export a project to another Rundeck instance
 	* Copy a Job to another Project
 	* Reference a Job in another Project
@@ -2781,7 +2781,7 @@ A DB schema change requires a manual fix before upgrading.
 
 ## Notes
 
-This release is primarily bug fixes. 
+This release is primarily bug fixes.
 
 ## Contributors
 
@@ -2825,7 +2825,7 @@ A DB schema change requires a manual fix before upgrading.
 
 ## Notes
 
-This release is primarily bug fixes. 
+This release is primarily bug fixes.
 
 Some other changes:
 
@@ -3021,7 +3021,7 @@ New Features:
 	* [API support](http://rundeck.org/docs/api/index.html#upload-a-file-for-a-job-option)
 * API Token Roles
 	* API Tokens now have associated Roles and Expiration date.
-	* [Access Control](http://rundeck.org/docs/administration/access-control-policy.html#api-token-authorization-roles): 
+	* [Access Control](http://rundeck.org/docs/administration/access-control-policy.html#api-token-authorization-roles):
 		* Authorized users can generate a token with their own roles.
 		* Authorized users can specify other access roles.
 	* [Admins can specify maximum token lifetime](http://rundeck.org/docs/administration/configuration-file-reference.html#security).
@@ -3868,7 +3868,7 @@ Name: <span style="color: dodgerblue"><span class="glyphicon glyphicon-leaf"></s
 Primarily bug fixes, and some enhancements:
 
 * Asynchronous nodes cache. Per-project and global toggle and configurable retention delay.
-By default, projects now use an asynchronous method for	retrieving Node data from Resource Model Sources. 
+By default, projects now use an asynchronous method for	retrieving Node data from Resource Model Sources.
 You should see an improvement in page load when using slow model sources (such as a URL for a slow endpoint).
 * Performance improvements with many thousands of Nodes.  The Nodes and Commands page, as well as other places
 where Nodes are loaded (e.g. Job editor) now should be much more responsive when you have e.g. 20K nodes.
@@ -4713,16 +4713,16 @@ Release 2.3.0
 
 Date: 2014-10-28
 
-* Improved support for use of Windows, both as a Rundeck server 
+* Improved support for use of Windows, both as a Rundeck server
     and a remote node.
     * Fixed outstanding issues with CLI .bat scripts
     * Support powershell scripts by allowing configuration
-        of file extension to be used in workflow script steps. 
-        E.g use ".ps1" because powershell will not execute a script 
+        of file extension to be used in workflow script steps.
+        E.g use ".ps1" because powershell will not execute a script
         that doesn't end in .ps1.
     * Other fixes for issues with script-based plugins and Windows paths.
-* Added support for storing Passwords in the Key Storage facility.  
-    The built-in SSH execution and SCP file copy 
+* Added support for storing Passwords in the Key Storage facility.
+    The built-in SSH execution and SCP file copy
     both now support using stored passwords.
     Note: the Key Storage facility is not encrypted by default, see
     [Key Storage](http://rundeck.org/docs/administration/key-storage.html).
@@ -4816,12 +4816,12 @@ you can either change the expiration time for these tokens,
 or switch to using non-expiring tokens.
 See [Administration - Configuration File Reference - Security](http://rundeck.org/2.2.2/administration/configuration-file-reference.html#security).
 
-To add a Password field definition to your plugin, 
-see [Plugin Development - Description Properties](http://rundeck.org/2.2.2/developer/plugin-development.html#description-properties). 
-(Note that currently using property annotations is not supported 
+To add a Password field definition to your plugin,
+see [Plugin Development - Description Properties](http://rundeck.org/2.2.2/developer/plugin-development.html#description-properties).
+(Note that currently using property annotations is not supported
 for the three plugin types that can use Password properties.)
 
-*Upgrade notes:* 
+*Upgrade notes:*
 
 See the [Upgrading Guide](http://rundeck.org/2.2.2/upgrading/index.html).
 
@@ -4903,12 +4903,12 @@ you can either change the expiration time for these tokens,
 or switch to using non-expiring tokens.
 See [Administration - Configuration File Reference - Security](http://rundeck.org/2.2.2/administration/configuration-file-reference.html#security).
 
-To add a Password field definition to your plugin, 
-see [Plugin Development - Description Properties](http://rundeck.org/2.2.2/developer/plugin-development.html#description-properties). 
-(Note that currently using property annotations is not supported 
+To add a Password field definition to your plugin,
+see [Plugin Development - Description Properties](http://rundeck.org/2.2.2/developer/plugin-development.html#description-properties).
+(Note that currently using property annotations is not supported
 for the three plugin types that can use Password properties.)
 
-*Upgrade notes:* 
+*Upgrade notes:*
 
 See the [Upgrading Guide](http://rundeck.org/2.2.2/upgrading/index.html).
 
@@ -4967,7 +4967,7 @@ Date: 2014-07-30
 
 Bugfix release.
 
-*Upgrade notes:* 
+*Upgrade notes:*
 
 See the [Upgrading Guide](http://rundeck.org/2.2.1/upgrading/index.html).
 
@@ -5006,7 +5006,7 @@ Some bug fixes are included, as well as some pull requests to enhance the LDAP l
 * Support nested LDAP group membership (see [Added support for nested groups in JettyCachingLdapLoginModule.](https://github.com/rundeck/rundeck/pull/829))
 * Support a "supplementalRoles" setting, which can help avoid the `!role` issue. See [Login Module Configuration](http://rundeck.org/2.2.0/administration/authenticating-users.html#login-module-configuration).
 
-*Upgrade notes:* 
+*Upgrade notes:*
 
 Several domain fields were added. Mysql and H2 should upgrade in place without issue.
 
@@ -5041,7 +5041,7 @@ Date: 2014-06-27
 
 Fix several bugs, including a temporary fix for issue #821: [Job references reported as killed](https://github.com/rundeck/rundeck/issues/821)
 
-*Upgrade notes:* 
+*Upgrade notes:*
 
 1. If you are upgrading from 2.0.1 or earlier, see the notes about schema changes in the previous release notes: [2.0.2 Release Notes](http://rundeck.org/docs/history/version-2.0.2.html).
 2. See the [Upgrading Guide](http://rundeck.org/2.1.0/upgrading/index.html)
@@ -5069,7 +5069,7 @@ Bugfix release. Some enhancements:
 * ANSI colorized output support
 * Updated icons to distinguish command, script and script-file steps
 
-*Upgrade notes:* 
+*Upgrade notes:*
 
 1. If you are upgrading from 2.0.1 or earlier, see the notes about schema changes in the previous release notes: [2.0.2 Release Notes](http://rundeck.org/docs/history/version-2.0.2.html).
 2. See the [Upgrading Guide](http://rundeck.org/2.1.0/upgrading/index.html)
@@ -5123,7 +5123,7 @@ Bugfix release, with a small feature enhancement.
 
 * [Custom Email Templates](http://rundeck.org/2.1.1/administration/configuration-file-reference.html#custom-email-templates):
 
-*Upgrade notes:* 
+*Upgrade notes:*
 
 1. If you are upgrading from 2.0.1 or earlier, see the notes about schema changes in the previous release notes: [2.0.2 Release Notes](http://rundeck.org/2.1.0/history/version-2.0.2.html).
 2. See the [Upgrading Guide](http://rundeck.org/2.1.0/upgrading/index.html)
@@ -5149,7 +5149,7 @@ Date: 2014-04-23
 
 This release enhances the Rundeck API and provides a facility for storing Key files that can be used for SSH.
 
-* Project management improvements: 
+* Project management improvements:
     - Project Delete action in the Configuration page
     - [Project create/config/delete APIs](http://rundeck.org/2.1.0/api/index.html#changes)
 - [Key storage facility](http://rundeck.org/2.1.0/administration/key-storage.html):
@@ -5158,7 +5158,7 @@ This release enhances the Rundeck API and provides a facility for storing Key fi
     + Use private keys for SSH
     + Note: no encryption is performed by default, but you can use plugins to encrypt the data
 
-*Upgrade notes:* 
+*Upgrade notes:*
 
 1. If you are upgrading from 2.0.1 or earlier, see the notes about schema changes in the previous release notes: [2.0.2 Release Notes](http://rundeck.org/2.1.0/history/version-2.0.2.html).
 2. See the [Upgrading Guide](http://rundeck.org/2.1.0/upgrading/index.html)
@@ -5375,7 +5375,7 @@ or money in helping us to improve Rundeck.
 * New Projects home page displays readme and message of the day files that can be customized with markdown to display notices to users
 * Improved Node filter
     * Now supports all custom node attributes
-    * New filter expression syntax, simple examples: 
+    * New filter expression syntax, simple examples:
         - `tags: a+b` filters by tags
         - `environment: (prod|qa)` Regular expression filter on an attribute called `environment`
     * New simpler UI
@@ -5389,7 +5389,7 @@ or money in helping us to improve Rundeck.
 * Improved Activity views with tabbed views for common queries
     * Tabs for Now running, recent, errors and executions by you.
 * Box score metrics for executions. Use Rundeck as an information radiator.
-    * Percent completed and Success/Failure metrics displayed for each execution 
+    * Percent completed and Success/Failure metrics displayed for each execution
 
 ## Enhancements
 
@@ -5409,7 +5409,7 @@ or money in helping us to improve Rundeck.
 The Rundeck organization on github is the new location for the Rundeck application source code as well as other associated projects:
 
 * [Rundeck source](https://github.com/rundeck/rundeck)
-* [Rundeck api-java-client library](https://github.com/rundeck/rundeck-api-java-client) 
+* [Rundeck api-java-client library](https://github.com/rundeck/rundeck-api-java-client)
     - New version 9.3 recently released.
 
 Additionally, the Rundeck-plugin for Jenkins is now maintained by the core Rundeck project maintainers.
@@ -5871,13 +5871,13 @@ This release is a minor bugfix update, with some bonus features.
 
 Notable Changes:
 
-* bug fixes 
+* bug fixes
     * dispatch -s, some API project filtering was wrong, node dispatch threadcount can be set blank
 * Bulk delete jobs via GUI
 * Job page group filters now apply to Now Running and History areas
 * History views don't use 1 day as a filter by default anymore
 
-Issues: 
+Issues:
 
 * [maint-1.4.5: dispatch -s scriptfile is broken](https://github.com/dtolabs/rundeck/issues/266)
 * [maint-1.4.5: API: Now running execution project filter is not exact](https://github.com/dtolabs/rundeck/issues/265)
@@ -5897,7 +5897,7 @@ Date: 10/26/2012
 
 This release marks the end of the 1.4 development cycle, and includes bug fixes and a few new features.
 
-We are planning to make some changes in the DB schema for the next release (1.5.x) that may not be backwards 
+We are planning to make some changes in the DB schema for the next release (1.5.x) that may not be backwards
 compatible so have included a feature to export a Rundeck project into an archive file.  This will allow us
 to change the schema yet still allow users to migrate their projects.
 
@@ -5915,7 +5915,7 @@ Notable Changes:
     * query for executions and history reports
     * retrieve execution output
 
-Issues: 
+Issues:
 
 * [remote options URL failure allows text field input even if option is restricted](https://github.com/dtolabs/rundeck/issues/215) (bug)
 * [project archive/import](https://github.com/dtolabs/rundeck/issues/212) (enhancement)
@@ -5960,7 +5960,7 @@ Notable Changes:
 
 See the [Upgrading Guide](http://rundeck.org/1.4.3/upgrading/) if you are upgrading from Rundeck 1.3.
 
-Tickets: 
+Tickets:
 
 * [#538 - Can't change nodes when trying to run a saved job](http://rundeck.lighthouseapp.com/projects/59277/tickets/538)
 * [#555 - vulnerability with ldap authentication](http://rundeck.lighthouseapp.com/projects/59277/tickets/555)

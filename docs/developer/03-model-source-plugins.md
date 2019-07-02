@@ -1,6 +1,6 @@
-% Resource Model Source Plugin
-% Greg Schueler, Alex Honor
-% November 20, 2010
+# Resource Model Source Plugin
+
+Updated November 20, 2010
 
 ## About
 
@@ -14,7 +14,6 @@ The `ResourceModelSource`
 [(javadoc)](${javadocbase}/com/dtolabs/rundeck/core/resources/ResourceModelSource.html) service allows the plugins to be configured via the Rundeck Web GUI. You are thus able to declare configuration properties for
 your plugin, which will be displayed as a web form when the Project is configured, or can be manually configured in the `project.properties` file.
 
-
 ## Java Plugin Type
 
 A ResourceModelSource provider is actually a Factory class.
@@ -25,7 +24,7 @@ your Factory class will be invoked to produce it.
 Your provider class must implement the interface
 [ResourceModelSourceFactory](${javadocbase}/com/dtolabs/rundeck/core/resources/ResourceModelSourceFactory.html):
 
-~~~~~~{.java}
+```{.java}
 public interface ResourceModelSourceFactory {
     /**
      * Return a resource model source for the given configuration
@@ -33,8 +32,7 @@ public interface ResourceModelSourceFactory {
     public ResourceModelSource createResourceModelSource(Properties configuration)
        throws ConfigurationException;
 }
-~~~~~~~~~
-
+```
 
 ### Plugin properties
 
@@ -48,7 +46,7 @@ for the basics of developing script-based plugins for Rundeck.
 
 ### Instance scope properties
 
-Instance scoped properties for ResourceModelSources are loaded from the project's Resource Model Source entries.  A project can define multiple entries, and at execution time, the Instance scoped values come from those entries.
+Instance scoped properties for ResourceModelSources are loaded from the project's Resource Model Source entries. A project can define multiple entries, and at execution time, the Instance scoped values come from those entries.
 
 ### Example
 
@@ -60,7 +58,7 @@ of three different types (Integer, String, FreeSelect).
 
 Example: plugin.yaml
 
-~~~~~~ {.yaml .numberLines}
+```{.yaml .numberLines}
 name: My Resource Model Source
 version: 1.0
 rundeckPluginVersion: 1.0
@@ -89,14 +87,14 @@ providers:
           required: true
           default: east
           values: east,north,south,west
-~~~~~~~~~~
+```
 
 The `script-file` entry on line 11 references a script called "nodes.sh" referencing
 the plugin properties (see script below).
 
 Example script-file: nodes.sh
 
-~~~~~~~ {.bash}
+```{.bash}
 #!/usr/bin/env bash
 
 # variables set by plugin properties:
@@ -108,7 +106,7 @@ Example script-file: nodes.sh
 # Generate node data here.
 #
 exit $?
-~~~~~~~~~~~
+```
 
 ### Provider Script Requirements
 
@@ -116,12 +114,10 @@ The ResourceModelSource service has expectations about the way your provider scr
 
 Exit code:
 
-* Exit code of 0 indicates success.
-* Any other exit code indicates failure.
-
+- Exit code of 0 indicates success.
+- Any other exit code indicates failure.
 
 Script output:
 
-* All output on `STDOUT` will be captured and passed to a
-[ResourceFormatParser](/developer/03-model-source-format-parser-generator-plugins.md#resourceformatparser] for the specified `resource-format` to create the Node definitions.
-
+- All output on `STDOUT` will be captured and passed to a
+  [ResourceFormatParser](/developer/03-model-source-format-parser-generator-plugins.md#resourceformatparser] for the specified `resource-format` to create the Node definitions.

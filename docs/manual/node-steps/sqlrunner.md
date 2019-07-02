@@ -1,4 +1,4 @@
-% SQLRunner Plugin (Enterprise)
+# SQLRunner Plugin (Enterprise)
 
 The SQLRunner plugin is a node step plugin included with Rundeck Enterprise that executes a .sql script against a JDBC URL.
 
@@ -10,16 +10,16 @@ Provider name: `org.rundeck.sqlrunner.SQLRunnerNodeStepPlugin`
 
 ## Configuration
 
-* *SQL script path*: Path to the sql script
-* *JDBC Driver class name*: e.g. `com.mysql.jdbc.Driver`
-* *JDBC url*: full JDBC url to use for connections
-* *Database username* connection username
-* *Database password* connection password
-* *Auto commit flag*: if true, a `Connection::commit()` will be called after the script.
+- _SQL script path_: Path to the sql script
+- _JDBC Driver class name_: e.g. `com.mysql.jdbc.Driver`
+- _JDBC url_: full JDBC url to use for connections
+- _Database username_ connection username
+- _Database password_ connection password
+- _Auto commit flag_: if true, a `Connection::commit()` will be called after the script.
 
 ## Example Job XML
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.xml}
+```{.xml}
 <joblist>
   <job>
     <description></description>
@@ -45,4 +45,4 @@ Provider name: `org.rundeck.sqlrunner.SQLRunnerNodeStepPlugin`
     <uuid>c9704ff9-c34f-455e-aa4b-8f98eae9ed5b</uuid>
   </job>
 </joblist>
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```

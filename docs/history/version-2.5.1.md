@@ -1,8 +1,8 @@
-% Version 2.5.1
-% greg
-% 05/15/2015
+# Version 2.5.1
 
-Release 2.5.1
+
+
+# Release 2.5.1
 =============
 
 Date: 2015-05-15

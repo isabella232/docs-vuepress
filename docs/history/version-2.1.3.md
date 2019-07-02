@@ -1,8 +1,8 @@
-% Version 2.1.3
-% greg
-% 06/27/2014
+# Version 2.1.3
 
-Release 2.1.3
+
+
+# Release 2.1.3
 =============
 
 Date: 2014-06-27

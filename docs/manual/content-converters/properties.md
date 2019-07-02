@@ -1,5 +1,4 @@
-% Properties Converter
-% Greg Schueler
+# Properties Converter
 
 Parses Java style Properties data into a Java object.
 
@@ -7,12 +6,12 @@ The (/manual/content-converters/html-table-view.md) plugin can render this as a 
 
 ## Input Types
 
-* `application/x-java-properties` - String
+- `application/x-java-properties` - String
 
 ## Output Types
 
-* `application/x-java-map-or-list` - `Map`
+- `application/x-java-map-or-list` - `Map`
 
 ## Related Plugins
 
-* (/manual/content-converters/html-table-view.md)
+- (/manual/content-converters/html-table-view.md)

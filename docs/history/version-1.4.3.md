@@ -1,4 +1,4 @@
-Release 1.4.3
+# Release 1.4.3
 ===========
 
 Date: 6/21/2012
@@ -13,7 +13,7 @@ Notable Changes:
 
 See the [Upgrading Guide](http://rundeck.org/1.4.3/upgrading/) if you are upgrading from Rundeck 1.3.
 
-Tickets: 
+Tickets:
 * [#538 - Can't change nodes when trying to run a saved job](http://rundeck.lighthouseapp.com/projects/59277/tickets/538)
 * [#555 - vulnerability with ldap authentication](http://rundeck.lighthouseapp.com/projects/59277/tickets/555)
 * [#554 - in-place upgrade using the launcher leaves old jars in place](http://rundeck.lighthouseapp.com/projects/59277/tickets/554)

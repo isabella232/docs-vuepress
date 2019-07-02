@@ -1,5 +1,4 @@
-
-## Planning for the project
+# Planning for the project
 
 The administrator decides to create a project called "anvils."
 to manage the activities of the anvils restart.
@@ -25,19 +24,20 @@ The administrator can create the project using the
 [rd] command line tool. Logged in on the
 rundeck server as the user "rundeck", the administrator executes:
 
-~~~~~~~~ {.bash}
+```{.bash}
 rd projects create -p anvils
-~~~~~~~~
+```
 
 This initializes the "anvils" project in Rundeck.
 
 Of course, the administrator could also create the project
 from the projects menu in the Rundeck GUI.
 
-The project has been created  but contains no jobs and only
+The project has been created but contains no jobs and only
 one node definition, one entry for the Rundeck server node.
 
 ## Declare node definitions
+
 Modeling the anvils nodes deployed in the live environment is
 administrator's next step.
 
@@ -60,7 +60,7 @@ www1, www2, app1, app2, db1:
 
 File listing: /var/rundeck/projects/anvils/nodes/resources.xml
 
-~~~~~~~~ {.xml .numberLines}
+```{.xml .numberLines}
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
   <node name="www1.anvils.com" description="A www server node." tags="www"
@@ -94,18 +94,18 @@ File listing: /var/rundeck/projects/anvils/nodes/resources.xml
     <attribute name="anvils-customer" value="acme.com"/>
   </node>
 </project>
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 Reviewing the XML content one sees the XML data define
 several nodes and tags describing the three kinds of application components.
 
 A logical name for each node is defined
 with the `name` attribute (eg name="www1.anvils.com").
-The address used by SSH is set with `hostname`  while the login
-used to execute  commands has been specified with the
+The address used by SSH is set with `hostname` while the login
+used to execute commands has been specified with the
 `username` attribute (username="www1" vs
 username="db"). The value for the `tags` attribute
-reflects the server role  (tags="web" vs tags="app").
+reflects the server role (tags="web" vs tags="app").
 
 You will also notice there are two ways to define attributes using inline attribute names like `osName` or a separate xml element like `anvils-location`. It's purely up to your preference which format you use.
 
@@ -117,15 +117,13 @@ the ssh node executor plugin formulates an ssh command string similar to:
 "ssh username@hostname command". The ssh identity is resolved via configuration
 at run time. In this example, the project default is used as specified in the
 [project.properties] configuration file.
-(e.g.,  project.ssh-keypath=/var/lib/rundeck/.ssh/id_rsa).
+(e.g., project.ssh-keypath=/var/lib/rundeck/.ssh/id_rsa).
 
 See [ssh-plugins guide](/administration/projects/node-execution/ssh.md#configuring-remote-machine-for-ssh] to learn about configuring remote machines for ssh.
 
 This example uses the built in ssh plugin but you are not restricted to using
 ssh. There are other node executor plugins that invoke remote actions via
 other tools (eg, salt, mcollective, winrm, chef knife, etc).
-
-
 
 ## Configure the model source
 
@@ -136,10 +134,10 @@ configuration file to declare a new resource model source.
 
 Below a directory type source is configured:
 
-~~~~~~~~~~~
+```
 resources.source.2.config.directory=/var/rundeck/projects/anvils/nodes
 resources.source.2.type=directory
-~~~~~~~~~~~~
+```
 
 This is the second source (hence: resource.source.2) as the first one defined
 was created by the rd-project create action.
@@ -152,9 +150,6 @@ New project sources can also be added in the Configure page:
 
 See [Managing Node Sources](/administration/projects/resource-model-sources/index.md)
 to learn more about configuring Rundeck to read node data from external providers.
-
-
-
 
 [resource-XML](/manpages/man5/resource-v13.md)
 [rd]: https://rundeck.github.io/rundeck-cli/

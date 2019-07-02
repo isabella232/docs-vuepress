@@ -1,6 +1,6 @@
-% Option Values Plugins
-% Stephen Joyner
-% January 18, 2019
+# Option Values Plugins
+
+Updated January 18, 2019
 
 ## About
 
@@ -35,18 +35,17 @@ Select the value then run your Job.
 
 To configure your plugin you can add configuration values to either the framework or project scope.
 
-*Framework scope property definition in `framework.properties`*
+_Framework scope property definition in `framework.properties`_
 
     framework.plugin.OptionValues.[your_plugin_name].[property]=value
 
-*Project scope property definition in `project.properties`*
+_Project scope property definition in `project.properties`_
 
     project.plugin.OptionValues.[your_plugin_name].[property]=value
 
-
 ## Java Plugin Type
 
-~~~~~ {.java}
+```{.java}
 package com.plugin.optionvalue;
 
 import com.dtolabs.rundeck.core.plugins.Plugin;
@@ -89,12 +88,11 @@ public class FooOptionValues implements OptionValuesPlugin {
         }
     }
 }
-~~~~~
-
+```
 
 ## Groovy Plugin Type
 
-~~~~~ {.groovy}
+```{.groovy}
 import com.dtolabs.rundeck.plugins.option.OptionValuesPlugin
 
 rundeckPlugin(OptionValuesPlugin) {
@@ -113,7 +111,7 @@ rundeckPlugin(OptionValuesPlugin) {
         return options
     }
 }
-~~~~~
+```
 
 ## Script Plugin Type
 

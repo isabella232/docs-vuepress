@@ -1,8 +1,8 @@
-% Version 2.6.8
-% greg
-% 06/10/2016
+# Version 2.6.8
 
-Release 2.6.8
+
+
+# Release 2.6.8
 ===========
 
 Date: 2016-06-10

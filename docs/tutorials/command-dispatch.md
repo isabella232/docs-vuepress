@@ -1,4 +1,4 @@
-## Commands
+# Commands
 
 Sometimes the need to execute an arbitrary command comes up.
 You might need to check a bunch of systems to find out if they

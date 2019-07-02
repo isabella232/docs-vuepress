@@ -1,8 +1,8 @@
-% Version 2.7.2
-% greg
-% 02/02/2017
+# Version 2.7.2
 
-Release 2.7.2
+
+
+# Release 2.7.2
 ===========
 
 Date: 2017-02-02

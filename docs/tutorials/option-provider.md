@@ -1,4 +1,4 @@
-% Remote option provider
+# Remote option provider
 
 ## Yum package list CGI
 
@@ -17,11 +17,11 @@ The code listing below shows it is a simple wrapper around the
 repoquery command that formats the results as [JSON] data.
 
 File listing: repoquery.cgi
-    
-~~~~~~~~ {.bash .numberLines}    
+
+```{.bash .numberLines}
 #!/bin/bash
 # Requires: repoquery
-# 
+#
 # Query Params and their defaults
 repo=acme-staging
 label="Anvils Release"
@@ -42,40 +42,37 @@ repoquery --enablerepo=$repo --show-dupes \
   --qf='"${label} %{VERSION}-%{RELEASE}":"%{NAME}-%{VERSION}-%{RELEASE}",' \
   -q --whatprovides ${package} | sort -t - -k 4,4nr | head -n${max}
 echo '}'
-~~~~~~~~
+```
 
 After deploying this script to the CGI enabled directory on the
 operations web server, it can be tested directly by requesting it using [curl].
 
-~~~~~~~~ {.bash}
+```{.bash}
 curl -d "repo=acme&label=Anvils&package=anvils" \
     --get http://yum.acme.com/cgi-bin/repoquery.cgi
-~~~~~~~~
+```
 
 The server response should return JSON data resembling the example below:
 
-~~~~~~~~ {.json}
-[ 
-  {"name":"anvils-1.1.rpm", "value":"/dist/RPMS/noarch/anvils-1.1.rpm"}, 
-  {"name":"anvils-1.2.rpm", "value":"/dist/RPMS/noarch/anvils-1.2.rpm"} 
+```{.json}
+[
+  {"name":"anvils-1.1.rpm", "value":"/dist/RPMS/noarch/anvils-1.1.rpm"},
+  {"name":"anvils-1.2.rpm", "value":"/dist/RPMS/noarch/anvils-1.2.rpm"}
 ]
-~~~~~~~~
-    
+```
+
 Jobs can request the option model data like so:
 
-~~~~~~~~ {.xml}
+```{.xml}
 <option name="package" enforcedvalues="true" required="true"
-    valuesUrl="http://yum.acme.com/cgi-bin/repoquery.cgi?package=anvils"/> 
-~~~~~~~~
+    valuesUrl="http://yum.acme.com/cgi-bin/repoquery.cgi?package=anvils"/>
+```
 
 The Rundeck UI will display the package names in the menu and once
 selected, the Job will have the matching package versions.
- 
 
-
-
-[Yum]: http://yum.baseurl.org/
-[RPM]: http://www.rpm.org/
+[yum]: http://yum.baseurl.org/
+[rpm]: http://www.rpm.org/
 [curl]: http://linux.die.net/man/1/curl
 [repoquery]: http://linux.die.net/man/1/repoquery
 [json]: http://www.json.org

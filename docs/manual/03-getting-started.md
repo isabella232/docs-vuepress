@@ -3,7 +3,7 @@
 ---
 
 
-% November 20, 2010
+Updated November 20, 2010
 
 This chapter helps new users get started with Rundeck. We will begin
 by explaining a few essential Rundeck concepts and

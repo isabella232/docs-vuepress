@@ -1,6 +1,4 @@
-% API Reference | Version ${APIVERS}
-
-% November 20, 2010
+# API Reference | Version 31
 
 Rundeck provides a Web API for use with your application.
 

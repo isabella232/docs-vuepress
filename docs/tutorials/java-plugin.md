@@ -1,9 +1,9 @@
-% Developing a custom Rundeck Java plugin
+# Developing a custom Rundeck Java plugin
 
 In this tutorial we'll learn:
 
-* Why you might benefit from a custom Rundeck Java plugin
-* How to set up your development environment to write, build and test Rundeck Java plugins
+- Why you might benefit from a custom Rundeck Java plugin
+- How to set up your development environment to write, build and test Rundeck Java plugins
 
 ## Why create a Rundeck plugin in Java?
 
@@ -11,17 +11,17 @@ Rundeck is an open source ops automation platform that comes with a lot of funct
 
 Several reasons:
 
-* To encapsulate and reuse functionality across projects and jobs
-* To expose parameters to the UI with descriptions, types and defaults
-* To securely access secrets stored in Key Storage
+- To encapsulate and reuse functionality across projects and jobs
+- To expose parameters to the UI with descriptions, types and defaults
+- To securely access secrets stored in Key Storage
 
 These benefits apply to both script plugins and Java plugins. Additional benefits of writing a Java plugin would be:
 
-* Fully crossplatform
-* All code dependencies can be packaged with the plugin
-* Robust access to Rundeck context data
-* Testability
-* Use any JVM language
+- Fully crossplatform
+- All code dependencies can be packaged with the plugin
+- Robust access to Rundeck context data
+- Testability
+- Use any JVM language
 
 ### Fully crossplatform
 
@@ -47,9 +47,9 @@ You can write Java plugins in more languages than just Java the language. You ca
 
 Now that we see the value in creating our own workflow step Java plugin, we can walk through a simple Hello World example. We will:
 
-* Set up a simple Java development environment
-* Create the plugin project structure
-* Test that we can make changes to the plugin and see them take effect in a Rundeck instance
+- Set up a simple Java development environment
+- Create the plugin project structure
+- Test that we can make changes to the plugin and see them take effect in a Rundeck instance
 
 ### Setting up your development environment
 
@@ -61,18 +61,18 @@ Our ultimate goal is to build an archive file of Java bytecode-compiled files th
 
 The easiest way to install all the dependencies on macOS is with [Homebrew](https://brew.sh/):
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 brew cask install java visual-studio-code docker
 brew install gradle docker-compose make git
-~~~~~~~~~~
+```
 
 Otherwise you can install the dependencies manually:
 
-* [Java](https://www.java.com/en/download/)
-* [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview)
-* [Docker](https://docs.docker.com/install/)
-* [Gradle](https://docs.gradle.org/current/userguide/installation.html)
-* [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [Java](https://www.java.com/en/download/)
+- [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview)
+- [Docker](https://docs.docker.com/install/)
+- [Gradle](https://docs.gradle.org/current/userguide/installation.html)
+- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 #### Install Visual Studio Code's Java Extension Pack
 
@@ -84,9 +84,9 @@ The editor we'll be using in this tutorial Visual Studio Code (vscode for short)
 
 If you don't already have the rundeck-playground project checked out, clone it now:
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 git clone https://github.com/clofresh/rundeck-playground.git
-~~~~~~~~~~
+```
 
 This project provides a sample Rundeck environment running in Docker on your workstation.
 
@@ -94,14 +94,14 @@ This project provides a sample Rundeck environment running in Docker on your wor
 
 Now that you have the rundeck-playground project, you can build the rundeck-plugin-bootstrap tool and make it executable in your environment:
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 make tools
 eval $(make env)
-~~~~~~~~~~
+```
 
 To confirm that you have the bootstrap tool, run:
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 rundeck-plugin-bootstrap -h
 
 Create a Verb artifact
@@ -111,27 +111,27 @@ The options available are:
         --pluginName -n value : Plugin Name
         --pluginType -t value : Plugin Type
         --serviceType -s value : Rundeck Service Type
-~~~~~~~~~~
+```
 
 #### Generate the Java plugin project structure
 
 Now we're ready to generate the Java plugin project structure using the `rundeck-plugin-bootstrap` tool.
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 rundeck-plugin-bootstrap -d rundeck-plugins/ -n hellojava -t java -s WorkflowStep
 
 Plugin generated at: rundeck-plugins/hellojava
-~~~~~~~~~~
+```
 
 Then we initialize the Gradle build script.
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 cd rundeck-plugins/hellojava
 gradle wrapper
 
 BUILD SUCCESSFUL in 1s
 1 actionable task: 1 executed
-~~~~~~~~~~
+```
 
 ### Verify that we can deploy the plugin
 
@@ -139,13 +139,13 @@ BUILD SUCCESSFUL in 1s
 
 To verify that our environment is set up correctly, we can run the plugin tests that the bootstrap tool generated:
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 ./gradlew test
-~~~~~~~~~~
+```
 
 Gradle knows to download the plugin dependencies and compile the plugin code before trying to run the tests. We can check that the plugin was compiled by looking in the `build` where Gradle puts the compiled bytecode files:
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 ls -lah build/classes/java/main/com/plugin/hellojava/
 
 total 20K
@@ -153,25 +153,25 @@ drwxr-xr-x 2 carlo carlo 4.0K Dec 26 11:38  .
 drwxr-xr-x 3 carlo carlo 4.0K Dec 26 11:38  ..
 -rw-r--r-- 1 carlo carlo 1.2K Dec 26 11:38 'Hellojava$Reason.class'
 -rw-r--r-- 1 carlo carlo 4.2K Dec 26 11:38  Hellojava.class
-~~~~~~~~~~
+```
 
 To package up the compiled files into a single .jar file that we can easily deploy, run:
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 ./gradlew build
-~~~~~~~~~~
+```
 
 Now the `build` directory should have a .jar file:
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 ls build/libs/
 
 hellojava-0.1.0.jar
-~~~~~~~~~~
+```
 
 We can view the contents of the .jar file to verify that our bytecode files got packaged correctly:
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 jar tf build/libs/hellojava-0.1.0.jar
 
 META-INF/
@@ -183,15 +183,15 @@ com/plugin/hellojava/Hellojava$Reason.class
 com/plugin/hellojava/Hellojava.class
 resources/
 resources/icon.png
-~~~~~~~~~~
+```
 
 You can even extract the files from .jar to inspect them manually:
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 mkdir tmp
 jar xf ../build/libs/hellojava-0.1.0.jar
 diff ./com/plugin/hellojava/Hellojava.class ../build/classes/java/main/com/plugin/hellojava/Hellojava.class
-~~~~~~~~~~
+```
 
 #### Deploying the plugin to a local environment
 
@@ -199,17 +199,17 @@ Now we can deploy the new plugin to the rundeck-playground Rundeck server to see
 
 First, ensure that the rundeck-playground is up and running. This step may take a while to download if it's the first time you've run it.
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 cd /path/to/rundeck-playground
 make compose
-~~~~~~~~~~
+```
 
 Then once the Rundeck server is up, in a separate terminal, push all the relevant Rundeck configuration, including your new plugin, by running:
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 cd /path/to/rundeck-playground
 make rd-config
-~~~~~~~~~~
+```
 
 The rd-config Make task will see your new Java plugin and run the Gradle build and upload the plugin jar to the Rundeck server. It's smart enough to only do this if the plugin's source files have changed.
 
@@ -233,13 +233,13 @@ If the job succeeded with some output similar to the screenshot, then your Java 
 
 Now we want to make changes to the plugin and see them take effect so we know how to iterate on the plugin. Open up `Hellojava.java` in vscode by pressing `cmd+p` and entering `Hellojava.java` in the prompt. This is the plugin class that the plugin bootstrap script generated. Some things to note:
 
-* The `@PluginDescription` annotation sets the title and description of the plugin as it should appear in Rundeck.
-* The `getDescription()` method describes the parameters to the plugin that Rundeck will render as Rundeck GUI elements.
-* The `executeStep()` method is where the plugin logic happens.
+- The `@PluginDescription` annotation sets the title and description of the plugin as it should appear in Rundeck.
+- The `getDescription()` method describes the parameters to the plugin that Rundeck will render as Rundeck GUI elements.
+- The `executeStep()` method is where the plugin logic happens.
 
 Let's update `executeStep()` to list the files in the current directory. Update `Hellojava.java` to the following:
 
-~~~~~~~~~~ {.java}
+```{.java}
 package com.plugin.hellojava;
 
 import com.dtolabs.rundeck.core.execution.workflow.steps.StepException;
@@ -264,13 +264,13 @@ public class Hellojava implements StepPlugin {
         }
     }
 }
-~~~~~~~~~~
+```
 
 We've replaced the sample code with some code to log the files in the current directory. Note that since we're using Java libraries to list the files, the plugin is platform-independent, unlike a script plugin that would rely on OS-specific tools like `ls`.
 
 Then we can compile and deploy our plugin:
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 make rd-config
 
 > Task :test FAILED
@@ -285,13 +285,13 @@ com.plugin.hellojava.HellojavaSpec > run OK FAILED
 
 
 FAILURE: Build failed with an exception.
-~~~~~~~~~~
+```
 
 Whoops! Looks like the plugin bootstrap generated some sample tests, and we deleted the sample code that was making them pass. Lets find the tests and remove them. The fastest way to navigate to them is with `cmd+p` and entering `HellojavaSpec.groovy`, the file referenced in the errors above.
 
 This test file is written in Groovy, a JVM-based dynamic language that's a little more lightweight than Java making it ideal for writing tests. For now, since the tests don't apply anymore, let's remove them by deleting the `def "check Boolean parameter"()` and `def "run OK"()` code blocks. `HellojavaSpec.groovy` should look like:
 
-~~~~~~~~~~ {.groovy}
+```{.groovy}
 package com.plugin.hellojava
 
 import com.dtolabs.rundeck.plugins.step.PluginStepContext
@@ -306,15 +306,15 @@ class HellojavaSpec extends Specification {
         }
     }
 }
-~~~~~~~~~~
+```
 
 We'll leave the `getContext()` helper method there so we can mock the context when writing tests later. But for now, we're ready to compile and deploy:
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 make rd-config
 
 ====[hellojava Java plugin] ERROR: Version 0.1.0 already exists. Update plugin version in rundeck-plugins/hellojava/build.gradle
-~~~~~~~~~~
+```
 
 Oops, there's one last step to remember: incrementing the plugin version number. The Rundeck server considers plugin versions to be immutable, so we need to increment the version number to be able to upload a new version of the plugin. The plugin version is in the `rundeck-plugins/hellojava/build.gradle` file referenced in the error message.
 
@@ -322,9 +322,9 @@ The `build.gradle` is also written in Groovy and describes how the plugin should
 
 At last, we can deploy without an error:
 
-~~~~~~~~~~ {.bash}
+```{.bash}
 make rd-config
-~~~~~~~~~~
+```
 
 Then re-run the job from the Rundeck GUI and you should see it print out a list of files.
 
@@ -336,7 +336,7 @@ If you want to try your plugin on your live Rundeck server instead of on your wo
 
 ## References
 
-* [Workflow Step Plugin Developer Guide](/developer/03-step-plugins.md)
-* [Installing plugins](/administration/configuration/plugins/installing.md)
-* [Rundeck Playground](https://github.com/clofresh/rundeck-playground)
-* [Rundeck Plugin Bootstrap](https://github.com/rundeck/plugin-bootstrap)
+- [Workflow Step Plugin Developer Guide](/developer/03-step-plugins.md)
+- [Installing plugins](/administration/configuration/plugins/installing.md)
+- [Rundeck Playground](https://github.com/clofresh/rundeck-playground)
+- [Rundeck Plugin Bootstrap](https://github.com/rundeck/plugin-bootstrap)

@@ -1,8 +1,8 @@
-% Version 1.5
-% greg
-% 02/20/2013
+# Version 1.5
 
-Release 1.5
+
+
+# Release 1.5
 ===========
 
 Date: 2/21/2013

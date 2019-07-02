@@ -1,8 +1,8 @@
-% Version 2.0.4
-% greg
-% 04/18/2014
+# Version 2.0.4
 
-Release 2.0.4
+
+
+# Release 2.0.4
 =============
 
 Date: 2014-04-18

@@ -1,5 +1,4 @@
-
-## Jobs
+# Jobs
 
 Jobs are a convenient method to establish a library of routine
 procedures. By their nature, a Job encapsulates a process as a
@@ -15,7 +14,6 @@ the restart procedures. Both developers and
 administrators can collaborate on the job definitions, their evolution and
 maintenance.
 
-
 ## Job structure
 
 The overall goal is to provide a single restart procedure, for the sake of reusability, it
@@ -23,10 +21,10 @@ might be preferred to break each step of the process into separate jobs.
 
 Using this approach the administrator imagines the following jobs:
 
-* start: call the start procedure to start the web service
-* stop: call the stop procedure to stop the web service
-* status: call the status procedure to stop the web service
-* Restart: call the stop, start, and status jobs
+- start: call the start procedure to start the web service
+- stop: call the stop procedure to stop the web service
+- status: call the status procedure to stop the web service
+- Restart: call the stop, start, and status jobs
 
 Since the restart procedure is the primary focus, it is capitalized
 for distinction.
@@ -39,7 +37,7 @@ and the desire for job reuse.
 
 ### Job grouping
 
-It is helpful to use job groups and  have a convention for naming them.
+It is helpful to use job groups and have a convention for naming them.
 A good convention assists others with a navigation scheme that
 helps them remember and find the desired procedure. Job groups
 also help simplify access control policy.
@@ -59,6 +57,7 @@ grouped below web as shown in the screenshot below.
 ![Anvils job group](/figures/fig0604.png)
 
 ## Scripts
+
 Sets of scripts are already in use to manage the startup and shutdown
 procedures. Rather than force the issue as to
 which one is correct or superior, the administrator focuses on
@@ -72,10 +71,9 @@ that merely echo their intent but define the essential arguments they will need.
 The scripts - start, status and stop - represent the logical steps of
 the restart process.
 
-
 File listing: start
 
-~~~~~~~~ {.bash .numberLines}
+```{.bash .numberLines}
 #!/bin/bash
 #/ usage: start ?dir?
 set -eu
@@ -86,11 +84,11 @@ DIR=$1
 mkdir -p "$DIR"
 echo $$ > "$DIR/pid"
 echo "- Web started (pid=$$)"
-~~~~~~~~
+```
 
 File listing: status
 
-~~~~~~~~ {.bash .numberLines}
+```{.bash .numberLines}
 #!/bin/bash
 #/ usage: status ?dir?
 set -eu
@@ -101,11 +99,11 @@ DIR=$1
 [[ ! -f "$DIR/pid" ]] && { echo DOWN; exit 1; }
 PID=$(cat "$DIR/pid")
 [[ -z "$PID" ]] && { echo "DOWN"; exit 1; } || { echo "- RUNNING (pid=$PID)"; }
-~~~~~~~~
+```
 
 File listing: stop
 
-~~~~~~~~ {.bash .numberLines}
+```{.bash .numberLines}
 #!/bin/bash
 #/ usage: stop ?dir? ?method?
 set -eu
@@ -122,7 +120,7 @@ then
   echo "- Web stopped (pid=${pid}) using method: $METHOD"
 fi
 exit ${exit_code:-0}
-~~~~~~~~
+```
 
 Because either the normal or force can be specified for the
 "method" option, the Jobs will need to pass the user's choice as an
@@ -139,7 +137,7 @@ to specify the web service install directory. The stop
 script will need an additional option, "method" to specify `normal` or `force` choices.
 
 A benefit of job options is the ability to display a
-menu of choices to the user running the job.  Once chosen, the value
+menu of choices to the user running the job. Once chosen, the value
 selected by the menu is then passed to the script.
 Options can also have default values or lists of choices to help
 the user choose between routine inputs.
@@ -151,7 +149,7 @@ list. This places safe guards on how a Job can be run by limiting
 choices to those the scripts can safely handle.
 
 The administrator takes advantage of this by limiting the "method" option
-values to just  "normal" or "force" choices.
+values to just "normal" or "force" choices.
 
 The screenshot below contains the Option edit form for the "method" option.
 The form includes elements to define description and default
@@ -171,7 +169,6 @@ Here's a screenshot of how Rundeck will display the menu choices:
 
 ![Option menu for method](/figures/fig0606.png)
 
-
 ### Script access to option data
 
 Option values can be passed to scripts as an argument or referenced
@@ -179,20 +176,19 @@ inside the script using a named token. For example, the values for the
 "method" an "dir" options can be accessed in one of several ways:
 
 Value referenced as an environment variable. Each option name is upcased
-and prefixed with "RD_OPTION_":
+and prefixed with "RD*OPTION*":
 
-* Bash: `$RD_OPTION_METHOD`, `$RD_OPTION_DIR`
+- Bash: `$RD_OPTION_METHOD`, `$RD_OPTION_DIR`
 
 Value passed in the argument vector to the executed script or command
 via the `scriptargs` tag.
 
-* Commandline Arguments: `${option.method}`, `${option.dir}`
+- Commandline Arguments: `${option.method}`, `${option.dir}`
 
 Value represented as a named token inside the script and replaced
 before execution:
 
-* Script Content: `@option.method@`, `@option.dir@`
-
+- Script Content: `@option.method@`, `@option.dir@`
 
 ## Job definition
 
@@ -214,7 +210,7 @@ do not have to correspond to the Job name or its group.
 
 File listing: stop.xml
 
-~~~~~~~~ {.xml .numberLines}
+```{.xml .numberLines}
 <joblist>
     <job>
        <name>stop</name>
@@ -262,7 +258,7 @@ exit ${exit_code:-0}]]></script>
        </dispatch>
      </job>
 </joblist>
-~~~~~~~~~~~~~~~~~
+```
 
 Defines Job, /web/stop, and executes the shell script to
 Nodes tagged "web". Using the `scriptargs` tag, the shell
@@ -271,7 +267,7 @@ containing the value chosen in the Job run form.
 
 File listing: start.xml
 
-~~~~~~~~ {.xml .numberLines}
+```{.xml .numberLines}
 <joblist>
    <job>
      <name>start</name>
@@ -310,14 +306,14 @@ echo "- Web started (pid=$$)"]]></script>
    </dispatch>
   </job>
 </joblist>
-~~~~~~~~~~~
+```
 
 Defines Job, /web/start, that also executes a shell script to
 Nodes tagged "web".
 
 File listing: status.xml
 
-~~~~~~~~ {.xml .numberLines}
+```{.xml .numberLines}
 <joblist>
    <job>
      <name>status</name>
@@ -356,7 +352,7 @@ PID=$(cat "$DIR/pid")
    </dispatch>
   </job>
 </joblist>
-~~~~~~~~~~~
+```
 
 Defines Job, /web/status, that also executes a shell script to
 Nodes tagged "web".
@@ -374,7 +370,7 @@ declares those too and uses the `arg` xml tag to pass them.
 
 File listing: restart.xml
 
-~~~~~~~~ {.xml .numberLines}
+```{.xml .numberLines}
 <joblist>
    <job>
      <name>Restart</name>
@@ -408,12 +404,10 @@ File listing: restart.xml
     </sequence>
    </job>
 </joblist>
-~~~~~~~~~~~
-
-
+```
 
 Note that we don't define a `<nodefilters>` or `<dispatch>` section for Restart, because we
-only want this sequence to execute **once**, on the server node.  The Job
+only want this sequence to execute **once**, on the server node. The Job
 references will each be called once, and the "start", "stop" and "status" Jobs will
 each be dispatched to the nodes they define.
 
@@ -422,27 +416,27 @@ one can load them using the [rd-jobs](/manpages/man1/index.md) command.
 
 Run the `rd-jobs load` command for each job definition file:
 
-~~~~~~~~ {.bash}
+```{.bash}
 rd-jobs load -p anvils -f start.xml
 rd-jobs load -p anvils -f stop.xml
 rd-jobs load -p anvils -f status.xml
 rd-jobs load -p anvils -f restart.xml
-~~~~~~~~
+```
 
 The `rd-jobs list` command queries Rundeck and prints out the list of
 defined jobs:
 
-~~~~~~~~ {.bash}
+```{.bash}
 rd-jobs list -p anvils
-~~~~~~~~
+```
 
-~~~~~~~~~
+```
 Found 3 jobs:
 - Restart - 'the web restart procedure'
 - start - 'the web start procedure'
 - status - 'the web status procedure'
 - stop - 'the web stop procedure'
-~~~~~~~~~
+```
 
 Of course, the jobs can be viewed inside the Rundeck graphical console by going to
 the Jobs page. Clicking the "Restart" job name and clicking the "Definition" tab reveals job detail.
@@ -457,6 +451,7 @@ the `-dir` option to all the jobs and the
 ## Running the job
 
 ### Run using the GUI
+
 The Jobs can be run from the Rundeck graphical console by going to the
 "Jobs" page. From there, navigate to the "web" job group to
 display the three stored Jobs.
@@ -480,13 +475,12 @@ but it can be left out if there is only one project available.)
 
 Run Restart specifying the method, "normal":
 
-~~~~~~~~ {.bash}
+```{.bash}
 run -j "web/Restart" -p anvils -- -method normal
-~~~~~~~~
+```
 
 Run Restart specifying the method, "force":
 
-~~~~~~~~ {.bash}
+```{.bash}
 run -j "web/Restart" -p anvils -- -method force
-~~~~~~~~
-
+```

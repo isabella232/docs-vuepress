@@ -1,8 +1,8 @@
-% Version 2.6.3
-% greg
-% 02/25/2016
+# Version 2.6.3
 
-Release 2.6.3
+
+
+# Release 2.6.3
 ===========
 
 Date: 2016-02-25
@@ -14,7 +14,7 @@ Name: <span style="color: dodgerblue"><span class="glyphicon glyphicon-leaf"></s
 Primarily bug fixes, and some enhancements:
 
 * Asynchronous nodes cache. Per-project and global toggle and configurable retention delay.
-By default, projects now use an asynchronous method for	retrieving Node data from Resource Model Sources. 
+By default, projects now use an asynchronous method for	retrieving Node data from Resource Model Sources.
 You should see an improvement in page load when using slow model sources (such as a URL for a slow endpoint).
 * Performance improvements with many thousands of Nodes.  The Nodes and Commands page, as well as other places
 where Nodes are loaded (e.g. Job editor) now should be much more responsive when you have e.g. 20K nodes.

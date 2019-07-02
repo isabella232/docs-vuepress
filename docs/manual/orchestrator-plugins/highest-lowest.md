@@ -1,4 +1,4 @@
-% Highest/Lowest Attribute Value (Enterprise)
+# Highest/Lowest Attribute Value (Enterprise)
 
 This Orchestrator plugin picks one node with either the highest or lowest value of a certain attribute.
 
@@ -6,8 +6,8 @@ This Orchestrator plugin picks one node with either the highest or lowest value 
 
 Attribute
 
-:    Node Attribute to sort by.
+: Node Attribute to sort by.
 
 Sort
 
-:    Sort order, `highest` or `lowest`
+: Sort order, `highest` or `lowest`

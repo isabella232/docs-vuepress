@@ -1,8 +1,8 @@
-% Version 1.6.0
-% greg
-% 08/02/2013
+# Version 1.6.0
 
-Release 1.6.0
+
+
+# Release 1.6.0
 ===========
 
 Date: 2013-08-02

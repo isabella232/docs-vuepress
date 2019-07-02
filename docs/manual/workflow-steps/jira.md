@@ -1,4 +1,4 @@
-% Jira Workflow Step Plugins (Enterprise)
+# Jira Workflow Step Plugins (Enterprise)
 
 ## Jira / Issue / Assigned
 
@@ -20,10 +20,8 @@ project.plugin.WorkflowStep.jira-assigned-issue.url=https://instance.atlassian.n
 
 To use the plugin, configure the mandatory inputs.
 
-
-* assignee: Issue assignee.
-* fail: true to fail if there's no assigned issues.
-
+- assignee: Issue assignee.
+- fail: true to fail if there's no assigned issues.
 
 ## Jira / Issue / Check Exist
 
@@ -45,9 +43,7 @@ project.plugin.WorkflowStep.jira-check-issue.url=https://instance.atlassian.net
 
 To use the plugin, configure the mandatory input.
 
-
-* key: Jira issue ID.
-
+- key: Jira issue ID.
 
 ## Jira / Issue / Comment
 
@@ -69,10 +65,8 @@ project.plugin.WorkflowStep.jira-comment-issue-step.url=https://instance.atlassi
 
 To use the plugin, configure the mandatory input.
 
-
-* key: The Jira issue ID.
-* message: Message to append, can include variables.
-
+- key: The Jira issue ID.
+- message: Message to append, can include variables.
 
 ## Jira / Issue / Create
 
@@ -94,17 +88,15 @@ project.plugin.WorkflowStep.jira-create-issue.url=https://instance.atlassian.net
 
 To use the plugin, configure the mandatory inputs.
 
-
-* project: Jira Project ID.
-* type: Type of the issue, default Incident
-* summary: Issue summary
-* description: Issue description
+- project: Jira Project ID.
+- type: Type of the issue, default Incident
+- summary: Issue summary
+- description: Issue description
 
 Optional inputs:
 
-* assignee: Issue assignee
-* reporter: Issue reporter
-
+- assignee: Issue assignee
+- reporter: Issue reporter
 
 ## Jira / Issue / Update
 
@@ -126,12 +118,9 @@ project.plugin.WorkflowStep.jira-update-issue.url=https://instance.atlassian.net
 
 To use the plugin, configure the mandatory inputs.
 
-
-* issue key: Jira Issue ID.
-* transition: Transition name, in the case of Incidents these value can be Investigate, Pending, Resolve, Cancel or Close
+- issue key: Jira Issue ID.
+- transition: Transition name, in the case of Incidents these value can be Investigate, Pending, Resolve, Cancel or Close
 
 Optional input:
 
-* resolution: Resolution, only needed to Close or Resolve an Incident
-
-
+- resolution: Resolution, only needed to Close or Resolve an Incident

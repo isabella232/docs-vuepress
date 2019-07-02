@@ -1,4 +1,4 @@
-Release 1.4.5
+# Release 1.4.5
 ===========
 
 Date: 1/10/2013
@@ -7,13 +7,13 @@ This release is a minor bugfix update, with some bonus features.
 
 Notable Changes:
 
-* bug fixes 
+* bug fixes
     * dispatch -s, some API project filtering was wrong, node dispatch threadcount can be set blank
 * Bulk delete jobs via GUI
 * Job page group filters now apply to Now Running and History areas
 * History views don't use 1 day as a filter by default anymore
 
-Issues: 
+Issues:
 
 * [maint-1.4.5: dispatch -s scriptfile is broken](https://github.com/dtolabs/rundeck/issues/266)
 * [maint-1.4.5: API: Now running execution project filter is not exact](https://github.com/dtolabs/rundeck/issues/265)

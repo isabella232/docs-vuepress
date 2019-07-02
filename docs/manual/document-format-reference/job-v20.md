@@ -1,6 +1,6 @@
-% JOB-XML
+# JOB-XML
 
-% November 20, 2010
+Updated November 20, 2010
 
 # NAME
 

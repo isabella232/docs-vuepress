@@ -1,7 +1,6 @@
-% File Upload Plugins
-% Greg Schueler
-% May 21, 2019
+# File Upload Plugins
 
+Updated May 21, 2019
 
 ## About
 
@@ -11,7 +10,7 @@ Each uploaded file is recorded with a "refid", a unique ID that identifies the f
 
 ## Behavior
 
-A File Upload Plugin is configured globally.  The default plugin implementation stores received files on the local disk only.
+A File Upload Plugin is configured globally. The default plugin implementation stores received files on the local disk only.
 
 When a user uploads a file to a Job Option value, or the Job File Upload API is called, the plugin is initialized, and the `uploadFile` method is called. Rundeck creates an internal record for the file with the SHA hash of the contents, and generates the unique "refid" for the uploaded file.
 
@@ -20,13 +19,12 @@ The plugin is expected to "retain" the uploaded file until a state transition oc
 If the timeout occurs before an execution uses the file, the `transitionState` method will be called with an state of `Unused`.
 The plugin has the option of deleting the stored file, and should return the new Internal state of the file, which can be `Deleted` or `Retained`.
 
-
 When the execution that uses the file starts, first the internal record for the file is "attached" to the execution.
 This means it cannot be used again for another execution, the removal timeout is cancelled, and it has an internal state of "retained".
 
 Then the plugin's `retrieveLocalFile` method will be called. If the plugin has a local copy of the file,
-it should be returned, otherwise `null` is expected.  If the local file is not available, the `hasFile` method is called to determine if the
-plugin is able to retrieve the file.  Finally the `retrieveFile(String,OutputStream)` method is called to copy the contents to a local temp file,
+it should be returned, otherwise `null` is expected. If the local file is not available, the `hasFile` method is called to determine if the
+plugin is able to retrieve the file. Finally the `retrieveFile(String,OutputStream)` method is called to copy the contents to a local temp file,
 and to verify the SHA checksum. The local file path, file name, and SHA are added to the Execution's context variables.
 
 The execution then runs. After the Execution completes, the `transitionState` method will be called with an state of `Used`, allowing the plugin to retain or delete the file.
@@ -54,11 +52,11 @@ Plugins must implement the [FileUploadPlugin] interface, and declare as a provid
 
 Methods:
 
-* `void initialize();`: Initialize the plugin.
-* `String uploadFile(final InputStream content,final long length,final String refid,Map<String, String> config)`: upload a file for a job option, specifies the refid, and instance configuration properties.
-* `boolean hasFile(String ref)`: return true if the file with given refid can be retrieved
-* `void retrieveFile(String ref, OutputStream out)`: retrieve the file content to the output stream
-* `removeFile(String refid)`: (unused) may be called to remove the file
-* `InternalState transitionState(String reference, ExternalState state)`: plugin should retain or delete the file
+- `void initialize();`: Initialize the plugin.
+- `String uploadFile(final InputStream content,final long length,final String refid,Map<String, String> config)`: upload a file for a job option, specifies the refid, and instance configuration properties.
+- `boolean hasFile(String ref)`: return true if the file with given refid can be retrieved
+- `void retrieveFile(String ref, OutputStream out)`: retrieve the file content to the output stream
+- `removeFile(String refid)`: (unused) may be called to remove the file
+- `InternalState transitionState(String reference, ExternalState state)`: plugin should retain or delete the file
 
-[FileUploadPlugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/file/FileUploadPlugin.html
+[fileuploadplugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/file/FileUploadPlugin.html

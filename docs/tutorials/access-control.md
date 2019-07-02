@@ -1,4 +1,4 @@
-## Access control
+# Access control
 
 Access to jobs and commands is managed in access control
 policies defined using the [aclpolicy](/manpages/man5/aclpolicy-v10.md) document format.
@@ -25,10 +25,9 @@ it was also included in the normal install.
 
 To create the aclpolicy file for the "noc" group:
 
-
 File listing: noc.aclpolicy
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.yaml .numberLines}
+```{.yaml .numberLines}
 description: Acess for noc user.
 context:
   project: '.*'
@@ -42,7 +41,7 @@ for:
       allow: [run,read]
 by:
   group: noc
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 > Note, It is not required to restart Rundeck after changes to .aclpolicy files are made.
 
@@ -60,7 +59,7 @@ Notice also, listed Jobs do not include an icon for editing the Job.
 
 File listing: noc.aclpolicy
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.yaml .numberLines}
+```{.yaml .numberLines}
 description: Acess for noc users.
 context:
   project: '.*'
@@ -83,7 +82,7 @@ for:
       allow: [read,run]
 by:
   group: noc
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 The users in the "dev" group are granted access
 to run the "Status" Job but are not allowed to
@@ -92,7 +91,7 @@ definition of the Restart job.
 
 File listing: dev.aclpolicy
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.yaml .numberLines}
+```{.yaml .numberLines}
 description: Acess for dev users.
 context:
   project: '.*'
@@ -112,5 +111,4 @@ for:
     - allow: [read,run]
 by:
   group: dev
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+```

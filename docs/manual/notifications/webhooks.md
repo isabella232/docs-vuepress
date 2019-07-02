@@ -1,33 +1,33 @@
-% Webhooks
+# Webhooks
 
 The Webhooks notification plugin is a builtin plugin that sends POST data to a URL when a job succeeds or fails.
 
-* For more info about configuring jobs to use webhook notifications, see the chapter [Job Notifications](#job-notifications).
-* For more info about webhooks in general see: <https://webhooks.pbworks.com/w/page/13385124/FrontPage>
+- For more info about configuring jobs to use webhook notifications, see the chapter [Job Notifications](#job-notifications).
+- For more info about webhooks in general see: <https://webhooks.pbworks.com/w/page/13385124/FrontPage>
 
-When a Rundeck Job webhook notification is triggered, the server will send a POST request to one or more configured URLs.  The request will contain XML content containing information about the Execution that has finished.  The request will also contain special HTTP Headers to include some information about the notification and the Execution.  You can also configure your URLs to have property tokens that will be replaced with specific details about the Job, Execution or Notification prior to the webhook request being submitted.
+When a Rundeck Job webhook notification is triggered, the server will send a POST request to one or more configured URLs. The request will contain XML content containing information about the Execution that has finished. The request will also contain special HTTP Headers to include some information about the notification and the Execution. You can also configure your URLs to have property tokens that will be replaced with specific details about the Job, Execution or Notification prior to the webhook request being submitted.
 
 #### Execution Notification Content
 
-The content of the POST request will be XML, with a single `<notification>` root element.  This element will contain `<executions..><execution>...</execution></executions>` content. This inner content is of the same format as the XML returned from the Web API for Execution information. See the chapter [API - Listing Running Executions](/api/rundeck-api.md#listing-running-executions] for more information.
+The content of the POST request will be XML, with a single `<notification>` root element. This element will contain `<executions..><execution>...</execution></executions>` content. This inner content is of the same format as the XML returned from the Web API for Execution information. See the chapter [API - Listing Running Executions](/api/rundeck-api.md#listing-running-executions] for more information.
 
 Attributes of the `notification` element will include:
 
 `trigger`
 
-:    The type of notification trigger.  Either "success" or "failure".
+: The type of notification trigger. Either "success" or "failure".
 
 `executionId`
 
-:    The ID of the Execution
+: The ID of the Execution
 
 `status`
 
-:    The result status of the Execution.  Either "succeeded", "failed" or "aborted".
+: The result status of the Execution. Either "succeeded", "failed" or "aborted".
 
-*Example*
+_Example_
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {.xml}
+```{.xml}
 <notification trigger="success" executionId="[ID]" status="[STATUS]">
     <executions count="1">
         <execution ...>
@@ -35,7 +35,7 @@ Attributes of the `notification` element will include:
         </execution>
     </executions>
 </notification>
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 #### Execution Notification Headers
 
@@ -43,15 +43,15 @@ The POST request will also contain several custom HTTP headers, providing anothe
 
 `X-Rundeck-Notification-Trigger`
 
-:    The notification trigger type, either "success" or "failure".
+: The notification trigger type, either "success" or "failure".
 
 `X-Rundeck-Notification-Execution-ID`
 
-:    The Execution ID
+: The Execution ID
 
 `X-Rundeck-Notification-Execution-Status`
 
-:    The status of the execution, either "succeeded", "failed", or "aborted".
+: The status of the execution, either "succeeded", "failed", or "aborted".
 
 #### Execution Notification URL Token Expansion
 
@@ -61,7 +61,7 @@ Available tokens for expansion are:
 
 `job.PROPERTY`
 
-:    Properties about the Job, including:
+: Properties about the Job, including:
 
     `name`
 
@@ -81,7 +81,7 @@ Available tokens for expansion are:
 
 `execution.PROPERTY`
 
-:    Properties about the Execution, including:
+: Properties about the Execution, including:
 
     `id`
 
@@ -97,7 +97,7 @@ Available tokens for expansion are:
 
 `notification.trigger`
 
-:    The trigger associated with the notification, one of "success" or "failure".
+: The trigger associated with the notification, one of "success" or "failure".
 
 So for example, this URL:
 

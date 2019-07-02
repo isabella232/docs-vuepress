@@ -1,8 +1,8 @@
-% Version 2.3.1
-% greg
-% 10/31/2014
+# Version 2.3.1
 
-Release 2.3.1
+
+
+# Release 2.3.1
 =============
 
 Date: 2014-10-31

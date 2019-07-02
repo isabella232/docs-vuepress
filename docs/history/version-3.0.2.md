@@ -1,8 +1,8 @@
-% Version 3.0.2
-% greg
-% 08/17/2018
+# Version 3.0.2
 
-Release 3.0.2
+
+
+# Release 3.0.2
 ===========
 
 Date: 2018-08-17

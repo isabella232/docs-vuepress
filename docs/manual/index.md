@@ -2,8 +2,7 @@
 
 ---
 
-% Greg Schueler;Alex Honor
-% 1/16/2012
+Updated 1/16/2012
 
 This the Rundeck _User Guide_.
 

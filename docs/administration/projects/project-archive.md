@@ -1,4 +1,4 @@
-% Project Archive
+# Project Archive
 
 The content of a project, jobs, configuration, readme, motd, project ACLs and executions can be exported to an archive file. You might archive a project as a way to:
 

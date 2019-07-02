@@ -2,8 +2,7 @@
 
 ---
 
-% Greg Schueler
-% February 10, 2014
+Updated February 10, 2014
 
 ## Node Filter Syntax
 

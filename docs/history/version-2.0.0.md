@@ -1,8 +1,8 @@
-% Version 2.0.0
-% greg
-% 01/31/2014
+# Version 2.0.0
 
-Release 2.0.0
+
+
+# Release 2.0.0
 ===========
 
 Date: 2014-01-31
@@ -29,7 +29,7 @@ or money in helping us to improve Rundeck.
 * New Projects home page displays readme and message of the day files that can be customized with markdown to display notices to users
 * Improved Node filter
     * Now supports all custom node attributes
-    * New filter expression syntax, simple examples: 
+    * New filter expression syntax, simple examples:
         - `tags: a+b` filters by tags
         - `environment: (prod|qa)` Regular expression filter on an attribute called `environment`
     * New simpler UI
@@ -43,7 +43,7 @@ or money in helping us to improve Rundeck.
 * Improved Activity views with tabbed views for common queries
     * Tabs for Now running, recent, errors and executions by you.
 * Box score metrics for executions. Use Rundeck as an information radiator.
-    * Percent completed and Success/Failure metrics displayed for each execution 
+    * Percent completed and Success/Failure metrics displayed for each execution
 
 ## Enhancements
 
@@ -63,7 +63,7 @@ or money in helping us to improve Rundeck.
 The Rundeck organization on github is the new location for the Rundeck application source code as well as other associated projects:
 
 * [Rundeck source](https://github.com/rundeck/rundeck)
-* [Rundeck api-java-client library](https://github.com/rundeck/rundeck-api-java-client) 
+* [Rundeck api-java-client library](https://github.com/rundeck/rundeck-api-java-client)
     - New version 9.3 recently released.
 
 Additionally, the Rundeck-plugin for Jenkins is now maintained by the core Rundeck project maintainers.

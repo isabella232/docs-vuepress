@@ -1,8 +1,6 @@
 # rd-acl
 
-#### Greg Schueler; Alex Honor
-
-#### April 6, 2015
+Updated April 6, 2015
 
 ## Name
 

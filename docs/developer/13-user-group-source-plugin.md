@@ -1,14 +1,14 @@
-% User Group Source Plugins
-% Stephen Joyner
-% April 15, 2019
+# User Group Source Plugins
+
+Updated April 15, 2019
 
 ## About
 
-User Group Source plugins allow you to add roles to a user when the user logs in.  
+User Group Source plugins allow you to add roles to a user when the user logs in.
 
 ## Use
 
-Create a user group source plugin and install it like other Rundeck plugins.  
+Create a user group source plugin and install it like other Rundeck plugins.
 When a user logs in, your plugin will be called with the user\'s username and will add any roles
 you have designated to the user.
 
@@ -16,16 +16,16 @@ you have designated to the user.
 
 To configure your plugin you can add configuration values to the framework scope.
 
-*Framework scope property definition in `framework.properties`*
+_Framework scope property definition in `framework.properties`_
 
     framework.plugin.UserGroupSource.[your_plugin_name].[property]=value
 
 Please note you cannot configure this plugin at a project level because it executes
-before any project information is applicable.    
-
+before any project information is applicable.
 
 ## Java Plugin Type
-~~~~~ {.java}
+
+```{.java}
 package example;
 
 import com.dtolabs.rundeck.core.plugins.Plugin;
@@ -55,12 +55,12 @@ public class ExampleUserGroupSourcePlugin implements UserGroupSourcePlugin {
         return groups;
     }
 }
-~~~~~
+```
 
 ## Script Plugin Type
 
-Roles will be picked up from the script between the markers `==START_GROUPS==` and `==END_GROUPS==`.  
-Echo one role name per line.  
+Roles will be picked up from the script between the markers `==START_GROUPS==` and `==END_GROUPS==`.
+Echo one role name per line.
 
 ```
 #!/usr/bin/env bash

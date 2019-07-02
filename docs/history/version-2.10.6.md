@@ -1,8 +1,8 @@
-% Version 2.10.6
-% greg
-% 02/02/2018
+# Version 2.10.6
 
-Release 2.10.6
+
+
+# Release 2.10.6
 ===========
 
 Date: 2018-02-02

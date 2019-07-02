@@ -2,8 +2,7 @@
 
 ---
 
-
-% January 30, 2014
+Updated January 30, 2014
 
 ## Overview
 

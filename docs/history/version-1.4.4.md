@@ -1,11 +1,11 @@
-Release 1.4.4
+# Release 1.4.4
 ===========
 
 Date: 10/26/2012
 
 This release marks the end of the 1.4 development cycle, and includes bug fixes and a few new features.
 
-We are planning to make some changes in the DB schema for the next release (1.5.x) that may not be backwards 
+We are planning to make some changes in the DB schema for the next release (1.5.x) that may not be backwards
 compatible so have included a feature to export a Rundeck project into an archive file.  This will allow us
 to change the schema yet still allow users to migrate their projects.
 
@@ -23,7 +23,7 @@ Notable Changes:
     * query for executions and history reports
     * retrieve execution output
 
-Issues: 
+Issues:
 
 * [remote options URL failure allows text field input even if option is restricted](https://github.com/dtolabs/rundeck/issues/215) (bug)
 * [project archive/import](https://github.com/dtolabs/rundeck/issues/212) (enhancement)

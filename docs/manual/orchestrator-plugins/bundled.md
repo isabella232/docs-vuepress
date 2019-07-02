@@ -1,4 +1,4 @@
-% Bundled Orchestrator Plugins
+# Bundled Orchestrator Plugins
 
 Bundled Orchestrator plugins included in Rundeck.
 
@@ -10,7 +10,7 @@ Selects a maximum number of the target nodes at random
 
 Count
 
-:    Number of nodes to select from the pool
+: Number of nodes to select from the pool
 
 ## Rank Tiered
 
@@ -30,4 +30,4 @@ Will never process more than the given percentage of nodes per run at one time r
 
 Percent
 
-:    Max Percentage (e.g. `33` for 33%)
+: Max Percentage (e.g. `33` for 33%)

@@ -1,6 +1,6 @@
-% RESOURCE-XML
+# RESOURCE-XML
 
-% November 20, 2010
+Updated November 20, 2010
 
 # NAME
 

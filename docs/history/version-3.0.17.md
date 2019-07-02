@@ -1,8 +1,8 @@
-% Version 3.0.17
-% greg
-% 03/11/2019
+# Version 3.0.17
 
-Release 3.0.17
+
+
+# Release 3.0.17
 ===========
 
 Date: 2019-03-11

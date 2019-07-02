@@ -1,4 +1,4 @@
-% Project Create
+# Project Create
 
 A project can be created either from the graphical console or using the
 [rd] shell tool.

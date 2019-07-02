@@ -1,4 +1,4 @@
-% SCM
+# SCM
 
 Projects can enable SCM for managing Job definitions.
 
@@ -13,6 +13,6 @@ Project SCM can be configured in the GUI, or via the [API](/api/rundeck-api.md#s
 
 In the GUI:
 
-* First, choose the project to manage
-* In the sidebar, select the "Project Settings > Setup SCM"
-* Choose a SCM Export or SCM Import plugin and click "Setup" to begin configuring the plugin.
+- First, choose the project to manage
+- In the sidebar, select the "Project Settings > Setup SCM"
+- Choose a SCM Export or SCM Import plugin and click "Setup" to begin configuring the plugin.

@@ -1,8 +1,8 @@
-% Version 2.0.2-SNAPSHOT
-% greg
-% 03/13/2014
+# Version 2.0.2-SNAPSHOT
 
-Release 2.0.2
+
+
+# Release 2.0.2
 =============
 
 Date: 2014-03-13

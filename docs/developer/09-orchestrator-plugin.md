@@ -1,7 +1,6 @@
-% Orchestrator Plugin
-% Greg Schueler
-% April 10, 2015
+# Orchestrator Plugin
 
+Updated April 10, 2015
 
 ## Configuring
 
@@ -9,7 +8,7 @@ Orchestrators are configured in a Job definition, see: [Jobs - Orchestrator](/ma
 
 ## Java Plugin Type
 
-* *Note*: Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development] for information about developing a Java plugin for Rundeck.
+- _Note_: Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development] for information about developing a Java plugin for Rundeck.
 
 The plugin interface is [OrchestratorPlugin](${javadocbase}/com/dtolabs/rundeck/plugins/orchestrator/OrchestratorPlugin.html).
 

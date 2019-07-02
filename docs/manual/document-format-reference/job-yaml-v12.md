@@ -1,6 +1,6 @@
-% JOB-YAML
-% Greg Schueler
-% February 25, 2011
+# JOB-YAML
+
+Updated February 25, 2011
 
 # NAME
 
@@ -10,16 +10,16 @@ job-yaml-v13 - The 'job' YAML file declares job entries for Rundeck.
 
 This file can be batch loaded via [rd] jobs load command:
 
-~~~~~~~~ {.bash}
+```{.bash}
 rd jobs load -p project --file /path/to/jobs.yaml -F yaml
-~~~~~~~~
+```
 
 Rundeck job definitions can be dumped and saved to a file via
 rd jobs list command:
 
-~~~~~~~~ {.bash}
+```{.bash}
 rd jobs list -p project --file /tmp/jobs.yaml -F yaml
-~~~~~~~~
+```
 
 [rd]: https://rundeck.github.io/rundeck-cli/
 
@@ -27,12 +27,12 @@ rd jobs list -p project --file /tmp/jobs.yaml -F yaml
 
 The YAML document can contain multiple Job definitions, in a sequence:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
 - # job 1
   name: ...
 - # job 2
   name: ...
-~~~~~~~~
+```
 
 Each Job definition is a Map consisting of some required and some optional entries, as listed below.
 
@@ -42,15 +42,15 @@ Each Job definition requires these values:
 
 `name`
 
-:    the job name (required)
+: the job name (required)
 
 `description`
 
-:    the job description (can be blank). The firstline is the "simple description". Remaining lines are the "extended description".
+: the job description (can be blank). The firstline is the "simple description". Remaining lines are the "extended description".
 
 `loglevel`
 
-:    the loglevel to use for the job, the value must be one of:
+: the loglevel to use for the job, the value must be one of:
 
     * `DEBUG`
     * `VERBOSE`
@@ -58,7 +58,7 @@ Each Job definition requires these values:
     * `WARN`
     * `ERROR`
 
-If the description contains more than one line of text, then the first line is used as the "short description" of the job, and rendered exactly as text. The remaining lines are the "extended description", rendered using Markdown format as HTML in the Rundeck GUI. Markdown can also embed HTML directly if you like.  See [Wikipedia - Markdown](https://en.wikipedia.org/wiki/Markdown#Example).
+If the description contains more than one line of text, then the first line is used as the "short description" of the job, and rendered exactly as text. The remaining lines are the "extended description", rendered using Markdown format as HTML in the Rundeck GUI. Markdown can also embed HTML directly if you like. See [Wikipedia - Markdown](https://en.wikipedia.org/wiki/Markdown#Example).
 
 The HTML is sanitized to remove disallowed tags before rendering to the browser (such as `<script>`, etc.).
 You can disable all extended description HTML rendering
@@ -67,22 +67,22 @@ See [GUI Customization](/administration/configuration/gui-customization.md).
 
 [`sequence`](#sequence)
 
-:    The workflow sequence definition
+: The workflow sequence definition
 
 A minimal job definition example:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
 - name: job name
   description: ''
   loglevel: INFO
   sequence:
     commands:
       - exec: a command
-~~~~~~~~
+```
 
 Extended description using yaml 'literal' scalar string format (beginning with a `|`). Make sure each line is indented to the correct level.
 
-~~~~~~~~ {.yaml}
+```{.yaml}
 - name: job name
   description: |
     Performs a service
@@ -100,25 +100,25 @@ Extended description using yaml 'literal' scalar string format (beginning with a
   sequence:
     commands:
       - exec: a command
-~~~~~~~~
+```
 
 In addition, these optional entries can be present:
 
 `uuid`
 
-:    Unique UUID
+: Unique UUID
 
 `group`
 
-:    Job group name
+: Job group name
 
 `multipleExecutions`
 
-:    'true/false': if true, the job can have more than one execution at once.
+: 'true/false': if true, the job can have more than one execution at once.
 
 `timeout`
 
-:    a maximum runtime before the job will be stopped.
+: a maximum runtime before the job will be stopped.
 
     * `120` - indicates 120 seconds
     * `6h 30m` indicates 6 hours and 30 minutes
@@ -126,34 +126,34 @@ In addition, these optional entries can be present:
 
 `retry`
 
-:    Number of times to retry the job if it fails or times out. Allowed values:
+: Number of times to retry the job if it fails or times out. Allowed values:
 
     * An integer number indicating the maximum retries
     * `${option.retry}` reference to a job option value
 
-   Alternatively the retry can be set with delay between retries:
+Alternatively the retry can be set with delay between retries:
 
     * `120` - indicates 120 seconds
     * `6h 30m` indicates 6 hours and 30 minutes
     * `${option.delay}` reference to a job option value
 
-   Example of retry with delay:
+Example of retry with delay:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
   retry:
       delay: 1h1m1s
       retry: '${option.retry}'
-~~~~~~~~
+```
 
-   Example of simple retry:
+Example of simple retry:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
   retry: ${option.retry}
-~~~~~~~~
+```
 
 `loglimit`
 
-:    An optional logging limit.
+: An optional logging limit.
 (See [Jobs - Log Limit](/manual/04-jobs.md#log-limit]). Allowed values:
 
     * `###` If you specify a number, that is treated as the "Maximum total number of log lines"
@@ -162,17 +162,17 @@ In addition, these optional entries can be present:
 
 `loglimitAction`
 
-:    The action to perform if the `loglimit` value is exceeded.
-     If `loglimit` is specified, but no `loglimitAction` is set, it will default to a
-     value of `halt`. Allowed values:
+: The action to perform if the `loglimit` value is exceeded.
+If `loglimit` is specified, but no `loglimitAction` is set, it will default to a
+value of `halt`. Allowed values:
 
     * `halt` - halt and fail the job (default)
     * `truncate` - do not halt the job, and truncate all further output
 
 `loglimitStatus`
 
-:    The status for the Job when halted. If no `loglimitStatus` is set, it will default to a
-     value of `failed`. Allowed values:
+: The status for the Job when halted. If no `loglimitStatus` is set, it will default to a
+value of `failed`. Allowed values:
 
     * `failed`
     * `aborted`
@@ -180,23 +180,23 @@ In addition, these optional entries can be present:
 
 [`options`](#options)
 
-:    Set of Options for the Job
+: Set of Options for the Job
 
 [`schedule`](#schedule)
 
-:    Job schedule
+: Job schedule
 
 [`nodefilters`](#nodefilters)
 
-:    Node filter definition
+: Node filter definition
 
 [`notification`](#notification)
 
-:    Job result notifications
+: Job result notifications
 
-*Note:* The UUID can be set manually (if
+_Note:_ The UUID can be set manually (if
 you are writing the job definition from scratch), or will be assigned at job
-creation time by the Rundeck server using a random UUID.  This string should be
+creation time by the Rundeck server using a random UUID. This string should be
 as unique as possible if you set it manually.
 
 This identifier is used to uniquely identify jobs when ported between Rundeck
@@ -208,7 +208,7 @@ This defines the Workflow options and execution sequence.
 
 Example:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
   sequence:
     keepgoing: true
     strategy: node-first
@@ -229,32 +229,31 @@ Example:
       configuration:
         key: value
         another: value
-~~~~~~~~
+```
 
 The sequence has these required entries:
 
 `keepgoing`
 
-:    "true/false" - whether the sequence should keep going if an error occurs
+: "true/false" - whether the sequence should keep going if an error occurs
 
 `strategy`
 
-:    "node-first" or "step-first".  Determines the strategy for executing the sequence across a set of nodes.  See the [Rundeck User Manual](/manual/04-jobs.md#workflow-control-settings] for more info.
+: "node-first" or "step-first". Determines the strategy for executing the sequence across a set of nodes. See the [Rundeck User Manual](/manual/04-jobs.md#workflow-control-settings] for more info.
 
 `commands`
 
-:    This is a Sequence of:
-    * One or more [Command Definitions](#command)
+: This is a Sequence of: \* One or more [Command Definitions](#command)
 
 ### Command
 
 Each command in the [Sequence](#sequence) can be of these different types:
 
-* [Simple command execution entry](#simple-command-entry)
-* [Script execution entry](#script-execution-entry)
-* [Script file execution entry](#script-file-execution-entry)
-* [Job Reference entry](#job-reference-entry)
-* [Plugin step entry](#plugin-step-entry)
+- [Simple command execution entry](#simple-command-entry)
+- [Script execution entry](#script-execution-entry)
+- [Script file execution entry](#script-file-execution-entry)
+- [Job Reference entry](#job-reference-entry)
+- [Plugin step entry](#plugin-step-entry)
 
 Each command can also embed an [Error Handler](#error-handler).
 
@@ -268,18 +267,18 @@ fails. An Error Handler is a map keyed with the name:
 `errorhandler`
 
 The Error Handler contents can be exactly the same as a [Command](#command), except it
-cannot contain another Error Handler.  The contents are defined by one of these types:
+cannot contain another Error Handler. The contents are defined by one of these types:
 
-* [Simple command execution entry](#simple-command-entry)
-* [Script execution entry](#script-execution-entry)
-* [Script file execution entry](#script-file-execution-entry)
-* [Job Reference entry](#job-reference-entry)
+- [Simple command execution entry](#simple-command-entry)
+- [Script execution entry](#script-execution-entry)
+- [Script file execution entry](#script-file-execution-entry)
+- [Job Reference entry](#job-reference-entry)
 
 The errorhandler has this additional optional entry:
 
 `keepgoingOnSuccess`
 
-:    "true/false" - If true, and the error handler succeeds, the workflow sequence will continue even if the workflow `keepgoing` is false.
+: "true/false" - If true, and the error handler succeeds, the workflow sequence will continue even if the workflow `keepgoing` is false.
 
 ### description
 
@@ -287,7 +286,7 @@ Defines a description for a step.
 
 `description`
 
-:    Text to describe this step (optional).
+: Text to describe this step (optional).
 
 ### Simple Command Entry
 
@@ -295,7 +294,7 @@ This [Command](#command) consists of a single entry:
 
 `exec`
 
-:    the command to execute
+: the command to execute
 
 ### Script Execution Entry
 
@@ -303,22 +302,22 @@ This [Command](#command) executes the script content specified.
 
 `script`
 
-:     The script content.  It is useful to use the YAML "literal" scalar syntax shown below
+: The script content. It is useful to use the YAML "literal" scalar syntax shown below
 
 `args`
 
-:     Optional string defining arguments to pass to the script.
+: Optional string defining arguments to pass to the script.
 
 Example:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
    - script: |-
       #!/bin/bash
 
       echo this is a script
       echo this is option value: @option.test@
     args: arguments passed to the script
-~~~~~~~~
+```
 
 ### Script File Execution Entry
 
@@ -326,18 +325,18 @@ This [Command](#command) executes a script file stored on the server.
 
 `scriptfile`
 
-:    path to the script file
+: path to the script file
 
 `args`
 
-:     optional arguments to the script
+: optional arguments to the script
 
 Example:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
   - scriptfile: /path/to/script
     args: arguments to script
-~~~~~~~~
+```
 
 ### Script URL Execution Entry
 
@@ -345,18 +344,18 @@ This [Command](#command) downloads a script file from a URL and executes it.
 
 `scripturl`
 
-:    URL to the script file
+: URL to the script file
 
 `args`
 
-:     optional arguments to the script
+: optional arguments to the script
 
 Example:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
   - scripturl: http://example.com/path/to/script
     args: arguments to script
-~~~~~~~~
+```
 
 ### Script Interpreter
 
@@ -364,11 +363,11 @@ For `script`, `scriptfile` and `scripturl`, you can optionally declare an "inter
 
 `scriptInterpreter`
 
-:     Optional string to declare an interpreter line for the script.  The script and args will be passed to this command, rather than executed directly.
+: Optional string to declare an interpreter line for the script. The script and args will be passed to this command, rather than executed directly.
 
 Example:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
    - script: |-
       #!/bin/bash
 
@@ -376,7 +375,7 @@ Example:
       echo this is option value: @option.test@
     args: arguments passed to the script
     scriptInterpreter: interpreter -flag
-~~~~~~~~
+```
 
 This script will then be executed as:
 
@@ -384,7 +383,7 @@ This script will then be executed as:
 
 `interpreterArgsQuoted`
 
-:     Optional boolean, indicating whether the script and arguments should be quoted when passed to the interpreter.
+: Optional boolean, indicating whether the script and arguments should be quoted when passed to the interpreter.
 
 If `interpreterArgsQuoted` is `true`, then the script will then be executed as:
 
@@ -396,7 +395,7 @@ This [Command](#command) executes another Rundeck Job.
 
 `jobref`
 
-:    map  consisting of these entries:
+: map consisting of these entries:
 
     `name`
 
@@ -420,25 +419,24 @@ This [Command](#command) executes another Rundeck Job.
 
 Example:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
   - jobref:
       group: test
       name: simple job test
       args: args for the job
-~~~~~~~~
+```
 
-
-If `nodeStep` is set to "true", then the Job Reference step will operate as a *Node Step* instead of the
-default.  As a *Node Step* it will execute once for each matched node in the containing Job workflow, and
+If `nodeStep` is set to "true", then the Job Reference step will operate as a _Node Step_ instead of the
+default. As a _Node Step_ it will execute once for each matched node in the containing Job workflow, and
 can use node attribute variable expansion in the arguments to the job reference.
 
 #### Job Reference Nodefilters
 
-A `nodefilters` map entry specifies the Nodes to use for the referenced job,  and the node-dispatch options.  Contains the following entries:
+A `nodefilters` map entry specifies the Nodes to use for the referenced job, and the node-dispatch options. Contains the following entries:
 
 `dispatch`
 
-:    a Map containing:
+: a Map containing:
 
     `keepgoing`
 
@@ -456,15 +454,15 @@ A `nodefilters` map entry specifies the Nodes to use for the referenced job,  an
 
     :    Order direction for node ranking. Either "ascending" or "descending" (default "ascending")
 
-The `nodefilters` should contain a `filter` entry.  The value is a string defining a node filter. See [User Guide - Node Filters](/manual/11-node-filters.md).
+The `nodefilters` should contain a `filter` entry. The value is a string defining a node filter. See [User Guide - Node Filters](/manual/11-node-filters.md).
 
 `filter`
 
-:    A node filter string
+: A node filter string
 
 Example:
 
-~~~ {.yaml}
+```{.yaml}
 - jobref:
    name: jobname
    group: group
@@ -476,135 +474,135 @@ Example:
         rankAttribute: rank
         rankOrder: descending
       filter: 'tags: web name: web-.* !os-family: windows'
-~~~
+```
 
 ### Plugin Step Entry
 
-This [Command](#command) executes a plugin.  There are two types of step plugins: Node step, and Workflow step.
+This [Command](#command) executes a plugin. There are two types of step plugins: Node step, and Workflow step.
 
 `nodeStep`
 
-:   boolean: true indicates it is a Node step plugin, false indicates a Workflow step plugin.
+: boolean: true indicates it is a Node step plugin, false indicates a Workflow step plugin.
 
 `type`
 
-:   The plugin provider type identifier.
+: The plugin provider type identifier.
 
 `configuration`
 
-:   map consisting of a single level of configuration entries for the plugin. Refer to the plugin documentation for appropriate configuration keys and values.
+: map consisting of a single level of configuration entries for the plugin. Refer to the plugin documentation for appropriate configuration keys and values.
 
 Example:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
   - nodeStep: false
     type: jenkins-build
     configuration:
       job: "${option.job}"
-~~~~~~~~
+```
 
 ### Options
 
 Options for a job can be specified with a list of Maps. Each map contains a `name` key with the name of the option, and the content is a map defining the [Option](#option).
 
-~~~~~~~~ {.yaml}
+```{.yaml}
   options:
   - {definition..}
   - {definition..}
-~~~~~~~~
+```
 
 Note: for backwards compatibility, a Map format is also accepted on import:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
   options:
     optname1:
       {definition..}
     optname2:
       {definition..}
-~~~~~~~~
+```
 
 ### Option
 
 An option definition requires at least a `name` key to identify it:
 
-~~~ {.yaml}
+```{.yaml}
   options:
   - name: myoption
-~~~
+```
 
 Optional map entries are:
 
 `description`
 
-:    description of the option, will be rendered as Markdown
+: description of the option, will be rendered as Markdown
 
 `value`
 
-:    a default value for the option
+: a default value for the option
 
 `values`
 
-:    A set of possible values for the option. This must be a YAML Sequence of strings.
+: A set of possible values for the option. This must be a YAML Sequence of strings.
 
 `required`
 
-:    "true/false" - whether the option is required or not
+: "true/false" - whether the option is required or not
 
 `enforced`
 
-:    "true/false" - whether the option value must be one of the specified possible values
+: "true/false" - whether the option value must be one of the specified possible values
 
 `regex`
 
-:    A regular expression defining what option values are acceptable
+: A regular expression defining what option values are acceptable
 
 `valuesUrl`
 
-:    A URL to an endpoint that will return a JSON-formatted set of values for the option.
+: A URL to an endpoint that will return a JSON-formatted set of values for the option.
 
 `multivalued`
 
-:    "true/false" - whether the option supports multiple input values
+: "true/false" - whether the option supports multiple input values
 
 `delimiter`
 
-:    A string used to conjoin multiple input values.  (Required if `multivalued` is "true")
+: A string used to conjoin multiple input values. (Required if `multivalued` is "true")
 
 `multivalueAllSelected`
 
-:    "true/false" - whether all values should be selected by default
+: "true/false" - whether all values should be selected by default
 
 `secure`
 
-:   "true/false" - whether the option is a secure input option. Not compatible with "multivalued"
+: "true/false" - whether the option is a secure input option. Not compatible with "multivalued"
 
 `valueExposed`
 
-:   "true/false" - whether a secure input option value is exposed to scripts or not. `false` means the option will be used only as a Secure Remote Authentication option.  default: `false`.
+: "true/false" - whether a secure input option value is exposed to scripts or not. `false` means the option will be used only as a Secure Remote Authentication option. default: `false`.
 
 `storagePath`
 
-:    for a secure option, a storage path to password value to use as default
+: for a secure option, a storage path to password value to use as default
 
 `isDate`
 
-:    "true/false" - the option should display as a date/time input field
+: "true/false" - the option should display as a date/time input field
 
 `dateFormat`
 
-:    The date/time format to use in the UI. Using the [momentjs format](https://momentjs.com/docs/#/displaying/format/).
+: The date/time format to use in the UI. Using the [momentjs format](https://momentjs.com/docs/#/displaying/format/).
 
 `sortIndex` (deprecated)
 
-:   *integer* - A number indicating the order this option should appear in the GUI.  If specified this
-    option will be arranged in order with other options with a `sortIndex` value.
-    If the [Options](#options) are defined in a list, the order specified will be preserved.
+: _integer_ - A number indicating the order this option should appear in the GUI. If specified this
+option will be arranged in order with other options with a `sortIndex` value.
+If the [Options](#options) are defined in a list, the order specified will be preserved.
 
 The `description` for an Option will be rendered with Markdown in the GUI.
 
 Example:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
   test:
     required: true
     description: a test option
@@ -616,11 +614,11 @@ Example:
     - cvalue
     multivalued: true
     delimiter: ','
-~~~~~~~~
+```
 
 Example using multiple lines for the description:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
   test:
     required: true
     description: |
@@ -636,40 +634,39 @@ Example using multiple lines for the description:
     - cvalue
     multivalued: true
     delimiter: ','
-~~~~~~~~
-
+```
 
 #### valuesUrl JSON
 
 The data returned from the valuesUrl can be formatted as a list of values:
 
-~~~~~~~~ {.json}
+```{.json}
 ["x value","y value"]
-~~~~~~~~
+```
 
 or as Name-value list:
 
-~~~~~~~~ {.json}
+```{.json}
 [
   {name:"X Label", value:"x value"},
   {name:"Y Label", value:"y value"},
   {name:"A Label", value:"a value"}
 ]
-~~~~~~~~
+```
 
-* See the [Jobs Guide](/manual/04-jobs.md#remote-option-values] for more info.
+- See the [Jobs Guide](/manual/04-jobs.md#remote-option-values] for more info.
 
 ### Schedule
 
-Define a schedule for repeated execution of the Job.  The schedule can be defined as a Crontab formatted string, or as individual components.  The individual components support Crontab syntax.
+Define a schedule for repeated execution of the Job. The schedule can be defined as a Crontab formatted string, or as individual components. The individual components support Crontab syntax.
 
-* `crontab`: The crontab string, e.g. `"0 30 */6 ? Jan Mon *"`
+- `crontab`: The crontab string, e.g. `"0 30 */6 ? Jan Mon *"`
 
 Or use a structure of explicit components. All of these are optional, but likely you want to change them:
 
 `time`
 
-:    a map containing:
+: a map containing:
 
     `seconds`
 
@@ -685,11 +682,11 @@ Or use a structure of explicit components. All of these are optional, but likely
 
 `month`
 
-:    Month value (default: "*")
+: Month value (default: "\*")
 
 `year`
 
-:    Year value (default "*")
+: Year value (default "\*")
 
 `dayofmonth`
 
@@ -699,7 +696,7 @@ Or use a structure of explicit components. All of these are optional, but likely
 
 `weekday`
 
-:    Map containing:
+: Map containing:
 
     `day`
 
@@ -707,14 +704,14 @@ Or use a structure of explicit components. All of these are optional, but likely
 
 Example using crontab string:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
     schedule:
       crontab: '0 30 */6 ? Jan Mon *'
-~~~~~~~~
+```
 
 Example using structure:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
     schedule:
       time:
         hour: '05'
@@ -724,15 +721,15 @@ Example using structure:
       year: '*'
       weekday:
         day: FRI,MON,TUE
-~~~~~~~~
+```
 
 ### Nodefilters
 
-Specifies the Nodes to use for the job,  and the node-dispatch options.  Contains the following entries:
+Specifies the Nodes to use for the job, and the node-dispatch options. Contains the following entries:
 
 `dispatch`
 
-:    a Map containing:
+: a Map containing:
 
     `keepgoing`
 
@@ -754,15 +751,15 @@ Specifies the Nodes to use for the job,  and the node-dispatch options.  Contain
 
     :    Order direction for node ranking. Either "ascending" or "descending" (default "ascending")
 
-The `nodefilters` should contain a `filter` entry.  The value is a string defining a node filter. See [User Guide - Node Filters](/manual/11-node-filters.md).
+The `nodefilters` should contain a `filter` entry. The value is a string defining a node filter. See [User Guide - Node Filters](/manual/11-node-filters.md).
 
 `filter`
 
-:    A node filter string
+: A node filter string
 
 Example:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
   nodefilters:
     dispatch:
       threadcount: 1
@@ -771,7 +768,7 @@ Example:
       rankAttribute: rank
       rankOrder: descending
     filter: 'tags: web name: web-.* !os-family: windows'
-~~~~~~~~
+```
 
 **Note:** The `include` and `exclude` map entries are deprecated and will be removed in a later version of Rundeck.
 
@@ -779,7 +776,7 @@ The `nodefilters` must also contain ONE of `include` or `exclude` filter specifi
 
 `include`/`exclude`
 
-:    A Map containing filter entries:
+: A Map containing filter entries:
 
     `hostname`
 
@@ -811,7 +808,7 @@ The `nodefilters` must also contain ONE of `include` or `exclude` filter specifi
 
 Deprecated Example:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
   nodefilters:
     dispatch:
       threadcount: 1
@@ -824,16 +821,15 @@ Deprecated Example:
       name: web-.*
     exclude:
       os-family: windows
-~~~~~~~~
+```
 
 ### Notification
 
-Defines a notification for the job.  You can include any of `onsuccess`, `onfailure`, `onstart`, `onavgduration`, or `onretryablefailure` notifications. Each type of notification can define any of the built in notifications, or define plugin notifications.
-
+Defines a notification for the job. You can include any of `onsuccess`, `onfailure`, `onstart`, `onavgduration`, or `onretryablefailure` notifications. Each type of notification can define any of the built in notifications, or define plugin notifications.
 
 `onsuccess`/`onfailure`/`onstart`/`onavgduration`/`onretryablefailure`
 
-:    A Map containing either or both of:
+: A Map containing either or both of:
 
     `recipients`
 
@@ -849,7 +845,7 @@ Defines a notification for the job.  You can include any of `onsuccess`, `onfail
 
 Example:
 
-~~~~~~~~ {.yaml}
+```{.yaml}
   notification:
     onfailure:
       recipients: tom@example.com,shirley@example.com
@@ -879,21 +875,21 @@ Example:
       plugin:
         configuration: {}
         type: MinimalNotificationPlugin
-~~~~~~~~
+```
 
-* For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](/manual/04-jobs.md#webhooks].
+- For more information about the Webhook mechanism used, see the chapter [Integration - Webhooks](/manual/04-jobs.md#webhooks].
 
 #### plugin
 
-Defines a plugin notification section, can contain a single Map, or a Sequence of Maps.  Each such map must have these contents:
+Defines a plugin notification section, can contain a single Map, or a Sequence of Maps. Each such map must have these contents:
 
 `type`
 
-:    The type identifier of the plugin
+: The type identifier of the plugin
 
 `configuration`
 
-:    A Map containing any custom configuration key/values for the plugin.
+: A Map containing any custom configuration key/values for the plugin.
 
 # SEE ALSO
 

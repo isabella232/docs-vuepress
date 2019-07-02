@@ -1,32 +1,34 @@
-% Azure Resource Model Source
+# Azure Resource Model Source
 
 The Azure Resource Model Source Plugin provides the Azure VMs as nodes on a Rundeck Server.
 
 The source code lives at [https://github.com/rundeck-plugins/rundeck-azure-plugin](https://github.com/rundeck-plugins/rundeck-azure-plugin).
 
 ### Credentials Settings
+
 Settings related to the Azure connection
 
-* **Client ID**: Azure Client ID.
-* **Tenant ID**: Azure Tenant ID.
-* **Subscription ID**: Azure Subscription ID.
-* **Azure Access Key**: Azure Access Key.
-* **Certificate Path**: (Optional) Azure certificate file path (if the access key is not defined). 
-* **Certificate Password**: (Optional) Azure certificate Password (if the access key is not defined).
+- **Client ID**: Azure Client ID.
+- **Tenant ID**: Azure Tenant ID.
+- **Subscription ID**: Azure Subscription ID.
+- **Azure Access Key**: Azure Access Key.
+- **Certificate Path**: (Optional) Azure certificate file path (if the access key is not defined).
+- **Certificate Password**: (Optional) Azure certificate Password (if the access key is not defined).
 
+### Other Settings:
 
-###  Other Settings:
 Mapping and filter settings
 
-* **Mapping Params**: Custom mapping settings. Property mapping definitions. Specify multiple mappings in the form "attributeName.selector=selector" or "attributeName.default=value", separated by ";"
-* **Resource Group**:  Filter using resource group
-* **Only Running Instances**: Filter for the "Running" instances. If false, all instances will be returned.
+- **Mapping Params**: Custom mapping settings. Property mapping definitions. Specify multiple mappings in the form "attributeName.selector=selector" or "attributeName.default=value", separated by ";"
+- **Resource Group**: Filter using resource group
+- **Only Running Instances**: Filter for the "Running" instances. If false, all instances will be returned.
 
 ### Mapping
 
 Map the Azure VM properties to Rundeck Node definition
 
 #### Default Mapping
+
 ```
 nodename.selector                   =    name
 hostname.selector                   =    hostname
@@ -69,22 +71,22 @@ provisioningState:message.selector              =    azure_provisioningState_mes
 provisioningState:time.selector                 =    azure_provisioningState_time
 
 ```
+
 ### Adding Tags from Azure VM Tags
 
 You can add Rundeck's node tags using Azure VM tags.
 
 For example, create an Azure VM tags like:
 
-* Rundeck-Tags=sometag1,sometag2
+- Rundeck-Tags=sometag1,sometag2
 
 `sometag1` and `sometag2` will be added as tags on Rundeck nodes
 
-
 ### Adding custom tags from Azure VM files
 
-You can add extra tags using the azure fields available (right column on the default mapping). 
+You can add extra tags using the azure fields available (right column on the default mapping).
 
-For example, adding extra tags based on  the VM resource group and status:
+For example, adding extra tags based on the VM resource group and status:
 
 ```
 tags.selector=azure_resourceGroup,azure_status;
@@ -96,9 +98,9 @@ Also, you can add extra nodes attributes using Azure VM tags.
 
 For example, creating the following tags on the Azure VM, you can map those tags to a rundeck node attribute:
 
-* Rundeck-node-executor=winrm-exe
-* Rundeck-file-copier=winrm-filecopier
-* Rundeck-winrm-password-storage-path=keys/node/windows.password
+- Rundeck-node-executor=winrm-exe
+- Rundeck-file-copier=winrm-filecopier
+- Rundeck-winrm-password-storage-path=keys/node/windows.password
 
 As you see, the Azure VM tags must start with **Rundeck-**
 

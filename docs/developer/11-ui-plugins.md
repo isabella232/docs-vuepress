@@ -1,7 +1,6 @@
-% UI Plugins
-% Greg Schueler
-% December 4, 2017
+# UI Plugins
 
+Updated December 4, 2017
 
 ## About
 
@@ -27,48 +26,48 @@ same pages, otherwise Rundeck will not load it.
 For Zip UI plugins Rundeck looks at the `plugin.yaml` data which declares the page configurations to determine applicability. For Java plugins, Rundeck calls the `doesApply` method.
 
 When loading a plugin for the page, Rundeck will link to the script and stylesheets for the
-page.  For Zip UI Plugins, the Page configuration determines which scripts and stylesheets
-to load.  For Java plugins, the `scriptResourcesForPath` and `styleResourcesForPath` methods
+page. For Zip UI Plugins, the Page configuration determines which scripts and stylesheets
+to load. For Java plugins, the `scriptResourcesForPath` and `styleResourcesForPath` methods
 will be called.
 
 This is the list of available pages which can load UI plugins:
 
-* `menu/jobs`,
-* `menu/home`
-* `menu/projectHome`
-* `menu/executionMode`
-* `menu/projectExport`
-* `menu/projectImport`
-* `menu/projectDelete`
-* `menu/projectAcls`
-* `menu/editProjectAclFile`
-* `menu/createProjectAclFile`
-* `menu/saveProjectAclFile`
-* `menu/logStorage`
-* `menu/securityConfig`
-* `menu/acls`
-* `menu/editSystemAclFile`
-* `menu/createSystemAclFile`
-* `menu/saveSystemAclFile`
-* `menu/systemInfo`
-* `menu/systemConfig`
-* `menu/metrics`
-* `menu/plugins`
-* `menu/welcome`
-* `menu/storage`
-* `scheduledExecution/show`
-* `scheduledExecution/edit`
-* `scheduledExecution/delete`
-* `scheduledExecution/create`
-* `execution/show`
-* `framework/nodes`
-* `framework/adhoc`
-* `framework/createProject`
-* `framework/editProject`
-* `framework/editProjectConfig`
-* `framework/editProjectFile`
-* `scm/index`
-* `reports/index`
+- `menu/jobs`,
+- `menu/home`
+- `menu/projectHome`
+- `menu/executionMode`
+- `menu/projectExport`
+- `menu/projectImport`
+- `menu/projectDelete`
+- `menu/projectAcls`
+- `menu/editProjectAclFile`
+- `menu/createProjectAclFile`
+- `menu/saveProjectAclFile`
+- `menu/logStorage`
+- `menu/securityConfig`
+- `menu/acls`
+- `menu/editSystemAclFile`
+- `menu/createSystemAclFile`
+- `menu/saveSystemAclFile`
+- `menu/systemInfo`
+- `menu/systemConfig`
+- `menu/metrics`
+- `menu/plugins`
+- `menu/welcome`
+- `menu/storage`
+- `scheduledExecution/show`
+- `scheduledExecution/edit`
+- `scheduledExecution/delete`
+- `scheduledExecution/create`
+- `execution/show`
+- `framework/nodes`
+- `framework/adhoc`
+- `framework/createProject`
+- `framework/editProject`
+- `framework/editProjectConfig`
+- `framework/editProjectFile`
+- `scm/index`
+- `reports/index`
 
 ## Zip Plugin Type
 
@@ -97,7 +96,7 @@ The structure of the zip file is:
 
 The following is required in the `providers:` section of the `plugin.yaml`:
 
-~~~~~~~ {.yaml}
+```{.yaml}
 # yaml plugin metadata
 
 name: plugin name
@@ -122,7 +121,7 @@ providers:
         - pages: ['some/path']
           styles:
           	- css/mystyles.css
-~~~~~~~~~~~~
+```
 
 For a UI plugin, define a `service: UI` and a `plugin-type: ui`.
 (The `providers` section can also define other providers, of any type.)
@@ -133,10 +132,10 @@ Within the `ui:` section is a list of UI Plugin Page Configurations.
 
 UI Plugin Page Configurations consist of:
 
-* `pages:` A list of applicable Page paths. This can be a single path string, a list of paths, or a `*` which will match all paths.
-* `scripts:` A single file or list of files.  These are relative to the `resources` directory in your zip file.
-* `styles:` A single file, or a list of files.  Thes are relative to the `resources` directory in your zip file.
-* `requires:` A single or list of other UI plugin provider IDs.
+- `pages:` A list of applicable Page paths. This can be a single path string, a list of paths, or a `*` which will match all paths.
+- `scripts:` A single file or list of files. These are relative to the `resources` directory in your zip file.
+- `styles:` A single file, or a list of files. Thes are relative to the `resources` directory in your zip file.
+- `requires:` A single or list of other UI plugin provider IDs.
 
 See [Javascript API](#javascript-api) for additional Javascript information.
 
@@ -150,11 +149,11 @@ See [Plugin Icons](/developer/01-plugin-development.md#plugin-icons].
 
 ## Java Plugin Type
 
-* *Note*: Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development] for information about developing a Java plugin for Rundeck.
+- _Note_: Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development] for information about developing a Java plugin for Rundeck.
 
 The plugin interface is [UIPlugin][].
 
-~~~{.java}
+```{.java}
 
 public interface UIPlugin {
     /**
@@ -193,15 +192,15 @@ public interface UIPlugin {
     List<String> requires(String path);
 }
 
-~~~
+```
 
 The methods of the plugin are used as follows:
 
-* `doesApply`: should return `true`, if the plugin applies to the given path
-* `resourcesForPath`: return the list of resources for the given path
-* `scriptResourcesForPath`: return the list of Javascript resources for the path
-* `styleResourcesForPath`: return the list of CSS resources for the path
-* `requires`: return a list of other UI plugin names which this plugin requires, used to order the loading of plugin resources.
+- `doesApply`: should return `true`, if the plugin applies to the given path
+- `resourcesForPath`: return the list of resources for the given path
+- `scriptResourcesForPath`: return the list of Javascript resources for the path
+- `styleResourcesForPath`: return the list of CSS resources for the path
+- `requires`: return a list of other UI plugin names which this plugin requires, used to order the loading of plugin resources.
 
 Resources should be included in your plugin Jar file under a `resources/` directory.
 
@@ -222,14 +221,13 @@ Note: Rundeck makes use of [Knockout][] and [jQuery][] on all GUI pages, so they
 
 Rundeck creates a window object called `rundeckPage` with these methods:
 
-* `project()`: returns the name of the current project, if available
-* `path()`: the page path
-* `lang()`: current user locale and language code
-* `pluginBaseUrl(pluginId)`: returns the base URL for loading file resources for a plugin with provider ID "pluginId". Append a resources path to retrieve any plugin resource files.
-* `pluginBasei18nUrl(pluginId)`: returns the base URL for loading i18n resources for a plugin with provider ID "pluginId". Append a resources path to retrieve i18n resources.
+- `project()`: returns the name of the current project, if available
+- `path()`: the page path
+- `lang()`: current user locale and language code
+- `pluginBaseUrl(pluginId)`: returns the base URL for loading file resources for a plugin with provider ID "pluginId". Append a resources path to retrieve any plugin resource files.
+- `pluginBasei18nUrl(pluginId)`: returns the base URL for loading i18n resources for a plugin with provider ID "pluginId". Append a resources path to retrieve i18n resources.
 
 Note: the `rundeckPage` object may have other methods, but any methods not documented here are subject to change.
-
 
 ### Loading resources
 
@@ -237,7 +235,7 @@ You can load other resources from your plugin by using the `pluginBaseUrl` for y
 
 Example using jQuery:
 
-~~~{.js}
+```{.js}
 function loadHtmlTemplate(file){
 	//assuming my zip plugin has a resources/html/myfile.html
 	var myProvider='com.mycompany.rundeck.myplugin';
@@ -247,7 +245,7 @@ function loadHtmlTemplate(file){
     	//do something with the HTML contents
     });
 }
-~~~
+```
 
 ### Loading i18n Resources
 
@@ -257,8 +255,8 @@ Rundeck Plugin Localization/Internationalization uses java `.properties` formatt
 
 Requesting resources via this URL provides two features to help with i18n:
 
-1. Locale resolution.  Requesting a path such as `rundeckPage.pluginBasei18nUrl('myprovider')+'/myfile.txt'`, will attempt to resolve the file by looking for a file based on the current User's locale/language settings.  E.g. if their language is set to Spanish (code `es_419`), the request will resolve to a file `i18n/myfile_es_419.txt` if it exists. It will fall back to the language (e.g. `es`), then any default locale (e.g. `en_us`), default language (e.g. `en`) and finally the original file path.
-2. Conversion of Java .properties to JSON.  If you request a `.properties` file, and append a `?format=json` to the URL, Rundeck will load the Java Properties formatted data, and return the JSON for the data.
+1. Locale resolution. Requesting a path such as `rundeckPage.pluginBasei18nUrl('myprovider')+'/myfile.txt'`, will attempt to resolve the file by looking for a file based on the current User's locale/language settings. E.g. if their language is set to Spanish (code `es_419`), the request will resolve to a file `i18n/myfile_es_419.txt` if it exists. It will fall back to the language (e.g. `es`), then any default locale (e.g. `en_us`), default language (e.g. `en`) and finally the original file path.
+2. Conversion of Java .properties to JSON. If you request a `.properties` file, and append a `?format=json` to the URL, Rundeck will load the Java Properties formatted data, and return the JSON for the data.
 
 Examples:
 
@@ -266,7 +264,7 @@ Loads plugin i18n messages into the `window.Messages` object.
 If my zip plugin has a file `resources/i18n/messages_es_419.properties`
 and user's current lang is `es_419`, this would load the Spanish messages:
 
-~~~{.js}
+```{.js}
 function loadi18nMessages(file){
 	var myProvider='com.mycompany.rundeck.myplugin';
 	var plugini18nBase = rundeckPage.pluginBasei18nUrl(myProvider);
@@ -280,11 +278,11 @@ function loadi18nMessages(file){
         }
     });
 }
-~~~
+```
 
 This example is similar to the first example, but loads a HTML file specific to the Language/Locale of the user. If the locale is `es_419` this would load the `resources/i18n/html/myfile_es_419.html` file:
 
-~~~{.js}
+```{.js}
 
 function loadi18nHtmlTemplate(file){
 	var myProvider='com.mycompany.rundeck.myplugin';
@@ -294,13 +292,13 @@ function loadi18nHtmlTemplate(file){
     	//do something with the HTML contents
     });
 }
-~~~
+```
 
 ## Example Plugin
 
 Here are some [UI Plugin Examples][example-code].
 
-[UIPlugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/rundeck/UIPlugin.html
-[Knockout]: https://knockoutjs.com/
-[jQuery]: https://jquery.com/
+[uiplugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/rundeck/UIPlugin.html
+[knockout]: https://knockoutjs.com/
+[jquery]: https://jquery.com/
 [example-code]: https://github.com/rundeck-plugins/ui-plugin-examples/

@@ -1,6 +1,6 @@
-% Version History
-% Greg Schueler
-% 1/8/2013
+# Version History
+
+
 
 Version History for Rundeck.
 

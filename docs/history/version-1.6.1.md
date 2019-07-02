@@ -1,8 +1,8 @@
-% Version 1.6.1
-% greg
-% 08/24/2013
+# Version 1.6.1
 
-Release 1.6.1
+
+
+# Release 1.6.1
 ===========
 
 Date: 2013-08-24

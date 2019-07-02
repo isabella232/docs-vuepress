@@ -1,8 +1,8 @@
-% Version 2.8.2
-% greg
-% 04/19/2017
+# Version 2.8.2
 
-Release 2.8.2
+
+
+# Release 2.8.2
 ===========
 
 Date: 2017-04-19

@@ -1,12 +1,11 @@
-% Model Format Parser and Generator Plugin
-% Greg Schueler, Alex Honor
-% November 20, 2010
+# Model Format Parser and Generator Plugin
+
+Updated November 20, 2010
 
 ## About
+
 Resource format Parser and Generator providers are used to serialize a set of
 Node resources into a textual format for transport or storage.
-
-
 
 Each Parser and Generator must declare the set of filename extensions
 (such as "xml" or "json") that it supports, as well as the set of
@@ -22,7 +21,7 @@ of serialized data is a filename or a MIME type.
 For Parsers, your provider class must implement the interface
 [ResourceFormatParser](${javadocbase}/com/dtolabs/rundeck/core/resources/format/ResourceFormatParser.html):
 
-~~~~~ {.java}
+```{.java}
 public interface ResourceFormatParser {
     /**
      * Return the list of file extensions that this format parser can parse.
@@ -45,14 +44,14 @@ public interface ResourceFormatParser {
      */
     public INodeSet parseDocument(InputStream input) throws ResourceFormatParserException;
 }
-~~~~~~~~
+```
 
 ### ResourceFormatGenerator
 
 For Generators, your provider class must implement the interface
 [ResourceFormatGenerator](${javadocbase}/com/dtolabs/rundeck/core/resources/format/ResourceFormatGenerator.html):
 
-~~~~~ {.java}
+```{.java}
 public interface ResourceFormatGenerator {
 
     /**
@@ -73,6 +72,4 @@ public interface ResourceFormatGenerator {
     public void generateDocument(INodeSet nodeset, OutputStream stream)
                    throws ResourceFormatGeneratorException,IOException;
 }
-~~~~~~~~
-
-
+```

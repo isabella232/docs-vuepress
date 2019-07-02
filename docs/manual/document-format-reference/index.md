@@ -1,1 +1,1 @@
-% Document Format Reference
+# Document Format Reference

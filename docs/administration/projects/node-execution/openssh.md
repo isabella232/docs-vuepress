@@ -1,4 +1,4 @@
-% OpenSSH Node Execution Plugins
+# OpenSSH Node Execution Plugins
 
 This plugin provides a node-executor and file-copier using OpenSSH. Use this plugin if you want to access remote servers using SSH/SCP commands (as an alternative to the default SSH plugin of Rundeck, which is a Java Plugin based on JSCH library).
 

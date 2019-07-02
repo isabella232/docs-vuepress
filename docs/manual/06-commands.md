@@ -2,8 +2,7 @@
 
 ---
 
-
-% January 30, 2014
+Updated January 30, 2014
 
 A _command_ is a single executable string executed on a Node.
 Rundeck invokes commands on nodes via a _node executor_

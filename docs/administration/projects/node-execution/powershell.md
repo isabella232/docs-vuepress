@@ -1,4 +1,4 @@
-% PowerShell Node Execution
+# PowerShell Node Execution
 
 <!---
 Original:

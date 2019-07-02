@@ -1,4 +1,4 @@
-% Use case: database credential rotation
+# Use case: database credential rotation
 
 Now that we know how to create custom workflow step script plugin in the [hello world tutorial](/tutorials/custom-script-plugin-hello-world.md), let's walk through a real world use case: rotation database credentials. Credential rotation has traditionally been a complicated, thankless administrative chore. It's the type of work that might be labeled [toil](https://landing.google.com/sre/book/chapters/eliminating-toil.html) and exactly the kind of work that Rundeck has been designed to streamline.
 
@@ -8,9 +8,9 @@ The end result of this tutorial as well as a Docker environment to run it in can
 
 What's difficult about database credential rotation?
 
-* It involves multiple steps across multiple nodes in your production cluster.
-* It's necessary to handle secrets in the form of the new credentials you're creating, plus credentials of a super user that can create the new login.
-* Manually run steps are error prone and mistakes can potentially cause a site-wide outage if your app can't authenticate with the database anymore.
+- It involves multiple steps across multiple nodes in your production cluster.
+- It's necessary to handle secrets in the form of the new credentials you're creating, plus credentials of a super user that can create the new login.
+- Manually run steps are error prone and mistakes can potentially cause a site-wide outage if your app can't authenticate with the database anymore.
 
 ## Addressing the problem with Rundeck
 
@@ -34,16 +34,16 @@ Lastly, by creating a single button solution to rotate database credentials, we'
 
 In order to automate the credential rotation, we need to automate the individual steps, then orchestrate the steps in a single process. The steps we want to automate are:
 
-* Creating a new database login
-* Updating the application configuration to use the new database login
-* Restarting the applications to apply the configuration change
-* Deleting the old database login
+- Creating a new database login
+- Updating the application configuration to use the new database login
+- Restarting the applications to apply the configuration change
+- Deleting the old database login
 
 ### Restarting the apps
 
 We can start with restarting the applications because that's something we can test on its own before proceeding. We'll create a new plugin metadata file `rundeck-plugins/db-creds/plugin.yaml`:
 
-``` yaml
+```yaml
 name: Database credential management
 version: 1
 rundeckPluginVersion: 1.2
@@ -71,24 +71,24 @@ providers:
 
 Our restart script takes 2 parameters: the name of the process on the node, and a url that we can poll to check that it's healthy. The implementation of the restart script is specific to the Docker playground environment so we'll leave out the details, but from a high level it:
 
-* Kills the process and lets the supervising parent process restart it
-* Polls the health check url until it returns healthy or times out
-* Exits with an error code if it times out to let the calling process know whether to continue or not with downstream steps
+- Kills the process and lets the supervising parent process restart it
+- Polls the health check url until it returns healthy or times out
+- Exits with an error code if it times out to let the calling process know whether to continue or not with downstream steps
 
 In order to be able to run the restart, we create a job that specifies the nodes to run it on and the input parameters. `rundeck-project/jobs/RestartApp.yaml`:
 
-``` yaml
+```yaml
 - name: RestartApp
   uuid: RestartApp
   nodefilters:
     filter: web_.*
   sequence:
     commands:
-    - configuration:
-        health_url: http://localhost:8080
-        process: python3
-      nodeStep: true
-      type: RestartApp
+      - configuration:
+          health_url: http://localhost:8080
+          process: python3
+        nodeStep: true
+        type: RestartApp
     keepgoing: false
     strategy: node-first
 ```
@@ -97,7 +97,7 @@ We specify a `uuid` here so that we know how to refer to it from other jobs, oth
 
 We can test the restart using our [playground Docker environment](https://github.com/clofresh/rundeck-playground):
 
-``` bash
+```bash
 make rd-run-job JOB=RestartApp
 
 # Found matching job: RestartApp RestartApp
@@ -116,47 +116,47 @@ Done
 
 Now we can create a step to update the configured database login on the application nodes. In your production environment you might use a configuration management tool like Ansible or Chef to accomplish this but here we use a simple Python script. We can add this to the `providers` key of `rundeck-plugins/db-creds/plugin.yaml`:
 
-``` yaml
-  - name: UpdateDBCredentials
-    service: RemoteScriptNodeStep
-    plugin-type: script
-    script-interpreter: /usr/local/bin/python3
-    script-file: change_password.py
-    script-args: /etc/web.yaml ${config.user} ${config.password}
-    config:
-      - type: String
-        name: user
-        title: user
-        description: 'db user'
-      - type: String
-        name: password
-        title: password
-        description: 'db password'
-        renderingOptions:
-          valueConversion: "STORAGE_PATH_AUTOMATIC_READ"
+```yaml
+- name: UpdateDBCredentials
+  service: RemoteScriptNodeStep
+  plugin-type: script
+  script-interpreter: /usr/local/bin/python3
+  script-file: change_password.py
+  script-args: /etc/web.yaml ${config.user} ${config.password}
+  config:
+    - type: String
+      name: user
+      title: user
+      description: "db user"
+    - type: String
+      name: password
+      title: password
+      description: "db password"
+      renderingOptions:
+        valueConversion: "STORAGE_PATH_AUTOMATIC_READ"
 ```
 
 Note the `valueConversion: "STORAGE_PATH_AUTOMATIC_READ"` setting to able to refer to a path in Key Storage for the database password.
 
 Corresponding job config `rundeck-project/jobs/UpdateAppConfig.yaml`:
 
-``` yaml
+```yaml
 - name: UpdateAppConfig
   uuid: UpdateAppConfig
   nodefilters:
     filter: web_.*
   options:
-  - label: Database user
-    name: dbuser
-    required: true
+    - label: Database user
+      name: dbuser
+      required: true
   scheduleEnabled: true
   sequence:
     commands:
-    - nodeStep: true
-      configuration:
-        user: ${option.dbuser}
-        password: keys/projects/hello-project/db/${option.dbuser}
-      type: UpdateDBCredentials
+      - nodeStep: true
+        configuration:
+          user: ${option.dbuser}
+          password: keys/projects/hello-project/db/${option.dbuser}
+        type: UpdateDBCredentials
     keepgoing: false
     strategy: node-first
 ```
@@ -165,7 +165,7 @@ In the job, we expose an option to the job user to specify the database user to 
 
 We can test it with:
 
-``` bash
+```bash
 make rd-run-job JOB=UpdateAppConfig JOB_OPTIONS='-dbuser web2'
 
 # Found matching job: UpdateAppConfig UpdateAppConfig
@@ -180,72 +180,72 @@ Done
 
 Creating a new database login requires a super user database login plus a user and password for the new login. Add this to the `providers` key of `rundeck-plugins/db-creds/plugin.yaml`:
 
-``` yaml
-  - name: CreateDBUser
-    service: RemoteScriptNodeStep
-    plugin-type: script
-    script-interpreter: /bin/bash
-    script-file: create-db-user.sh
-    script-args: ${config.master_db_user} ${config.master_db_password} ${config.new_user} ${config.new_password} ${config.role}
-    config:
-      - type: String
-        name: master_db_user
-        title: master_db_user
-        description: 'master db user'
-        default: master1
-      - type: String
-        name: master_db_password
-        title: master_db_password
-        description: 'master db user password'
-        default: keys/projects/hello-project/db/master1
-        renderingOptions:
-          valueConversion: "STORAGE_PATH_AUTOMATIC_READ"
-      - type: String
-        name: new_user
-        title: new_user
-        description: 'New db user'
-      - type: String
-        name: new_password
-        title: new_password
-        description: 'New db password'
-        renderingOptions:
-          valueConversion: "STORAGE_PATH_AUTOMATIC_READ"
-      - type: String
-        name: role
-        title: role
-        description: 'Database role to grant the new user'
+```yaml
+- name: CreateDBUser
+  service: RemoteScriptNodeStep
+  plugin-type: script
+  script-interpreter: /bin/bash
+  script-file: create-db-user.sh
+  script-args: ${config.master_db_user} ${config.master_db_password} ${config.new_user} ${config.new_password} ${config.role}
+  config:
+    - type: String
+      name: master_db_user
+      title: master_db_user
+      description: "master db user"
+      default: master1
+    - type: String
+      name: master_db_password
+      title: master_db_password
+      description: "master db user password"
+      default: keys/projects/hello-project/db/master1
+      renderingOptions:
+        valueConversion: "STORAGE_PATH_AUTOMATIC_READ"
+    - type: String
+      name: new_user
+      title: new_user
+      description: "New db user"
+    - type: String
+      name: new_password
+      title: new_password
+      description: "New db password"
+      renderingOptions:
+        valueConversion: "STORAGE_PATH_AUTOMATIC_READ"
+    - type: String
+      name: role
+      title: role
+      description: "Database role to grant the new user"
 ```
 
 Corresponding job config `rundeck-project/jobs/CreateDbUser.yaml`:
 
-``` yaml
+```yaml
 - name: CreateDbUser
   uuid: CreateDbUser
   nodefilters:
     filter: web_1
   options:
-  - label: Master db user version
-    name: master_user_version
-    required: false
-    value: '1'
-  - label: Web db user version
-    name: web_user_version
-    required: true
+    - label: Master db user version
+      name: master_user_version
+      required: false
+      value: "1"
+    - label: Web db user version
+      name: web_user_version
+      required: true
   sequence:
     commands:
-    - nodeStep: true
-      configuration:
-        master_db_user: master${option.master_user_version}
-        master_db_password: keys/projects/hello-project/db/master${option.master_user_version}
-        new_user: web${option.web_user_version}
-        new_password: keys/projects/hello-project/db/web${option.web_user_version}
-        role: web
-      type: CreateDBUser
+      - nodeStep: true
+        configuration:
+          master_db_user: master${option.master_user_version}
+          master_db_password: keys/projects/hello-project/db/master${option.master_user_version}
+          new_user: web${option.web_user_version}
+          new_password: keys/projects/hello-project/db/web${option.web_user_version}
+          role: web
+        type: CreateDBUser
     keepgoing: false
     strategy: node-first
 ```
 
-``` bash
+```bash
 make rd-run-job JOB=CreateDbUser JOB_OPTIONS='-web_user_version 2'
 
 # Found matching job: CreateDbUser CreateDbUser
@@ -257,58 +257,58 @@ GRANT ROLE
 
 Updating `rundeck-plugins/db-creds-plugin/plugin.yaml`:
 
-``` yaml
-  - name: DeleteDBUser
-    service: RemoteScriptNodeStep
-    plugin-type: script
-    script-interpreter: /bin/bash
-    script-file: delete-db-user.sh
-    script-args: ${config.master_db_user} ${config.master_db_password} ${config.user}
-    config:
-      - type: String
-        name: master_db_user
-        title: master_db_user
-        description: 'master db user'
-        default: master1
-      - type: String
-        name: master_db_password
-        title: master_db_password
-        description: 'master db user password'
-        default: keys/projects/hello-project/db/master1
-        renderingOptions:
-          valueConversion: "STORAGE_PATH_AUTOMATIC_READ"
-      - type: String
-        name: user
-        title: user
-        description: 'db user to delete'
+```yaml
+- name: DeleteDBUser
+  service: RemoteScriptNodeStep
+  plugin-type: script
+  script-interpreter: /bin/bash
+  script-file: delete-db-user.sh
+  script-args: ${config.master_db_user} ${config.master_db_password} ${config.user}
+  config:
+    - type: String
+      name: master_db_user
+      title: master_db_user
+      description: "master db user"
+      default: master1
+    - type: String
+      name: master_db_password
+      title: master_db_password
+      description: "master db user password"
+      default: keys/projects/hello-project/db/master1
+      renderingOptions:
+        valueConversion: "STORAGE_PATH_AUTOMATIC_READ"
+    - type: String
+      name: user
+      title: user
+      description: "db user to delete"
 ```
 
 And the corresponding job `rundeck-project/jobs/DeleteDbUser.yaml`:
 
-``` yaml
+```yaml
 - name: DeleteDbUser
   uuid: DeleteDbUser
   nodefilters:
     filter: web_1
   options:
-  - label: Master db user version
-    name: master_user_version
-    required: false
-    value: '1'
-  - label: Web db user version
-    name: web_user_version
-    required: true
+    - label: Master db user version
+      name: master_user_version
+      required: false
+      value: "1"
+    - label: Web db user version
+      name: web_user_version
+      required: true
   sequence:
     commands:
-    - nodeStep: true
-      configuration:
-        master_db_user: master${option.master_user_version}
-        master_db_password: keys/projects/hello-project/db/master${option.master_user_version}
-        user: web${option.web_user_version}
-      type: DeleteDBUser
+      - nodeStep: true
+        configuration:
+          master_db_user: master${option.master_user_version}
+          master_db_password: keys/projects/hello-project/db/master${option.master_user_version}
+          user: web${option.web_user_version}
+        type: DeleteDBUser
 ```
 
-``` bash
+```bash
 make rd-run-job JOB=DeleteDbUser JOB_OPTIONS='-web_user_version 1'
 
 # Found matching job: DeleteDbUser DeleteDbUser
@@ -320,7 +320,7 @@ DROP ROLE
 
 To tie all the steps together into a single job, we can use job reference steps. `rundeck-project/jobs/RotateDbCredentials.yaml`:
 
-``` yaml
+```yaml
 - name: RotateDbCredentials
   uuid: RotateDbCredentials
   options:
@@ -360,13 +360,13 @@ To tie all the steps together into a single job, we can use job reference steps.
 
 We'll need a new user and password, which we can create in the Key Storage:
 
-``` bash
+```bash
 echo 'An0th3r!S3cr3t' > rundeck-project/key-storage/keys/projects/hello-project/db/web3
 ```
 
 Then running the job should push the new key. We need to specify both the new version and the previous version that needs deleting.
 
-``` bash
+```bash
 make rd-run-job JOB=RotateDbCredentials JOB_OPTIONS='-web_user_version 3 -prev_web_user_version 2'
 
 # Created: keys/projects/hello-project/db/web3 [password]

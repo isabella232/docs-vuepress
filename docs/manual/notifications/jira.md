@@ -1,5 +1,4 @@
-% Jira Notification Plugins (Enterprise)
-
+# Jira Notification Plugins (Enterprise)
 
 ## Jira / Issue / Notification Comment
 
@@ -21,9 +20,7 @@ project.plugin.Notification.jira-comment-issue.url=https://instance.atlassian.ne
 
 To use the plugin, configure the mandatory input.
 
-
-* issue key: The Jira issue ID.
-
+- issue key: The Jira issue ID.
 
 ## Jira / Issue / Notification Create
 
@@ -33,7 +30,7 @@ Creates a new Jira issue.
 
 The Jira connection credentials are set in the `project.properties` file
 for your project.
-In Notification plugins, `password` is on clean text. 
+In Notification plugins, `password` is on clean text.
 
 ```
 project.plugin.Notification.jira-create-issue-notif.login=admin@instance.com
@@ -45,14 +42,12 @@ project.plugin.Notification.jira-create-issue-notif.url=https://instance.atlassi
 
 To use the plugin, configure the mandatory inputs.
 
-
-* project: Jira Project ID.
-* type: Type of the issue, default Incident
-* summary: Issue summary
-* description: Issue description
+- project: Jira Project ID.
+- type: Type of the issue, default Incident
+- summary: Issue summary
+- description: Issue description
 
 Optional inputs:
 
-* assignee: Issue assignee
-* reporter: Issue reporter
-
+- assignee: Issue assignee
+- reporter: Issue reporter

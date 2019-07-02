@@ -1,4 +1,4 @@
-% Jira Node Step Plugins (Enterprise)
+# Jira Node Step Plugins (Enterprise)
 
 ## Jira / Issue / Comment
 
@@ -20,9 +20,8 @@ project.plugin.WorkflowNodeStep.jira-comment-issue-step.url=https://instance.atl
 
 To use the plugin, configure the mandatory input.
 
-
-* key: The Jira issue ID.
-* message: Message to append, can include variables.
+- key: The Jira issue ID.
+- message: Message to append, can include variables.
 
 ## Jira / Issue / Create
 
@@ -44,14 +43,12 @@ project.plugin.WorkflowNodeStep.jira-create-issue.url=https://instance.atlassian
 
 To use the plugin, configure the mandatory inputs.
 
-
-* project: Jira Project ID.
-* type: Type of the issue, default Incident
-* summary: Issue summary
-* description: Issue description
+- project: Jira Project ID.
+- type: Type of the issue, default Incident
+- summary: Issue summary
+- description: Issue description
 
 Optional inputs:
 
-* assignee: Issue assignee
-* reporter: Issue reporter
-
+- assignee: Issue assignee
+- reporter: Issue reporter

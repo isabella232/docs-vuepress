@@ -1,4 +1,4 @@
-% Project README
+# Project README
 
 A readme file is a great way to welcome your users and provide an overview about the project.
 The readme content is interpreted as [markdown](http://commonmark.org/help/) text letting you format your text and embed images and links.

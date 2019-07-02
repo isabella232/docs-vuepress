@@ -2,8 +2,7 @@
 
 ---
 
-
-% January 30, 2014
+Updated January 30, 2014
 
 Execution history for commands and Jobs is stored by the Rundeck server. Execution history can be filtered and viewed inside the "Activity" page.
 
