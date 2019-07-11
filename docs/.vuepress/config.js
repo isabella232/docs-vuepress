@@ -1,3 +1,5 @@
+const path = require("path");
+
 // sidebars
 const sidebarAdmin = require('./sidebar-menus/administration')
 const sidebarUserGuide = require('./sidebar-menus/user-guide')
@@ -20,7 +22,7 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        '@alias': 'path/to/some/dir'
+        '@assets': path.resolve(__dirname, "../assets")
       }
     }
   },

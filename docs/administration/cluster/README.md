@@ -2,7 +2,7 @@
 
 ## Rundeck Enterprise Architecture
 
-![Rundeck architecture](/figures/architecture.png)
+![Rundeck architecture](~@assets/img/architecture.png)
 
 ## Installation
 
