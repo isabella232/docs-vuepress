@@ -36,6 +36,11 @@ module.exports = {
   themeConfig: {
     logo: '/images/rundecklogo-black.png',
     displayAllHeaders: true,
+    algolia: {
+      apiKey: 'b83a4def9dea3b0d8b9c7f68f5c8f3eb',
+      indexName: 'rundeck'
+    },
+    lastUpdated: 'Last Updated', // string | boolean
     nav: [{
         text: 'User Guide',
         items: navbarUserGuide
