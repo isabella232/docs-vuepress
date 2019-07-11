@@ -20,14 +20,14 @@ Create an option values plugin and install it like other Rundeck plugins.
 When you are creating a job, create a new option with the option type: Text.
 Scroll down to the **Allowed Values** section and you will see your option values plugin listed.
 
-![Figure: Select Option Values Plugin](/figures/option-values-create.png)
+![Figure: Select Option Values Plugin](~@assets/option-values-create.png)
 
 Select your option values plugin. Finish configuring your job.
 
 When you go to execute your job you will see the values provided by your plugin as
 the allowable values for your option.
 
-![Figure: Choose Value from Plugin Provided Values](/figures/option-values-exec-values.png)
+![Figure: Choose Value from Plugin Provided Values](~@assets/option-values-exec-values.png)
 
 Select the value then run your Job.
 

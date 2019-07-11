@@ -9,7 +9,7 @@ The content of a project, jobs, configuration, readme, motd, project ACLs and ex
 
 ### Graphical Interface
 
-![Figure: Export archive](/figures/fixme.png)
+![Figure: Export archive](~@assets/fixme.png)
 
 ### CLI Usage
 
@@ -23,7 +23,7 @@ rd projects archives export -p MyProject --file MyProject.zip
 
 ### Graphical Interface
 
-![Figure: Import archive](/figures/fixme.png)
+![Figure: Import archive](~@assets/fixme.png)
 
 ### CLI Usage
 

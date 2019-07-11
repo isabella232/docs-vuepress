@@ -6,7 +6,7 @@
 
 The User menu contains items to view your Profile and log out.
 
-![user menu](/figures/fig1001.png)
+![user menu](~@assets/fig1001.png)
 
 ## Profile
 
@@ -18,4 +18,4 @@ The User menu contains items to view your Profile and log out.
 
 3. Use the "API Tokens" to list, generate or remove api tokens.
 
-![user profile](/figures/fig1002.png)
+![user profile](~@assets/fig1002.png)

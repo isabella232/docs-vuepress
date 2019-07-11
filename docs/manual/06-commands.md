@@ -26,7 +26,7 @@ Navigate to this page by clicking on the "Commands" tab in the navigation
 bar. Alternatively, go to the Nodes tab and choose the "Node Actions" menu
 and select the "Run a command ..." menu item.
 
-![](/figures/fig0207.png)
+![](~@assets/fig0207.png)
 
 The screenshot above shows the elements of the Commands page user interface.
 
@@ -39,14 +39,14 @@ The screenshot above shows the elements of the Commands page user interface.
 
 ## Enter a command
 
-![Input command string](/figures/fig0207-a.png)
+![Input command string](~@assets/fig0207-a.png)
 
 Enter the command string you wish to execute on the Nodes. This command
 string must be a valid command statement that can be executed on the nodes.
 
 ### Dispatch settings
 
-![Choose dispatch settings](/figures/fig0208-b.png)
+![Choose dispatch settings](~@assets/fig0208-b.png)
 
 The dispatch settings let you control the amount of concurrency and error
 handling for the command execution.
@@ -56,7 +56,7 @@ handling for the command execution.
 
 ## Select the nodes
 
-![Filter the nodes](/figures/fig0207-b.png)
+![Filter the nodes](~@assets/fig0207-b.png)
 
 You can choose the nodes by either choosing a saved filter or typing in your own
 filter expression. Press the "Set Filter" button to find the matched nodes.
@@ -70,7 +70,7 @@ the Node's attribute values (1).
 You can click the filter links inside the detail
 view to continue building your filter expression (2).
 
-![Node detail](/figures/fig0208-a.png)
+![Node detail](~@assets/fig0208-a.png)
 
 ## Execute command
 
@@ -83,7 +83,7 @@ The command prompt and run button become disabled until
 the execution completes. Output from the command execution is shown
 below.
 
-![Command execution output](/figures/fig0208.png)
+![Command execution output](~@assets/fig0208.png)
 
 1. Link to execution page: Every execution has an ID an a separate page to follow it and view a report after it completes.
 2. View options: Output is automatically collated by node and contains time information. You can toggle these as desired.
@@ -97,7 +97,7 @@ You can dismiss the output by pressing the "X" button above the Download link.
 Once the command execution begins you can monitor its progress on the
 Commands page or a separate execution follow page discussed later.
 
-![Now running a command](/figures/fig0207-c.png)
+![Now running a command](~@assets/fig0207-c.png)
 
 1. Kill job button: You can kill the execution by pressing this button.
 2. Execution status bar: If you dismissed the output view, you can continue monitoring progress in the "running" tab in the Activity section.
@@ -106,20 +106,20 @@ Commands page or a separate execution follow page discussed later.
 
 This page section provides several views to read the output using different formats.
 
-![View options](/figures/fig0209.png)
+![View options](~@assets/fig0209.png)
 
 Log view
 
 : Displays output messages from the command execution as if you were
 running the Unix `tail -f` command on the output log file.
-![Execution output](/figures/fig0208.png)
+![Execution output](~@assets/fig0208.png)
 
 By Node
 
 : Output messages are sorted into Node specific sections and are not
 interlaced. By default, the messages are collapsed but can be
 revealed by pressing the disclosure icon to the right.
-![Collapsed output](/figures/fig0210.png)
+![Collapsed output](~@assets/fig0210.png)
 
 ### Execution follow page
 
@@ -128,7 +128,7 @@ is displayed separately. One purpose is to share a link to others
 interested in following the output messages. Click the progress bar
 in the "Activity" section to go to the execution follow page.
 
-![Execution follow view](/figures/fig0207-d.png)
+![Execution follow view](~@assets/fig0207-d.png)
 
 Notice the URL in the location bar of your browser. This URL can
 be shared to others interested in the progress of execution. The URL
@@ -153,7 +153,7 @@ The Commands page provides several views about execution history.
 - failed: Shows failed executions from last 24 hours.
 - by you: Shows executions started by you.
 
-![Recent history](/figures/fig0207-e.png)
+![Recent history](~@assets/fig0207-e.png)
 
 You can further search activity history by clicking the "Filter activity..." link.
 

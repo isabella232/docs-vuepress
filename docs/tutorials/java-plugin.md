@@ -217,15 +217,15 @@ The rd-config Make task will see your new Java plugin and run the Gradle build a
 
 Now that we've deployed our plugin, we want to make sure that we can use it in a job. Log into the local Rundeck at [http://127.0.0.1:4440/](http://127.0.0.1:4440/) with the default user `admin` and password `admin`. Then create a new job in the `hello-project` project:
 
-![Create a new job](/figures/create-job.png)
+![Create a new job](~@assets/create-job.png)
 
 In the job creation screen, fill in some name like "My Java Plugin job" in Job Name. Then scroll to the "Add a Step" section, type "hellojava" in the search box and click the "Workflow Steps" tab to find the hellojava plugin.
 
-![Add hellojava step](/figures/add-step-hellojava.png)
+![Add hellojava step](~@assets/add-step-hellojava.png)
 
 Click the hellojava plugin, fill in some text in the Example string parameter field, then click Save to add the step to the job. Then scroll to the very bottom and click Create to finish creating the job. On the next screen, click Run Job Now to trigger the job. Clicking the Log Output tab should show some sample log output from the plugin.
 
-![Plugin log output](/figures/hellojava-log-output-1.png)
+![Plugin log output](~@assets/hellojava-log-output-1.png)
 
 If the job succeeded with some output similar to the screenshot, then your Java plugin is working correctly!
 
@@ -328,7 +328,7 @@ make rd-config
 
 Then re-run the job from the Rundeck GUI and you should see it print out a list of files.
 
-![Updated plugin log output](/figures/hellojava-log-output-2.png)
+![Updated plugin log output](~@assets/hellojava-log-output-2.png)
 
 Success!
 

@@ -32,15 +32,15 @@ Rundeck has a plugin mechanism for all three of these components, allowing the l
 
 Log Events are written to all configured Writer plugins, as well as the **Local File Log** if not disabled:
 
-![Writer plugins](/figures/log storage1.png)
+![Writer plugins](~@assets/log storage1.png)
 
 Events are read from either a Reader plugin, or the **Local File Log**:
 
-![Reader plugins](/figures/log storage2.png)
+![Reader plugins](~@assets/log storage2.png)
 
 When the **Local File Log** is used, the logs can be asynchronously stored to a Storage plugin after they are completed. Later, the logs can be asynchronously retrieved via the Storage plugin to be used by the **Local File Log**:
 
-![Storage plugins](/figures/log storage3.png)
+![Storage plugins](~@assets/log storage3.png)
 
 Here are some examples of how it can be used:
 
