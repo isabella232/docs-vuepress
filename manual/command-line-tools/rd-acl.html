@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>rd-acl | Rundeck Docs</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="/docs-vuepress/main.css">
+    
+    <link rel="preload" href="/docs-vuepress/assets/css/0.styles.66888092.css" as="style"><link rel="preload" href="/docs-vuepress/assets/js/app.2714eea1.js" as="script"><link rel="preload" href="/docs-vuepress/assets/js/3.8da87e6d.js" as="script"><link rel="preload" href="/docs-vuepress/assets/js/226.5776d249.js" as="script"><link rel="prefetch" href="/docs-vuepress/assets/js/10.3893d554.js"><link rel="prefetch" href="/docs-vuepress/assets/js/100.935a8012.js"><link rel="prefetch" href="/docs-vuepress/assets/js/101.6a7490f0.js"><link rel="prefetch" href="/docs-vuepress/assets/js/102.87c653ec.js"><link rel="prefetch" href="/docs-vuepress/assets/js/103.0a645ce7.js"><link rel="prefetch" href="/docs-vuepress/assets/js/104.ed1af534.js"><link rel="prefetch" href="/docs-vuepress/assets/js/105.55ef32d1.js"><link rel="prefetch" href="/docs-vuepress/assets/js/106.1c19583f.js"><link rel="prefetch" href="/docs-vuepress/assets/js/107.c4518e1d.js"><link rel="prefetch" href="/docs-vuepress/assets/js/108.ec278972.js"><link rel="prefetch" href="/docs-vuepress/assets/js/109.2099e4a3.js"><link rel="prefetch" href="/docs-vuepress/assets/js/11.36870b5e.js"><link rel="prefetch" href="/docs-vuepress/assets/js/110.a45a18ef.js"><link rel="prefetch" href="/docs-vuepress/assets/js/111.237a68e3.js"><link rel="prefetch" href="/docs-vuepress/assets/js/112.010182bc.js"><link rel="prefetch" href="/docs-vuepress/assets/js/113.4fcb4aa9.js"><link rel="prefetch" href="/docs-vuepress/assets/js/114.fe60f273.js"><link rel="prefetch" href="/docs-vuepress/assets/js/115.06c818c6.js"><link rel="prefetch" href="/docs-vuepress/assets/js/116.e99b40a6.js"><link rel="prefetch" href="/docs-vuepress/assets/js/117.a69dcb99.js"><link rel="prefetch" href="/docs-vuepress/assets/js/118.e45db2c2.js"><link rel="prefetch" href="/docs-vuepress/assets/js/119.ca62fb2b.js"><link rel="prefetch" href="/docs-vuepress/assets/js/12.f11768d7.js"><link rel="prefetch" href="/docs-vuepress/assets/js/120.3c26d292.js"><link rel="prefetch" href="/docs-vuepress/assets/js/121.fe71c952.js"><link rel="prefetch" href="/docs-vuepress/assets/js/122.85c4bbf6.js"><link rel="prefetch" href="/docs-vuepress/assets/js/123.ecd9c4b0.js"><link rel="prefetch" href="/docs-vuepress/assets/js/124.b337eeda.js"><link rel="prefetch" href="/docs-vuepress/assets/js/125.2616dad5.js"><link rel="prefetch" href="/docs-vuepress/assets/js/126.eae55156.js"><link rel="prefetch" href="/docs-vuepress/assets/js/127.5fa56aab.js"><link rel="prefetch" href="/docs-vuepress/assets/js/128.b3b1481d.js"><link rel="prefetch" href="/docs-vuepress/assets/js/129.47809624.js"><link rel="prefetch" href="/docs-vuepress/assets/js/13.ad8e1a63.js"><link rel="prefetch" href="/docs-vuepress/assets/js/130.2a53e8f2.js"><link rel="prefetch" href="/docs-vuepress/assets/js/131.700b28ed.js"><link rel="prefetch" href="/docs-vuepress/assets/js/132.52192201.js"><link rel="prefetch" href="/docs-vuepress/assets/js/133.dec022df.js"><link rel="prefetch" href="/docs-vuepress/assets/js/134.9d3c9ab3.js"><link rel="prefetch" href="/docs-vuepress/assets/js/135.3f3cbe41.js"><link rel="prefetch" href="/docs-vuepress/assets/js/136.0ede4fe6.js"><link rel="prefetch" href="/docs-vuepress/assets/js/137.3bab7873.js"><link rel="prefetch" href="/docs-vuepress/assets/js/138.f8e01995.js"><link rel="prefetch" href="/docs-vuepress/assets/js/139.49afad1b.js"><link rel="prefetch" href="/docs-vuepress/assets/js/14.fa5e7164.js"><link rel="prefetch" href="/docs-vuepress/assets/js/140.0f93dff1.js"><link rel="prefetch" href="/docs-vuepress/assets/js/141.444323d9.js"><link rel="prefetch" href="/docs-vuepress/assets/js/142.9a08af7b.js"><link rel="prefetch" href="/docs-vuepress/assets/js/143.537c68bc.js"><link rel="prefetch" href="/docs-vuepress/assets/js/144.c32f14d0.js"><link rel="prefetch" href="/docs-vuepress/assets/js/145.4dd2f2d6.js"><link rel="prefetch" href="/docs-vuepress/assets/js/146.1f613e16.js"><link rel="prefetch" href="/docs-vuepress/assets/js/147.b8c83e96.js"><link rel="prefetch" href="/docs-vuepress/assets/js/148.59c761a4.js"><link rel="prefetch" href="/docs-vuepress/assets/js/149.679d092d.js"><link rel="prefetch" href="/docs-vuepress/assets/js/15.cf4e5001.js"><link rel="prefetch" href="/docs-vuepress/assets/js/150.e360cfa0.js"><link rel="prefetch" href="/docs-vuepress/assets/js/151.41070eb6.js"><link rel="prefetch" href="/docs-vuepress/assets/js/152.9e7b45e8.js"><link rel="prefetch" href="/docs-vuepress/assets/js/153.fe4c5935.js"><link rel="prefetch" href="/docs-vuepress/assets/js/154.2ad64ad3.js"><link rel="prefetch" href="/docs-vuepress/assets/js/155.88b9a394.js"><link rel="prefetch" href="/docs-vuepress/assets/js/156.63683d40.js"><link rel="prefetch" href="/docs-vuepress/assets/js/157.9025a7c5.js"><link rel="prefetch" href="/docs-vuepress/assets/js/158.00550dfe.js"><link rel="prefetch" href="/docs-vuepress/assets/js/159.03b5771a.js"><link rel="prefetch" href="/docs-vuepress/assets/js/16.ebc1857f.js"><link rel="prefetch" href="/docs-vuepress/assets/js/160.ecc680c8.js"><link rel="prefetch" href="/docs-vuepress/assets/js/161.fb9baebd.js"><link rel="prefetch" href="/docs-vuepress/assets/js/162.c17c6989.js"><link rel="prefetch" href="/docs-vuepress/assets/js/163.57c8f471.js"><link rel="prefetch" href="/docs-vuepress/assets/js/164.f88efd05.js"><link rel="prefetch" href="/docs-vuepress/assets/js/165.d3fd8a11.js"><link rel="prefetch" href="/docs-vuepress/assets/js/166.abb4a2ba.js"><link rel="prefetch" href="/docs-vuepress/assets/js/167.1fa5fbc3.js"><link rel="prefetch" href="/docs-vuepress/assets/js/168.c112b908.js"><link rel="prefetch" href="/docs-vuepress/assets/js/169.2e3170ae.js"><link rel="prefetch" href="/docs-vuepress/assets/js/17.538aed98.js"><link rel="prefetch" href="/docs-vuepress/assets/js/170.707eb78c.js"><link rel="prefetch" href="/docs-vuepress/assets/js/171.b7f6a7f2.js"><link rel="prefetch" href="/docs-vuepress/assets/js/172.e8156872.js"><link rel="prefetch" href="/docs-vuepress/assets/js/173.97e267a7.js"><link rel="prefetch" href="/docs-vuepress/assets/js/174.5848d169.js"><link rel="prefetch" href="/docs-vuepress/assets/js/175.d570e184.js"><link rel="prefetch" href="/docs-vuepress/assets/js/176.6872be0d.js"><link rel="prefetch" href="/docs-vuepress/assets/js/177.8cf91676.js"><link rel="prefetch" href="/docs-vuepress/assets/js/178.c4598e33.js"><link rel="prefetch" href="/docs-vuepress/assets/js/179.1f24bbb0.js"><link rel="prefetch" href="/docs-vuepress/assets/js/18.7c560fdf.js"><link rel="prefetch" href="/docs-vuepress/assets/js/180.3201b3e2.js"><link rel="prefetch" href="/docs-vuepress/assets/js/181.997c68cf.js"><link rel="prefetch" href="/docs-vuepress/assets/js/182.1f6f5348.js"><link rel="prefetch" href="/docs-vuepress/assets/js/183.0247e754.js"><link rel="prefetch" href="/docs-vuepress/assets/js/184.e9f9e692.js"><link rel="prefetch" href="/docs-vuepress/assets/js/185.1a4a95a1.js"><link rel="prefetch" href="/docs-vuepress/assets/js/186.a9ca1fcb.js"><link rel="prefetch" href="/docs-vuepress/assets/js/187.95f39a43.js"><link rel="prefetch" href="/docs-vuepress/assets/js/188.5e15b47b.js"><link rel="prefetch" href="/docs-vuepress/assets/js/189.266f6791.js"><link rel="prefetch" href="/docs-vuepress/assets/js/19.6070ec6f.js"><link rel="prefetch" href="/docs-vuepress/assets/js/190.8fd24e9a.js"><link rel="prefetch" href="/docs-vuepress/assets/js/191.3c649e4f.js"><link rel="prefetch" href="/docs-vuepress/assets/js/192.24a5b2ae.js"><link rel="prefetch" href="/docs-vuepress/assets/js/193.b8215eee.js"><link rel="prefetch" href="/docs-vuepress/assets/js/194.5d48fd32.js"><link rel="prefetch" href="/docs-vuepress/assets/js/195.5032d9b6.js"><link rel="prefetch" href="/docs-vuepress/assets/js/196.f4ebe38e.js"><link rel="prefetch" href="/docs-vuepress/assets/js/197.f3288d6e.js"><link rel="prefetch" href="/docs-vuepress/assets/js/198.a9357bdf.js"><link rel="prefetch" href="/docs-vuepress/assets/js/199.e7d64275.js"><link rel="prefetch" href="/docs-vuepress/assets/js/20.2d59aed5.js"><link rel="prefetch" href="/docs-vuepress/assets/js/200.24049382.js"><link rel="prefetch" href="/docs-vuepress/assets/js/201.a01486a2.js"><link rel="prefetch" href="/docs-vuepress/assets/js/202.70794518.js"><link rel="prefetch" href="/docs-vuepress/assets/js/203.5f8b293c.js"><link rel="prefetch" href="/docs-vuepress/assets/js/204.078e7789.js"><link rel="prefetch" href="/docs-vuepress/assets/js/205.f196c6d7.js"><link rel="prefetch" href="/docs-vuepress/assets/js/206.9954cff1.js"><link rel="prefetch" href="/docs-vuepress/assets/js/207.8c4680bd.js"><link rel="prefetch" href="/docs-vuepress/assets/js/208.251b6a16.js"><link rel="prefetch" href="/docs-vuepress/assets/js/209.82a5bb03.js"><link rel="prefetch" href="/docs-vuepress/assets/js/21.e3ee837c.js"><link rel="prefetch" href="/docs-vuepress/assets/js/210.11ea1cff.js"><link rel="prefetch" href="/docs-vuepress/assets/js/211.614565a7.js"><link rel="prefetch" href="/docs-vuepress/assets/js/212.8ecee5b0.js"><link rel="prefetch" href="/docs-vuepress/assets/js/213.9ed38227.js"><link rel="prefetch" href="/docs-vuepress/assets/js/214.60cdaa40.js"><link rel="prefetch" href="/docs-vuepress/assets/js/215.16251c04.js"><link rel="prefetch" href="/docs-vuepress/assets/js/216.3f0f6349.js"><link rel="prefetch" href="/docs-vuepress/assets/js/217.d1bd7acc.js"><link rel="prefetch" href="/docs-vuepress/assets/js/218.3908c830.js"><link rel="prefetch" href="/docs-vuepress/assets/js/219.f1521afc.js"><link rel="prefetch" href="/docs-vuepress/assets/js/22.ec700003.js"><link rel="prefetch" href="/docs-vuepress/assets/js/220.a5d9c9fa.js"><link rel="prefetch" href="/docs-vuepress/assets/js/221.fbcc953a.js"><link rel="prefetch" href="/docs-vuepress/assets/js/222.291d4bd1.js"><link rel="prefetch" href="/docs-vuepress/assets/js/223.5f3ff7f5.js"><link rel="prefetch" href="/docs-vuepress/assets/js/224.ab33772f.js"><link rel="prefetch" href="/docs-vuepress/assets/js/225.4b6c4030.js"><link rel="prefetch" href="/docs-vuepress/assets/js/227.880ba7db.js"><link rel="prefetch" href="/docs-vuepress/assets/js/228.a85bd726.js"><link rel="prefetch" href="/docs-vuepress/assets/js/229.d8e77e00.js"><link rel="prefetch" href="/docs-vuepress/assets/js/23.f08c503e.js"><link rel="prefetch" href="/docs-vuepress/assets/js/230.181d85bf.js"><link rel="prefetch" href="/docs-vuepress/assets/js/231.6a7f5805.js"><link rel="prefetch" href="/docs-vuepress/assets/js/232.2c93e55b.js"><link rel="prefetch" href="/docs-vuepress/assets/js/233.b15fd443.js"><link rel="prefetch" href="/docs-vuepress/assets/js/234.1b99e9ee.js"><link rel="prefetch" href="/docs-vuepress/assets/js/235.76dcc0d2.js"><link rel="prefetch" href="/docs-vuepress/assets/js/236.c37fc576.js"><link rel="prefetch" href="/docs-vuepress/assets/js/237.17204762.js"><link rel="prefetch" href="/docs-vuepress/assets/js/238.e6a1b594.js"><link rel="prefetch" href="/docs-vuepress/assets/js/239.92827969.js"><link rel="prefetch" href="/docs-vuepress/assets/js/24.288fb1fc.js"><link rel="prefetch" href="/docs-vuepress/assets/js/240.1a0aaaf3.js"><link rel="prefetch" href="/docs-vuepress/assets/js/241.602c0aa3.js"><link rel="prefetch" href="/docs-vuepress/assets/js/242.a1b9552e.js"><link rel="prefetch" href="/docs-vuepress/assets/js/243.def58305.js"><link rel="prefetch" href="/docs-vuepress/assets/js/244.7c61416a.js"><link rel="prefetch" href="/docs-vuepress/assets/js/245.62dec3b8.js"><link rel="prefetch" href="/docs-vuepress/assets/js/246.d56e066c.js"><link rel="prefetch" href="/docs-vuepress/assets/js/247.050ea650.js"><link rel="prefetch" href="/docs-vuepress/assets/js/248.9a4e7dce.js"><link rel="prefetch" href="/docs-vuepress/assets/js/249.0f7266ab.js"><link rel="prefetch" href="/docs-vuepress/assets/js/25.40e99970.js"><link rel="prefetch" href="/docs-vuepress/assets/js/250.f0219c49.js"><link rel="prefetch" href="/docs-vuepress/assets/js/251.0abac886.js"><link rel="prefetch" href="/docs-vuepress/assets/js/252.a565a47c.js"><link rel="prefetch" href="/docs-vuepress/assets/js/253.ec1ccc52.js"><link rel="prefetch" href="/docs-vuepress/assets/js/254.714da4eb.js"><link rel="prefetch" href="/docs-vuepress/assets/js/255.93ea4ef7.js"><link rel="prefetch" href="/docs-vuepress/assets/js/256.2c935860.js"><link rel="prefetch" href="/docs-vuepress/assets/js/257.8ff929c9.js"><link rel="prefetch" href="/docs-vuepress/assets/js/258.97ef2a11.js"><link rel="prefetch" href="/docs-vuepress/assets/js/259.2902e2d1.js"><link rel="prefetch" href="/docs-vuepress/assets/js/26.1f4cda9c.js"><link rel="prefetch" href="/docs-vuepress/assets/js/260.cc3c65d3.js"><link rel="prefetch" href="/docs-vuepress/assets/js/261.9f99a00c.js"><link rel="prefetch" href="/docs-vuepress/assets/js/262.96dad781.js"><link rel="prefetch" href="/docs-vuepress/assets/js/263.3d71ebf3.js"><link rel="prefetch" href="/docs-vuepress/assets/js/264.d8c25a14.js"><link rel="prefetch" href="/docs-vuepress/assets/js/265.2d7ee6b3.js"><link rel="prefetch" href="/docs-vuepress/assets/js/266.9c397f14.js"><link rel="prefetch" href="/docs-vuepress/assets/js/267.d3690f24.js"><link rel="prefetch" href="/docs-vuepress/assets/js/268.f8d77f2a.js"><link rel="prefetch" href="/docs-vuepress/assets/js/269.3b435eb9.js"><link rel="prefetch" href="/docs-vuepress/assets/js/27.2e4ad1f1.js"><link rel="prefetch" href="/docs-vuepress/assets/js/270.ac3ff9d4.js"><link rel="prefetch" href="/docs-vuepress/assets/js/271.feac96f8.js"><link rel="prefetch" href="/docs-vuepress/assets/js/272.21d5fc3c.js"><link rel="prefetch" href="/docs-vuepress/assets/js/273.e64cada5.js"><link rel="prefetch" href="/docs-vuepress/assets/js/274.e02893ef.js"><link rel="prefetch" href="/docs-vuepress/assets/js/275.cddca886.js"><link rel="prefetch" href="/docs-vuepress/assets/js/276.c547cf73.js"><link rel="prefetch" href="/docs-vuepress/assets/js/277.9ed33e8f.js"><link rel="prefetch" href="/docs-vuepress/assets/js/278.abcce3d7.js"><link rel="prefetch" href="/docs-vuepress/assets/js/279.bd88287b.js"><link rel="prefetch" href="/docs-vuepress/assets/js/28.45638de7.js"><link rel="prefetch" href="/docs-vuepress/assets/js/280.58d0d8df.js"><link rel="prefetch" href="/docs-vuepress/assets/js/281.5b6bd8ab.js"><link rel="prefetch" href="/docs-vuepress/assets/js/282.d391a0d8.js"><link rel="prefetch" href="/docs-vuepress/assets/js/283.11665a78.js"><link rel="prefetch" href="/docs-vuepress/assets/js/284.e8ec7f7f.js"><link rel="prefetch" href="/docs-vuepress/assets/js/29.855c1cdc.js"><link rel="prefetch" href="/docs-vuepress/assets/js/30.23987e07.js"><link rel="prefetch" href="/docs-vuepress/assets/js/31.4dfd04b6.js"><link rel="prefetch" href="/docs-vuepress/assets/js/32.e211713b.js"><link rel="prefetch" href="/docs-vuepress/assets/js/33.7f7f0c9e.js"><link rel="prefetch" href="/docs-vuepress/assets/js/34.0cbb4dce.js"><link rel="prefetch" href="/docs-vuepress/assets/js/35.c9e3c24b.js"><link rel="prefetch" href="/docs-vuepress/assets/js/36.90c75168.js"><link rel="prefetch" href="/docs-vuepress/assets/js/37.687568e4.js"><link rel="prefetch" href="/docs-vuepress/assets/js/38.bd524b12.js"><link rel="prefetch" href="/docs-vuepress/assets/js/39.e79e0a22.js"><link rel="prefetch" href="/docs-vuepress/assets/js/4.9a3fec96.js"><link rel="prefetch" href="/docs-vuepress/assets/js/40.742dab40.js"><link rel="prefetch" href="/docs-vuepress/assets/js/41.f7082d82.js"><link rel="prefetch" href="/docs-vuepress/assets/js/42.00cc980d.js"><link rel="prefetch" href="/docs-vuepress/assets/js/43.0588cbb8.js"><link rel="prefetch" href="/docs-vuepress/assets/js/44.00996546.js"><link rel="prefetch" href="/docs-vuepress/assets/js/45.f99148fc.js"><link rel="prefetch" href="/docs-vuepress/assets/js/46.5bf70b5f.js"><link rel="prefetch" href="/docs-vuepress/assets/js/47.b08620bf.js"><link rel="prefetch" href="/docs-vuepress/assets/js/48.207a6585.js"><link rel="prefetch" href="/docs-vuepress/assets/js/49.ac93e075.js"><link rel="prefetch" href="/docs-vuepress/assets/js/5.0aacb256.js"><link rel="prefetch" href="/docs-vuepress/assets/js/50.448ef17e.js"><link rel="prefetch" href="/docs-vuepress/assets/js/51.369bdcd0.js"><link rel="prefetch" href="/docs-vuepress/assets/js/52.ba583759.js"><link rel="prefetch" href="/docs-vuepress/assets/js/53.76f992c4.js"><link rel="prefetch" href="/docs-vuepress/assets/js/54.72e6d53e.js"><link rel="prefetch" href="/docs-vuepress/assets/js/55.8975dafc.js"><link rel="prefetch" href="/docs-vuepress/assets/js/56.1c116669.js"><link rel="prefetch" href="/docs-vuepress/assets/js/57.efd868ad.js"><link rel="prefetch" href="/docs-vuepress/assets/js/58.11734121.js"><link rel="prefetch" href="/docs-vuepress/assets/js/59.09026a62.js"><link rel="prefetch" href="/docs-vuepress/assets/js/6.bc5c8170.js"><link rel="prefetch" href="/docs-vuepress/assets/js/60.4a072ebb.js"><link rel="prefetch" href="/docs-vuepress/assets/js/61.a57fb244.js"><link rel="prefetch" href="/docs-vuepress/assets/js/62.de6f9da1.js"><link rel="prefetch" href="/docs-vuepress/assets/js/63.f9e0d8f8.js"><link rel="prefetch" href="/docs-vuepress/assets/js/64.c7c23698.js"><link rel="prefetch" href="/docs-vuepress/assets/js/65.d3e1c4a3.js"><link rel="prefetch" href="/docs-vuepress/assets/js/66.630246f0.js"><link rel="prefetch" href="/docs-vuepress/assets/js/67.89a1bd40.js"><link rel="prefetch" href="/docs-vuepress/assets/js/68.db7b0050.js"><link rel="prefetch" href="/docs-vuepress/assets/js/69.a55fe5d9.js"><link rel="prefetch" href="/docs-vuepress/assets/js/7.32c3d797.js"><link rel="prefetch" href="/docs-vuepress/assets/js/70.6029f994.js"><link rel="prefetch" href="/docs-vuepress/assets/js/71.90317a8e.js"><link rel="prefetch" href="/docs-vuepress/assets/js/72.80e313e8.js"><link rel="prefetch" href="/docs-vuepress/assets/js/73.965ff957.js"><link rel="prefetch" href="/docs-vuepress/assets/js/74.36914e8c.js"><link rel="prefetch" href="/docs-vuepress/assets/js/75.a2f672f7.js"><link rel="prefetch" href="/docs-vuepress/assets/js/76.2a90491c.js"><link rel="prefetch" href="/docs-vuepress/assets/js/77.7eb2c99b.js"><link rel="prefetch" href="/docs-vuepress/assets/js/78.44e88b42.js"><link rel="prefetch" href="/docs-vuepress/assets/js/79.ec707345.js"><link rel="prefetch" href="/docs-vuepress/assets/js/8.6a5c24fe.js"><link rel="prefetch" href="/docs-vuepress/assets/js/80.dec35cef.js"><link rel="prefetch" href="/docs-vuepress/assets/js/81.07a65152.js"><link rel="prefetch" href="/docs-vuepress/assets/js/82.c3a042c2.js"><link rel="prefetch" href="/docs-vuepress/assets/js/83.bc38e40b.js"><link rel="prefetch" href="/docs-vuepress/assets/js/84.7e576c23.js"><link rel="prefetch" href="/docs-vuepress/assets/js/85.62a7e634.js"><link rel="prefetch" href="/docs-vuepress/assets/js/86.4021d1bd.js"><link rel="prefetch" href="/docs-vuepress/assets/js/87.6c028dde.js"><link rel="prefetch" href="/docs-vuepress/assets/js/88.30ed83b7.js"><link rel="prefetch" href="/docs-vuepress/assets/js/89.c93b8826.js"><link rel="prefetch" href="/docs-vuepress/assets/js/9.a9f28b6b.js"><link rel="prefetch" href="/docs-vuepress/assets/js/90.bbdc08d5.js"><link rel="prefetch" href="/docs-vuepress/assets/js/91.750014b1.js"><link rel="prefetch" href="/docs-vuepress/assets/js/92.a8a14743.js"><link rel="prefetch" href="/docs-vuepress/assets/js/93.3e9efae7.js"><link rel="prefetch" href="/docs-vuepress/assets/js/94.3991d3e3.js"><link rel="prefetch" href="/docs-vuepress/assets/js/95.4c626a1c.js"><link rel="prefetch" href="/docs-vuepress/assets/js/96.65b6252b.js"><link rel="prefetch" href="/docs-vuepress/assets/js/97.1c52d6e6.js"><link rel="prefetch" href="/docs-vuepress/assets/js/98.a97677b3.js"><link rel="prefetch" href="/docs-vuepress/assets/js/99.85cd787a.js"><link rel="prefetch" href="/docs-vuepress/assets/js/vendors~docsearch.e5a7293d.js">
+    <link rel="stylesheet" href="/docs-vuepress/assets/css/0.styles.66888092.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs-vuepress/" class="home-link router-link-active"><img src="/docs-vuepress/images/rundecklogo-black.png" alt="Rundeck Docs" class="logo"> <span class="site-name can-hide">Rundeck Docs</span></a> <div class="links"><form id="search-form" role="search" class="algolia-search-wrapper search-box"><input id="algolia-search-input" class="search-query"></form> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/01-introduction.html" class="nav-link">Introduction</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/02-getting-help.html" class="nav-link">Getting Help</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/03-getting-started.html" class="nav-link">Getting Started</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/04-jobs.html" class="nav-link">Jobs</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/05-nodes.html" class="nav-link">Nodes</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/06-commands.html" class="nav-link">Commands</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/07-executions.html" class="nav-link">Executions</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/08-activity.html" class="nav-link">Activity</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/09-configure.html" class="nav-link">Configure</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/10-user.html" class="nav-link">User</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/11-node-filters.html" class="nav-link">Node Filters</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Tutorials</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/index.html" class="nav-link">Overview</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/project-setup.html" class="nav-link">Project Setup</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/nodes.html" class="nav-link">Nodes</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/jobs.html" class="nav-link">Jobs</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/command-dispatch.html" class="nav-link">Commands</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/access-control.html" class="nav-link">Access Control</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/option-provider.html" class="nav-link">Option Provider</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/custom-script-plugin-hello-world.html" class="nav-link">Custom Script Plugin - Hello World</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/custom-script-plugin-db-cred-rotation.html" class="nav-link">Custom Script Plugin - DB Credential Rotation</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/log-filters.html" class="nav-link">Log Filters</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/java-plugin.html" class="nav-link">Java Plugin</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Administration</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs-vuepress/administration/" class="nav-link">Overview</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/administration/install/" class="nav-link">Installation</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/administration/configuration/" class="nav-link">Configuration</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/plugins/" class="nav-link">Plugins</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/administration/security/default-users.html" class="nav-link">Security</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/administration/maintenance/index.html" class="nav-link">Maintenance</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/administration/upgrading/index.html" class="nav-link">Upgrading</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/administration/cluster/index.html" class="nav-link">Cluster</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/administration/projects/index.html" class="nav-link">Projects</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Enterprise</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs-vuepress/enterprise/" class="nav-link">Overview</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/enterprise/quickstart.html" class="nav-link">Quickstart</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Development</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs-vuepress/api/rundeck-api.html" class="nav-link">API</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/developer/index.html" class="nav-link">Plugin Development</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/command-line-tools/" class="nav-link router-link-active">Command Line Tools</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/history/index.html" class="nav-link">Change Log</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/01-introduction.html" class="nav-link">Introduction</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/02-getting-help.html" class="nav-link">Getting Help</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/03-getting-started.html" class="nav-link">Getting Started</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/04-jobs.html" class="nav-link">Jobs</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/05-nodes.html" class="nav-link">Nodes</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/06-commands.html" class="nav-link">Commands</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/07-executions.html" class="nav-link">Executions</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/08-activity.html" class="nav-link">Activity</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/09-configure.html" class="nav-link">Configure</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/10-user.html" class="nav-link">User</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/11-node-filters.html" class="nav-link">Node Filters</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Tutorials</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/index.html" class="nav-link">Overview</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/project-setup.html" class="nav-link">Project Setup</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/nodes.html" class="nav-link">Nodes</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/jobs.html" class="nav-link">Jobs</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/command-dispatch.html" class="nav-link">Commands</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/access-control.html" class="nav-link">Access Control</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/option-provider.html" class="nav-link">Option Provider</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/custom-script-plugin-hello-world.html" class="nav-link">Custom Script Plugin - Hello World</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/custom-script-plugin-db-cred-rotation.html" class="nav-link">Custom Script Plugin - DB Credential Rotation</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/log-filters.html" class="nav-link">Log Filters</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/tutorials/java-plugin.html" class="nav-link">Java Plugin</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Administration</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs-vuepress/administration/" class="nav-link">Overview</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/administration/install/" class="nav-link">Installation</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/administration/configuration/" class="nav-link">Configuration</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/plugins/" class="nav-link">Plugins</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/administration/security/default-users.html" class="nav-link">Security</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/administration/maintenance/index.html" class="nav-link">Maintenance</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/administration/upgrading/index.html" class="nav-link">Upgrading</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/administration/cluster/index.html" class="nav-link">Cluster</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/administration/projects/index.html" class="nav-link">Projects</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Enterprise</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs-vuepress/enterprise/" class="nav-link">Overview</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/enterprise/quickstart.html" class="nav-link">Quickstart</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Development</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs-vuepress/api/rundeck-api.html" class="nav-link">API</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/developer/index.html" class="nav-link">Plugin Development</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/manual/command-line-tools/" class="nav-link router-link-active">Command Line Tools</a></li><li class="dropdown-item"><!----> <a href="/docs-vuepress/history/index.html" class="nav-link">Change Log</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Command Line</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs-vuepress/manual/command-line-tools/rd-acl.html" class="active sidebar-link">rd-acl</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs-vuepress/manual/command-line-tools/rd-acl.html#name" class="sidebar-link">Name</a></li><li class="sidebar-sub-header"><a href="/docs-vuepress/manual/command-line-tools/rd-acl.html#synopsis" class="sidebar-link">Synopsis</a></li><li class="sidebar-sub-header"><a href="/docs-vuepress/manual/command-line-tools/rd-acl.html#description" class="sidebar-link">Description</a></li><li class="sidebar-sub-header"><a href="/docs-vuepress/manual/command-line-tools/rd-acl.html#related" class="sidebar-link">Related</a></li><li class="sidebar-sub-header"><a href="/docs-vuepress/manual/command-line-tools/rd-acl.html#options" class="sidebar-link">Options</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs-vuepress/manual/command-line-tools/rd-acl.html#test-and-validate-command-options" class="sidebar-link">Test and Validate Command Options</a></li><li class="sidebar-sub-header"><a href="/docs-vuepress/manual/command-line-tools/rd-acl.html#create-command-options" class="sidebar-link">Create Command Options</a></li><li class="sidebar-sub-header"><a href="/docs-vuepress/manual/command-line-tools/rd-acl.html#common-options" class="sidebar-link">Common Options</a></li><li class="sidebar-sub-header"><a href="/docs-vuepress/manual/command-line-tools/rd-acl.html#list-command-options" class="sidebar-link">List Command Options</a></li></ul></li><li class="sidebar-sub-header"><a href="/docs-vuepress/manual/command-line-tools/rd-acl.html#test-command" class="sidebar-link">Test Command</a></li><li class="sidebar-sub-header"><a href="/docs-vuepress/manual/command-line-tools/rd-acl.html#list-command" class="sidebar-link">List Command</a></li><li class="sidebar-sub-header"><a href="/docs-vuepress/manual/command-line-tools/rd-acl.html#create-command" class="sidebar-link">Create Command</a></li><li class="sidebar-sub-header"><a href="/docs-vuepress/manual/command-line-tools/rd-acl.html#validate-command" class="sidebar-link">Validate Command</a></li><li class="sidebar-sub-header"><a href="/docs-vuepress/manual/command-line-tools/rd-acl.html#see-also" class="sidebar-link">See Also</a></li></ul></li><li><a href="/docs-vuepress/manual/command-line-tools/rd.html" class="sidebar-link">RD: Rundeck Client CLI Tool</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="rd-acl"><a href="#rd-acl" aria-hidden="true" class="header-anchor">#</a> rd-acl</h1> <p>Updated April 6, 2015</p> <h2 id="name"><a href="#name" aria-hidden="true" class="header-anchor">#</a> Name</h2> <p>rd-acl - Test and generate Rundeck ACL policy files.</p> <h2 id="synopsis"><a href="#synopsis" aria-hidden="true" class="header-anchor">#</a> Synopsis</h2> <p><code>rd-acl [*command*] [*command options*]...</code></p> <h2 id="description"><a href="#description" aria-hidden="true" class="header-anchor">#</a> Description</h2> <p>The rd-acl command can test aclpolicy files to check whether they will allow a certain action request or not.</p> <p>It can also list the results for all defined access tests for a user or group.</p> <p>It can also generate the correct policy for a certain action. This can be done in a semi-interactive mode
+by specifying each <a href="#common-options">Common Option</a> in turn, allowing it to prompt you with a set
+of next possible options.</p> <p>It can also take as input the output from the Rundeck AUDIT log, and generate ACL policy definitions
+to allow any disallowed actions.</p> <p>It can also validate one or more files.</p> <p>The tool works in these <em>COMMAND</em> modes:</p> <p><code>test</code>
+: test one or more aclpolicy files to determine if an action would be allowed.</p> <p><code>list</code>
+: list all access tests for a user or group for one or more aclpolicy files.</p> <p><code>create</code>
+: generate the correct ACL policy YAML definition for a specific action, or to allow a previously rejected
+action as logged in the Rundeck AUDIT log.</p> <p><code>validate</code>
+: Validate a file or directory of files, and print messages about problems with the files.</p> <h2 id="related"><a href="#related" aria-hidden="true" class="header-anchor">#</a> Related</h2> <p>See:</p> <ul><li><a href="/docs-vuepress/manpages/man5/aclpolicy-v10.html">ACL Policy syntax</a></li> <li><a href="/docs-vuepress/administration/security/authorization.html">Access Control Policy</a></li></ul> <h2 id="options"><a href="#options" aria-hidden="true" class="header-anchor">#</a> Options</h2> <p><code>-h, --help</code>
+: Print usage message.</p> <p><code>-v, --verbose</code>
+: Run verbosely.</p> <h3 id="test-and-validate-command-options"><a href="#test-and-validate-command-options" aria-hidden="true" class="header-anchor">#</a> Test and Validate Command Options</h3> <p>The <code>test</code> and <code>validate</code> commands take these input options.</p> <p><code>-d, --dir &lt;dir&gt;</code>
+: Directory. Load all policy files in the specified directory.</p> <p><code>-f, --file &lt;file&gt;</code>
+: File path. Load the specified aclpolicy file.</p> <p><code>-v</code>
+: If the tested action is not allowed, print the necessary ACL policy to allow it (as per the <code>create</code> action.)</p> <p>One of <code>--dir</code> or <code>--file</code> is required for the <code>test</code> command. If the rdeck.base system property is defined, then
+the Rundeck &quot;etc&quot; dir will be used as for the <code>--dir</code> option by default.</p> <p>In addition,
+the <code>test</code> command also takes the <a href="#common-options">Common Options</a> and these options:</p> <p><code>-V, --validate</code>
+: Validate all input files, and exit with non-zero exit code if validation fails. (<code>test</code> and <code>list</code> actions.)</p> <h3 id="create-command-options"><a href="#create-command-options" aria-hidden="true" class="header-anchor">#</a> Create Command Options</h3> <p>In addition to the <a href="#common-options">Common Options</a>, the <code>create</code> command takes these input options.</p> <p><code>-i, --input &lt;file | -&gt;</code>
+: Parse the Rundeck AUDIT log input, and for any REJECTED decisions, generate the appropriate aclpolicy
+to allow the action. If the value of the <code>--input</code> option is <code>-</code> (dash character), then the STDIN is read.
+If <code>--input</code> is used, then the Common Options are ignored.</p> <p><code>-r, --regex</code>
+: Match the resource using regular expressions. (create command).</p> <h3 id="common-options"><a href="#common-options" aria-hidden="true" class="header-anchor">#</a> Common Options</h3> <p>These options define the Context, Subject, Action, and Resource,
+which are used both to define an Access Request (for the <code>test</code> command),
+and to define a rule in the ACL Policy (for the <code>create</code> command).</p> <p><strong>Context options:</strong></p> <p><code>-c,--context &lt;application | project&gt;</code>
+: Context: either 'project' or 'application'. For project context, the <code>-p,--project</code> option is required.</p> <p><strong>Subject options:</strong></p> <p><code>-g,--groups &lt;group,...&gt;</code>
+: Subject Groups names. Comma-separated list of user groups to
+validate (test command) or for by: clause (create command).</p> <p><code>-u,--user &lt;user,...&gt;</code>
+: Subject User name. Comma-separated list of user names to
+validate (test command) or for by: clause (create command).</p> <p><strong>Action options:</strong></p> <p><code>-a,--allow &lt;action,...&gt;</code>
+: Actions to test are allowed (test command) or to allow (create command).</p> <p><code>-D,--deny &lt;action,...&gt;</code>
+: Actions to test are denied (test command) or to deny (create command).</p> <p><strong>Resource Options:</strong></p> <p>Resources are characterized as either &quot;specific resources&quot;, or &quot;resource types&quot;
+(see <a href="/docs-vuepress/administration/security/authorization.html#specific-resources-and-resource-types]">Specific Resources and Resource Types</a>. You can specify &quot;resource types&quot; using the <code>-G, --generic &lt;kind&gt;</code> option. All specific resources can
+be specified directly using one of the options, or by type using <code>-R, --resource &lt;type&gt;</code> in combination with <code>-b, --attributes &lt;attr=val ...&gt;</code>.</p> <p><code>-G,--generic &lt;kind&gt;</code>
+: Generic resource kind.</p> <p><code>-R,--resource &lt;type&gt;</code>
+: Resource type name.</p> <p><code>-b,--attributes &lt;key=value ...&gt;</code>
+: Attributes for the resource. A sequence of key=value pairs, multiple pairs can follow with a space. Use a value of '?' to see suggestions.</p> <p>The following define [Project scope resources](/administration/security/authorization.md#project-scope-resources-and-actions]:</p> <p><code>-A,--adhoc</code>
+: Adhoc execution (project context)</p> <p><code>-j,--job &lt;group/name&gt;</code>
+: Job group/name. (project context)</p> <p><code>-I,--jobUuid &lt;uuid&gt;</code>
+: Job uuid. (project context)</p> <p><code>-n,--node &lt;nodename&gt;</code>
+: Node name. (project context)</p> <p><code>-t,--tags &lt;tag,..&gt;</code>
+: Node tags. If specified, the resource match will be defined using 'contains'. (project context)</p> <p>The following define [Application scope resources](/administration/security/authorization.md#application-scope-resources-and-actions]:</p> <p><code>-s,--storage &lt;path/file&gt;</code>
+: Storage path/name. (application context)</p> <p><code>-p,--project &lt;project&gt;</code>
+: Name of project, used in project context or for application resource.</p> <h3 id="list-command-options"><a href="#list-command-options" aria-hidden="true" class="header-anchor">#</a> List Command Options</h3> <p>The <code>list</code> command uses these <a href="#test-command-options">Test Command Options</a> to set the aclpolicy files to be evaluated: <code>-f,--file</code> and <code>-d,--dir</code>.</p> <p>It also allows these options from the <a href="#common-options">Common Options</a>:</p> <p>The Subject options: <code>-g,--groups</code> and <code>-u,--user</code></p> <p>These Resource options:</p> <ul><li><code>-p,--project</code> name of a project to test</li> <li><code>-s,--storage</code> Storage path/name</li> <li><code>-n,--node</code> or <code>-t,--tags</code> name or tags of a node to tests</li> <li><code>-j,--job</code> Job group/name.</li> <li><code>-I,--jobUuid</code> Job uuid.</li></ul> <h2 id="test-command"><a href="#test-command" aria-hidden="true" class="header-anchor">#</a> Test Command</h2> <p>The Test command loads the specified aclpolicy file or directory of files, and evaluates the Access Request defined
+by the <a href="#common-options">Common Options</a>, and emits the decision of whether the request is allowed, disallowed, or denied.
+If it is allowed, then <code>rd-acl</code> will exit with a 0 exit code, otherwise it will exit with 2 exit code.</p> <p>If the <code>-v, --verbose</code> flag is enabled, and the decision was not &quot;allowed&quot;,
+then it will additionally automatically invoke the <a href="#create-command">Create Command</a>
+to generate an aclpolicy definition to allow the requested action.</p> <p><strong>Note:</strong> If the decision was &quot;denied&quot;, then that indicates a specific DENY rule matches the Access Request.
+A DENY rule that matches will override all ALLOW rules that match.</p> <p><em>Examples</em></p> <p>Test all aclpolicy files in the Rundeck &quot;etc&quot; directory by default, with an allowed result for <code>read</code> action:</p> <div class="language- extra-class"><pre class="language-text"><code>rd-acl test --context application --groups test --storage keys/test1.pem --allow read
+Using configured Rundeck etc dir: /etc/rundeck
+The result was: allowed
+</code></pre></div><p>Test all aclpolicy files in the Rundeck &quot;etc&quot; directory by default, with a rejected result for <code>create</code> action:</p> <div class="language- extra-class"><pre class="language-text"><code>rd-acl test --context application --groups test --storage keys/key1.pem --allow create
+Using configured Rundeck etc dir: /etc/rundeck
+Result: REJECTED
+The result was: not allowed
+</code></pre></div><p>The same as above, using the <code>--verbose</code> flag</p> <div class="language- extra-class"><pre class="language-text"><code>rd-acl test --context application --groups test --storage keys/key1.pem --allow create -v
+Using configured Rundeck etc dir: /etc/rundeck
+Result: REJECTED
+Decision for: res&lt;name:key1.pem, path:keys, type:storage&gt; subject&lt;Username:user Group:test&gt; action&lt;create&gt; env&lt;http://dtolabs.com/rundeck/env/application:rundeck&gt;: authorized: false: REJECTED, reason: REJECTED, evaluations: None
+The result was: not allowed
+Policies to allow the requested actions:
+## create or append this to a .aclpolicy file
+---
+for:
+  storage:
+  - allow: create
+    equals:
+      name: key1.pem
+      path: keys
+description: generated
+context:
+  application: rundeck
+by:
+  group: test
+</code></pre></div><h2 id="list-command"><a href="#list-command" aria-hidden="true" class="header-anchor">#</a> List Command</h2> <p>The List command loads the specified aclpolicy file or directory of files,
+and evaluates all access requests possible for the specified Group or User.
+It lists the decision of whether each request is allowed, disallowed, or denied.</p> <p>Further evaluations can be done by supplying some concrete values to identify a Project, Nodes, Jobs, and a Storage path.</p> <p>If the <code>-v, --verbose</code> flag is enabled, and the decision was &quot;denied&quot;,
+then it will print the decision details including the file name of the policy rule that denies the request.</p> <p>In the output, a line starting with <code>-</code> indicates the action was rejected,
+<code>+</code> indicates the action was allowed, and <code>!</code> indicates the action was denied.</p> <p>The evaluation lines are in the form:</p> <pre><code>&lt;result&gt; &lt;action&gt;: &lt;resource&gt; [&lt;reason&gt;]
+</code></pre> <p><em>Examples</em></p> <p>List results for just a group name:</p> <div class="language- extra-class"><pre class="language-text"><code>rd-acl list -g api_token_group
+Using configured Rundeck etc dir: /etc/rundeck
+# Application Context access for group api_token_group
+
+
+(No project (-p) specified, skipping Application context actions for a specific project.)
+
+
+(No storage path (-s) specified, skipping Application context actions for a specific storage path.)
+
+- create: project [REJECTED]
++ read: system
+- admin: job [REJECTED]
+- admin: user [REJECTED]
+
+(No project (-p) specified, skipping Project context listing.)
+</code></pre></div><p>Add a <code>-p</code> to specify a project:</p> <div class="language- extra-class"><pre class="language-text"><code>rd-acl list  -g api_token_group -p test
+Using configured Rundeck etc dir: /etc/rundeck
+# Application Context access for group api_token_group
+
+- admin: project named &quot;test&quot; [REJECTED]
+- delete_execution: project named &quot;test&quot; [REJECTED]
+- import: project named &quot;test&quot; [REJECTED]
++ read: project named &quot;test&quot;
+- export: project named &quot;test&quot; [REJECTED]
+- configure: project named &quot;test&quot; [REJECTED]
+- delete: project named &quot;test&quot; [REJECTED]
+
+(No storage path (-s) specified, skipping Application context actions for a specific storage path.)
+
+- create: project [REJECTED]
++ read: system
+- admin: job [REJECTED]
+- admin: user [REJECTED]
+
+# Project &quot;test&quot; access for group api_token_group
+
+- runAs: Adhoc executions [REJECTED]
++ kill: Adhoc executions
++ run: Adhoc executions
++ read: Adhoc executions
+- killAs: Adhoc executions [REJECTED]
+
+(No job (-j) specified, skipping Project context actions for a specific job.)
+
+
+(No node (-n) or tags (-t) specified, skipping Project context actions for a specific node or node tags.)
+
++ read: node
++ refresh: node
++ create: node
++ update: node
++ create: event
++ read: event
++ create: job
++ delete: job
+</code></pre></div><p>Include <code>-j</code>, <code>-n</code> and <code>-s</code>:</p> <div class="language- extra-class"><pre class="language-text"><code>rd-acl list  -g api_token_group -p test -s keys/boingo.pem -j test/job -n mynode
+Using configured Rundeck etc dir: /etc/rundeck
+# Application Context access for group api_token_group
+
+- configure: project named &quot;test&quot; [REJECTED]
+- import: project named &quot;test&quot; [REJECTED]
+- export: project named &quot;test&quot; [REJECTED]
+- delete: project named &quot;test&quot; [REJECTED]
+- delete_execution: project named &quot;test&quot; [REJECTED]
++ read: project named &quot;test&quot;
+- admin: project named &quot;test&quot; [REJECTED]
++ read: storage path &quot;keys/boingo.pem&quot;
++ update: storage path &quot;keys/boingo.pem&quot;
+! delete: storage path &quot;keys/boingo.pem&quot; [REJECTED_DENIED]
++ create: storage path &quot;keys/boingo.pem&quot;
+- create: project [REJECTED]
++ read: system
+- admin: job [REJECTED]
+- admin: user [REJECTED]
+
+# Project &quot;test&quot; access for group api_token_group
+
+- runAs: Adhoc executions [REJECTED]
+- killAs: Adhoc executions [REJECTED]
++ kill: Adhoc executions
++ run: Adhoc executions
++ read: Adhoc executions
++ run: Job &quot;test/job&quot;
+- runAs: Job &quot;test/job&quot; [REJECTED]
++ create: Job &quot;test/job&quot;
++ read: Job &quot;test/job&quot;
++ delete: Job &quot;test/job&quot;
++ update: Job &quot;test/job&quot;
+- killAs: Job &quot;test/job&quot; [REJECTED]
++ kill: Job &quot;test/job&quot;
++ read: Node &quot;mynode&quot;
++ run: Node &quot;mynode&quot;
++ update: node
++ refresh: node
++ read: node
++ create: node
++ create: event
++ read: event
++ delete: job
++ create: job
+</code></pre></div><p>Using the <code>-v</code> verbose flag shows more detail about the REJECTED_DENIED result:</p> <div class="language- extra-class"><pre class="language-text"><code>rd-acl list  -g api_token_group -p test -s keys/boingo.pem -v
+Using configured Rundeck etc dir: /etc/rundeck
+# Application Context access for group api_token_group
+
+...snip
+! delete: storage path &quot;keys/boingo.pem&quot; [REJECTED_DENIED]
+  REJECTED, reason: REJECTED_DENIED, evaluations:   /etc/rundeck/apitoken.aclpolicy[2][rule: 1: {match={path=(keys|keys/.*)}, allow=*, deny=delete}] for actions: [delete] =&gt; REJECTED_DENIED
+...snip
+
+</code></pre></div><h2 id="create-command"><a href="#create-command" aria-hidden="true" class="header-anchor">#</a> Create Command</h2> <p>The Create Command can generate ACL Policy YAML definitions based on the <a href="#common-options">Common Options</a>.
+It can also parse the output from an authorization evaluation, as logged in the Rundeck AUDIT log, and generate
+the policy necessary to allow any REJECTED evaluations. In the case of DENIED evaluations, it will still
+generate a policy to allow the access request, but note that the DENY rule would need to be removed to
+actually allow the specified action.</p> <p>Create has a &quot;semi-interactive&quot; behavior. If you enter only some components of the
+Subject, Context, Action and Resource necessary to define a rule, then it will prompt with some possible values
+for the next component.</p> <p><em>Examples</em></p> <p>Begin by typing the <code>create</code> command with no options</p> <div class="language- extra-class"><pre class="language-text"><code>rd-acl create
+-c/--context is required.
+Choose one of:
+  -c application
+    Access to projects, users, storage, system info.
+  -c project
+    Access to jobs, nodes, events, within a project.
+</code></pre></div><p>Add a <code>-c project</code> option:</p> <div class="language- extra-class"><pre class="language-text"><code>rd-acl create -c project
+-p/--project is required.
+Choose the name of a project, or .*:
+  -p myproject
+  -p '.*'
+</code></pre></div><p>Add a <code>-p</code> option:</p> <div class="language- extra-class"><pre class="language-text"><code>rd-acl create -c project -p '.*'
+-g/--groups &lt;group,...&gt; or -u/--user &lt;user,...&gt; are required
+  -u user1,user2...
+  -g group1,group2...
+    Groups control access for a set of users, and correspond
+    to authorization roles.
+</code></pre></div><p>Add a <code>-g</code> option:</p> <div class="language- extra-class"><pre class="language-text"><code>rd-acl create -c project -p '.*' -g test
+Project-context resource option is required.
+Possible options:
+  Job: -j/--job &lt;group/name&gt;
+    View, modify, create*, delete*, run, and kill specific jobs.
+    * Create and delete also require additional -G/--generic &lt;kind&gt; level access.
+  Adhoc: -A/--adhoc
+    View, run, and kill adhoc commands.
+  Node: -n/--node &lt;nodename&gt;
+      : -t/--tags &lt;tag,..&gt;
+    View and run on specific nodes by name or tag.
+  Resource: -R/--resource &lt;type&gt;
+    Specify the resource type directly. -b/--attributes &lt;key=value ...&gt; should also be used.
+    resource types in this context:
+    node
+    job
+    adhoc
+  Generic: -G/--generic &lt;kind&gt;
+    Create and delete jobs.
+    View and manage nodes.
+    View events.
+    generic kinds in this context:
+    node
+    event
+    job
+</code></pre></div><p>Here we see several options to specify the resource. the <code>Job</code>, <code>Adhoc</code> and <code>Node</code> options define both
+the resource type, and some resource attributes. The <code>-R</code> option can set the resource type directly,
+and then the <code>-b</code> attributes option can be used to define the attributes.
+Otherwise the <code>-G</code> option can be used to match a resource kind.</p> <p>We will specify node tags using <code>-t</code>:</p> <div class="language- extra-class"><pre class="language-text"><code>rd-acl create -c project -p '.*' -g test -t prod,www
+-a/--allow or -D/--deny is required.
+  -a action1,action2,...
+  -D action1,action2,...
+Possible actions in this context:
+  *
+  read
+  run
+</code></pre></div><p>Now we are prompted to choose actions to allow or deny for the rule, and the ACL policy
+definition is printed.</p> <div class="language- extra-class"><pre class="language-text"><code>rd-acl create -c project -p '.*' -g test -t prod,www -a read -D run
+## create or append this to a .aclpolicy file
+---
+for:
+  node:
+  - allow: read
+    deny: run
+    contains:
+      tags:
+      - prod
+      - www
+description: generated
+context:
+  project: .*
+by:
+  group: test
+</code></pre></div><h2 id="validate-command"><a href="#validate-command" aria-hidden="true" class="header-anchor">#</a> Validate Command</h2> <p>The Validate command loads the specified aclpolicy file or directory of files, and validates the aclpolicy definitions.
+It prints any errors found and it will exit with a 0 exit code if no errors are found, otherwise it will exit with 2 exit code.</p> <p><em>Examples</em></p> <p>Validate all aclpolicy files in the Rundeck &quot;etc&quot; directory by default:</p> <div class="language- extra-class"><pre class="language-text"><code>$ rd-acl validate
+Using configured Rundeck etc dir: /etc/rundeck
+The validation passed
+</code></pre></div><p>Validate a specific file:</p> <div class="language- extra-class"><pre class="language-text"><code>$ rd-acl validate -f bad5.aclpolicy
+/Users/greg/rundeck25/bad5.aclpolicy[1]:
+  Context section is not valid: {xproject=asdf}, it should contain only 'application:' or 'project:'
+The validation failed
+</code></pre></div><h2 id="see-also"><a href="#see-also" aria-hidden="true" class="header-anchor">#</a> See Also</h2> <p><a href="/docs-vuepress/manpages/man5/aclpolicy-v10.html"><code>aclpolicy</code></a></p> <p><a href="/docs-vuepress/administration/security/authorization.html">Access Control Policy</a></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">7/1/2019, 8:40:35 PM</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/docs-vuepress/manual/command-line-tools/rd.html">
+          RD: Rundeck Client CLI Tool
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/docs-vuepress/assets/js/app.2714eea1.js" defer></script><script src="/docs-vuepress/assets/js/3.8da87e6d.js" defer></script><script src="/docs-vuepress/assets/js/226.5776d249.js" defer></script>
+  </body>
+</html>
