@@ -1,0 +1,2 @@
+# Setting up the Healthcheck plugin
+Healthcheck provides the current node status and allows you to select nodes based on the job requirements and dependancies. Healthcheck runs a command or script and dynamically updates one or more node attributes with the results. Use Healthcheck to determine system state such as network connectivity, capacity - CPU usuage and disk space, installed software, or for tasks such as identifying nodes that require remidiation, failover, updates, and restarting a service.
