@@ -1,6 +1,6 @@
 ## Enabling the Healhcheck feature system-wide
-By default the Healhcheck feature is disabled. Enable the Healthcheck plugin to make it available in projects.
-After Heathcheck is enable, a menu item appears in the Project Settings on the Edit Node > Configuration page.
+By default the Healhcheck feature is disabled. Enable the Healthchecks to make it available in all projects.
+After Heathcheck is enabled at the system level, a menu item appears in the Project Settings on the Edit Node > Configuration page.
 To enable the feature:
 1. Add the following properties to `rundeck-config.properties` file:
   1. Enable node enhancer, the plugin to dynamically add attributes to nodes:
