@@ -7,7 +7,7 @@ To enable the feature:
 ~~~~~~~~
 rundeck.feature.enhanced-nodes.enabled=true
 ~~~~~~~~
-  - Enable healthcheck, the plugin that runs and parses diagnostic commands or scripts on remote nodes:
+  - Enable Healthcheck feature, which runs and parses diagnostic commands or scripts on remote nodes:
 ~~~~~~~~
 rundeckpro.feature.incubator.healthcheck=true
 ~~~~~~~~
