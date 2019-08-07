@@ -25,7 +25,10 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "push-dir": "^0.4.1",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "vuepress": "1.0.2",
+    "@vuepress/core": "1.0.2",
+    "@vuepress/theme-default": "1.0.2"
   },
   "eslintConfig": {
     "root": true,
