@@ -20,19 +20,19 @@ Ask for the license key to the support team. Then install the license key via th
 
 Upload the license key using the GUI:
 
-![Upload the license key using the GUI](~@assets/license-key-gui-1.png)
+![Upload the license key using the GUI](~@assets/img/license-key-gui-1.png)
 
 Click on "No License Key File is installed"
 
-![Click on "No License Key File is installed"](~@assets/license-key-gui-2.png)
+![Click on "No License Key File is installed"](~@assets/img/license-key-gui-2.png)
 
 Click on "Upload License File"
 
-![Click on "Upload License File"](~@assets/license-key-gui-3.png)
+![Click on "Upload License File"](~@assets/img/license-key-gui-3.png)
 
 Select the license key file and press "Upload License File"
 
-![Select the license key file and press "Upload License File"](~@assets/license-key-gui-4.png)
+![Select the license key file and press "Upload License File"](~@assets/img/license-key-gui-4.png)
 
 ### Via filesystem
 

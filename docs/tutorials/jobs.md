@@ -54,7 +54,7 @@ The administrator chooses to create a top level group named
 When opening the "anvils" project users will see the jobs
 grouped below web as shown in the screenshot below.
 
-![Anvils job group](~@assets/fig0604.png)
+![Anvils job group](~@assets/img/fig0604.png)
 
 ## Scripts
 
@@ -155,7 +155,7 @@ The screenshot below contains the Option edit form for the "method" option.
 The form includes elements to define description and default
 value, as well as, Allowed Values and Restrictions.
 
-![Option editor for method](~@assets/fig0605.png)
+![Option editor for method](~@assets/img/fig0605.png)
 
 Allowed values can be specified as a comma separated list as seen above but
 can also be requested from an external source using a "remote URL".
@@ -167,7 +167,7 @@ the "Match Regular Expression" form to validate the input option.
 
 Here's a screenshot of how Rundeck will display the menu choices:
 
-![Option menu for method](~@assets/fig0606.png)
+![Option menu for method](~@assets/img/fig0606.png)
 
 ### Script access to option data
 
@@ -441,7 +441,7 @@ Found 3 jobs:
 Of course, the jobs can be viewed inside the Rundeck graphical console by going to
 the Jobs page. Clicking the "Restart" job name and clicking the "Definition" tab reveals job detail.
 
-![Anvils Restart job](~@assets/fig0607.png)
+![Anvils Restart job](~@assets/img/fig0607.png)
 
 You will see the composition of the "Restart" job as a workflow
 calling the jobs: stop, start, status. The "Restart" job passes the
@@ -462,7 +462,7 @@ two choices: "normal" and "force". No other choices can be made, nor a
 textfield for free form entry, because the "method" option was defined
 with the restriction "enforced from allowed values".
 
-![Restart run page](~@assets/fig0608.png)
+![Restart run page](~@assets/img/fig0608.png)
 
 ### Job run with the CLI
 

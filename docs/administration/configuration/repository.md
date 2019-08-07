@@ -1,4 +1,4 @@
-# Repository
+% Repository
 
 This document describes the Rundeck Repository features, which allow you to install plugins from the official Rundeck Repository, or to configure your own repositories for serving plugins to your own private installation.
 You can use the repositories to find plugins using the "Find Plugins" entry under the Plugins menu that is accessed from the gear icon in the GUI. You can also use the `rd` tool to install, uninstall, and upload plugins that are saved in these repositories.
@@ -7,6 +7,7 @@ You can use the repositories to find plugins using the "Find Plugins" entry unde
 
 In order to use the official Rundeck Repository your Rundeck server must be allowed to connect to the internet and to access `https://api.rundeck.com` based urls.
 If you do not wish to allow your Rundeck server to reach the internet you can still use the private repository features, but the official Rundeck repository will be unavailable to you, and should be disabled.
+
 
 ## Enabling the Repository feature
 
@@ -18,15 +19,15 @@ to your rundeck-config.properties file.
 
 ## GUI Usage
 
-Each repository that is enabled will show up in the Rundeck user interface when you click the gear icon then go to Plugins>Find Plugin.
-![Find Plugins](~@assets/plugins-find.png)
+Each repository that is enabled will show up in the Rundeck user interface when you click the gear icon then go to Plugins>Find Plugin.  
+![Find Plugins](../../assets/img/plugins-find.png)
 
 When you go to the plugin page you will see each repository and the plugins they provide.
 
-The plugins are each represented by a card. The following image explains the content of the plugin card.
-![Plugin Card](~@assets/plugin-card.png){ width=35% }
+The plugins are each represented by a card. The following image explains the content of the plugin card.  
+![Plugin Card](../../assets/img/plugin-card.png){ width=35% }
 
-If you have the official repository enabled you will see some plugins with an install button. These plugins can be immediately installed by clicking the `Install` button. When the plugin is installed, it will be pulled from the Rundeck repository and copied into the correct location in your Rundeck installation. After installation, it is ready for immediate use. Some plugins do not have an install button. Manual installation is required for those plugins. To install those plugins you need to click on the source link icon ![source link icon](~@assets/repo-source-icon.png), which will take you to the plugins source page, and there you can check for instructions regarding the install of that plugin.
+If you have the official repository enabled you will see some plugins with an install button. These plugins can be immediately installed by clicking the `Install` button. When the plugin is installed, it will be pulled from the Rundeck repository and copied into the correct location in your Rundeck installation. After installation, it is ready for immediate use. Some plugins do not have an install button. Manual installation is required for those plugins. To install those plugins you need to click on the source link icon ![source link icon](../../assets/img/repo-source-icon.png), which will take you to the plugins source page, and there you can check for instructions regarding the install of that plugin.
 
 Installable plugins are also un-installable. Just click the `Uninstall` button to uninstall the plugin. This will delete the plugin from the correct location immediately.
 
@@ -36,11 +37,11 @@ All plugins that you add to your private repository are installable and un-insta
 
 When you enable the Rundeck Repository the following default files and directories are created for you:
 
-- `RDECK_BASE/server/config/artifcat-repositories.yaml` - Repositories are configured in this file.
-- `RDECK_BASE/repository/artifacts` - The directory into which your private plugins will be copied when you use the `upload` command to build your private plugin repository.
-- `RDECK_BASE/repository/installedPlugins` - The directory into which plugins will be copied when you use install them either from the offical Rundeck repository or your private repository.
+* `RDECK_BASE/server/config/artifcat-repositories.yaml` - Repositories are configured in this file.
+* `RDECK_BASE/repository/artifacts` - The directory into which your private plugins will be copied when you use the `upload` command to build your private plugin repository.
+* `RDECK_BASE/repository/installedPlugins` - The directory into which plugins will be copied when you use install them either from the offical Rundeck repository or your private repository.
 
-Both the `artifacts` and `installedPlugins` locations are configurable using the storage tree mechanism.
+Both the `artifacts` and `installedPlugins` locations are configurable using the storage tree mechanism.  
 
 ### Installed Plugin Storage
 
@@ -51,20 +52,18 @@ You can only have one location specified for storing installed plugins.
 The following examples show how to configure the installed plugin location:
 
 ##### Save installed plugins to your local filesystem at the location: /opt/repository/installedPlugins
-
 `rundeck-config.properties`
 
-```{.properties}
+~~~ {.properties}
 rundeck.repository.plugins.provider.1.type=file
 rundeck.repository.plugins.provider.1.path=/
 rundeck.repository.plugins.provider.1.config.baseDir=/opt/repository/installedPlugins
-```
+~~~
 
 ##### Save installed plugins to your local filesystem at the location: /opt/repository/content/installedPlugins
-
 `rundeck-config.properties`
 
-```{.properties}
+~~~ {.properties}
 rundeck.repository.plugins.provider.1.type=file
 #This must match the storageTreePath below
 rundeck.repository.plugins.provider.1.path=/installedPlugins
@@ -72,29 +71,28 @@ rundeck.repository.plugins.provider.1.config.baseDir=/opt/repository
 
 #Must match the path previously specified in the storage tree configuration
 rundeck.feature.repository.installedPlugins.storageTreePath=/installedPlugins
-```
+~~~
 
 Note: In the example above the storage tree path was not the default '/' root location, therefore the extra property:
 `rundeck.feature.repository.installedPlugins.storageTreePath` was required. This property is not required if the '/' default root is used.
 
-##### Save installed plugins to a Minio object store
 
+##### Save installed plugins to a Minio object store
 `rundeck-config.properties`
 
-```{.properties}
+~~~ {.properties}
 rundeck.repository.plugins.provider.1.type=object
 rundeck.repository.plugins.provider.1.path=/
 rundeck.repository.plugins.provider.1.config.bucket=repository
 rundeck.repository.plugins.provider.1.config.objectStoreUrl=http://your-minio-server:9000
 rundeck.repository.plugins.provider.1.config.secretKey=YOUR_SECRET_KEY
 rundeck.repository.plugins.provider.1.config.accessKey=YOUR_ACCESS_KEY
-```
+~~~
 
 ##### Save installed plugins to a Minio object store for cluster where all members sync their plugins on bootstrap
-
 `rundeck-config.properties`
 
-```{.properties}
+~~~ {.properties}
 rundeck.repository.plugins.provider.1.type=object
 rundeck.repository.plugins.provider.1.path=/
 rundeck.repository.plugins.provider.1.config.bucket=repository
@@ -105,7 +103,7 @@ rundeck.repository.plugins.provider.1.config.accessKey=YOUR_ACCESS_KEY
 #rundeck.repository.artifacts.provider.1.config.uncachedObjectLookup=true
 #This cluster member will pull it's plugins from the installed plugin location and install them when it bootstraps
 rundeck.feature.repository.syncOnBootstrap=true
-```
+~~~
 
 ### Repositories
 
@@ -116,53 +114,50 @@ Here are some examples for various configurations of private artifact repositori
 #### Filesystem
 
 ##### Save private repository plugin artifacts to your local filesystem at the location: /opt/repository/content/artifacts
-
 `rundeck-config.properties`
 
-```{.properties}
+~~~ {.properties}
 rundeck.repository.artifacts.provider.1.type=file
 rundeck.repository.artifacts.provider.1.path=/artifacts
 rundeck.repository.artifacts.provider.1.config.baseDir=/opt/repository
-```
+~~~
 
 `artifact-repositories.yaml`
 
-```{.yaml}
+~~~{.yaml}
 -   repositoryName: Private
     type: STORAGE_TREE
     configProperties:
         storageTreePath: /artifacts
-```
+~~~
 
 #### Object Store
 
 ##### Save private repository plugin artifacts to a minio object store
-
 `rundeck-config.properties`
 
-```{.properties}
+~~~ {.properties}
 rundeck.repository.artifacts.provider.1.type=object
 rundeck.repository.artifacts.provider.1.path=/minio
 rundeck.repository.artifacts.provider.1.config.bucket=repository
 rundeck.repository.artifacts.provider.1.config.objectStoreUrl=http://your-minio-server:9000
 rundeck.repository.artifacts.provider.1.config.secretKey=YOUR_SECRET_KEY
 rundeck.repository.artifacts.provider.1.config.accessKey=YOUR_ACCESS_KEY
-```
+~~~
 
 `artifact-repositories.yaml`
 
-```{.yaml}
+~~~{.yaml}
 -   repositoryName: MinioRepo
     type: STORAGE_TREE
     configProperties:
         storageTreePath: /minio
-```
+~~~
 
 ##### Use a file store for one repo and an object store for another
-
 `rundeck-config.properties`
 
-```{.properties}
+~~~ {.properties}
 rundeck.repository.artifacts.provider.1.type=file
 rundeck.repository.artifacts.provider.1.path=/repo1
 rundeck.repository.artifacts.provider.1.config.baseDir=/opt/repository
@@ -173,11 +168,11 @@ rundeck.repository.artifacts.provider.2.config.bucket=repository
 rundeck.repository.artifacts.provider.2.config.objectStoreUrl=http://your-minio-server:9000
 rundeck.repository.artifacts.provider.2.config.secretKey=YOUR_SECRET_KEY
 rundeck.repository.artifacts.provider.2.config.accessKey=YOUR_ACCESS_KEY
-```
+~~~
 
 `artifact-repositories.yaml`
 
-```{.yaml}
+~~~{.yaml}
 -   repositoryName: Repo1
     type: STORAGE_TREE
     configProperties:
@@ -186,7 +181,7 @@ rundeck.repository.artifacts.provider.2.config.accessKey=YOUR_ACCESS_KEY
     type: STORAGE_TREE
     configProperties:
         storageTreePath: /minio
-```
+~~~
 
 ### Using the repositories with the `rd` tool
 
@@ -194,9 +189,9 @@ The `rd` tool can be used to list plugins, install plugins from a repository, up
 
 #### List Plugins
 
-`rd plugins`
+```rd plugins```
 
-```{.bash}
+~~~{.bash}
 ==Official Repository==
 2e51ce08c836 : rundeck-http-workflow-step-plugin : 1.0.11 (not installed)
 def44eeac568 : nixy-local-steps : v1.2.6 (installed)
@@ -225,43 +220,43 @@ ac67623a4999 : pagerduty-notification : 1.2.1 (not installed)
 fa61f23b7a1c : jira-workflow-step : 1.0.1 (not installed)
 ==Private Repository==
 01843c9fbe3d : Icon Nodes Enhancer : 0.1.4-SNAPSHOT (not installed)
-```
+~~~
 
 #### Install Plugin
 
 This would install the Icon Node Enhancer plugin listed previously
 
-`rd plugins install -r Private -i 01843c9fbe3d`
+```rd plugins install -r Private -i 01843c9fbe3d```
 
-```{.bash}
+~~~{.bash}
 Plugin Installed
-```
+~~~
 
 #### Uninstall Plugin
 
 This would uninstall the Icon Node Enhancer plugin that was previously installed
 
-`rd plugins uninstall -i 01843c9fbe3d`
+```rd plugins uninstall -i 01843c9fbe3d```
 
-```{.bash}
+~~~{.bash}
 Plugin Uninstalled
-```
+~~~
 
 #### Upload Plugin
 
 To upload a plugin into your private plugin repository execute:
 
-`rd plugins upload -r Private -f /path/to/your/plugin.jar`
+```rd plugins upload -r Private -f /path/to/your/plugin.jar```
 
 or
 
-`rd plugins upload -r Private -f /path/to/your/plugin.zip`
+```rd plugins upload -r Private -f /path/to/your/plugin.zip```
 
 which will give you the message:
 
-```{.bash}
+~~~{.bash}
 Upload succeeded
-```
+~~~
 
 At this time only java and script plugin types are uploadable into a repository
 
@@ -274,10 +269,10 @@ when using the `rd` tool.
 
 Example:
 
-```{.yaml}
+~~~{.yaml}
 -   repositoryName: Private
     enabled: false
     type: STORAGE_TREE
     configProperties:
         storageTreePath: /artifacts
-```
+~~~

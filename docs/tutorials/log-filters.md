@@ -231,7 +231,7 @@ The new config here are the Key Storage paths to the AWS credentials and the nod
 
 If we test it out in the web UI, the output might look like:
 
-![Without highlighting](~@assets/log-highlight-none.png)
+![Without highlighting](~@assets/img/log-highlight-none.png)
 
 Here we can apply our first log filter to call out our high level logging output so that it stands out from the low level script commands.
 
@@ -256,7 +256,7 @@ Here we can apply our first log filter to call out our high level logging output
         aws_secret_access_key: keys/projects/hello-project/aws/secret-access-key
 ```
 
-![With highlighting](~@assets/log-highlight-bold.png)
+![With highlighting](~@assets/img/log-highlight-bold.png)
 
 Now we can more easily skim the log output for the important steps.
 

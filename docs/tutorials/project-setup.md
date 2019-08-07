@@ -144,7 +144,7 @@ was created by the rd-project create action.
 
 New project sources can also be added in the Configure page:
 
-![Anvils model sources](~@assets/fig0609.png)
+![Anvils model sources](~@assets/img/fig0609.png)
 
 ## Managing Node Sources
 

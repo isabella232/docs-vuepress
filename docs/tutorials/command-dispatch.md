@@ -16,7 +16,7 @@ First go to the [Commands page](/manual/06-commands.md).
 To filter the nodes type in an expression or choose a saved filter.
 Below, the nodes tagged "www" are filtered:
 
-![Anvils filtered list](~@assets/fig0602.png)
+![Anvils filtered list](~@assets/img/fig0602.png)
 
 Filtering with tags provides an abstraction over hostnames
 and lets the administrator think about command execution using formalized
@@ -35,11 +35,11 @@ of nodes supporting the Anvils application.
 
 To execute a command, type in the command string in text field labeled "Command":
 
-![Command page](~@assets/fig0610.png)
+![Command page](~@assets/img/fig0610.png)
 
 The output will appear below:
 
-![Command output](~@assets/fig0611.png)
+![Command output](~@assets/img/fig0611.png)
 
 ## Using the CLI
 

@@ -5,7 +5,7 @@ The motd content is interpreted as [markdown](http://commonmark.org/help/) text 
 
 ## Graphical Interface
 
-![Figure: Project motd](~@assets/fixme.png)
+![Figure: Project motd](~@assets/img/fixme.png)
 
 ## CLI Usage
 

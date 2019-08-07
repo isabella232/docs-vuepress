@@ -11,7 +11,7 @@ create a new project.
 
 Press the "New Project" button to create a project.
 
-![Figure: Create project prompt](~@assets/fig0203-a.png)
+![Figure: Create project prompt](~@assets/img/fig0203-a.png)
 
 _Basic information_
 

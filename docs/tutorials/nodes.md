@@ -6,12 +6,12 @@ administrator can begin listing the nodes in rundeck and dispatch commands.
 Clicking on the "Nodes" tab in the anvils project will list all the nodes
 by default. The screenshot below shows the listing with 6 nodes.
 
-![Anvils resources](~@assets/fig0601.png)
+![Anvils resources](~@assets/img/fig0601.png)
 
 The tags allow filtering nodes by their functional role. Below shows
 just the nodes tagged "www":
 
-![Filtered nodes](~@assets/fig0602.png)
+![Filtered nodes](~@assets/img/fig0602.png)
 
 The screenshot shows the filter form with an expression: `tags: www`.
 Node filtering uses a simple syntax. You can match nodes by specifying

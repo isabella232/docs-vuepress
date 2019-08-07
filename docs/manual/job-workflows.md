@@ -34,7 +34,7 @@ See [Command Line Tools and API Acccess][1].
 Workflow execution is controlled by two important settings: _Keepgoing_
 and _Strategy_.
 
-![Workflow controls](~@assets/fig0401.png)
+![Workflow controls](~@assets/img/fig0401.png)
 
 _Keepgoing_: This manages what to do if a step incurs an error:
 
@@ -93,7 +93,7 @@ When creating a new Job definition, the Workflow form will be set with
 defaults and have no workflow steps defined. The workflow editor will
 have a form open asking to choose a step type to add.
 
-![Add a step](~@assets/fig0402.png)
+![Add a step](~@assets/img/fig0402.png)
 
 To add new steps simply press the "Add a step" link inside the workflow
 editor form. This will prompt you with a dialog asking which kind of
@@ -102,7 +102,7 @@ form. When you are done filling out the form, press "Save" to add it
 to the sequence. Pressing "Cancel" will close the form and leave the
 sequence unchanged.
 
-![Add a step form](~@assets/fig0403.png)
+![Add a step form](~@assets/img/fig0403.png)
 
 New steps are always added to the end of the sequence. See
 [Reordering steps](#reordering-steps)
@@ -127,7 +127,7 @@ step and then clicking and dragging the double arrow icon to the
 desired position. A blue horizontal bar helps highlight the position
 where the Job will land.
 
-![Job step reorder](~@assets/fig0408.png)
+![Job step reorder](~@assets/img/fig0408.png)
 
 After releasing the select Job, it will land in the desired position
 and the step order will be updated.
@@ -191,11 +191,11 @@ It is a good practice, when you are defining Error Handlers, to **always** have 
 To add an error handler press the "+ error handler" button on the step you want to handle.
 The form presented includes the normal set of steps you can add to a workflow.
 
-![Adding an error handler](~@assets/fig0410.png)
+![Adding an error handler](~@assets/img/fig0410.png)
 
 The example below shows an error handler that calls a script by URL.
 
-![Example error handler](~@assets/fig0411.png)
+![Example error handler](~@assets/img/fig0411.png)
 
 ### Context information
 

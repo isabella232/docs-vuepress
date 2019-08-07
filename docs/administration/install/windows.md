@@ -16,7 +16,7 @@ set RDECK_BASE=C:\rundeck
 
 Next, we need launch Rundeck the first time to generate the configuration files and folders structure, for that you can open a Powershell, go to `c:\rundeck` and execute `java -jar rundeck-3.0.X.war` (in community case) or `java -jar rundeckpro-[edition]-3.0.X.war` for Enterprise; depending of your system the process can take some time, when Rundeck is ready you can see that on Powershell window:
 
-![Windows launcher](~@assets/windows-launcher.png)
+![Windows launcher](~@assets/img/windows-launcher.png)
 
 At this point, all Rundeck structure is ready and you can stop the process with `<Crtl+C>` keyboard combination to proceed to configure.
 
@@ -99,7 +99,7 @@ To launch, execute start_rundeck.bat at Powershell session, to stop Rundeck you 
 
 By default, Rundeck will be installed in TCP port 4440. To access, go to the following URL using your web browser: `http://servername:4440` (when "servername" is the name of your Windows host).
 
-![Login page](~@assets/login-page.png)
+![Login page](~@assets/img/login-page.png)
 
 The default username and password is "admin" with password "admin".
 
@@ -119,11 +119,11 @@ This section will install Rundeck Community or Enterprise as a Service on a Wind
 
 - The GUI pops up, set "path" as `%RDECK_BASE%\start_rundeck.bat`, startup directory as `%RDECK_BASE%` (optionally set "low" on the process tab, under priority, to avoid server CPU spike when starting Rundeck)
 
-![NSSM Installer](~@assets/nssm-installer.png)
+![NSSM Installer](~@assets/img/nssm-installer.png)
 
 - Go to the Service Management Console (services.msc) and you'll find `rundeck` listed as a service. Starting it will start the `rundeck` process.
 
-![Service Management Console](~@assets/service-management-console.png)
+![Service Management Console](~@assets/img/service-management-console.png)
 
 - set JVM memory heap on `%RDECK_BASE%\etc\profile.bat`.
 

@@ -15,7 +15,7 @@ Rundeck server configuration includes settings to define the outbound
 user allowed by the remote hosts. Remote machines
 are not required to make connections back to the server.
 
-![Rundeck architecture](~@assets/architecture.png)
+![Rundeck architecture](~@assets/img/architecture.png)
 
 The Rundeck application itself is a Java-based webapp. The application provides both
 graphical interface and network interfaces used by the Rundeck shell

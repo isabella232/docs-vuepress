@@ -7,7 +7,7 @@
 From the Jobs, page press the "Create Job" menu to begin creating a Job. Then
 menu contains items to create a job definition or upload a definition from a file.
 
-![Create Job menu](~@assets/fig0301.png)
+![Create Job menu](~@assets/img/fig0301.png)
 
 For the first Job example, create a Job that calls the info script.
 
@@ -34,7 +34,7 @@ Save the Workflow step.
 
 Press the "Create" button at the bottom of the page.
 
-![Simple saved job form](~@assets/fig0303.png)
+![Simple saved job form](~@assets/img/fig0303.png)
 
 After the the job is created, the browser is directed to the Jobs page.
 You will see folder icons reflecting the Job's group.
@@ -44,7 +44,7 @@ Notice the play button before the job name.
 
 Press the play button to run the Job.
 
-![Simple saved job](~@assets/fig0304.png)
+![Simple saved job](~@assets/img/fig0304.png)
 
 Press the "Run Job Now" button to begin execution.
 The job will be queued and executed.
@@ -52,7 +52,7 @@ The job will be queued and executed.
 Look in the "Now running" section.
 Press the progress bar in the Activity area to go to the execution follow page.
 
-![Simple saved job output](~@assets/fig0305.png)
+![Simple saved job output](~@assets/img/fig0305.png)
 
 ### Multiple Executions
 
@@ -62,13 +62,13 @@ However, in some cases it is useful to allow a Job to be executed more than once
 
 You can make a job allow "Multiple Executions" by toggling the value to Yes in the Job editor field shown below:
 
-![Multiple executions](~@assets/fig0324.png)
+![Multiple executions](~@assets/img/fig0324.png)
 
 ### Timeout
 
 You can set a maximum runtime for a job. If the runtime exceeds this value, the job will be halted (as if a user had killed it.) (Note: Timeout only affects the job if is invoked directly, not if it is used as a Job Reference.)
 
-![Job Timeout field](~@assets/jobs-timeout-field.png)
+![Job Timeout field](~@assets/img/jobs-timeout-field.png)
 
 The value for the timeout can be:
 
@@ -83,7 +83,7 @@ If a job fails or times out,
 it will be executed again up to the specified number of times
 until it succeeds. (Note: Retry only affects the job if is invoked directly, not if it is used as a Job Reference.)
 
-![Job Retry field](~@assets/jobs-retry-field.png)
+![Job Retry field](~@assets/img/jobs-retry-field.png)
 
 The value for the retry can be:
 
@@ -100,7 +100,7 @@ Optionally a delay between retries can be established:
 - A string indicating numbers and units, such as "1d 12h 30m 24s". Each number must have a unit letter next to it. The total timeout duration will be the sum of the values. Available units are "d" (days) "h" (hours) "m" (minutes) and "s" (seconds, default if unspecified.)
 - An embedded property reference such as `${option.delay}`. This allows a Job Option to be used to change the delay between retries for the job.
 
-![Job Delay between retries field](~@assets/jobs-retry-delay-field.png)
+![Job Delay between retries field](~@assets/img/jobs-retry-delay-field.png)
 
 ### Log Limit
 
@@ -113,7 +113,7 @@ The limit can be set in one of three ways:
 - Maximum total log file size
 - Maximum number of log lines for a single node
 
-![Job Log limit](~@assets/jobs-loglimit-field.png)
+![Job Log limit](~@assets/img/jobs-loglimit-field.png)
 
 Enter a value in the "Log Output Limit" field.
 The syntax of the value you enter determines the type of limit:
@@ -128,7 +128,7 @@ And one of three actions can be performed if the limit is exceeded:
   - Enter a status string in the field, such as "failed" or "aborted", or any custom status
 - Truncate and Continue - the job will not halt, but no more log output will be produced.
 
-![Job Log limit action](~@assets/jobs-loglimit-action.png)
+![Job Log limit action](~@assets/img/jobs-loglimit-action.png)
 
 ### Node dispatching and filtering
 
@@ -136,7 +136,7 @@ When you create a job you can choose between either running the job only locally
 
 In the GUI, the "Dispatch to Nodes" checkbox lets you enable node dispatching. When you click this box you are presented with the Node Filtering interface:
 
-![Node Filtering interface](~@assets/fig0305-b.png)
+![Node Filtering interface](~@assets/img/fig0305-b.png)
 
 #### Filters
 
@@ -198,7 +198,7 @@ Jobs can be configured to run on a periodic basis.
 If you want to create a Scheduled Job, select Yes under "Schedule to
 run repeatedly?"
 
-![Scheduled job simple form](~@assets/fig0306.png)
+![Scheduled job simple form](~@assets/img/fig0306.png)
 
 The schedule can be defined in a simple graphical chooser or Unix
 crontab format.
@@ -211,7 +211,7 @@ unselect that option and choose specific months of the year:
 If the crontab time and date format is preferred, enter a cron
 expression.
 
-![Scheduled job crontab form](~@assets/fig0307.png)
+![Scheduled job crontab form](~@assets/img/fig0307.png)
 
 Use the crontab syntax referenced here: [Quartz Scheduler crontrigger].
 
@@ -220,7 +220,7 @@ A good place to generate, validate and test job crontabs is [here](https://www.f
 After the Job has been updated to include a schedule, a clock icon
 will be displayed when the Job is listed:
 
-![Scheduled job icon](~@assets/fig0308.png)
+![Scheduled job icon](~@assets/img/fig0308.png)
 
 ### Job Notifications
 
@@ -231,12 +231,12 @@ The notification form will list all the installed notification plugins.
 
 If you want to receive notifications, click Yes under "Send Notification?".
 
-![Notification form](~@assets/fig0322.png)
+![Notification form](~@assets/img/fig0322.png)
 
 You can enable notifications for either Start, Success or Failure events
 and choose the notifier, using a builtin like mail, or webhook. Click the checkbox next to the type of notification to enable.
 
-![Notifications enabled](~@assets/fig0323.png)
+![Notifications enabled](~@assets/img/fig0323.png)
 
 When the Job starts, all "start" notifications will be triggered.
 
@@ -248,7 +248,7 @@ For a full list of notification plugins, see [Job Plugins - Notifications](/manu
 
 In the Job view page, click the Action button for a menu of actions, and select "Delete this Job..." to delete the Job.
 
-![Job delete button](~@assets/fig0311.png)
+![Job delete button](~@assets/img/fig0311.png)
 
 Click "Yes" when it says "Really delete this Job?"
 
@@ -259,11 +259,11 @@ If you have access, you can choose to delete all executions for the job as well.
 All of the data you set when creating a job can be modified (except UUID). To edit a
 Job, you can click the "edit job" icon:
 
-![edit job button](~@assets/fig0312.png)
+![edit job button](~@assets/img/fig0312.png)
 
 Similarly, to Copy a Job definition to a new Job, press the "duplicate to a new job" button.
 
-![duplicate job button](~@assets/fig0313.png)
+![duplicate job button](~@assets/img/fig0313.png)
 
 ## Exporting Job definitions
 
@@ -277,7 +277,7 @@ In the Job definition tab, locate the "Download Definition" menu button.
 Clicking on the icon will let you
 choose either XML or YAML format to download the definition.
 
-![Job export button](~@assets/fig0314.png)
+![Job export button](~@assets/img/fig0314.png)
 
 Click the preferred format to initiate the file download to your
 browser.
@@ -293,11 +293,11 @@ Click on the "Create Job" menu button in the Job list.
 
 Click the item that says "Upload Definition...":
 
-![Job import button](~@assets/fig0315.png)
+![Job import button](~@assets/img/fig0315.png)
 
 Click the Choose File button and choose your job definition file to upload.
 
-![Job import form](~@assets/fig0316.png)
+![Job import form](~@assets/img/fig0316.png)
 
 Choose an option where it says "When a job with the same name already
 exists:":

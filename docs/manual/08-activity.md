@@ -6,7 +6,7 @@ Updated January 30, 2014
 
 Execution history for commands and Jobs is stored by the Rundeck server. Execution history can be filtered and viewed inside the "Activity" page.
 
-![Activity page](~@assets/fig0211.png)
+![Activity page](~@assets/img/fig0211.png)
 
 ### Filtering Activity
 
@@ -24,7 +24,7 @@ The filter form contains a number of fields to limit search:
 - Ad hoc command: Command typed into the command bar or via `dispatch`.
 - Result: Success or failure status.
 
-![History filter form](~@assets/fig0212.png)
+![History filter form](~@assets/img/fig0212.png)
 
 After filling the form pressing the "Filter" button, the page will
 display executions matching the search.
@@ -34,7 +34,7 @@ display executions matching the search.
 It is also possible to search for activity between dates.
 Press the "Other..." menu choice to bring up the form.
 
-![Extended date range search](~@assets/fig0217.png)
+![Extended date range search](~@assets/img/fig0217.png)
 
 ### Saving the filter
 
@@ -48,31 +48,31 @@ Information for each execution contains the command or Job executed,
 options, success status and a link to a file containing all
 the output messages.
 
-![Execution view](~@assets/fig0213.png)
+![Execution view](~@assets/img/fig0213.png)
 
 If any errors occurred, the "Node Failure Count" column will show
 the number of nodes in red text. A bar chart indicates the percent
 failed.
 
-![Execution view](~@assets/fig0216.png)
+![Execution view](~@assets/img/fig0216.png)
 
 ### RSS link
 
 If configured, an RSS icon provides a link to an RSS view of the events that match
 the current filtering criteria.
 
-![RSS link](~@assets/fig0214.png)
+![RSS link](~@assets/img/fig0214.png)
 
 ### Bulk Delete Executions
 
 If you have access, you can click the "Bulk Delete" button to enable bulk-edit mode.
 
-![Activity page bulk delete](~@assets/fig08-activity-bulk-delete.png)
+![Activity page bulk delete](~@assets/img/fig08-activity-bulk-delete.png)
 
 Select the Executions you want to delete by clicking on them. You can also click on the "Toggle all", "Select All" or "Select None" links to change the selection.
 
-![Activity page bulk edit mode](~@assets/fig08-activity-bulk-edit-mode.png)
+![Activity page bulk edit mode](~@assets/img/fig08-activity-bulk-edit-mode.png)
 
 Click the "Delete Selected Executions", and confirm to delete the executions.
 
-![Activity page bulk delete confirm](~@assets/fig08-activity-bulk-delete-confirm.png)
+![Activity page bulk delete confirm](~@assets/img/fig08-activity-bulk-delete-confirm.png)

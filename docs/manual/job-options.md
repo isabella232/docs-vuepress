@@ -59,14 +59,14 @@ Options can be created for any stored Job. The Job edit page contains
 an area displaying a summary to existing options and a link to add new
 ones or edit existing ones.
 
-![Add option link](~@assets/fig0501.png)
+![Add option link](~@assets/img/fig0501.png)
 
 The option summary shows each option and its default value if it defines
 them.
 
 Clicking the "edit" link opens the options editor.
 
-![Option editor](~@assets/fig0503.png)
+![Option editor](~@assets/img/fig0503.png)
 
 The options editor displays an expanded summary for each defined
 option. Each option is listed with its usage summary,
@@ -94,7 +94,7 @@ existing ones can be changed by pressing their "edit" link.
 
 Choose "Text" from the Option Type:
 
-![Option edit form](~@assets/fig0502.png)
+![Option edit form](~@assets/img/fig0502.png)
 
 The option definition form is organized into several areas:
 
@@ -144,7 +144,7 @@ choose "Yes" to indicate that a blank value is not allowed.
 
      If a Default Value is set, then it will be used when no value is provided, unless a blank value is allowed and is explicitly specified.
 
-![Option Multivalued Form](~@assets/fig-option-multival.png)
+![Option Multivalued Form](~@assets/img/fig-option-multival.png)
 
 Multi-valued
 
@@ -164,13 +164,13 @@ dismiss the changes and close the form.
 
 Usage (see below)
 
-![Option Usage](~@assets/fig-option-usage.png)
+![Option Usage](~@assets/img/fig-option-usage.png)
 
 ### File Option Type
 
 Choose "File" from the Option Type:
 
-![File Option Edit Form](~@assets/fig-newoption-file.png)
+![File Option Edit Form](~@assets/img/fig-newoption-file.png)
 
 The Option Name and Description can be entered.
 
@@ -201,7 +201,7 @@ A Job named "hello" and has an option named "message".
 
 The "hello" Job option signature would be: `-message <>`.
 
-![Option usage](~@assets/fig0504.png)
+![Option usage](~@assets/img/fig0504.png)
 
 The arguments passed to the script are defined as `${option.message}`.
 
@@ -218,7 +218,7 @@ echo message=@option.message@  ;# access message via replacement token syntax
 When the user runs the "hello" job they will be prompted for the
 "message" value.
 
-![Option entered](~@assets/fig0505.png)
+![Option entered](~@assets/img/fig0505.png)
 
 Let's assume they chose the word "howdy" in response.
 The output of the Job will be:
@@ -408,7 +408,7 @@ will be loaded as the option value when one is not supplied.
 
 The path must indicate a stored `password` entry in the storage facility.
 
-![Storage Path for Secure Option](~@assets/jobs-options-secure-storage-path.png)
+![Storage Path for Secure Option](~@assets/img/jobs-options-secure-storage-path.png)
 
 ## Remote option values
 
@@ -626,7 +626,7 @@ for this option will be reloaded.
 If the request for the remote option values fails, then the GUI form
 will display a warning message:
 
-![](~@assets/fig0901.png)
+![](~@assets/img/fig0901.png)
 
 In this case, the option will be allowed to use a textfield to set the value.
 
