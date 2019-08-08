@@ -35,8 +35,6 @@ module.exports = {
       }
     ]
   ],
-  theme: '@vuepress/vue',
-
   themeConfig: {
     logo: '/images/rundecklogo-black.png',
     displayAllHeaders: true,
