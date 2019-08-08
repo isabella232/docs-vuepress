@@ -54,7 +54,7 @@ The following examples show how to configure the installed plugin location:
 ##### Save installed plugins to your local filesystem at the location: /opt/repository/installedPlugins
 `rundeck-config.properties`
 
-~~~ {.properties}
+~~~ properties
 rundeck.repository.plugins.provider.1.type=file
 rundeck.repository.plugins.provider.1.path=/
 rundeck.repository.plugins.provider.1.config.baseDir=/opt/repository/installedPlugins
@@ -63,7 +63,7 @@ rundeck.repository.plugins.provider.1.config.baseDir=/opt/repository/installedPl
 ##### Save installed plugins to your local filesystem at the location: /opt/repository/content/installedPlugins
 `rundeck-config.properties`
 
-~~~ {.properties}
+~~~ properties
 rundeck.repository.plugins.provider.1.type=file
 #This must match the storageTreePath below
 rundeck.repository.plugins.provider.1.path=/installedPlugins
@@ -80,7 +80,7 @@ Note: In the example above the storage tree path was not the default '/' root lo
 ##### Save installed plugins to a Minio object store
 `rundeck-config.properties`
 
-~~~ {.properties}
+~~~ properties
 rundeck.repository.plugins.provider.1.type=object
 rundeck.repository.plugins.provider.1.path=/
 rundeck.repository.plugins.provider.1.config.bucket=repository
@@ -92,7 +92,7 @@ rundeck.repository.plugins.provider.1.config.accessKey=YOUR_ACCESS_KEY
 ##### Save installed plugins to a Minio object store for cluster where all members sync their plugins on bootstrap
 `rundeck-config.properties`
 
-~~~ {.properties}
+~~~ properties
 rundeck.repository.plugins.provider.1.type=object
 rundeck.repository.plugins.provider.1.path=/
 rundeck.repository.plugins.provider.1.config.bucket=repository
@@ -116,7 +116,7 @@ Here are some examples for various configurations of private artifact repositori
 ##### Save private repository plugin artifacts to your local filesystem at the location: /opt/repository/content/artifacts
 `rundeck-config.properties`
 
-~~~ {.properties}
+~~~ properties
 rundeck.repository.artifacts.provider.1.type=file
 rundeck.repository.artifacts.provider.1.path=/artifacts
 rundeck.repository.artifacts.provider.1.config.baseDir=/opt/repository
@@ -124,7 +124,7 @@ rundeck.repository.artifacts.provider.1.config.baseDir=/opt/repository
 
 `artifact-repositories.yaml`
 
-~~~{.yaml}
+~~~yaml
 -   repositoryName: Private
     type: STORAGE_TREE
     configProperties:
@@ -136,7 +136,7 @@ rundeck.repository.artifacts.provider.1.config.baseDir=/opt/repository
 ##### Save private repository plugin artifacts to a minio object store
 `rundeck-config.properties`
 
-~~~ {.properties}
+~~~ properties
 rundeck.repository.artifacts.provider.1.type=object
 rundeck.repository.artifacts.provider.1.path=/minio
 rundeck.repository.artifacts.provider.1.config.bucket=repository
@@ -147,7 +147,7 @@ rundeck.repository.artifacts.provider.1.config.accessKey=YOUR_ACCESS_KEY
 
 `artifact-repositories.yaml`
 
-~~~{.yaml}
+~~~yaml
 -   repositoryName: MinioRepo
     type: STORAGE_TREE
     configProperties:
@@ -157,7 +157,7 @@ rundeck.repository.artifacts.provider.1.config.accessKey=YOUR_ACCESS_KEY
 ##### Use a file store for one repo and an object store for another
 `rundeck-config.properties`
 
-~~~ {.properties}
+~~~ properties
 rundeck.repository.artifacts.provider.1.type=file
 rundeck.repository.artifacts.provider.1.path=/repo1
 rundeck.repository.artifacts.provider.1.config.baseDir=/opt/repository
@@ -172,7 +172,7 @@ rundeck.repository.artifacts.provider.2.config.accessKey=YOUR_ACCESS_KEY
 
 `artifact-repositories.yaml`
 
-~~~{.yaml}
+~~~yaml
 -   repositoryName: Repo1
     type: STORAGE_TREE
     configProperties:
@@ -191,7 +191,7 @@ The `rd` tool can be used to list plugins, install plugins from a repository, up
 
 ```rd plugins```
 
-~~~{.bash}
+~~~bash
 ==Official Repository==
 2e51ce08c836 : rundeck-http-workflow-step-plugin : 1.0.11 (not installed)
 def44eeac568 : nixy-local-steps : v1.2.6 (installed)
@@ -228,7 +228,7 @@ This would install the Icon Node Enhancer plugin listed previously
 
 ```rd plugins install -r Private -i 01843c9fbe3d```
 
-~~~{.bash}
+~~~bash
 Plugin Installed
 ~~~
 
@@ -238,7 +238,7 @@ This would uninstall the Icon Node Enhancer plugin that was previously installed
 
 ```rd plugins uninstall -i 01843c9fbe3d```
 
-~~~{.bash}
+~~~bash
 Plugin Uninstalled
 ~~~
 
@@ -254,7 +254,7 @@ or
 
 which will give you the message:
 
-~~~{.bash}
+~~~bash
 Upload succeeded
 ~~~
 
@@ -269,7 +269,7 @@ when using the `rd` tool.
 
 Example:
 
-~~~{.yaml}
+~~~yaml
 -   repositoryName: Private
     enabled: false
     type: STORAGE_TREE

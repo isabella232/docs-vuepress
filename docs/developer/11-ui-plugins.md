@@ -96,7 +96,7 @@ The structure of the zip file is:
 
 The following is required in the `providers:` section of the `plugin.yaml`:
 
-```{.yaml}
+```yaml
 # yaml plugin metadata
 
 name: plugin name
@@ -153,7 +153,7 @@ See [Plugin Icons](/developer/01-plugin-development.md#plugin-icons].
 
 The plugin interface is [UIPlugin][].
 
-```{.java}
+```java
 
 public interface UIPlugin {
     /**
@@ -235,7 +235,7 @@ You can load other resources from your plugin by using the `pluginBaseUrl` for y
 
 Example using jQuery:
 
-```{.js}
+```js
 function loadHtmlTemplate(file){
 	//assuming my zip plugin has a resources/html/myfile.html
 	var myProvider='com.mycompany.rundeck.myplugin';
@@ -264,7 +264,7 @@ Loads plugin i18n messages into the `window.Messages` object.
 If my zip plugin has a file `resources/i18n/messages_es_419.properties`
 and user's current lang is `es_419`, this would load the Spanish messages:
 
-```{.js}
+```js
 function loadi18nMessages(file){
 	var myProvider='com.mycompany.rundeck.myplugin';
 	var plugini18nBase = rundeckPage.pluginBasei18nUrl(myProvider);
@@ -282,7 +282,7 @@ function loadi18nMessages(file){
 
 This example is similar to the first example, but loads a HTML file specific to the Language/Locale of the user. If the locale is `es_419` this would load the `resources/i18n/html/myfile_es_419.html` file:
 
-```{.js}
+```js
 
 function loadi18nHtmlTemplate(file){
 	var myProvider='com.mycompany.rundeck.myplugin';

@@ -11,13 +11,13 @@ The readme content is interpreted as [markdown](http://commonmark.org/help/) tex
 
 Update the readme with some text.
 
-```{.bash}
+```bash
 rd projects readme put -p MyProject -t "This is the **readme** for MyProject."
 ```
 
 You might want to set the project home page to show the readme.
 
-```{.bash}
+```bash
 rd projects configure set -p MyProject -- \
    --project.gui.readme.display=projectHome
 ```

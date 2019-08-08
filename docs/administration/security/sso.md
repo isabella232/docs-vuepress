@@ -22,7 +22,7 @@ Log into your Okta web portal and configure a new application.
   - Name: groups
   - Include in Token Type: `ID Token` with `Userinfo/id_token_request`
   - Value Types: `Groups`
-  - Filter: Regex: .\*
+  - Filter: Regex: `.*`
 
 ### Rundeck configuration
 
@@ -77,7 +77,7 @@ First, you will need to create an API key in Okta that you can use to make API r
 
 Then you will need to add the following properties to your `framework.properties` file.
 
-```{.properties}
+```properties
 framework.plugin.UserGroupSource.OktaGroupSource.apiToken=<api key>
 
 framework.plugin.UserGroupSource.OktaGroupSource.oktaHostName=<okta host name>
@@ -103,7 +103,6 @@ You will need to refer to the Ping documentation to set up an OpenId Connect(OID
 The Ping products you have purchased will determine how the application is set up inside Ping.
 
 #### Ping OIDC Application Setup
-
 When setting up the OIDC Application be sure to choose to generate a client secret, and choose the grant type: Authorization Code.
 The Redirect callback url will be: `https://{your-rundeck-host}/user/oauth/ping` (Ping requires this to be an https endpoint)
 Specify the `openid`, `profile`, and `email` scopes for the application.

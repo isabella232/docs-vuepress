@@ -4,7 +4,7 @@ Rundeck provides a Web API for use with your application.
 
 ## API Version Number
 
-The current API version is `${APIVERS}`.
+The current API version is {{ $themeConfig.apiVersion }} .
 
 For API endpoints described in this document, the *minimum* API version required for their
 use is indicated by the URL used, e.g.:
@@ -23,7 +23,7 @@ If the version number is not included or if the requested version number is unsu
 
 `Content-Type: application/xml`:
 
-~~~~~~~~~~~~~~~~~~~ {.xml}
+~~~~~~~~~~~~~~~~~~~ xml
 <result error="true" apiversion="2">
     <error code="api-version-unsupported">
         <message>
@@ -36,7 +36,7 @@ If the version number is not included or if the requested version number is unsu
 
 `Content-Type: application/json`:
 
-~~~~~~~~~~~~~~~~~~~ {.json}
+~~~~~~~~~~~~~~~~~~~ json
 {
   "error": true,
   "apiversion": 14,
@@ -52,6 +52,16 @@ View the [Index](#index) listing API paths.
 ## Changes
 
 Changes introduced by API Version number:
+
+**Version 32**:
+
+* New Endpoint:
+    - [`GET /api/V/system/executions/status`][/api/V/system/executions/status] - Gets the current execution mode.
+    
+* Updated Endpoints:
+    - [`GET /api/V/project/[PROJECT*]/executions/running`][/api/V/project/[PROJECT*]/executions/running] - Added `jobIdFilter` parameter to return running executions for a specific job.
+    - [`GET /api/V/job/[ID]/forecast`][/api/V/job/[ID]/forecast] - Added `past` parameter to return inverse forecast.
+    - [`PUT /api/V/scheduler/takeover`][/api/V/scheduler/takeover] - Added capability to specify multiple job ids.
 
 **Version 31**:
 
@@ -553,7 +563,7 @@ For version 11 and later API requests, XML responses will have only the content 
 
 For version 10 and earlier API requests, XML responses will have this document structure:
 
-~~~~~~~~~~~~ {.xml}
+~~~~~~~~~~~~ xml
 <result success/error="true" apiversion="X">
     <!-- error included if error="true" -->
     <error>
@@ -629,7 +639,7 @@ List all tokens or all tokens for a specific user.
 
 `application/xml`:
 
-~~~{.xml}
+~~~xml
 <tokens user="user3" count="4">
   <token user="user3" id="ece75ac8-2791-442e-b179-a9907d83fd05"
   creator="user3">
@@ -672,7 +682,7 @@ List all tokens or all tokens for a specific user.
 
 `application/json`:
 
-~~~{.json}
+~~~json
 [
   {
     "user": "user3",
@@ -727,7 +737,7 @@ List all tokens or all tokens for a specific user.
 
 All users:
 
-~~~~ {.xml}
+~~~~ xml
 <tokens count='3' allusers='true'>
   <token id='DRUVEuCdENoPkUpDkcDcdd6PeKkPdurc' user='alice' />
   <token id='VprOpDeDP3KcK2dp37p5DoD6o53cc82D' user='bob' />
@@ -737,7 +747,7 @@ All users:
 
 For a specific user:
 
-~~~~ {.xml}
+~~~~ xml
 <tokens count='1' user='alice'>
   <token id='DRUVEuCdENoPkUpDkcDcdd6PeKkPdurc' user='alice' />
 </tokens>
@@ -745,7 +755,7 @@ For a specific user:
 
 `application/json`:
 
-~~~~ {.json}
+~~~~ json
 [
   {
     "user": "alice",
@@ -779,7 +789,7 @@ The `id` is the unique ID, and the `token` value is the token string.
 
 `application/xml`
 
-~~~~ {.xml}
+~~~~ xml
 <?xml version="1.0" encoding="utf-8"?>
 <token user="user3" token="VjkbX2zUAwnXjDIbRYFp824tF5X2N7W1"
 id="c13de457-c429-4476-9acd-e1c89e3c2928" creator="user3">
@@ -793,7 +803,7 @@ id="c13de457-c429-4476-9acd-e1c89e3c2928" creator="user3">
 
 `application/json`
 
-~~~~ {.json}
+~~~~ json
 {
   "user": "user3",
   "token": "VjkbX2zUAwnXjDIbRYFp824tF5X2N7W1",
@@ -813,13 +823,13 @@ The `id` value returned is the token string.
 
 `application/xml`
 
-~~~~ {.xml}
+~~~~ xml
 <token id='DuV0UoDUDkoR38Evd786cdRsed6uSNdP' user='alice' />
 ~~~~
 
 `application/json`
 
-~~~~ {.json}
+~~~~ json
 {
   "user": "alice",
   "id": "DuV0UoDUDkoR38Evd786cdRsed6uSNdP"
@@ -850,19 +860,19 @@ then the generated token will have all roles as the authenticated user.
 
 `Content-type: application/xml`
 
-~~~~ {.xml}
+~~~~ xml
 <user user="alice" roles="sre,dev" duration="120d"/>
 ~~~~
 
 Requesting all available roles for the same user:
 
-~~~~ {.xml}
+~~~~ xml
 <user user="alice" roles="*" duration="120d"/>
 ~~~~
 
 `Content-type: application/json`
 
-~~~~ {.json}
+~~~~ json
 {
   "user": "alice",
   "roles": [
@@ -875,7 +885,7 @@ Requesting all available roles for the same user:
 
 `roles` can be a comma-separated string:
 
-~~~~ {.json}
+~~~~ json
 {
   "user": "alice",
   "roles": "sre,dev",
@@ -887,7 +897,7 @@ Requesting all available roles for the same user:
 
 `application/xml`
 
-~~~~ {.xml}
+~~~~ xml
 <token user="alice" token="4ehYi11hDHtxwVK6it4IhNFvbQcYmAJp"
 id="4073a4c5-336c-4157-942a-41639379c100" creator="admin">
   <expiration>2017-07-22T22:45:18Z</expiration>
@@ -901,7 +911,7 @@ id="4073a4c5-336c-4157-942a-41639379c100" creator="admin">
 
 `application/json`
 
-~~~~ {.json}
+~~~~ json
 {
   "user": "alice",
   "token": "08e7rlGwwnqoX6lzewriXSabuqNMueTL",
@@ -920,13 +930,13 @@ id="4073a4c5-336c-4157-942a-41639379c100" creator="admin">
 
 `application/xml`
 
-~~~~ {.xml}
+~~~~ xml
 <token user="alice" token="RZ9vHnHif4C46xLVvfq4ZVBrkZs3iNuQ" />
 ~~~~
 
 `application/json`
 
-~~~~ {.json}
+~~~~ json
 {
   "user": "alice",
   "token": "mfAqxIZPlXIT8qQOD98RvMUcgCwOXbqc"
@@ -961,7 +971,7 @@ Success response, with included system info and stats in this format:
 
 `Content-Type: application/xml`:
 
-~~~~~~~~~~~~~ {.xml}
+~~~~~~~~~~~~~ xml
 <system>
     <timestamp epoch="1305909785806" unit="ms">
         <datetime>2011-05-20T16:43:05Z</datetime>
@@ -1018,7 +1028,7 @@ Success response, with included system info and stats in this format:
 
 `Content-Type: application/json`:
 
-~~~~~~~~~~~~~ {.json}
+~~~~~~~~~~~~~ json
 {
   "system": {
     "timestamp": {
@@ -1236,7 +1246,7 @@ Links to enabled Metrics endpoints:
 
 `Content-Type: application/json`:
 
-~~~ {.json}
+~~~ json
 {
   "_links": {
     "metrics": {
@@ -1267,7 +1277,7 @@ Return the metrics data.
 
 `Content-Type: application/json`:
 
-~~~ {.json}
+~~~ json
 {
   "version": "3.1.3",
   "gauges": {
@@ -1589,7 +1599,7 @@ Returns results of some health checks.
 
 `Content-Type: application/json`:
 
-~~~ {.json}
+~~~ json
 {
   "dataSource.connection.time": {
     "healthy": true,
@@ -1668,7 +1678,7 @@ Success response, with a list of users:
 
 `Content-Type: application/xml`:
 
-~~~ {.xml}
+~~~ xml
 <user>
   <login>user</login>
   <firstName>Name</firstName>
@@ -1693,7 +1703,7 @@ Success response, with a list of users:
 
 `Content-Type: application/json`:
 
-~~~ {.json}
+~~~ json
 [{
     "login":"user",
     "firstName":"Name",
@@ -1738,7 +1748,7 @@ Success response, with profile data:
 
 `Content-Type: application/xml`:
 
-~~~ {.xml}
+~~~ xml
 <user>
   <login>user</login>
   <firstName>Name</firstName>
@@ -1749,7 +1759,7 @@ Success response, with profile data:
 
 `Content-Type: application/json`:
 
-~~~ {.json}
+~~~ json
 {
     "login":"user",
     "firstName":"Name",
@@ -1773,7 +1783,7 @@ Success response, with profile data:
 
 `Content-Type: application/xml`:
 
-~~~ {.xml}
+~~~ xml
 <user>
   <login>user</login>
   <firstName>Name</firstName>
@@ -1784,7 +1794,7 @@ Success response, with profile data:
 
 `Content-Type: application/json`:
 
-~~~ {.json}
+~~~ json
 {
     "login":"user",
     "firstName":"Name",
@@ -1803,7 +1813,7 @@ Modify same user profile data.
 
 XML Content:
 
-~~~ {.xml}
+~~~ xml
 <user>
   <firstName>Name</firstName>
   <lastName>LastName</lastName>
@@ -1813,7 +1823,7 @@ XML Content:
 
 or JSON Content:
 
-~~~ {.json}
+~~~ json
 {
     "firstName":"Name",
     "lastName":"LastName",
@@ -1827,7 +1837,7 @@ Success response, with profile updated data:
 
 `Content-Type: application/xml`:
 
-~~~ {.xml}
+~~~ xml
 <user>
   <login>user</login>
   <firstName>Name</firstName>
@@ -1838,7 +1848,7 @@ Success response, with profile updated data:
 
 `Content-Type: application/json`:
 
-~~~ {.json}
+~~~ json
 {
     "login":"user",
     "firstName":"Name",
@@ -1857,7 +1867,7 @@ Modify another user profile data. Requires system `admin` permission.
 
 XML Content:
 
-~~~ {.xml}
+~~~ xml
 <user>
   <firstName>Name</firstName>
   <lastName>LastName</lastName>
@@ -1867,7 +1877,7 @@ XML Content:
 
 or JSON Content:
 
-~~~ {.json}
+~~~ json
 {
     "firstName":"Name",
     "lastName":"LastName",
@@ -1881,7 +1891,7 @@ Success response, with profile updated data:
 
 `Content-Type: application/xml`:
 
-~~~ {.xml}
+~~~ xml
 <user>
   <login>user</login>
   <firstName>Name</firstName>
@@ -1892,7 +1902,7 @@ Success response, with profile updated data:
 
 `Content-Type: application/json`:
 
-~~~ {.json}
+~~~ json
 {
     "login":"user",
     "firstName":"Name",
@@ -1915,7 +1925,7 @@ Success response, with a list of roles:
 
 `Content-Type: application/xml`:
 
-~~~ {.xml}
+~~~ xml
 <roles>
   <role>admin</role>
   <role>user</role>
@@ -1924,7 +1934,7 @@ Success response, with a list of roles:
 
 `Content-Type: application/json`:
 
-~~~ {.json}
+~~~ json
 {
     "roles":["admin","user"]
 }
@@ -1946,7 +1956,7 @@ Success response, with log storage info and stats in this format:
 
 `Content-Type: application/xml`:
 
-~~~ {.xml}
+~~~ xml
 <logStorage enabled="true" pluginName="NAME">
   <succeededCount>349</succeededCount>
   <failedCount>0</failedCount>
@@ -1959,7 +1969,7 @@ Success response, with log storage info and stats in this format:
 
 `Content-Type: application/json`:
 
-~~~ {.json}
+~~~ json
 {
   "enabled": true,
   "pluginName": "NAME",
@@ -2116,7 +2126,7 @@ Resume processing incomplete Log Storage uploads.
 
 `Content-Type: application/json`:
 
-~~~ {.json}
+~~~ json
 {
   "resumed": true
 }
@@ -2126,6 +2136,7 @@ Resume processing incomplete Log Storage uploads.
 
 Change the server execution mode to ACTIVE or PASSIVE.  The state of the current
 execution mode can be viewed via the [`/api/14/system/info`][/api/V/system/info]
+endpoint, or the [`/api/32/system/executions/status`][/api/V/system/executions/status]
 endpoint.
 
 ### Set Active Mode ###
@@ -2140,13 +2151,13 @@ Enables executions, allowing adhoc and manual and scheduled jobs to be run.
 
 `Content-Type: application/xml`:
 
-~~~ {.xml}
+~~~ xml
 <executions executionMode="active"/>
 ~~~
 
 `Content-Type: application/json`:
 
-~~~ {.json}
+~~~ json
 {
   "executionMode":"active"
 }
@@ -2164,16 +2175,43 @@ POST /api/14/system/executions/disable
 
 `Content-Type: application/xml`:
 
-~~~ {.xml}
+~~~ xml
 <executions executionMode="passive"/>
 ~~~
 
 `Content-Type: application/json`:
 
-~~~ {.json}
+~~~ json
 {
   "executionMode":"passive"
 }
+~~~
+
+### Get Current Execution Mode ###
+
+Gets the current execution mode. Additionally, if the current mode is **passive** the response
+status will be ``HTTP 503 - Service Unavailable``.
+
+**Request:**
+
+GET /api/32/system/executions/status
+
+**Response**
+
+`Content-Type: application/xml`:
+
+~~~ xml
+<executions executionMode="active"/>
+or
+<executions executionMode="passive"/> 
+~~~
+
+`Content-Type: application/json`:
+
+~~~ json
+{"executionMode":"active"}
+or
+{"executionMode":"passive"}
 ~~~
 
 ## Cluster Mode
@@ -2214,7 +2252,7 @@ XML Document containing:
 
 Example for a single server UUID:
 
-~~~ {.xml}
+~~~ xml
 <takeoverSchedule>
     <server uuid="[UUID]" />
 </takeoverSchedule>
@@ -2222,7 +2260,7 @@ Example for a single server UUID:
 
 Example for all servers:
 
-~~~ {.xml}
+~~~ xml
 <takeoverSchedule>
     <server all="true"/>
 </takeoverSchedule>
@@ -2230,7 +2268,7 @@ Example for all servers:
 
 Example for all servers and a specific project:
 
-~~~ {.xml}
+~~~ xml
 <takeoverSchedule>
     <server all="true"/>
     <project name="[PROJECT]"/>
@@ -2239,8 +2277,18 @@ Example for all servers and a specific project:
 
 Example for a single Job:
 
-~~~ {.xml}
+~~~ xml
 <takeoverSchedule>
+    <job id="[UUID]"/>
+</takeoverSchedule>
+~~~
+
+Example for multiple Jobs: (**since API v32**)
+
+~~~ xml
+<takeoverSchedule>
+    <server all="true"/>
+    <job id="[UUID]"/>
     <job id="[UUID]"/>
 </takeoverSchedule>
 ~~~
@@ -2258,7 +2306,7 @@ A JSON object.
 * optional `job` entry, with required entry:
     * `id` Job UUID
 
-~~~ {.json}
+~~~ json
 {
   "server": {
     "uuid": "[UUID]",
@@ -2270,11 +2318,29 @@ A JSON object.
 
 Specify a job id:
 
-~~~ {.json}
+~~~ json
 {
   "job": {
     "id": "[UUID]"
   }
+}
+~~~
+
+Specify multiple jobs: (**since API v32**)
+
+~~~ json
+{
+    "server": {
+    "all": true
+  },
+  "jobs":[
+    {
+    "id": "[UUID]"
+    },
+    {
+    "id": "[UUID]"
+    }
+  ]
 }
 ~~~
 
@@ -2303,7 +2369,7 @@ If request was XML, then Standard API response containing the following addition
 
 Example XML Response, when `uuid` was specified:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <takeoverSchedule>
     <self>
       <server uuid='C677C663-F902-4B97-B8AC-4AA57B58DDD6' />
@@ -2327,7 +2393,7 @@ Example XML Response, when `uuid` was specified:
 
 Example XML Response, when `all` was specified:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <takeoverSchedule>
     <self>
       <server uuid='C677C663-F902-4B97-B8AC-4AA57B58DDD6' />
@@ -2341,7 +2407,7 @@ Example XML Response, when `all` was specified:
 
 Example XML Response, when `project` was specified:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <takeoverSchedule>
     <self>
       <server uuid='C677C663-F902-4B97-B8AC-4AA57B58DDD6' />
@@ -2355,7 +2421,7 @@ Example XML Response, when `project` was specified:
 
 JSON response for `uuid` specified:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "takeoverSchedule": {
     "jobs": {
@@ -2393,7 +2459,7 @@ JSON response for `uuid` specified:
 
 JSON response for `all` specified:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "takeoverSchedule": {
     "jobs": {
@@ -2417,7 +2483,7 @@ JSON response for `all` specified:
 
 JSON response for `project` specified:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "takeoverSchedule": {
     "jobs": {
@@ -2487,7 +2553,7 @@ For more information about ACL Policies see:
 
 `Content-Type: application/xml`:  A `<resource>` containing more resources within a `<contents>` element:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <resource path="" type="directory" href="http://server/api/14/system/acl/">
   <contents>
     <resource path="name.aclpolicy" type="file" href="http://server/api/14/system/acl/name.aclpolicy" name="name.aclpolicy"/>
@@ -2499,7 +2565,7 @@ For more information about ACL Policies see:
 
 `resources` contains a list of entries for each policy
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "path": "",
   "type": "directory",
@@ -2529,7 +2595,7 @@ Otherwise if XML or JSON is requested, the YAML text will be wrapped within that
 
 `Content-Type: application/yaml` or `Content-Type: text/plain`:
 
-~~~~~ {.yaml}
+~~~~~ yaml
 description: "my policy"
 context:
   application: rundeck
@@ -2542,7 +2608,7 @@ by:
 
 `Content-Type: application/json`:
 
-~~~~ {.json}
+~~~~ json
 {
   "contents": "description: \"my policy\"\ncontext:\n  application: rundeck\nfor:\n  project:\n    - allow: read\nby:\n  group: build"
 }
@@ -2550,7 +2616,7 @@ by:
 
 `Content-Type: application/xml`:  The content is wrapped in a `CDATA` section to preserve whitespace formatting.
 
-~~~~ {.xml}
+~~~~ xml
 <contents><![CDATA[description: "my policy"
 context:
   application: rundeck
@@ -2576,7 +2642,7 @@ Otherwise, you can use XML or JSON in the same format as returned by [Get an ACL
 
 `Content-Type: application/json`
 
-~~~~ {.json}
+~~~~ json
 {
   "contents": "description: \"my policy\"\ncontext:\n  application: rundeck\nfor:\n  project:\n    - allow: read\nby:\n  group: build"
 }
@@ -2585,7 +2651,7 @@ Otherwise, you can use XML or JSON in the same format as returned by [Get an ACL
 
 `Content-Type: application/xml`
 
-~~~~ {.xml}
+~~~~ xml
 <contents><![CDATA[description: "my policy"
 context:
   application: rundeck
@@ -2617,7 +2683,7 @@ Because each [ACLPOLICY][] document can contain multiple Yaml documents, each wi
 
 `Content-Type: application/json`
 
-~~~~ {.json}
+~~~~ json
 {
   "valid": false,
   "policies": [
@@ -2644,7 +2710,7 @@ Because each [ACLPOLICY][] document can contain multiple Yaml documents, each wi
 
 `Content-Type: application/xml`
 
-~~~~ {.xml}
+~~~~ xml
 <validation valid="false">
   <policy id="file1.aclpolicy[1]">
     <error>reason text...</error>
@@ -2726,7 +2792,7 @@ Note: If neither `groupPath` nor `groupPathExact` are specified, then the defaul
 
 `Content-Type: application/xml`:  An Item List of `jobs`. Each `job` is of the form:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <job id="ID" href="[API url]" permalink="[GUI URL]" scheduled="true/false" scheduleEnabled="true/false"
    enabled="true/false"
    >
@@ -2739,7 +2805,7 @@ Note: If neither `groupPath` nor `groupPathExact` are specified, then the defaul
 
 `Content-Type: application/json`
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 [
   {
     "id": "[UUID]",
@@ -2769,7 +2835,7 @@ In Cluster mode, additional information about what server UUID is the schedule o
 
 `Content-Type: application/xml`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <job id="ID" href="[API url]" permalink="[GUI URL]" scheduled="true/false" scheduleEnabled="true/false"
   enabled="true/false"
   serverNodeUUID="[UUID]"
@@ -2784,7 +2850,7 @@ In Cluster mode, additional information about what server UUID is the schedule o
 
 `Content-Type: application/json`
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 [
   {
     "id": "[UUID]",
@@ -2831,7 +2897,7 @@ Optional parameters:
 (**API v14**) If the request has `Content-Type: application/json`, then the parameters will be ignored,
 and this format is expected in the content:
 
-~~~~~ {.json}
+~~~~~ json
 {
     "argString":"...",
     "loglevel":"...",
@@ -2875,7 +2941,7 @@ All of this parameters are going to be populated with the execution values unles
 If the request has `Content-Type: application/json`, then the parameters will be ignored,
 and this format is expected in the content:
 
-~~~~~ {.json}
+~~~~~ json
 {
     "argString":"...",
     "loglevel":"...",
@@ -2956,7 +3022,7 @@ A set of status results.  Each imported job definition will be either "succeeded
 
 `Content-Type: application/xml`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <succeeded count="x">
     <!-- job elements -->
 </succeeded>
@@ -2970,7 +3036,7 @@ A set of status results.  Each imported job definition will be either "succeeded
 
 Each Job element will be of the form:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <job index="x" href="[API url]">
     <!-- ID, href, and permalink may not be present if the job was not created yet -->
     <id>ID</id>
@@ -2985,7 +3051,7 @@ Each Job element will be of the form:
 
 `Content-Type: application/json`:
 
-~~~~~~ {.json}
+~~~~~~ json
 {
   "succeeded": [...],
   "failed": [...],
@@ -2995,7 +3061,7 @@ Each Job element will be of the form:
 
 Each array may contain a job data object:
 
-~~~~~~ {.json}
+~~~~~~ json
 {
   "index": 1,
   "href": "http://madmartigan.local:4440/api/14/job/3b6c19f6-41ee-475f-8fd0-8f1a26f27a9a",
@@ -3062,7 +3128,7 @@ Or JSON/XML content:
 
 `Content-Type: application/json`
 
-~~~~~ {.json}
+~~~~~ json
 {
   "ids": [
     "fefa50e1-2265-47af-b101-d4bbaa3ba21c",
@@ -3080,7 +3146,7 @@ The common `result` element described in the [Response Format][] section, indica
 
 If successful, then the `result` will contain a `deleteJobs` element with two sections of results, `succeeded` and `failed`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <deleteJobs requestCount="#" allsuccessful="true/false">
     <succeeded count="1">
         <deleteJobRequest id="[job ID]">
@@ -3120,7 +3186,7 @@ Each `deleteJobRequest` under the `failed` section will contain:
 `application/json` response:
 
 
-~~~~~~ {.json}
+~~~~~~ json
 {
   "requestCount": #integer#,
   "allsuccessful": true/false,
@@ -3131,7 +3197,7 @@ Each `deleteJobRequest` under the `failed` section will contain:
 
 The list of succeeded/failed will contain objects of this form:
 
-~~~~~~ {.json}
+~~~~~~ json
 {
   "id": "[UUID]",
   "errorCode": "(error code, see above)",
@@ -3151,13 +3217,13 @@ Enable executions for a job. (ACL requires `toggle_execution` action for a job.)
 
 `application/xml`
 
-~~~{.xml}
+~~~xml
 <success>true</success>
 ~~~
 
 `application/json`
 
-~~~{.json}
+~~~json
 {"success":true}
 ~~~
 
@@ -3217,7 +3283,7 @@ Or JSON/XML content:
 
 `Content-Type: application/json`
 
-~~~~~ {.json}
+~~~~~ json
 {
   "ids": [
     "fefa50e1-2265-47af-b101-d4bbaa3ba21c",
@@ -3233,7 +3299,7 @@ Note: you can combine `ids` with `idlist`.
 
 If successful, then the `result` will contain a `toggleExecution` element with two sections of results, `succeeded` and `failed`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <toggleExecution enabled="true" requestCount="#" allsuccessful="true/false">
     <succeeded count="1">
         <toggleExecutionResult id="[job ID]">
@@ -3274,7 +3340,7 @@ Each `toggleExecutionResult` under the `failed` section will contain:
 `application/json` response:
 
 
-~~~~~~ {.json}
+~~~~~~ json
 {
   "requestCount": #integer#,
   "enabled": true/false,
@@ -3286,7 +3352,7 @@ Each `toggleExecutionResult` under the `failed` section will contain:
 
 The list of succeeded/failed will contain objects of this form:
 
-~~~~~~ {.json}
+~~~~~~ json
 {
   "id": "[UUID]",
   "errorCode": "(error code, see above)",
@@ -3314,7 +3380,7 @@ Or JSON/XML content:
 
 `Content-Type: application/json`
 
-~~~~~ {.json}
+~~~~~ json
 {
   "ids": [
     "fefa50e1-2265-47af-b101-d4bbaa3ba21c",
@@ -3330,7 +3396,7 @@ Note: you can combine `ids` with `idlist`.
 
 If successful, then the `result` will contain a `toggleSchedule` element with two sections of results, `succeeded` and `failed`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <toggleSchedule enabled="true" requestCount="#" allsuccessful="true/false">
     <succeeded count="1">
         <toggleScheduleResult id="[job ID]">
@@ -3371,7 +3437,7 @@ Each `toggleScheduleResult` under the `failed` section will contain:
 `application/json` response:
 
 
-~~~~~~ {.json}
+~~~~~~ json
 {
   "requestCount": #integer#,
   "enabled": true/false,
@@ -3383,7 +3449,7 @@ Each `toggleScheduleResult` under the `failed` section will contain:
 
 The list of succeeded/failed will contain objects of this form:
 
-~~~~~~ {.json}
+~~~~~~ json
 {
   "id": "[UUID]",
   "errorCode": "(error code, see above)",
@@ -3403,7 +3469,7 @@ Get metadata about a specific job.
 
 `Content-Type: application/xml`: A single `job` element in the same format as [Listing Jobs](#listing-jobs):
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <job id="ID" href="[API url]" permalink="[GUI URL]" scheduled="true/false" scheduleEnabled="true/false"
    enabled="true/false" averageDuration="[ms]"
    >
@@ -3418,7 +3484,7 @@ Get metadata about a specific job.
 
 A single object:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
     "id": "[UUID]",
     "name": "[name]",
@@ -3470,7 +3536,7 @@ is the option name. The filename is specified normally within the multi-part req
 
 `Content-Type: application/xml`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <jobFileUpload>
   <total>$total</total>
   <options>
@@ -3482,7 +3548,7 @@ is the option name. The filename is specified normally within the multi-part req
 
 `Content-Type: application/json`:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "total": $total,
   "options": {
@@ -3504,7 +3570,7 @@ To upload a file for an option `myfile` and run a job with the file:
 
 Response:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "total": 1,
   "options": {
@@ -3533,7 +3599,7 @@ This uploads two files, one for option `csvfile` and with filename `data.csv`, a
 The result:
 
 
-~~~ {.json}
+~~~ json
 {
   "options": {
     "csvfile": "34ba3064-28c6-447e-aafb-b73db8ee9f6f",
@@ -3563,7 +3629,7 @@ Query Parameters:
 
 **Response:**
 
-~~~{.json}
+~~~json
 {
   "paging": {
     "offset": 0,
@@ -3589,7 +3655,7 @@ Query Parameters:
 }
 ~~~
 
-~~~{.xml}
+~~~xml
 <jobFiles>
   <paging offset="0" max="20" total="1" count="1" />
   <files>
@@ -3621,7 +3687,7 @@ Get info about an uploaded file given its ID.
 
 **Response:**
 
-~~~{.json}
+~~~json
 {
   "dateCreated": "2017-02-24T19:10:33Z",
   "execId": 2741,
@@ -3637,7 +3703,7 @@ Get info about an uploaded file given its ID.
 }
 ~~~
 
-~~~{.xml}
+~~~xml
 <file id="f985864b-fa1b-4e09-af7a-4315e9908372">
   <user>admin</user>
   <fileState>deleted</fileState>
@@ -3671,6 +3737,7 @@ Query Parameters:
     * `m`: month
     * `y`: year
 * `max`: Maximum number of items to return (default: no limit).
+* `past`: `true` to return an inverse forecast, that is, considering the current scheduler, when it should have run. Note this forecast is only referential, since it will not take into account if the job could have been disabled or not yet been created. **Since API v32**
 
 
 
@@ -3678,7 +3745,7 @@ Query Parameters:
 
 `Content-Type: application/xml`: A single job element with the array `futureScheduledExecutions`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <job id="ID" href="[API url]" permalink="[GUI URL]" scheduled="true/false" scheduleEnabled="true/false"
    enabled="true/false" averageDuration="[ms]"
    >
@@ -3697,7 +3764,7 @@ Query Parameters:
 
 A single object:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
     "href": "[API url]",
     "futureScheduledExecutions": [
@@ -3760,11 +3827,15 @@ List the currently running executions for a project
 
 (**Deprecated URL**: `/api/14/executions/running`, required URL parameter `project`.)
 
-Note: `PROJECT` is the project name, or '*' for all projects.
+Note: `PROJECT` is the project name, or use `*` for all projects.
+
+Optional Query Parameters:
+
+* `jobIdFilter`: Specifies a Job ID, the results will only contain running executions for the given job. **Since API v32**
 
 Response with `Content-Type: application/xml`: An `<executions>` element containing multiple `<execution>` elements.
 
-~~~~ {.xml}
+~~~~ xml
 <executions count="[count]" offset="[offset]" max="[max]" total="[total]">
     <execution...>...</execution>
     <execution...>...</execution>
@@ -3780,7 +3851,7 @@ The `executions` element will have paging attributes:
 
 Each `execution` of the form:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <execution id="[ID]" href="[url]" permalink="[url]" status="[status]" project="[project]">
     <user>[user]</user>
     <date-started unixtime="[unixtime]">[datetime]</date-started>
@@ -3835,7 +3906,7 @@ Response with `Content-Type: application/json`:
 
 It contains a `paging` entry with paging information, and a `executions` array:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "paging": {
     "count": 2,
@@ -3935,7 +4006,7 @@ An Item List of `executions` with a single item. See [Listing Running Executions
 
 With `Content-Type: application/json`, a single object:
 
-~~~~~ {.json}
+~~~~~ json
 {
   "id": X,
   "href": "[url]",
@@ -3986,7 +4057,7 @@ List input files used for an execution.
 
 **Response:**
 
-~~~{.json}
+~~~json
 {
   "files": [
     {
@@ -4005,7 +4076,7 @@ List input files used for an execution.
   ]
 }
 ~~~
-~~~{.xml}
+~~~xml
 <executionFiles>
   <files>
     <file id="382c7596-435b-4103-8781-6b32fbd629b2">
@@ -4063,19 +4134,19 @@ If using a request body, the formats are specified below:
 
 `Content-Type: application/json`
 
-~~~~ {.json}
+~~~~ json
 {"ids": [ 1, 2, 17 ] }
 ~~~~
 
 *OR* more simply:
 
-~~~~ {.json}
+~~~~ json
 [ 1, 2, 17 ]
 ~~~~
 
 `Content-Type: application/xml`
 
-~~~~ {.xml}
+~~~~ xml
 <executions>
     <execution id="1"/>
     <execution id="2"/>
@@ -4089,7 +4160,7 @@ The response format will be either `xml` or `json`, depending on the `Accept` he
 
 `Content-Type: application/json`
 
-~~~~ {.json}
+~~~~ json
 {
   "failures": [
     {
@@ -4122,7 +4193,7 @@ The JSON fields will be:
 
 `Content-Type: application/xml`
 
-~~~~ {.xml}
+~~~~ xml
 <deleteExecutions requestCount='4' allsuccessful='false'>
   <successful count='0' />
   <failed count='4'>
@@ -4211,7 +4282,7 @@ Paging parameters `max` and `offset` will have no effect on the result.
 
 A single result element with `<duration>` containing duration info, and `<total>` with total count.
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <result>
   <duration>
     <average>0s</average>
@@ -4226,7 +4297,7 @@ A single result element with `<duration>` containing duration info, and `<total>
 
 An object with `duration` entry containing duration stats, and a `total` entry with total executions.
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
     "duration": {
         "average": "0s",
@@ -4315,7 +4386,7 @@ State Indicators:
 
 In XML:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <node name="abc">
   <steps>
     <step>
@@ -4333,7 +4404,7 @@ In XML:
 
 In JSON: an object where each key is a node name, and the value is an array of State indicators.  A state indicator is an object with two keys, `stepctx` and `executionState`
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
     "abc": [
       {
@@ -4378,7 +4449,7 @@ A sequence of state details for a set of Nodes for the containing step. Each ent
 
 In XML:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <nodeState name="abc">
   <startTime>2014-01-13T20:58:59Z</startTime>
   <updateTime>2014-01-13T20:59:04Z</updateTime>
@@ -4390,7 +4461,7 @@ In XML:
 
 In JSON: an object with node names as keys.  Values are objects containing the state information entries.
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
     "abc": {
       "executionState": "SUCCEEDED",
@@ -4405,7 +4476,7 @@ In JSON: an object with node names as keys.  Values are objects containing the s
 
 Within the `<result>` element:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <executionState id="135">
   <startTime>2014-01-13T20:58:59Z</startTime>
   <updateTime>2014-01-13T20:59:10Z</updateTime>
@@ -4504,7 +4575,7 @@ Within the `<result>` element:
 
 **Full JSON example**
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "completed": true,
   "executionState": "SUCCEEDED",
@@ -4788,7 +4859,7 @@ The fourth specifies a new value for `stepctx` and `log` and `level` to use.
 The fifth specifies a `node` and `stepctx` of `null`: indicating the `node` and `stepctx` values should be removed for
 this Log Entry.
 
-~~~{.json}
+~~~json
 {
   "id": 1,
   ... (snip) ...
@@ -4822,7 +4893,7 @@ this Log Entry.
 
 Example (XML) with the same sequence as above:
 
-~~~{.xml}
+~~~xml
 <output>
   <id>1</id>
   <!-- ... snip ... -->
@@ -4894,7 +4965,7 @@ Optional Parameters:
 
 `Content-Type: application/xml`: The result will contain a `success/message` element will contain a descriptive message.  The status of the abort action will be included as an element:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <abort status="[abort-state]">
     <execution id="[id]" status="[status]"/>
 </abort>
@@ -4902,7 +4973,7 @@ Optional Parameters:
 
 `Content-Type: application/json`:
 
-~~~~~~ {.json}
+~~~~~~ json
 {
   "abort": {
     "status": "[abort-state]",
@@ -4944,7 +5015,7 @@ Node filter parameters as described under [Using Node Filters](#using-node-filte
 
 Or the request can be `Content-type: application/json`:
 
-~~~~~~ {.json}
+~~~~~~ json
 {
     "project":"[project]",
     "exec":"[exec]",
@@ -4960,13 +5031,13 @@ Or the request can be `Content-type: application/json`:
 `Content-Type: application/xml`: A success message, and a single `<execution>` item identifying the
 new execution by ID:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <execution id="X" href="[API Href]" permalink="[GUI href]"/>
 ~~~~~~~~~~
 
 `Content-Type: application/json`:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "message": "Immediate execution scheduled (X)",
   "execution": {
@@ -5013,7 +5084,7 @@ Node filter parameters as described under [Using Node Filters](#using-node-filte
 
 If using a json document with Content-type: `application/json`:
 
-~~~~~~ {.json}
+~~~~~~ json
 {
     "project":"[project]",
     "script":"[script]",
@@ -5033,13 +5104,13 @@ If using a json document with Content-type: `application/json`:
 `Content-Type: application/xml`: A success message, and a single `<execution>` item identifying the
 new execution by ID:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <execution id="X" href="[API Href]" permalink="[GUI href]"/>
 ~~~~~~~~~~
 
 `Content-Type: application/json`:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "message": "Immediate execution scheduled (X)",
   "execution": {
@@ -5079,7 +5150,7 @@ Node filter parameters as described under [Using Node Filters](#using-node-filte
 
 If using a json document with Content-type: `application/json`:
 
-~~~~~~ {.json}
+~~~~~~ json
 {
     "project":"[project]",
     "url":"[scriptURL]",
@@ -5099,7 +5170,7 @@ If using a json document with Content-type: `application/json`:
 A success message, and a single `<execution>` item identifying the
 new execution by ID:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <execution id="X" href="[API Href]" permalink="[GUI href]"/>
 ~~~~~~~~~~
 
@@ -5108,7 +5179,7 @@ new execution by ID:
 
 `Content-Type: application/json`:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "message": "Immediate execution scheduled (X)",
   "execution": {
@@ -5166,7 +5237,7 @@ Response:
 
 `application/xml`
 
-~~~~ {.xml}
+~~~~ xml
 <resource path='keys' type='directory'
 url='http://dignan.local:4440/api/11/storage/keys'>
   <contents count='3'>
@@ -5210,7 +5281,7 @@ url='http://dignan.local:4440/api/11/storage/keys'>
 
 `application/json`
 
-~~~~ {.json}
+~~~~ json
 {
   "resources": [
     {
@@ -5273,7 +5344,7 @@ Response:
 
 `application/xml`
 
-~~~~ {.xml}
+~~~~ xml
 <resource path='keys/test1.pub' type='file'
 url='http://dignan.local:4440/api/11/storage/keys/test1.pub'
 name='test1.pub'>
@@ -5288,7 +5359,7 @@ name='test1.pub'>
 
 `application/json`
 
-~~~~ {.json}
+~~~~ json
 {
   "meta": {
     "Rundeck-key-type": "public",
@@ -5347,7 +5418,7 @@ An Item List of `projects`, each `project` of the form specified in the [Getting
 
 *Since API version 26*: add the project `label` to the response
 
-~~~~~ {.json}
+~~~~~ json
 [
     {
         "name":"...",
@@ -5367,7 +5438,7 @@ XML content:
 
 `Content-Type: application/xml`
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <project>
     <name>name</name>
     <config>
@@ -5381,7 +5452,7 @@ JSON content:
 
 `Content-Type: application/json`
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 { "name": "myproject", "config": { "propname":"propvalue" } }
 ~~~~~~~~~~
 
@@ -5399,7 +5470,7 @@ An Item List of `projects` with one `project`.  XML or JSON is determined by the
 
 `Content-Type: application/xml`
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <project>
     <name>Project Name</name>
     <description>...</description>
@@ -5409,7 +5480,7 @@ An Item List of `projects` with one `project`.  XML or JSON is determined by the
 
 If the project defines a Resource Model Provider URL, then the additional items are:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <resources>
     <providerURL>URL</providerURL>
 </resources>
@@ -5422,7 +5493,7 @@ Updated in version 11:
 
 `Content-Type: application/xml`
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <project url="http://server:4440/api/11/project/NAME">
     <name>Project Name</name>
     <description>...</description>
@@ -5432,7 +5503,7 @@ Updated in version 11:
 
 `Content-Type: application/json` *since version 11*
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "description": "",
   "name": "NAME",
@@ -5444,7 +5515,7 @@ Updated in version 11:
 
 **API version 11 and later**: If the user has `configure` authorization for the project, then the project configuration properties are included in the response.
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <config>
     <property key="[name]" value="[value]"/>
     <!-- ... -->
@@ -5473,7 +5544,7 @@ Response, based on `Accept` header:
 
 `Content-Type: application/xml`
 
-~~~~~ {.xml}
+~~~~~ xml
 <config>
     <property key="name" value="value"/>
     <!-- ... -->
@@ -5482,7 +5553,7 @@ Response, based on `Accept` header:
 
 `Content-Type: application/json`
 
-~~~~~ {.json}
+~~~~~ json
 {
     "key":"value",
     "key2":"value2..."
@@ -5491,7 +5562,7 @@ Response, based on `Accept` header:
 
 `Content-Type: text/plain` ([Java Properties](https://en.wikipedia.org/wiki/.properties)-formatted text.)
 
-~~~~~ {.text}
+~~~~~ text
 key=value
 key2=value
 ~~~~~
@@ -5508,7 +5579,7 @@ Content:
 
 `Content-Type: application/xml`
 
-~~~~~ {.xml}
+~~~~~ xml
 <config>
     <property key="key" value="value"/>
     <!-- ... -->
@@ -5517,7 +5588,7 @@ Content:
 
 `Content-Type: application/json`
 
-~~~~~ {.json}
+~~~~~ json
 {
     "key":"value",
     "key2":"value2..."
@@ -5526,7 +5597,7 @@ Content:
 
 `Content-Type: text/plain` ([Java Properties](https://en.wikipedia.org/wiki/.properties)-formatted text.)
 
-~~~~~ {.text}
+~~~~~ text
 key=value
 key2=value
 ~~~~~
@@ -5545,19 +5616,19 @@ Request and response formats:
 
 `application/xml`:
 
-~~~ {.xml}
+~~~ xml
 <property key="[KEY]" value="key value"/>
 ~~~
 
 `application/json`:
 
-~~~ {.json}
+~~~ json
 { "[KEY]" : "key value" }
 ~~~
 
 `text/plain`: the plain text key value
 
-~~~ {.text}
+~~~ text
 key value
 ~~~
 
@@ -5652,14 +5723,14 @@ with [/api/V/project/[PROJECT]/export/download/[TOKEN]][].
 
 `application/xml`
 
-~~~ {.xml}
+~~~ xml
 <projectExport token="[TOKEN]" ready="true/false" precentage="#">
 </projectExport>
 ~~~
 
 `application/json`
 
-~~~ {.json}
+~~~ json
 {
     "token":"[TOKEN]",
     "ready":true/false,
@@ -5708,14 +5779,14 @@ Response will indicate whether the imported contents had any errors:
 
 `application/xml`
 
-~~~ {.xml}
+~~~ xml
 <import status="successful">
 </import>
 ~~~
 
 `application/json`
 
-~~~ {.json}
+~~~ json
 {"import_status":"successful"}
 ~~~
 
@@ -5723,7 +5794,7 @@ Response will indicate whether the imported contents had any errors:
 
 `application/xml`
 
-~~~ {.xml}
+~~~ xml
 <import status="failed">
     <errors count="[#]">
         <error>Job ABC could not be validated: ...</error>
@@ -5742,7 +5813,7 @@ Response will indicate whether the imported contents had any errors:
 
 `application/json`
 
-~~~ {.json}
+~~~ json
 {
     "import_status":"failed",
     "errors": [
@@ -5797,7 +5868,7 @@ whether it is `writeable`.  The `href` indicates the URL for [Listing and Updati
 
 `application/json`
 
-~~~ {.json}
+~~~ json
 [
     {
         "index": 1,
@@ -5823,7 +5894,7 @@ whether it is `writeable`.  The `href` indicates the URL for [Listing and Updati
 
 `application/xml`
 
-~~~ {.xml}
+~~~ xml
 <?xml version="1.0" encoding="utf-8"?>
 <sources project="atest" count="2">
   <source index="1" type="file">
@@ -5909,7 +5980,7 @@ Response format depends on the `Accept:` HTTP header.
 
 `application/xml`:
 
-```{.xml}
+```xml
 <contents>The readme contents</contents>
 ```
 
@@ -5917,7 +5988,7 @@ Response format depends on the `Accept:` HTTP header.
 
 `application/json`:
 
-```{.json}
+```json
 {"contents":"The readme contents"}
 ```
 
@@ -6034,7 +6105,7 @@ The format for the `jobListFilter` and `excludeJobListFilter` is the job's group
 
 `Content-Type: application/xml`: an Item List of `events`.  Each `event` has this form:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <event starttime="[unixtime]" endtime="[unixtime]">
   <title>[job title, or "adhoc"]</title>
   <status>[status]</status>
@@ -6055,7 +6126,7 @@ The format for the `jobListFilter` and `excludeJobListFilter` is the job's group
 
 The `events` element will also have `max`, `offset`, and `total` attributes, to indicate the state of paged results.  E.G:
 
-~~~~ {.xml}
+~~~~ xml
 <events count="8" total="268" max="20" offset="260">
 ...
 </events>
@@ -6070,7 +6141,7 @@ The `events` element will also have `max`, `offset`, and `total` attributes, to 
 
 `Content-Type: application/json`:
 
-~~~~~~ {.json}
+~~~~~~ json
 {
   "paging": {
     "count": 10,
@@ -6084,7 +6155,7 @@ The `events` element will also have `max`, `offset`, and `total` attributes, to 
 
 The `events` array contains elements like:
 
-~~~~~ {.json}
+~~~~~ json
 {
   "starttime": #unixtime,
   "endtime": #unixtime,
@@ -6269,7 +6340,7 @@ Each plugin has these properties:
 
 `Content-Type: application/xml`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <scmPluginList>
   <integration>[$integration]</integration>
   <plugins>
@@ -6286,7 +6357,7 @@ Each plugin has these properties:
 
 `Content-Type: application/json`:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "integration": "$integration",
   "plugins": [
@@ -6329,7 +6400,7 @@ Input fields have a number of properties:
 
 `Content-Type: application/xml`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <scmPluginSetupInput>
   <integration>$integration</integration>
   <type>$type</type>
@@ -6362,7 +6433,7 @@ Input fields have a number of properties:
 
 `Content-Type: application/json`:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "fields": [
     {
@@ -6402,7 +6473,7 @@ Content:
 
 `Content-Type: application/xml`
 
-~~~~~ {.xml}
+~~~~~ xml
 <scmPluginConfig>
     <config>
         <entry key="key">value</entry>
@@ -6414,7 +6485,7 @@ Content:
 
 `Content-Type: application/json`
 
-~~~~~ {.json}
+~~~~~ json
 {
     "config":{
         "key":"value",
@@ -6432,7 +6503,7 @@ If a validation error occurs, the response will include information about the re
 
 `Content-Type: application/xml`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <scmActionResult>
   <message>Some input values were not valid.</message>
   <nextAction />
@@ -6446,7 +6517,7 @@ If a validation error occurs, the response will include information about the re
 
 `Content-Type: application/json`:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "message": "Some input values were not valid.",
   "nextAction": null,
@@ -6464,7 +6535,7 @@ If the result is successful:
 
 `Content-Type: application/xml`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <scmActionResult>
   <message>$string</message>
   <success>true</success>
@@ -6475,7 +6546,7 @@ If the result is successful:
 
 `Content-Type: application/json`:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "message": "$string",
   "nextAction": null,
@@ -6560,7 +6631,7 @@ Export plugin values for `synchState`:
 
 `Content-Type: application/xml`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <scmProjectStatus>
 
   <actions>
@@ -6577,7 +6648,7 @@ Export plugin values for `synchState`:
 
 `Content-Type: application/json`:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "actions": ['action1','action2',..],
   "integration": "$integration",
@@ -6611,7 +6682,7 @@ Otherwise the response contains:
 
 `Content-Type: application/xml`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <scmProjectPluginConfig>
   <config>
     <entry key="key">value</entry>
@@ -6627,7 +6698,7 @@ Otherwise the response contains:
 
 `Content-Type: application/json`:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "config": {
     "key": "$string",
@@ -6687,7 +6758,7 @@ The content of `<scmPluginInputField>` is the same as shown in [Get SCM Plugin I
 
 
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <scmActionInput>
   <actionId>$actionId</actionId>
   <description />
@@ -6733,7 +6804,7 @@ The content of `<scmPluginInputField>` is the same as shown in [Get SCM Plugin I
 
 The content of `"fields"` array is the same as shown in [Get SCM Plugin Input Fields](#get-scm-plugin-input-fields).
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "actionId": "$actionId",
   "description": "$string",
@@ -6800,7 +6871,7 @@ will not automatically delete a renamed item.
 
 `Content-Type: application/xml`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <scmAction>
     <input>
         <entry key="message">$commitMessage</entry>
@@ -6822,7 +6893,7 @@ will not automatically delete a renamed item.
 
 `Content-Type: application/json`:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
     "input":{
         "message":"$commitMessage"
@@ -6874,7 +6945,7 @@ Export plugin values for `$synchState`:
 
 `Content-Type: application/xml`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <scmJobStatus>
   <actions>
     <string>$action</string>
@@ -6902,7 +6973,7 @@ Export plugin values for `$synchState`:
 
 `Content-Type: application/json`:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "actions": [
     "$action"
@@ -6946,7 +7017,7 @@ For `application/xml`, the `diffContent` will use a CDATA section to preserve wh
 
 `Content-Type: application/xml`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <scmJobDiff>
   <commit>
     <!-- commit info -->
@@ -6963,7 +7034,7 @@ For `application/xml`, the `diffContent` will use a CDATA section to preserve wh
 
 `Content-Type: application/json`:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
   "commit": {
     ...
@@ -7010,7 +7081,7 @@ Only the `input` values need to be specified:
 
 `Content-Type: application/xml`:
 
-~~~~~~~~~~ {.xml}
+~~~~~~~~~~ xml
 <scmAction>
     <input>
         <entry key="message">$commitMessage</entry>
@@ -7020,7 +7091,7 @@ Only the `input` values need to be specified:
 
 `Content-Type: application/json`:
 
-~~~~~~~~~~ {.json}
+~~~~~~~~~~ json
 {
     "input":{
         "message":"$commitMessage"
@@ -7371,6 +7442,10 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 * `POST` [Set Passive Mode](#set-passive-mode)
 
+[/api/V/system/executions/status][]
+
+* `POST` [Get Current Execution Mode](#get-current-execution-mode)
+
 [/api/V/system/info][]
 
 * `GET` [System Info](#system-info)
@@ -7584,6 +7659,7 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [/api/V/system/info]:#system-info
 [/api/V/system/executions/enable]:#set-active-mode
 [/api/V/system/executions/disable]:#set-passive-mode
+[/api/V/system/executions/status]:#get-current-execution-mode
 
 [/api/V/system/logstorage]:#log-storage-info
 [/api/V/system/logstorage/incomplete]:#list-executions-with-incomplete-log-storage

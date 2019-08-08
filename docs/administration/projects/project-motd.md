@@ -11,13 +11,13 @@ The motd content is interpreted as [markdown](http://commonmark.org/help/) text 
 
 Update the motd with some text.
 
-```{.bash}
+```bash
 rd projects motd put -p MyProject -t "This is the **motd** for MyProject"
 ```
 
 You might want to set the project home page to show the motd.
 
-```{.bash}
+```bash
 rd projects configure set -p MyProject -- \
    --project.gui.motd.display=projectHome
 ```

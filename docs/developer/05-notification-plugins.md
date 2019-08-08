@@ -120,7 +120,7 @@ The following values may be available after the job is finished (not available f
 In Groovy, you can simply reference any values in the Execution data maps using
 [Groovy Gpath](http://groovy-lang.org/processing-xml.html#_gpath), e.g.:
 
-```{.java}
+```java
 println execution.context.option.myoption
 ```
 
@@ -159,7 +159,7 @@ Java-based plugins can be developed just as any other Rundeck plugin, as describ
 These plugin classes should implement the interface
 [NotificationPlugin](${javadocbase}/com/dtolabs/rundeck/plugins/notification/NotificationPlugin.html):
 
-```{.java}
+```java
 public interface NotificationPlugin {
     /**
      * Post a notification for the given trigger, dataset, and configuration
@@ -175,7 +175,7 @@ To define configuration properties for your plugin, you use the same mechanisms 
 
 The simplest way to do this is to use [Plugin Annotations](/developer/02-plugin-annotations.md). Here is an example class annotated to describe it to the Rundeck GUI:
 
-```{.java}
+```java
 @Plugin(service="Notification", name="example")
 @PluginDescription(title="Example Plugin", description="An example Plugin for Rundeck Notifications.")
 public class ExampleNotificationPlugin implements NotificationPlugin{
@@ -207,7 +207,7 @@ You must restart rundeck to make the plugin available the first time, but you ca
 
 Within the Groovy script, you define your plugin by calling the `rundeckPlugin` method, and pass it both the Class of the type of plugin, and a Closure used to build the plugin object.
 
-```{.java}
+```java
 import  com.dtolabs.rundeck.plugins.notification.NotificationPlugin
 rundeckPlugin(NotificationPlugin){
     //plugin definition goes here...
@@ -222,7 +222,7 @@ For a `NotificationPlugin`, you can define custom handlers for each of the notif
 
 Simply define a closure with the given trigger name, and return a true value if your action was successful:
 
-```{.java}
+```java
 onstart{ Map execution, Map configuration ->
     //perform an action using the execution and configuration
     println "Job ${execution.job.name} has been started by ${execution.user}..."
@@ -258,7 +258,7 @@ Here is a minimal example:
 
 **MinimalNotificationPlugin.groovy**:
 
-```{.java}
+```java
 import com.dtolabs.rundeck.plugins.notification.NotificationPlugin;
 
 rundeckPlugin(NotificationPlugin){
@@ -292,7 +292,7 @@ alternate closure parameter lists:
 
 **MyNotificationPlugin.groovy**:
 
-```{.java}
+```java
 import com.dtolabs.rundeck.plugins.notification.NotificationPlugin;
 
 rundeckPlugin(NotificationPlugin) {

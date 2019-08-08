@@ -15,7 +15,7 @@ The content of a project, jobs, configuration, readme, motd, project ACLs and ex
 
 Export archive to a file. Without the `--include` flag all content is archived (ie, jobs,executions,configs,readmes,acls)
 
-```{.bash}
+```bash
 rd projects archives export -p MyProject --file MyProject.zip
 ```
 
@@ -29,6 +29,6 @@ rd projects archives export -p MyProject --file MyProject.zip
 
 Import archive file.
 
-```{.bash}
+```bash
 rd projects archives import -p MyProject --file MyProject.zip
 ```

@@ -43,6 +43,9 @@ The list of roles can be accepted as-is (default), or you can add a prefix to th
 
 ## PropertyFileLoginModule
 
+- NOTE: The `org.eclipse.jetty.jaas.spi.PropertyFileLoginModule` JAAS module will automatically add the username as a role to the login credentials.  
+If you do not want this behavior please use the `org.rundeck.jaas.jetty.ReloadablePropertyFileLoginModule` module.*
+
 These instructions explain how to manage user credentials for
 Rundeck using a text file containing usernames, passwords and role definitions.
 Usually this file is called <code>realm.properties</code>.
@@ -59,7 +62,7 @@ Location:
 Assuming it wasn't modified, your realm.properties file will
 probably look something like this:
 
-```{.bash .numberLines }
+```bash .numberLines 
 #
 # This file defines users passwords and roles for a HashUserRealm
 #
@@ -87,7 +90,7 @@ encrypt passwords. The default encryption service is the Jetty password utility.
 In this example,
 we'll setup a new user named "jsmith", with a password of "mypass":
 
-```{.bash }
+```bash 
 $ java -jar rundeck-3.0.0.war --encryptpwd Jetty
 Required values are marked with: *
 Username (Optional, but necessary for Crypt encoding):
@@ -175,7 +178,7 @@ Create a `jaas-ldap.conf` file in the same directory as the `jaas-loginmodule.co
 
 Make sure the name of your Login Module configuration is the same as you use in the next step. The Login Module configuration is defined like this (e.g. "jaas-ldap.conf" file):
 
-```{.c }
+```c 
     ldap {
         // comment line
         ...
@@ -194,7 +197,7 @@ The JAAS configuration file location is specified differently between the Execut
 
 You can simply specify the system properties on the java commandline:
 
-```{.bash}
+```bash
 java -Drundeck.jaaslogin=true \
      -Dloginmodule.conf.name=jaas-ldap.conf \
      -Dloginmodule.name=ldap \
@@ -203,7 +206,7 @@ java -Drundeck.jaaslogin=true \
 
 Otherwise, if you are starting the Executable War via the supplied `rundeckd` script, you can modify the `RDECK_JVM` value in the `$RDECK_BASE/etc/profile` file to add two JVM arguments:
 
-```{.bash}
+```bash
 export RDECK_JVM="-Dloginmodule.conf.name=jaas-ldap.conf \
     -Drundeck.jaaslogin=true \
     -Dloginmodule.name=ldap"
@@ -215,7 +218,7 @@ Note: more information about using the Executable War and useful properties are 
 
 Declare `RDECK_JVM_OPTS` in `/etc/sysconfig/rundeckd` (rpm) or `/etc/default/rundeckd` (deb):
 
-```{.bash}
+```bash
 RDECK_JVM_OPTS="-Drundeck.jaaslogin=true \
        -Djava.security.auth.login.config=/etc/rundeck/jaas-ldap.conf \
        -Dloginmodule.name=ldap"
@@ -223,7 +226,7 @@ RDECK_JVM_OPTS="-Drundeck.jaaslogin=true \
 
 #### Step 3: Restart rundeckd
 
-```{.bash}
+```bash
 sudo /etc/init.d/rundeckd restart
 ```
 
@@ -236,7 +239,7 @@ To make troubleshooting easier, you may want to add the `-Dcom.dtolabs.rundeck.j
 
 Here is an example configuration file for the `JettyCachingLdapLoginModule`:
 
-```{.c .numberLines}
+```c .numberLines
 ldap {
     com.dtolabs.rundeck.jetty.jaas.JettyCachingLdapLoginModule required
       debug="true"
@@ -356,7 +359,7 @@ The `JettyCachingLdapLoginModule` has these configuration properties:
 
 The `JettyCombinedLdapLoginModule` is extends the previous module, so is configured in almost exactly the same way, but adds these additional configuration options:
 
-```{.c .numberLines}
+```c .numberLines
 ldap {
     com.dtolabs.rundeck.jetty.jaas.JettyCombinedLdapLoginModule required
       ...
@@ -397,7 +400,7 @@ The [PAM](#pam) section is a useful comparison as it uses the same method to com
 
 Here is an example configuration for Active Directory. The string _sAMAccountName_ refers to the short user name and is valid in a default Active Directory installation, but may vary in some environments.
 
-```{.c .numberLines}
+```c .numberLines
 activedirectory {
     com.dtolabs.rundeck.jetty.jaas.JettyCachingLdapLoginModule required
     debug="true"
@@ -432,7 +435,7 @@ Another option is to interrogate the secure ldap endpoint with openssl. The exam
 _note_ that for Active Directory, the host would be the Active Directory server and port 636.
 _note_ Certificates are PEM encoded and start with -----BEGIN CERTIFICATE----- end with -----END CERTIFICATE----- inclusive.
 
-```{.bash}
+```bash
 $ openssl s_client -showcerts -connect paypal.com:443
 ```
 
@@ -546,19 +549,19 @@ Once a certificate has been obtained. There are two options for adding the certi
 
 Both options require importing a certificate. The following would import a certificate called, AD.cert into the `/etc/rundeck/ssl/truststore`.
 
-```{.bash}
+```bash
 keytool -import -alias CompanyAD -file AD.cert -keystore  /etc/rundeck/ssl/truststore -storepass adminadmin
 ```
 
 To add the certificate to the JRE, locate the file \$JAVA_HOME/lib/security/cacerts and run
 
-```{.bash}
+```bash
 keytool -import -alias CompanyAD -file AD.cert -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit
 ```
 
 To verify your CA has been added, run keytool list and look for CompanyAD in the output.
 
-```{.bash}
+```bash
 keytool -list -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit
 ```
 
@@ -577,7 +580,7 @@ This can be done with the command:
 
 On debian based systems you need to install libpam4j :
 
-```{.bash}
+```bash
 apt install libpam4j-java
 ```
 
@@ -591,7 +594,7 @@ Modules:
 
 sample jaas config:
 
-```{.c .numberLines}
+```c .numberLines
 RDpropertyfilelogin {
   org.rundeck.jaas.jetty.JettyPamLoginModule requisite
         debug="true"
@@ -665,7 +668,7 @@ The full syntax and the description of how these Flags work is described in more
 
 Here is an example combining an LDAP module flagged as `sufficient`, and a flat file realm.properties config flagged as `required`:
 
-```{.c .numberLines}
+```c .numberLines
 multiauth {
 
   com.dtolabs.rundeck.jetty.jaas.JettyCachingLdapLoginModule sufficient

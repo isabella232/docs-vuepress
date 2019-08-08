@@ -56,7 +56,7 @@ Methods:
 
 Create a groovy script that calls the `rundeckPlugin` method and passes the `ContentConverterPlugin` as the type of plugin:
 
-```{.java}
+```java
 import com.dtolabs.rundeck.plugins.logs.ContentConverterPlugin
 rundeckPlugin(ContentConverterPlugin){
     //plugin definition
@@ -78,7 +78,7 @@ Returning `null` will simply skip the conversion.
 
 Call `convert` using explicit data types and a closure to define the conversion:
 
-```{.java}
+```java
 /**
  * Converts two data types
  */
@@ -96,7 +96,7 @@ convert(dataType(String,'application/x-my-data'), dataType(String,'text/html')) 
 When the DataType uses a Java String as its class, you can omit calling `dataType`,
 and simply pass the dataType string:
 
-```{.java}
+```java
 /**
  * Called to convert two data types
  */
@@ -108,7 +108,7 @@ convert('application/x-my-data', 'text/html') {
 
 And if you are going to return `text/html` the output declaration can be skipped:
 
-```{.java}
+```java
 /**
  * Called to convert two data types
  */
@@ -122,7 +122,7 @@ Since Rundeck will chain together up to two ContentConverters to render `text/ht
 input data type, you can define multiple conversion, if you want to use
 an intermediate type.
 
-```{.java}
+```java
 /**
  * Convert a string into an intermediate java type
  */

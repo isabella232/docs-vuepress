@@ -18,7 +18,7 @@ repoquery command that formats the results as [JSON] data.
 
 File listing: repoquery.cgi
 
-```{.bash .numberLines}
+```bash .numberLines
 #!/bin/bash
 # Requires: repoquery
 #
@@ -47,14 +47,14 @@ echo '}'
 After deploying this script to the CGI enabled directory on the
 operations web server, it can be tested directly by requesting it using [curl].
 
-```{.bash}
+```bash
 curl -d "repo=acme&label=Anvils&package=anvils" \
     --get http://yum.acme.com/cgi-bin/repoquery.cgi
 ```
 
 The server response should return JSON data resembling the example below:
 
-```{.json}
+```json
 [
   {"name":"anvils-1.1.rpm", "value":"/dist/RPMS/noarch/anvils-1.1.rpm"},
   {"name":"anvils-1.2.rpm", "value":"/dist/RPMS/noarch/anvils-1.2.rpm"}
@@ -63,7 +63,7 @@ The server response should return JSON data resembling the example below:
 
 Jobs can request the option model data like so:
 
-```{.xml}
+```xml
 <option name="package" enforcedvalues="true" required="true"
     valuesUrl="http://yum.acme.com/cgi-bin/repoquery.cgi?package=anvils"/>
 ```

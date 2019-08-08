@@ -26,7 +26,7 @@ Can contain the following elements:
 
 _Example_
 
-```{.xml}
+```xml
 <project>
     <node .../>
 </project>
@@ -106,7 +106,7 @@ Alternatively, the value can be specified as nested text content.
 
 Examples:
 
-```{.xml}
+```xml
 <attribute name="server-path" value="/var/myapp"/>
 <attribute name="server-port">9010</attribute>
 ```
@@ -115,7 +115,7 @@ Examples:
 
 Define a node named "strongbad":
 
-```{.xml}
+```xml
 <node name="strongbad" type="Node"
     description="a development host"
     hostname="strongbad.local"
@@ -125,7 +125,7 @@ Define a node named "strongbad":
 
 Define a node of the type LinuxNode that has a `https-port` attribute:
 
-```{.xml}
+```xml
 <node type="LinuxNode" name="centos54" hostname="centos54.local"
       description="Sample Linux node" tags="sample,linux"
       >
@@ -136,7 +136,7 @@ Define a node of the type LinuxNode that has a `https-port` attribute:
 Define a node named that uses a non standard SSH port. The "hostname"
 value is overloaded to include the port (192.168.1.106:4022):
 
-```{.xml}
+```xml
 <node name="centos54" type="Node"
     description="a centos host"
     hostname="192.168.1.106:4022"
@@ -146,7 +146,7 @@ value is overloaded to include the port (192.168.1.106:4022):
 
 An example using just the required attributes:
 
-```{.xml}
+```xml
 <node name="centos54" type="Node"
     hostname="192.168.1.106:4022"
     username="deploy"/>
@@ -154,7 +154,7 @@ An example using just the required attributes:
 
 An example with a custom attribute "appname" specified in the `<node>` element:
 
-```{.xml}
+```xml
 <node name="centos54" type="Node"
     hostname="192.168.1.106:4022"
     username="deploy"
@@ -164,7 +164,7 @@ An example with a custom attribute "appname" specified in the `<node>` element:
 
 An example with tags and custom attributes that describe the server role and environment for this node:
 
-```{.xml}
+```xml
 <node name="centos54"
     hostname="192.168.1.106"
     username="deploy"

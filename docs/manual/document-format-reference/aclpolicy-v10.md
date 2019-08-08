@@ -72,7 +72,7 @@ Note: The XML format from Rundeck 1.3 and earlier is no longer supported. As
 well, the YAML format from 1.2 is now only partially supported.
 
 If you are upgrading from Rundeck 1.3 or earlier, you will have to modify
-your \*.aclpolicy files.
+your *.aclpolicy files.
 
 If you have XML formatted files, you will need to remove and replace them with
 a YAML document in the format described below. A full, admin-level ACL
@@ -84,7 +84,7 @@ If you have YAML formatted files, you will also need to upgrade them slightly.
 
 An example policy document.
 
-```{.yaml .numberLines}
+```yaml .numberLines
 description: Yaml Policy 1
 context: # declares the context of the ACL
   project: '.*' # applies to projects matching a regex.
@@ -161,14 +161,14 @@ sequence is defined using multiple `-` indicators, or within `[` and `]` and sep
 
 Yaml sequences:
 
-```{.yaml}
+```yaml
     - a
     - b
 ```
 
 also:
 
-```{.yaml}
+```yaml
     [ a, b ]
 ```
 
@@ -199,7 +199,7 @@ of the resource to test, and what value or values to apply the matching rule to.
 For example, to declare a rule for a resource with a "name" property of "bob"
 exactly, use `equals`:
 
-```{.yaml}
+```yaml
     equals:
       name: bob
     allow: [action1, action2]
@@ -208,7 +208,7 @@ exactly, use `equals`:
 
 For regular expression matching, use `match`:
 
-```{.yaml}
+```yaml
     match:
       name: 'bob|sam'
 ```
@@ -216,7 +216,7 @@ For regular expression matching, use `match`:
 For set membership matches, such as matching a Node that must have three
 different tags, you can use `contains`
 
-```{.yaml}
+```yaml
     contains:
       tags: [a,b,c]
 ```
@@ -242,7 +242,7 @@ A single match will result in further evaluation of the policy.
 
 Examples:
 
-```{.yaml}
+```yaml
     by:
       username: 'bob'
 
@@ -273,7 +273,7 @@ Regular expressions are supported in the username or group.
 
 Examples:
 
-```{.yaml}
+```yaml
     notBy:
       username: 'bob'
 
@@ -315,7 +315,7 @@ This will show all the options as they're being evaluated.
 
 This document grants full permissions to an 'admin' role:
 
-```{.yaml .numberLines}
+```yaml .numberLines
 description: Admin project level access control. Applies to resources within a specific project.
 context:
   project: '.*' # all projects

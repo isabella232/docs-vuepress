@@ -51,7 +51,7 @@ First, you must filter the nodes. The `rd nodes` command uses filter flag: `-F`.
 
 Here, the `tags` keyword is used to include nodes tagged 'www':
 
-```{.bash}
+```bash
 rd nodes -p anvils -F tags=www
 ```
 
@@ -61,7 +61,7 @@ www1.anvils.com www2.anvils.com
 
 List the nodes tagged "app":
 
-```{.bash}
+```bash
 rd nodes -p anvils -F tags=app
 ```
 
@@ -71,7 +71,7 @@ app1.anvils.com app2.anvils.com
 
 Use the `+` (AND) operator to list the web and app nodes:
 
-```{.bash}
+```bash
 rd nodes -p anvils -F tags=www+app
 ```
 
@@ -81,7 +81,7 @@ www1.anvils.com www2.anvils.com app1.anvils.com app2.anvils.com
 
 Exclude the web and app nodes:
 
-```{.bash}
+```bash
 rd nodes -p anvils -F '!tags=www+app'
 ```
 
@@ -96,7 +96,7 @@ Use `rd adhoc` to execute adhoc commands and scripts.
 Specify the command string you wish to execute on the filtered node set after the `--`.
 Below the `id` command is dispatched:
 
-```{.bash}
+```bash
 rd adhoc -p anvils -F tags=www -- id
 ```
 
@@ -108,7 +108,7 @@ rd adhoc -p anvils -F tags=www -- id
 Typically, you will want to see the output from the running command.
 Add the --follow flag to see the output.
 
-```{.bash}
+```bash
 rd adhoc -p anvils --follow -F tags=www -- whoami
 ```
 

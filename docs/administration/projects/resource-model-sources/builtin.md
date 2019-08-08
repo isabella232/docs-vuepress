@@ -46,7 +46,7 @@ _Example:_
 
 Here's a sample XML document that defines a node called "orion":
 
-```{.xml}
+```xml
 <project>
   <node name="orion"
     description="a foodazzler service host" tags="staging,us-east"
@@ -62,7 +62,7 @@ required such as `name`, `osFamily` and `tags`.
 You can add any number of nodes in this document. Here's a second node
 called homestar:
 
-```{.xml}
+```xml
 <project>
   <node name="orion"
     description="a foodazzler service host" tags="staging,us-east"

@@ -41,7 +41,7 @@ change all property keys.
 
 The `rd projects configure set` command allows you to set configuration properties.
 
-```{.bash}
+```bash
 rd projects configure set -p MyProject -- \
    --project.ssh-keypath":"/home/rundeck/.ssh/id_rsa
 ```

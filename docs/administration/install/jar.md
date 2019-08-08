@@ -5,25 +5,25 @@ Use the executable war as an alternative to a system package:
 1. Download the executable war file.
 1. Define RDECK_BASE environment variable to the location of the install
 
-   ```{.bash}
+   ```bash
    export RDECK_BASE=$HOME/rundeck; # or where you like it
    ```
 
 1. Create the directory for the installation.
 
-   ```{.bash}
+   ```bash
    mkdir -p $RDECK_BASE
    ```
 
 1. Copy the executable war to the installation directory.
 
-   ```{.bash}
+   ```bash
    cp rundeck-3.0.x.war $RDECK_BASE
    ```
 
 1. Change directory and run the WAR.
 
-   ```{.bash}
+   ```bash
    cd $RDECK_BASE
    java -Xmx4g -jar rundeck-3.0.x.war
    ```
@@ -36,7 +36,7 @@ Use the executable war as an alternative to a system package:
 
 1. Update your shell environment
 
-   ```{.bash}
+   ```bash
    PATH=$PATH:$RDECK_BASE/tools/bin
    MANPATH=$MANPATH:$RDECK_BASE/docs/man
    ```
@@ -77,7 +77,7 @@ When you need to update rundeck and you can not find the relevant section on the
 
 The executable war can take a number of options to specify how the server should start. If you execute with a "-h" you will see the usage information:
 
-```{.bash}
+```bash
 java -Xmx4g -jar rundeck-3.0.x.war -h
 ```
 

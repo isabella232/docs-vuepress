@@ -13,13 +13,13 @@ The script is located here: `/etc/init.d/rundeckd`
 
 _Startup_
 
-```{.bash}
+```bash
 /etc/init.d/rundeckd start
 ```
 
 _Shutdown_
 
-```{.bash}
+```bash
 /etc/init.d/rundeckd stop
 ```
 
@@ -37,13 +37,13 @@ The script is located here: `$RDECK_BASE/server/sbin/rundeckd`.
 
 _Startup_
 
-```{.bash}
+```bash
 $RDECK_BASE/server/sbin/rundeckd start
 ```
 
 _Shutdown_
 
-```{.bash}
+```bash
 $RDECK_BASE/server/sbin/rundeckd stop
 ```
 

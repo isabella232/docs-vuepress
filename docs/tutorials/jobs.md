@@ -73,7 +73,7 @@ the restart process.
 
 File listing: start
 
-```{.bash .numberLines}
+```bash .numberLines
 #!/bin/bash
 #/ usage: start ?dir?
 set -eu
@@ -88,7 +88,7 @@ echo "- Web started (pid=$$)"
 
 File listing: status
 
-```{.bash .numberLines}
+```bash .numberLines
 #!/bin/bash
 #/ usage: status ?dir?
 set -eu
@@ -103,7 +103,7 @@ PID=$(cat "$DIR/pid")
 
 File listing: stop
 
-```{.bash .numberLines}
+```bash .numberLines
 #!/bin/bash
 #/ usage: stop ?dir? ?method?
 set -eu
@@ -210,7 +210,7 @@ do not have to correspond to the Job name or its group.
 
 File listing: stop.xml
 
-```{.xml .numberLines}
+```xml .numberLines
 <joblist>
     <job>
        <name>stop</name>
@@ -267,7 +267,7 @@ containing the value chosen in the Job run form.
 
 File listing: start.xml
 
-```{.xml .numberLines}
+```xml .numberLines
 <joblist>
    <job>
      <name>start</name>
@@ -313,7 +313,7 @@ Nodes tagged "web".
 
 File listing: status.xml
 
-```{.xml .numberLines}
+```xml .numberLines
 <joblist>
    <job>
      <name>status</name>
@@ -370,7 +370,7 @@ declares those too and uses the `arg` xml tag to pass them.
 
 File listing: restart.xml
 
-```{.xml .numberLines}
+```xml .numberLines
 <joblist>
    <job>
      <name>Restart</name>
@@ -416,7 +416,7 @@ one can load them using the [rd-jobs](/manpages/man1/index.md) command.
 
 Run the `rd-jobs load` command for each job definition file:
 
-```{.bash}
+```bash
 rd-jobs load -p anvils -f start.xml
 rd-jobs load -p anvils -f stop.xml
 rd-jobs load -p anvils -f status.xml
@@ -426,7 +426,7 @@ rd-jobs load -p anvils -f restart.xml
 The `rd-jobs list` command queries Rundeck and prints out the list of
 defined jobs:
 
-```{.bash}
+```bash
 rd-jobs list -p anvils
 ```
 
@@ -475,12 +475,12 @@ but it can be left out if there is only one project available.)
 
 Run Restart specifying the method, "normal":
 
-```{.bash}
+```bash
 run -j "web/Restart" -p anvils -- -method normal
 ```
 
 Run Restart specifying the method, "force":
 
-```{.bash}
+```bash
 run -j "web/Restart" -p anvils -- -method force
 ```

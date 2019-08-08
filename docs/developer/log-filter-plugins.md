@@ -41,7 +41,7 @@ It can also control how the log event is handled:
 
 Create a groovy script that calls the `rundeckPlugin` method and passes the `LogFilterPlugin` as the type of plugin:
 
-```{.java}
+```java
 import com.dtolabs.rundeck.plugins.logging.LogFilterPlugin
 rundeckPlugin(LogFilterPlugin){
     //plugin definition
@@ -60,7 +60,7 @@ Closure descriptions:
 
 `init`
 
-```{.java}
+```java
 /**
  * Called to initialization the plugin with the context
  */
@@ -71,7 +71,7 @@ init { PluginLoggingContext context, Map configuration ->
 
 `handleEvent`
 
-```{.java}
+```java
 /**
  * Called to initialization the plugin with the context
  */
@@ -82,7 +82,7 @@ handleEvent { PluginLoggingContext context, LogEventControl event, Map configura
 
 `complete`
 
-```{.java}
+```java
 /**
  * Called to complete the plugin processing
  */

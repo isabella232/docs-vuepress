@@ -17,7 +17,7 @@ Uncheck any plugin you wish to disable.
 
 Use the `rd projects configure set` command to define the `disabled.plugins` property.
 
-```{.bash}
+```bash
 rd projects configure set -p MyProject -- \
    --disabled.plugins=pluginA,pluginB
 ```

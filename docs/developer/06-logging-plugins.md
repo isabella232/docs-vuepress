@@ -106,7 +106,7 @@ For info about the Groovy plugin development method see the [Plugin Development 
 
 Create a Groovy script, and define your plugin by calling the `rundeckPlugin` method, and pass it both the Class of the type of plugin, and a Closure used to build the plugin object.
 
-```{.java}
+```java
 import com.dtolabs.rundeck.plugins.logging.StreamingLogWriterPlugin
 rundeckPlugin(StreamingLogWriterPlugin){
     //plugin definition goes here...
@@ -143,7 +143,7 @@ The `StreamingLogWriter` ([javadoc](${javadocbase}/com/dtolabs/rundeck/core/logg
 
 Create a Java class that implements the interface [StreamingLogWriterPlugin](${javadocbase}/com/dtolabs/rundeck/plugins/logging/StreamingLogWriterPlugin.html):
 
-```{.java}
+```java
 /**
  * Plugin interface for streaming log writers
  */
@@ -161,7 +161,7 @@ public interface StreamingLogWriterPlugin extends StreamingLogWriter {
 
 This extends `StreamingLogWriter`:
 
-```{.java}
+```java
 /**
  * writes log entries in a streaming manner
  */
@@ -196,7 +196,7 @@ The plugin is used in this manner:
 
 Create a groovy script that calls the `rundeckPlugin` method and passes the `StreamingLogWriterPlugin` as the type of plugin:
 
-```{.java}
+```java
 import com.dtolabs.rundeck.plugins.logging.StreamingLogWriterPlugin
 rundeckPlugin(StreamingLogWriterPlugin){
     //plugin definition
@@ -209,7 +209,7 @@ Define these closures inside your definition:
 
 `open`
 
-```{.java}
+```java
 /**
  * The "open" closure is called to open the stream for writing events.
  * It is passed two map arguments, the execution data, and the plugin configuration data.
@@ -226,7 +226,7 @@ open { Map execution, Map config ->
 
 `addEvent`
 
-```{.java}
+```java
 /**
  * "addEvent" closure is called to append a new event to the stream.
  * It is passed the Map of stream context created in the "open" closure, and a LogEvent
@@ -239,7 +239,7 @@ addEvent { Map context, LogEvent event->
 
 `close`
 
-```{.java}
+```java
 /**
  * "close" closure is called to end writing to the stream.
  *
@@ -268,7 +268,7 @@ Additionally, these plugins should be able to report a `totalSize` (in an opaque
 
 Create a Java class that implements the interface [StreamingLogReaderPlugin](${javadocbase}/com/dtolabs/rundeck/plugins/logging/StreamingLogReaderPlugin.html):
 
-```{.java}
+```java
 /**
  * Plugin interface for streaming log readers
  */
@@ -288,7 +288,7 @@ public interface StreamingLogReaderPlugin extends StreamingLogReader {
 
 This extends the interface [StreamingLogReader](${javadocbase}/com/dtolabs/rundeck/core/logging/StreamingLogReader.html):
 
-```{.java}
+```java
 /**
  *  Reads log events in a streaming manner, and supports resuming from a specified offset.
  *
@@ -326,7 +326,7 @@ public interface StreamingLogReader extends LogEventIterator, Closeable {
 
 Additional methods that must be implemented from super-interfaces:
 
-```{.java}
+```java
 //from LogEventIterator
 LogEvent next();
 boolean hasNext();
@@ -368,7 +368,7 @@ If you are developing a `StreamingLogWriter` in conjunction with a `StreamingLog
 
 Create a groovy script that calls the `rundeckPlugin` method and passes the `StreamingLogReaderPlugin` as the type of plugin:
 
-```{.java}
+```java
 import com.dtolabs.rundeck.plugins.logging.StreamingLogReaderPlugin
 rundeckPlugin(StreamingLogReaderPlugin){
     //plugin definition
@@ -381,7 +381,7 @@ Define these closures inside your definition:
 
 `info`
 
-```{.java}
+```java
 /**
  * The 'info' closure is called to retrieve some metadata about the stream,
  * such as whether it is available to read, totalSize of the content, and last
@@ -407,7 +407,7 @@ info {Map execution, Map configuration->
 
 `open`
 
-```{.java}
+```java
 /**
  * The `open` closure is called to begin reading events from the stream.
  * It is passed the execution data, the plugin configuration, and an offset.
@@ -425,7 +425,7 @@ open { Map execution, Map configuration, long offset ->
 
 `next`
 
-```{.java}
+```java
 /**
  * Next is called to produce the next event, it should return a Map
  * containing: [event: (event data), offset: (next offset), complete: (true/false)].
@@ -455,7 +455,7 @@ next { Map context->
 
 `close`
 
-```{.java}
+```java
 /**
  * Close is called to finish the read stream
  */
@@ -550,7 +550,7 @@ The default if you do not implement this is that both operations are available.
 
 Create a Java class that implements the interface [ExecutionFileStoragePlugin](${javadocbase}/com/dtolabs/rundeck/plugins/logging/ExecutionFileStoragePlugin.html):
 
-```{.java}
+```java
 /**
  * Plugin to implement {@link com.dtolabs.rundeck.core.logging.ExecutionFileStorage}
  */
@@ -580,7 +580,7 @@ public interface ExecutionFileStoragePlugin extends ExecutionFileStorage {
 
 This extends the interface [ExecutionFileStorage](${javadocbase}/com/dtolabs/rundeck/core/logging/ExecutionFileStorage.html):
 
-```{.java}
+```java
 /**
  * Handles storage and retrieval of typed files for an execution, the filetype is specified in the {@link #store(String,
  * java.io.InputStream, long, java.util.Date)} and {@link #retrieve(String, java.io.OutputStream)} methods, and more
@@ -639,7 +639,7 @@ When `storage` is needed:
 
 Create a groovy script that calls the `rundeckPlugin` method and passes the `ExecutionFileStoragePlugin` as the type of plugin:
 
-```{.java}
+```java
 import com.dtolabs.rundeck.plugins.logging.ExecutionFileStoragePlugin
 rundeckPlugin(ExecutionFileStoragePlugin){
     //plugin definition
@@ -652,7 +652,7 @@ Define these closures inside your definition:
 
 `store`
 
-```{.java}
+```java
 /**
  * Called to store a log file, called with the execution data, configuration properties, and an InputStream.  Additionally `length` and `lastModified` properties are in the closure binding, providing the file length, and last modification Date.
  * Return true to indicate success.
@@ -670,7 +670,7 @@ store { String filetype, Map execution, Map configuration, InputStream source->
 
 `storeMultiple` is an alternative to `store`, see [ExecutionMultiFileStorage](#executionmultifilestorage).
 
-```{.java}
+```java
 import com.dtolabs.rundeck.plugins.logging.MultiFileStorageRequest
 ...
 /**
@@ -693,7 +693,7 @@ If `store` or `storeMultiple` are not defined, then this is the equivalent of us
 
 `available` (optional)
 
-```{.java}
+```java
 /**
  * Called to determine the file availability, return true to indicate it is available,
  * false to indicate it is not available. An exception indicates an error.
@@ -706,7 +706,7 @@ available { String filetype, Map execution, Map configuration->
 
 `retrieve`
 
-```{.java}
+```java
 /**
  * Called to retrieve a log file, called with the execution data, configuration properties, and an OutputStream.
  * Return true to indicate success.

@@ -24,7 +24,7 @@ The service name is [`StorageConverter`](${javadocbase}/com/dtolabs/rundeck/plug
 
 SEE ALSO: [rundeck-storage-api](${javadocstoragetop}).
 
-```{.java}
+```java
 import com.dtolabs.rundeck.core.plugins.Plugin;
 import com.dtolabs.rundeck.core.storage.ResourceMetaBuilder;
 import com.dtolabs.rundeck.plugins.ServiceNameConstants;

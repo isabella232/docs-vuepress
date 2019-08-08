@@ -6,7 +6,7 @@
 
 You can use this script to add the Rundeck apt repo and install Rundeck:
 
-```{.bash}
+```bash
 echo "deb https://rundeck.bintray.com/rundeck-deb /" | sudo tee -a /etc/apt/sources.list.d/rundeck.list
 curl 'https://bintray.com/user/downloadSubjectPublicKey?username=bintray' | sudo apt-key add -
 sudo apt-get update
@@ -15,7 +15,7 @@ sudo apt-get install rundeck
 
 When new versions of Rundeck are released, you can upgrade to them using the command:
 
-```{.bash}
+```bash
 sudo apt-get update
 sudo apt-get install rundeck
 ```
@@ -24,7 +24,7 @@ sudo apt-get install rundeck
 
 Download deb package: http://rundeck.org/download/deb/ and run:
 
-```{.bash}
+```bash
 sudo dpkg -i rundeckpro-cluster_3.0.x.deb
 ```
 
@@ -34,7 +34,7 @@ sudo dpkg -i rundeckpro-cluster_3.0.x.deb
 
 You can use this script to add the Rundeck Enterprise apt repo and install Rundeck Enterprise cluster:
 
-```{.bash}
+```bash
 echo "deb https://rundeckpro.bintray.com/deb stable main" | sudo tee /etc/apt/sources.list.d/rundeck.list
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 379CE192D401AB61
 sudo apt-get update
@@ -43,7 +43,7 @@ sudo apt-get install rundeckpro-cluster
 
 When new versions of Rundeck Enterprise are released, you can upgrade to them using the command:
 
-```{.bash}
+```bash
 sudo apt-get update
 sudo apt-get install rundeckpro-cluster
 ```
@@ -52,7 +52,7 @@ sudo apt-get install rundeckpro-cluster
 
 Download deb package: http://download.rundeck.com/eval/ and run:
 
-```{.bash}
+```bash
 sudo dpkg -i rundeckpro-cluster_3.0.x.deb
 ```
 
@@ -60,19 +60,19 @@ sudo dpkg -i rundeckpro-cluster_3.0.x.deb
 
 To start Rundeck:
 
-```{.bash}
+```bash
 sudo service rundeckd start
 ```
 
 To verify that the service started correctly, tail the logs:
 
-```{.bash}
+```bash
 tail -f /var/log/rundeck/service.log
 ```
 
 The service is ready once you see something similar to:
 
-```{.bash}
+```bash
 Grails application running at http://localhost:4440 in environment: production
 ```
 

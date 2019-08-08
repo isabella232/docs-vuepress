@@ -101,7 +101,7 @@ Example:
 If you wanted to run some external remote connection command ("/bin/execremote") in lieu of the
 built-in ssh command, you could specify these attributes for node:
 
-```{.yaml}
+```yaml
 mynode:
     node-executor: script-exec
     script-exec: /bin/execremote -host ${node.hostname} -user ${node.username} -- ${exec.command}
@@ -109,7 +109,7 @@ mynode:
 
 If the command you want to run requires special handling (such as quoting or other interpretation) you may want to have a shell execute it. In which case you could specify the shell to use:
 
-```{.yaml}
+```yaml
 mynode:
     node-executor: script-exec
     script-exec-shell: bash -c
@@ -250,7 +250,7 @@ Example:
 If you wanted to run some external remote connection command ("/bin/copyremote") in lieu of the
 built-in SCP command, you could specify these attributes for node:
 
-```{.yaml}
+```yaml
 mynode:
     file-copier: script-copy
     script-copy: /bin/copyremote -host ${node.hostname} -user ${node.username} -- ${file-copy.file} ${file-copy.destination}
@@ -296,7 +296,7 @@ Using the "/bin/copyremote" example from above, we need to set the `script-copy-
 We need to set the `script-copy-remote-filepath` to the location on the remote node where
 the file will exist after being copied. We know the filename of the file is available as `${file-copy.filename}`, so we set it to `${node.destdir}/${file-copy.filename}`:
 
-```{.yaml}
+```yaml
 mynode:
     file-copier: script-copy
     script-copy: /bin/copyremote -host ${node.hostname} -user ${node.username} -- ${file-copy.file} ${file-copy.destination}
@@ -333,7 +333,7 @@ Here are some example scripts to show the some possible usage patterns.
 
 Node definition:
 
-```{.yaml}
+```yaml
 mynode:
     node-executor: script-exec
 ```
@@ -344,7 +344,7 @@ Project config `project.properties` file:
 
 Contents of `/tmp/myexec.sh`:
 
-```{.bash .numberLines}
+```bash .numberLines
 #!/bin/bash
 
 # args are [hostname] [username] -- [command to exec...]
@@ -362,7 +362,7 @@ exec "$REMOTECMD" "$user@$host" "$command"
 
 Node definition:
 
-```{.yaml}
+```yaml
 mynode:
     file-copier: script-copy
     destdir: /some/node/dir
@@ -375,7 +375,7 @@ System-wide config in `framework.properties`:
 
 Contents of `/tmp/mycopy.sh`:
 
-```{.bash .numberLines}
+```bash .numberLines
 #!/bin/bash
 
 # args are [hostname] [username] [destpath] [filepath]
@@ -402,7 +402,7 @@ and file copying, and doesn't make use of an external script file:
 
 Node-only configuration:
 
-```{.yaml .numberLines}
+```yaml .numberLines
 mynode:
     hostname: mynode
     username: user1
@@ -435,7 +435,7 @@ This could all be set as defaults in the project.properties file, such as:
 
 In which case your node definitions could be as simple as:
 
-```{.yaml}
+```yaml
 mynode:
     hostname: mynode
     username: user1

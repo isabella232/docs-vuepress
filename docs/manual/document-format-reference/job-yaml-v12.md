@@ -10,14 +10,14 @@ job-yaml-v13 - The 'job' YAML file declares job entries for Rundeck.
 
 This file can be batch loaded via [rd] jobs load command:
 
-```{.bash}
+```bash
 rd jobs load -p project --file /path/to/jobs.yaml -F yaml
 ```
 
 Rundeck job definitions can be dumped and saved to a file via
 rd jobs list command:
 
-```{.bash}
+```bash
 rd jobs list -p project --file /tmp/jobs.yaml -F yaml
 ```
 
@@ -27,7 +27,7 @@ rd jobs list -p project --file /tmp/jobs.yaml -F yaml
 
 The YAML document can contain multiple Job definitions, in a sequence:
 
-```{.yaml}
+```yaml
 - # job 1
   name: ...
 - # job 2
@@ -71,7 +71,7 @@ See [GUI Customization](/administration/configuration/gui-customization.md).
 
 A minimal job definition example:
 
-```{.yaml}
+```yaml
 - name: job name
   description: ''
   loglevel: INFO
@@ -82,7 +82,7 @@ A minimal job definition example:
 
 Extended description using yaml 'literal' scalar string format (beginning with a `|`). Make sure each line is indented to the correct level.
 
-```{.yaml}
+```yaml
 - name: job name
   description: |
     Performs a service
@@ -139,7 +139,7 @@ Alternatively the retry can be set with delay between retries:
 
 Example of retry with delay:
 
-```{.yaml}
+```yaml
   retry:
       delay: 1h1m1s
       retry: '${option.retry}'
@@ -147,7 +147,7 @@ Example of retry with delay:
 
 Example of simple retry:
 
-```{.yaml}
+```yaml
   retry: ${option.retry}
 ```
 
@@ -208,7 +208,7 @@ This defines the Workflow options and execution sequence.
 
 Example:
 
-```{.yaml}
+```yaml
   sequence:
     keepgoing: true
     strategy: node-first
@@ -310,7 +310,7 @@ This [Command](#command) executes the script content specified.
 
 Example:
 
-```{.yaml}
+```yaml
    - script: |-
       #!/bin/bash
 
@@ -333,7 +333,7 @@ This [Command](#command) executes a script file stored on the server.
 
 Example:
 
-```{.yaml}
+```yaml
   - scriptfile: /path/to/script
     args: arguments to script
 ```
@@ -352,7 +352,7 @@ This [Command](#command) downloads a script file from a URL and executes it.
 
 Example:
 
-```{.yaml}
+```yaml
   - scripturl: http://example.com/path/to/script
     args: arguments to script
 ```
@@ -367,7 +367,7 @@ For `script`, `scriptfile` and `scripturl`, you can optionally declare an "inter
 
 Example:
 
-```{.yaml}
+```yaml
    - script: |-
       #!/bin/bash
 
@@ -419,7 +419,7 @@ This [Command](#command) executes another Rundeck Job.
 
 Example:
 
-```{.yaml}
+```yaml
   - jobref:
       group: test
       name: simple job test
@@ -462,7 +462,7 @@ The `nodefilters` should contain a `filter` entry. The value is a string definin
 
 Example:
 
-```{.yaml}
+```yaml
 - jobref:
    name: jobname
    group: group
@@ -494,7 +494,7 @@ This [Command](#command) executes a plugin. There are two types of step plugins:
 
 Example:
 
-```{.yaml}
+```yaml
   - nodeStep: false
     type: jenkins-build
     configuration:
@@ -505,7 +505,7 @@ Example:
 
 Options for a job can be specified with a list of Maps. Each map contains a `name` key with the name of the option, and the content is a map defining the [Option](#option).
 
-```{.yaml}
+```yaml
   options:
   - {definition..}
   - {definition..}
@@ -513,7 +513,7 @@ Options for a job can be specified with a list of Maps. Each map contains a `nam
 
 Note: for backwards compatibility, a Map format is also accepted on import:
 
-```{.yaml}
+```yaml
   options:
     optname1:
       {definition..}
@@ -525,7 +525,7 @@ Note: for backwards compatibility, a Map format is also accepted on import:
 
 An option definition requires at least a `name` key to identify it:
 
-```{.yaml}
+```yaml
   options:
   - name: myoption
 ```
@@ -602,7 +602,7 @@ The `description` for an Option will be rendered with Markdown in the GUI.
 
 Example:
 
-```{.yaml}
+```yaml
   test:
     required: true
     description: a test option
@@ -618,7 +618,7 @@ Example:
 
 Example using multiple lines for the description:
 
-```{.yaml}
+```yaml
   test:
     required: true
     description: |
@@ -640,13 +640,13 @@ Example using multiple lines for the description:
 
 The data returned from the valuesUrl can be formatted as a list of values:
 
-```{.json}
+```json
 ["x value","y value"]
 ```
 
 or as Name-value list:
 
-```{.json}
+```json
 [
   {name:"X Label", value:"x value"},
   {name:"Y Label", value:"y value"},
@@ -704,14 +704,14 @@ Or use a structure of explicit components. All of these are optional, but likely
 
 Example using crontab string:
 
-```{.yaml}
+```yaml
     schedule:
       crontab: '0 30 */6 ? Jan Mon *'
 ```
 
 Example using structure:
 
-```{.yaml}
+```yaml
     schedule:
       time:
         hour: '05'
@@ -759,7 +759,7 @@ The `nodefilters` should contain a `filter` entry. The value is a string definin
 
 Example:
 
-```{.yaml}
+```yaml
   nodefilters:
     dispatch:
       threadcount: 1
@@ -808,7 +808,7 @@ The `nodefilters` must also contain ONE of `include` or `exclude` filter specifi
 
 Deprecated Example:
 
-```{.yaml}
+```yaml
   nodefilters:
     dispatch:
       threadcount: 1
@@ -845,7 +845,7 @@ Defines a notification for the job. You can include any of `onsuccess`, `onfailu
 
 Example:
 
-```{.yaml}
+```yaml
   notification:
     onfailure:
       recipients: tom@example.com,shirley@example.com

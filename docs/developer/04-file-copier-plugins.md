@@ -11,7 +11,7 @@ A File Copier provider copies a file or script to a remote or local node.
 Your provider class must implement the interface
 [FileCopier](${javadocbase}/com/dtolabs/rundeck/core/execution/service/FileCopier.html):
 
-```{.java}
+```java
 public interface FileCopier {
 
     public String copyFileStream(ExecutionContext context,

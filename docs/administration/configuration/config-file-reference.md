@@ -364,7 +364,7 @@ Note: This setting applies _only_ to the embedded Jetty server, which is used fo
 
 If you are deploying the Rundeck war file to Tomcat, you can manage the session timeout setting in the `$TomcatBase/conf/web.xml` file. The setting is in minutes.
 
-```{.xml}
+```xml
     <session-config> <session-timeout>30</session-timeout> </session-config>
 ```
 
@@ -533,13 +533,13 @@ Make sure you put quotes around all string values, but it is not necessary for t
 
 java properties format:
 
-```{.properties}
+```properties
 some.property=value
 ```
 
 groovy format:
 
-```{.groovy}
+```groovy
 some.property="value"
 ```
 
@@ -548,7 +548,7 @@ but since it is not simple text properties, strings have to be quoted.
 
 E.g. : a.b.c="blah" is the same as:
 
-```{.groovy}
+```groovy
 a{
     b{
         c="blah"

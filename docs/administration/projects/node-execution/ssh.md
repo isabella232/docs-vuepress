@@ -180,7 +180,7 @@ If the value is not `sshKeyPassphrase`, then make sure to set the following attr
 
 An example Node and Job option configuration are below:
 
-```{.xml .numberLines}
+```xml .numberLines
 <node name="egon" description="egon" osFamily="unix"
     username="rundeck"
     hostname="egon"
@@ -191,7 +191,7 @@ An example Node and Job option configuration are below:
 
 Job:
 
-```{.xml .numberLines}
+```xml .numberLines
 <joblist>
     <job>
         <!-- ... -->
@@ -222,7 +222,7 @@ in this order, with the first match having precedence:
 
 An example Node using private key passphrase storage:
 
-```{.xml .numberLines}
+```xml .numberLines
 <node name="egon" description="egon" osFamily="unix"
     username="rundeck"
     hostname="egon"
@@ -257,7 +257,7 @@ If the option name is not `sshPassword`, then make sure to set the following att
 
 An example Node and Job option configuration are below:
 
-```{.xml .numberLines}
+```xml .numberLines
 <node name="egon" description="egon" osFamily="unix"
     username="rundeck"
     hostname="egon"
@@ -267,7 +267,7 @@ An example Node and Job option configuration are below:
 
 Job:
 
-```{.xml .numberLines}
+```xml .numberLines
 <joblist>
     <job>
         <!-- ... -->
@@ -296,7 +296,7 @@ When connecting to the remote node, Rundeck will look for a property/attribute s
 
 An example Node using password storage:
 
-```{.xml .numberLines}
+```xml .numberLines
 <node name="egon" description="egon" osFamily="unix"
     username="rundeck"
     hostname="egon"
@@ -353,7 +353,7 @@ If the value is not `sudoPassword`, then make sure to set the following attribut
 
 An example Node and Job option configuration are below:
 
-```{.xml .numberLines}
+```xml .numberLines
 <node name="egon" description="egon" osFamily="unix"
     username="rundeck"
     hostname="egon"
@@ -363,7 +363,7 @@ An example Node and Job option configuration are below:
 
 Job:
 
-```{.xml .numberLines}
+```xml .numberLines
 <joblist>
     <job>
          <sequence keepgoing='false' strategy='node-first'>
@@ -392,7 +392,7 @@ Define a `sudo-password-storage-path` node attribute specifying the path in the 
 
 See example Node configuration below:
 
-```{.xml .numberLines}
+```xml .numberLines
 <node name="egon" description="egon" osFamily="unix"
     username="rundeck"
     hostname="egon"

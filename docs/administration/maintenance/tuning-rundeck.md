@@ -16,7 +16,7 @@ _On Linux nodes_
 
 List the current limit with the [ulimit](https://ss64.com/bash/ulimit.html) command:
 
-```{.bash}
+```bash
 ulimit -n
 ```
 
@@ -25,7 +25,7 @@ If the limit is low (eg `1024`) it should be raised.
 You can get the current number of open file descriptors used by the
 Rundeck server process with [lsof](https://linux.die.net/man/8/lsof):
 
-```{.bash}
+```bash
 lsof -p <rundeck pid> | wc -l
 ```
 
@@ -34,7 +34,7 @@ Edit [/etc/security/limits.conf](https://ss64.com/bash/limits.conf.html) file
 to raise the hard and soft limits. Here they are raised to `65535` for
 the "rundeck" system account:
 
-```{.bash}
+```bash
 rundeck hard nofile 65535
 rundeck soft nofile 65535
 ```
@@ -42,13 +42,13 @@ rundeck soft nofile 65535
 The system file descriptor limit is set in /proc/sys/fs/file-max.
 The following command will increase the limit to 65535:
 
-```{.bash}
+```bash
 echo 65535 > /proc/sys/fs/file-max
 ```
 
 In a new shell, run the ulimit command to set the new level:
 
-```{.bash}
+```bash
 ulimit -n 65535
 ```
 
@@ -75,13 +75,13 @@ the Xmx and Xms patterns:
 
 **Launcher installs:**
 
-```{.bash}
+```bash
 egrep '(Xmx|Xms)' $RDECK_BASE/etc/profile
 ```
 
 **RPM and DEB installs:**
 
-```{.bash}
+```bash
 egrep '(Xmx|Xms)' /etc/rundeck/profile
 ```
 
@@ -102,13 +102,13 @@ In the **Launcher Install** you can edit the `$RDECK_BASE/etc/profile` file.
 
 In **RPM** create/edit `/etc/sysconfig/rundeckd` and add below line.
 
-```{.bash}
+```bash
 RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Xmx4096m -Xms1024m"
 ```
 
 In **DEB** create/edit `/etc/default/rundeckd` and add below line.
 
-```{.bash}
+```bash
 RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Xmx4096m -Xms1024m"
 ```
 
@@ -131,7 +131,7 @@ Use the properties mentioned in the Quartz documentation, but **replace** the `o
 
 e.g. in `rundeck-config.properties` :
 
-```{.properties}
+```properties
 quartz.threadPool.threadCount = 20
 ```
 
@@ -152,19 +152,19 @@ _Note_: For more background information on JMX, see
 Enable local JMX monitoring by adding the `com.sun.management.jmxremote`
 flag to the startup parameters in the [profile](/administration/configuration/config-file-reference.md#profile] for **Launcher Install**.
 
-```{.bash}
+```bash
 export RDECK_JVM="$RDECK_JVM -Dcom.sun.management.jmxremote"
 ```
 
 For **RPM** create/edit `/etc/sysconfig/rundeckd` and add below line.
 
-```{.bash}
+```bash
 RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Dcom.sun.management.jmxremote"
 ```
 
 For **DEB** create/edit `/etc/default/rundeckd` and add below line.
 
-```{.bash}
+```bash
 RDECK_JVM_SETTINGS="$RDECK_JVM_SETTINGS -Dcom.sun.management.jmxremote"
 ```
 

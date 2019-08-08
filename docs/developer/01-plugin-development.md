@@ -53,13 +53,13 @@ Rundeck's jars are published to the central Maven repository, and [jCenter](http
 
 For gradle, use:
 
-```{.java}
+```java
 compile(group:'org.rundeck', name: 'rundeck-core', version: '${VERSION_FULL}')
 ```
 
 For maven use:
 
-```{.xml}
+```xml
 <dependencies>
    <dependency>
       <groupId>org.rundeck</groupId>
@@ -158,7 +158,7 @@ You should choose a unique but simple name for your provider.
 Each plugin class must have the
 [Plugin](${javadocbase}/com/dtolabs/rundeck/core/plugins/Plugin.html) annotation applied to it.
 
-```{.java}
+```java
 @Plugin(name="myprovider", service="NodeExecutor")
 public class MyProvider implements NodeExecutor {
 ...
@@ -278,7 +278,7 @@ You must restart rundeck to make the plugin available the first time, but you ca
 
 Within the Groovy script, you define your plugin by calling the `rundeckPlugin` method, and pass it both the Class of the type of plugin, and a Closure used to build the plugin object.
 
-```{.java}
+```java
 import  com.dtolabs.rundeck.plugins.notification.NotificationPlugin
 rundeckPlugin(NotificationPlugin){
     //plugin definition goes here...
@@ -300,7 +300,7 @@ _Properties_
 
 Set these properties to change the GUI display of your plugin:
 
-```{.java}
+```java
 title='My Plugin'
 description='Does some action'
 version = "0.0.1"
@@ -315,7 +315,7 @@ _Configuration_
 
 Use a `configuration` closure to define configuration properties:
 
-```{.java}
+```java
 configuration{
     //property definitions go here...
 }
@@ -329,13 +329,13 @@ User configuration properties can be defined in a few ways. To define a property
 
 1. method call form, specifying the attributes of the property:
 
-```{.java}
+```java
 myproperty (title: "My Property", description: "Something", type: 'Integer')
 ```
 
 2. assignment form. This form guesses the data type and sets the defaultValue, but does not add any other attributes.
 
-```{.java}
+```java
 myproperty2="default value"
 //the above is equivalent to:
 myproperty2(defaultValue:"default value", type: 'String')
@@ -365,7 +365,7 @@ In addition to these properties, for `Select` or `FreeSelect` type, you can defi
 
 To define a validation check for a property, use the first form and supply a closure. The implicit `it` variable will be the value of the property to check, and your closure should return `true` if the value is valid.
 
-```{.java}
+```java
 phone_number(title: "Phone number"){
    it.replaceAll(/[^\d]/,'')==~/^\d{10}$/
 }
@@ -436,7 +436,7 @@ as the zip file (sans ".zip").
 
 The file `plugin.yaml` must have this structure:
 
-```{.yaml}
+```yaml
 # yaml plugin metadata
 
 name: plugin name
@@ -565,7 +565,7 @@ See [Property Scopes](#property-scopes) below.
 
 Here is an example:
 
-```{.yaml}
+```yaml
 # yaml plugin metadata
 
 name: plugin name
@@ -728,7 +728,7 @@ For script-based `NodeExecutor` and `FileCopier` plugins, Instance-scope propert
 
 Define the `renderingOptions` property entry, and add a `instance-scope-node-attribute` key:
 
-```{.yaml}
+```yaml
       config:
         - name: myprop
           title: My Property
@@ -863,7 +863,7 @@ So for example you could define the titles of two different providers using this
 
 `messages.properties`
 
-```{.properties}
+```properties
 provider1.plugin.title=My Provider 1
 provider2.plugin.title=My Provider 2
 ```

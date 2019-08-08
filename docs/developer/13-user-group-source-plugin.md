@@ -25,7 +25,7 @@ before any project information is applicable.
 
 ## Java Plugin Type
 
-```{.java}
+```java
 package example;
 
 import com.dtolabs.rundeck.core.plugins.Plugin;

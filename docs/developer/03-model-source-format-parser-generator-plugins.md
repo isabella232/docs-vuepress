@@ -21,7 +21,7 @@ of serialized data is a filename or a MIME type.
 For Parsers, your provider class must implement the interface
 [ResourceFormatParser](${javadocbase}/com/dtolabs/rundeck/core/resources/format/ResourceFormatParser.html):
 
-```{.java}
+```java
 public interface ResourceFormatParser {
     /**
      * Return the list of file extensions that this format parser can parse.
@@ -51,7 +51,7 @@ public interface ResourceFormatParser {
 For Generators, your provider class must implement the interface
 [ResourceFormatGenerator](${javadocbase}/com/dtolabs/rundeck/core/resources/format/ResourceFormatGenerator.html):
 
-```{.java}
+```java
 public interface ResourceFormatGenerator {
 
     /**

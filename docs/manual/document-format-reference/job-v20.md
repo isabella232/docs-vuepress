@@ -13,14 +13,14 @@ current Rundeck "jobs" XML.
 
 This file can be batch loaded via [rd] jobs load command:
 
-```{.bash}
+```bash
 rd jobs load -p project --file /path/to/jobs.xml
 ```
 
 Rundeck job definitions can be dumped and saved to a file via
 rd jobs list command:
 
-```{.bash}
+```bash
 rd jobs list -p project --file /tmp/jobs.xml
 ```
 
@@ -38,7 +38,7 @@ _Nested elements_
 
 _Example_
 
-```{.xml}
+```xml
 <joblist>
   <job>
    ...
@@ -120,7 +120,7 @@ _Examples_
 
 Execute the Unix 'who' command
 
-```{.xml .numberLines}
+```xml .numberLines
 <joblist>
   <job>
     <name>who's logged in?</name>
@@ -150,7 +150,7 @@ Execute the Unix 'who' command
 
 Execute a Bash script
 
-```{.xml .numberLines}
+```xml .numberLines
 <joblist>
   <job>
     <name>a simple script</name>
@@ -177,7 +177,7 @@ exit 0 ]]></script>
 
 Execute a sequence of other commands, scripts and jobs:
 
-```{.xml .numberLines}
+```xml .numberLines
 <joblist>
   <job>
     <name>test coreutils</name>
@@ -235,7 +235,7 @@ See [GUI Customization](/administration/configuration/gui-customization.md).
 
 _Example Extended description_
 
-```{.xml }
+```xml 
 <job>
     <name>My Job</name>
     <description><![CDATA[Performs a service
@@ -262,7 +262,7 @@ directory structure.
 
 _Example_
 
-```{.xml }
+```xml 
 <job>
     <name>who</name>
     <description>who is logged in?</description>
@@ -274,7 +274,7 @@ _Example_
 
 Boolean value: 'true/false'. If 'true', then the job can be run multiple times at once. Otherwise, the Job can only have a single execution at a time.
 
-```{.xml }
+```xml 
 <job>
     <name>who</name>
     <description>who is logged in?</description>
@@ -303,7 +303,7 @@ These are all valid values:
 - `120m` - 120 minutes
 - `${option.timeout}` reference to a job option value
 
-```{.xml }
+```xml 
 <job>
     <name>who</name>
     <description>who is logged in?</description>
@@ -323,7 +323,7 @@ Allowed values:
 - `${option.retry}` reference to a job option value
 - Optional delay attribute, with the same format as [timeout](#timeout)
 
-```{.xml }
+```xml 
 <job>
     <name>iffy job</name>
     <description>Job which might need to be retried</description>
@@ -336,7 +336,7 @@ Allowed values:
 An optional logging limit, and the action to perform if the limit is reached.
 (See [Jobs - Log Limit](/manual/04-jobs.md#log-limit]).
 
-```{.xml}
+```xml
 <logging limit='1KB' limitAction='halt' status='aborted' />
 ```
 
@@ -394,7 +394,7 @@ _Example_
 
 Run the job every morning at 6AM, 7AM and 8AM.
 
-```{.xml}
+```xml
 <schedule>
   <time hour="06,07,08" minute="00"/>
   <weekday day="*"/>
@@ -405,7 +405,7 @@ Run the job every morning at 6AM, 7AM and 8AM.
 Run the job every morning at 6:00:02AM, 7:00:02AM and 8:00:02AM only
 in the year 2010:
 
-```{.xml}
+```xml
 <schedule>
   <time hour="06,07,08" minute="00" seconds="02"/>
   <weekday day="*"/>
@@ -509,7 +509,7 @@ _Nested elements_
 
 _Example_
 
-```{.xml}
+```xml
 <options>
     <option name="detail" value="true"/>
 </options>
@@ -589,19 +589,19 @@ _Example_
 
 Define defaults for the "port" option, requiring regex match.
 
-```{.xml}
+```xml
 <option name="port" value="80" values="80,8080,8888" regex="\d+"/>
 ```
 
 Define defaults for the "port" option, enforcing the values list.
 
-```{.xml}
+```xml
 <option name="port" value="80" values="80,8080,8888" enforcedvalues="true" />
 ```
 
 Define defaults for the "ports" option, allowing multiple values separated by ",".
 
-```{.xml}
+```xml
 <option name="port" value="80" values="80,8080,8888" enforcedvalues="true"
         multivalued="true" delimiter="," />
 ```
@@ -609,7 +609,7 @@ Define defaults for the "ports" option, allowing multiple values separated by ",
 Use a multi-line description inside a CDATA section to preserve
 whitespace. Wrap the content in `<![CDATA[` and `]]>`:
 
-```{.xml}
+```xml
 <option name='example'>
   <description><![CDATA[example option description
 
@@ -622,13 +622,13 @@ whitespace. Wrap the content in `<![CDATA[` and `]]>`:
 
 The data returned from the valuesUrl can be formatted as a list of values:
 
-```{.json}
+```json
 ["x value","y value"]
 ```
 
 or as Name-value list:
 
-```{.json .numberLines}
+```json .numberLines
 [
   {name:"X Label", value:"x value"},
   {name:"Y Label", value:"y value"},
@@ -661,7 +661,7 @@ _Nested elements_
 
 _Example_
 
-```{.xml}
+```xml
 <dispatch>
   <threadcount>1</threadcount>
   <keepgoing>false</keepgoing>
@@ -730,7 +730,7 @@ _Nested elements_
 
 _Example_
 
-```{.xml}
+```xml
 <nodefilters excludeprecedence="true">
   <filter>.*</filter>
 </nodefilters>
@@ -855,7 +855,7 @@ See:
 
 Example:
 
-```{.xml}
+```xml
 <errorhandler>
    <exec>echo this is a shell command</exec>
 </errorhandler>
@@ -865,7 +865,7 @@ Inline script. Note that using CDATA section will preserve linebreaks
 in the script. Simply put the script within a <code>script</code>
 element:
 
-```{.xml}
+```xml
 <errorhandler>
     <script><![CDATA[#!/bin/bash
 echo this is a test
@@ -876,7 +876,7 @@ exit 2 ]></script>
 
 Script File:
 
-```{.xml}
+```xml
 <errorhandler>
     <scriptfile>/path/to/a/script</scriptfile>
     <scriptargs>-whatever something</scriptargs>
@@ -885,7 +885,7 @@ Script File:
 
 Example job reference:
 
-```{.xml}
+```xml
 <errorhandler >
     <jobref group="My group" name="My Job">
        <arg line="-option value -option2 value2"/>
@@ -899,7 +899,7 @@ Defines a description for a step.
 
 Example:
 
-```{.xml}
+```xml
 <command>
    <exec>echo this is a shell command</exec>
    <description>Demonstrate echo command</description>
@@ -916,7 +916,7 @@ Script steps can be defined in three ways within a command element:
 
 Example exec step:
 
-```{.xml}
+```xml
 <command>
    <exec>echo this is a shell command</exec>
 </command>
@@ -926,7 +926,7 @@ Inline script. Note that using CDATA section will preserve linebreaks
 in the script. Simply put the script within a <code>script</code>
 element:
 
-```{.xml}
+```xml
 <command>
     <script><![CDATA[#!/bin/bash
 echo this is a test
@@ -937,7 +937,7 @@ exit 2 ]></script>
 
 Script File:
 
-```{.xml}
+```xml
 <command >
     <scriptfile>/path/to/a/script</scriptfile>
     <scriptargs>-whatever something</scriptargs>
@@ -946,7 +946,7 @@ Script File:
 
 Script URL:
 
-```{.xml}
+```xml
 <command >
     <scripturl>http://example.com/path/to/a/script</scripturl>
     <scriptargs>-whatever something</scriptargs>
@@ -959,7 +959,7 @@ When using `<script>`, or `<scriptfile>`, you can declare an interpreter to use 
 
 Add `<scriptinterpreter>` to the `<command>`:
 
-```{.xml}
+```xml
 <command >
     <scriptinterpreter>sudo -u usera</scriptinterpreter>
     <scripturl>http://example.com/path/to/a/script</scripturl>
@@ -969,13 +969,13 @@ Add `<scriptinterpreter>` to the `<command>`:
 
 This will be executed effectively with this commandline:
 
-```{.bash}
+```bash
 sudo -u usera script.sh -whatever something
 ```
 
 If the filename and arguments need to be quoted when passed to the interpreter, you can declare `argsQuoted='true'`:
 
-```{.xml}
+```xml
 <command >
     <scriptinterpreter argsquoted='true'>sudo -u usera sh -c </scriptinterpreter>
     <scripturl>http://example.com/path/to/a/script</scripturl>
@@ -985,7 +985,7 @@ If the filename and arguments need to be quoted when passed to the interpreter, 
 
 This will execute as:
 
-```{.bash}
+```bash
 sudo -u usera sh -c 'script.sh -whatever something'
 ```
 
@@ -1019,7 +1019,7 @@ Optional "arg" element can be embedded:
 
 Example passing arguments to the job:
 
-```{.xml}
+```xml
 <command >
     <jobref group="My group" name="My Job">
        <arg line="-option value -option2 value2"/>
@@ -1043,7 +1043,7 @@ _Nested elements_
 
 Example:
 
-```{.xml}
+```xml
 <jobref group="My group" name="My Job">
   <dispatch>
     <threadcount>1</threadcount>
@@ -1094,7 +1094,7 @@ Optional 'configuration' can be embedded containing a list of 'entry' key/value 
 
 Example node step plugin definition:
 
-```{.xml}
+```xml
 <command>
     <node-step-plugin type="my-node-step-plugin">
        <configuration>
@@ -1107,7 +1107,7 @@ Example node step plugin definition:
 
 Example workflow step plugin definition:
 
-```{.xml}
+```xml
 <command>
     <step-plugin type="my-step-plugin">
        <configuration>
@@ -1173,7 +1173,7 @@ _Nested elements_
 
 _Example_
 
-```{.xml}
+```xml
 <notification>
     <onfailure>
         <email recipients="test@example.com,foo@example.com" />
@@ -1280,7 +1280,7 @@ urls
 
 _Example_
 
-```{.xml }
+```xml 
 <webhook urls="http://server/callback?id=${execution.id}&status=${execution.status}&trigger=${notification.trigger}"/>
 ```
 
@@ -1310,7 +1310,7 @@ Optional 'configuration' can be embedded containing a list of 'entry' key/value 
 
 Example notification plugin definition:
 
-```{.xml}
+```xml
 <onstart>
     <plugin type="my-notification-plugin">
        <configuration>

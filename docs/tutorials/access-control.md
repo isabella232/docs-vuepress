@@ -27,7 +27,7 @@ To create the aclpolicy file for the "noc" group:
 
 File listing: noc.aclpolicy
 
-```{.yaml .numberLines}
+```yaml .numberLines
 description: Acess for noc user.
 context:
   project: '.*'
@@ -59,7 +59,7 @@ Notice also, listed Jobs do not include an icon for editing the Job.
 
 File listing: noc.aclpolicy
 
-```{.yaml .numberLines}
+```yaml .numberLines
 description: Acess for noc users.
 context:
   project: '.*'
@@ -91,7 +91,7 @@ definition of the Restart job.
 
 File listing: dev.aclpolicy
 
-```{.yaml .numberLines}
+```yaml .numberLines
 description: Acess for dev users.
 context:
   project: '.*'
