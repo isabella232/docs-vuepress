@@ -1,6 +1,4 @@
 # Version 2.4.0
-% jenkins
-
 
 # Release 2.4.0
 =============
@@ -111,7 +109,7 @@ New versions of Rundeck will have a name based on the version number. The 2.x th
 * [rundeck.gui.login.welcome no longer allows html tags like <b></b> to make all or part of the welcome message bold.](https://github.com/rundeck/rundeck/issues/1012)
 * [Fix API v11 xml wrapper responses](https://github.com/rundeck/rundeck/pull/1010)
 * [Improve validation messages during job import](https://github.com/rundeck/rundeck/issues/1009)
-* [APIv11 responses should not include <result> element](https://github.com/rundeck/rundeck/issues/1008)
+* [APIv11 responses should not include \<result\> element](https://github.com/rundeck/rundeck/issues/1008)
 * [ux: clicking "Top" link when browsing jobs in a group takes you to the rundeck home page](https://github.com/rundeck/rundeck/issues/999)
 * [Add MSSQL Support](https://github.com/rundeck/rundeck/pull/972)
 * [job.serverUrl not available in reference job.](https://github.com/rundeck/rundeck/issues/965)

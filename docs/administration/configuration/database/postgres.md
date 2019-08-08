@@ -10,7 +10,7 @@ You can "yum install" or "apt-get install" the server, or you can download rpms 
 
 We have to create the database and user for Rundeck.
 
-If it is not running, start Postgres (with "service postgresql-<version> start" or similar).
+If it is not running, start Postgres (with `service postgresql-<version> start` or similar).
 
 Switch to 'postgres' user and use the 'psql' commandline tool to access the db:
 
