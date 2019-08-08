@@ -60,7 +60,7 @@ the "opt2" option directly from the top-level job to the Job reference.
 
 This is similar to calling the other Job with [run]:
 
-```{.bash}
+```bash
 run [filter-options] -j group/jobname -- -opt1 something -opt2 somethingelse
 ```
 
@@ -147,7 +147,7 @@ Click on the "Advanced" link to reveal the input.
 
 Enter a command that will be used as the _invocation_ to run the script, by including `${scriptfile}` to define where the resulting file will appear in the invocation command. For example, you can execute the script using `sudo` by entering:
 
-```{.bash}
+```bash
 sudo -u username ${scriptfile}
 ```
 
@@ -155,7 +155,7 @@ This will then allow your script to make use of [Sudo authentication](/administr
 
 The effective commandline for your script will become:
 
-```{.bash}
+```bash
 sudo -u username [scriptfile] arguments ...
 ```
 

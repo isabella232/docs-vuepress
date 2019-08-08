@@ -102,7 +102,7 @@ this menu, too.
 #### Dashboard
 
 View the project description, Readme and executions summary.
-Rundeck Enterprise users may see additionalvisualizations for schedules and execution history.
+Rundeck Enterprise users may see additional visualizations for schedules and execution history.
 
 #### Jobs
 

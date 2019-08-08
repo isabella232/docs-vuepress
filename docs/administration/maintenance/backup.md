@@ -8,7 +8,7 @@ You can use the [rd] tool.
 
 (1) Export the jobs. You will have to do this for each project
 
-    ~~~~~~ {.bash}
+    ~~~~~~ bash
     rd jobs list -f /path/to/backup/dir/project1/jobs.xml -p project1
     rd jobs list -f /path/to/backup/dir/project2/jobs.xml -p project2
     ...
@@ -16,7 +16,7 @@ You can use the [rd] tool.
 
 (2) Stop the server. See: [startup and shutdown](/administration/maintenance/startup.md). (Rundeck data file backup should only be done with the server down.)
 
-    ~~~~~~ {.bash}
+    ~~~~~~ bash
     rundeckd stop
     ~~~~~~
 
@@ -27,7 +27,7 @@ location of the data directory depends on the installation method:
 - Launcher install: `$RDECK_BASE/server/data`
 
 
-    ~~~~~~ {.bash}
+    ~~~~~~ bash
     cp -r data /path/to/backup/dir
     ~~~~~~
 
@@ -37,13 +37,13 @@ location of the data directory depends on the installation method:
 - Launcher install: `$RDECK_BASE/var/logs`
 
 
-    ~~~~~~ {.bash}
+    ~~~~~~ bash
     cp -r logs /path/to/backup/dir
     ~~~~~~
 
 (5) Start the server
 
-    ~~~~~~ {.bash}
+    ~~~~~~ bash
     rundeckd start
     ~~~~~~
 
@@ -53,26 +53,26 @@ location of the data directory depends on the installation method:
 
 (1) Stop the server. See: [startup and shutdown](/administration/maintenance/startup.md). (Rundeck recovery should only be done with the server down.)
 
-    ~~~~~~ {.bash}
+    ~~~~~~ bash
     rundeckd stop
     ~~~~~~
 
 (2) Restore data/logs dir from backup (Refer to above for appropriate log/data path):
 
-    ~~~~~~ {.bash}
+    ~~~~~~ bash
     cp -r /path/to/backup/logs logspath
     cp -r /path/to/backup/data datapath
     ~~~~~~
 
 (3) Start the server:
 
-    ~~~~~~ {.bash}
+    ~~~~~~ bash
     rundeckd start
     ~~~~~~
 
 (4) Reload the Job definitions. You will have to do this for each project:
 
-    ~~~~~~ {.bash}
+    ~~~~~~ bash
     rd jobs load -f /path/to/backup/dir/project1/jobs.xml -p project1
     rd jobs load -f /path/to/backup/dir/project2/jobs.xml -p project2
     ~~~~~~

@@ -82,7 +82,7 @@ can help to create, test, and validate your policy files.
 
 File listing: admin.aclpolicy example
 
-```{.yaml .numberLines}
+```yaml .numberLines
 description: Admin project level access control. Applies to resources within a specific project.
 context:
   project: '.*' # all projects
@@ -316,7 +316,7 @@ The authorizations levels are:
 
 Example to generate a User Token:
 
-```{.yaml}
+```yaml
 description: Allow "ops_team" members to generate User Tokens
 for:
   resource:
@@ -334,7 +334,7 @@ the user must _also_ be authorized to `create` an `apitoken` resource type for a
 
 Example to generate a Service Token:
 
-```{.yaml}
+```yaml
 description: Allow "sec_ops" members to generate Service Tokens, for specific usernames and additional roles
 for:
 
@@ -465,7 +465,7 @@ and specific resource levels.
 
 Recall that defining rules for a generic resource type is done in this way:
 
-```{.yaml}
+```yaml
 for:
   resource:
     - equals:
@@ -476,7 +476,7 @@ for:
 Whereas defining rules for specific resources of a certain type is done in this
 way:
 
-```{.yaml}
+```yaml
 for:
   job:
     - equals:
@@ -486,7 +486,7 @@ for:
 
 Or
 
-```{.yaml}
+```yaml
 for:
   job:
     - equals:
@@ -533,7 +533,7 @@ nor can they download the Job definition file.
 
 File listing: restart_user.aclpolicy example
 
-```{.yaml .numberLines}
+```yaml .numberLines
 description: Limited user access for adm restart action
 context:
   project: '.*'
@@ -582,7 +582,7 @@ rundeck server will not appear on the node filter list.
 
 File listing: remote.aclpolicy
 
-```{.yaml .numberLines}
+```yaml .numberLines
 description: Acess for users on remote group
 context:
   project: '.*'

@@ -16,7 +16,7 @@ The resource format supports two structures: either a Yaml Sequence of [Node def
 
 Example:
 
-```{.yaml}
+```yaml
 - somenode: ...
   ...
 - somenode2: ...
@@ -24,7 +24,7 @@ Example:
 
 OR
 
-```{.yaml}
+```yaml
 somenode:
    hostname: ...
    ...
@@ -99,7 +99,7 @@ _Anything_
 Here's a node, Venkman.local, described with several of the required and optional
 attributes discussed above.
 
-```{.yaml}
+```yaml
 Venkman.local:
   description: Rundeck server node
   hostname: Venkman.local
@@ -117,7 +117,7 @@ to describe the role, environment, group, or class to which a node belongs.
 The Homestar.local example below describes a node that plays the role of a redis server in the
 production environment.
 
-```{.yaml}
+```yaml
 Homestar.local:
   description: The production redis server.
   hostname: Homestar.local
@@ -131,7 +131,7 @@ Homestar.local:
 
 Here's a node, bartholemew, that specifies some custom attributes (app-port, https-port):
 
-```{.yaml}
+```yaml
 bartholemew:
   description: Webapp node
   hostname: bartholemew
@@ -144,7 +144,7 @@ bartholemew:
 
 Here is the same two nodes but in the sequence style syntax:
 
-```{.yaml}
+```yaml
 - Homestar.local:
   description: The production redis server.
   hostname: Homestar.local

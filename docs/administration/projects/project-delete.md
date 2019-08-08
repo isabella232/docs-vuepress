@@ -9,7 +9,7 @@ From the navigation bar choose "Project Settings" and then "Delete Project". You
 Use the `rd projects delete` command to remove the project.
 The `--confirm` flag avoids an interactive check.
 
-```{.bash}
+```bash
 rd projects delete -p MyProject --confirm
 ```
 

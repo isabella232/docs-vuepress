@@ -27,7 +27,7 @@ For deb/rpm installers, the `web.xml` is located in `/var/lib/rundeck/server/exp
 
 Add the following attributes before the last "security-constraint" label (the one that contains the auth-constraint attribute). This will avoid the redirect to the login page if you are not logged in Rundeck.
 
-```{.xml}
+```xml
 <security-constraint>
     <web-resource-collection>
         <web-resource-name>cgi</web-resource-name>
@@ -39,7 +39,7 @@ Add the following attributes before the last "security-constraint" label (the on
 After the last servlet attribute, add the following settings. A folder called
 `WEB-INF/cgi-bin` must be created (the name of the folder can be defined by the user)
 
-````{.xml}
+````xml
 <servlet>
     <servlet-name>CGI</servlet-name>
     <servlet-class>org.eclipse.jetty.servlets.CGI</servlet-class>
@@ -67,7 +67,7 @@ After the last servlet attribute, add the following settings. A folder called
 
 Add the following settings after the last "servlet-mapping" attribute. The "cgi-bin" name must match with the settings defined on the servlet.
 
-```{.xml}
+```xml
 <servlet-mapping>
     <servlet-name>CGI</servlet-name>
     <url-pattern>/cgi-bin/*</url-pattern>
@@ -87,7 +87,7 @@ The example below uses a python script to demonstrate this.
 
 Create the following script on `$RDECK_BASE/server/exp/webapp/WEB-INF/cgi-bin/status`
 
-```{.python}
+```python
 #!/usr/bin/python
 
 import sys

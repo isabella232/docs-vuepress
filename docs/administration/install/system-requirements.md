@@ -49,7 +49,7 @@ in your environment before running the launcher. The RPM will use the java found
 
 Verify your Java version to check it meets the requirement:
 
-```{.bash}
+```bash
 $ java -version
 ```
 
@@ -68,7 +68,7 @@ When the server starts, it binds to several TCP ports by default:
 
 To check if the ports are free on a Unix host, run:
 
-```{.bash}
+```bash
 $ netstat -an | egrep '4440|4443'
 ```
 

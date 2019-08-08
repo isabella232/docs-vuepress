@@ -23,7 +23,7 @@ You specify the `dataSource.` configuration properties.
 
 Here is the default, set up for the default embedded H2 database:
 
-```{.java}
+```java
 dataSource.dbCreate = update
 dataSource.url = jdbc:h2:file:/var/lib/rundeck/data/grailsdb;MVCC=true
 ```
@@ -43,7 +43,7 @@ for your specific Database type.
 
 Rundeck includes a JDBC driver for Mysql, MariaDB, Postgres, MSsql and H2. If you are using another database or if you want to use an updated driver, copy the appropriate JDBC driver, such as "ojdbc14.jar" for Oracle into the server `lib` dir:
 
-```{.bash}
+```bash
 cp ojdbc14.jar $RDECK_BASE/server/lib
 
 For RPM and DEB you should create /var/lib/rundeck/lib folder and place the driver there.

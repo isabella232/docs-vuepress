@@ -102,25 +102,25 @@ Here are some examples of using the `editUrl` and `remoteUrl` in a resources.xml
 
 Specify a simple URL for editing, which will simply produce a link:
 
-```{.xml}
+```xml
 <node name="venkman" editUrl="http://mycmdb:8080/node/edit" ... />
 ```
 
 Specify a URL for editing, with embedded "name" property as a parameter:
 
-```{.xml}
+```xml
 <node name="venkman" editUrl="http://mycmdb:8080/node/edit?name=${node.name}" ... />
 ```
 
 Specify a remote URL with embedded "name" and "project" properties as parameters:
 
-```{.xml}
+```xml
 <node name="venkman" remoteUrl="http://mycmdb:8080/node/edit?name=${node.name}&amp;project=${node.project}" ... />
 ```
 
 Specify a remote URL with embedded "name" property as part of the path:
 
-```{.xml}
+```xml
 <node name="venkman" remoteUrl="http://mycmdb:8080/node/edit/${node.name}"  ... />
 ```
 
@@ -128,7 +128,7 @@ In YAML, some examples:
 
 Specify a remote URL with embedded "name" and "project" properties as parameters:
 
-```{.yaml}
+```yaml
 venkman:
   nodename: venkman
   remoteUrl: http://mycmdb:8080/node/edit?name=${node.name}&amp;project=${node.project}
@@ -136,7 +136,7 @@ venkman:
 
 Specify a remote URL with embedded "name" property as part of the path:
 
-```{.yaml}
+```yaml
 venkman:
   nodename: venkman
   remoteUrl: "http://mycmdb:8080/node/edit/${node.name}

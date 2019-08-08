@@ -29,7 +29,7 @@ Authorization can be granted for these actions:
 
 ### Examples
 
-```{.yaml}
+```yaml
 description: authorize keys/ storage files
 context:
   application: 'rundeck'

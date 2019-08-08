@@ -79,7 +79,7 @@ The [rd projects][rd] command can be used to script the creation for projects. S
 Execute the `rd projects create` command and
 specify a project name, here we use "MyProject":
 
-```{.bash}
+```bash
 rd projects create -p MyProject
 ```
 
@@ -87,7 +87,7 @@ You can also declare configuration properties when you create the project.
 
 Here a project label and the default SSH key properties are declared as command line options:
 
-```{.bash}
+```bash
 rd projects create -p MyProject -- \
    --project.label="My Project" \
    --project.ssh-keypath=/home/rundeck/.ssh/id_rsa
@@ -96,7 +96,7 @@ rd projects create -p MyProject -- \
 You can specify a resource model source by specifying keys as command line options, too.
 Here a Directory model source is also defined.
 
-```{.bash}
+```bash
 rd projects create -p MyProject -- \
   --project.label="My Project" \
   --project.ssh-keypath=/home/rundeck/.ssh/id_rsa \

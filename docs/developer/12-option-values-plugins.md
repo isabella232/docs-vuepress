@@ -45,7 +45,7 @@ _Project scope property definition in `project.properties`_
 
 ## Java Plugin Type
 
-```{.java}
+```java
 package com.plugin.optionvalue;
 
 import com.dtolabs.rundeck.core.plugins.Plugin;
@@ -92,7 +92,7 @@ public class FooOptionValues implements OptionValuesPlugin {
 
 ## Groovy Plugin Type
 
-```{.groovy}
+```groovy
 import com.dtolabs.rundeck.plugins.option.OptionValuesPlugin
 
 rundeckPlugin(OptionValuesPlugin) {

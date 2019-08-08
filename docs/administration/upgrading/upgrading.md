@@ -58,7 +58,7 @@ Use the following methods to update your DB schema for Mysql or H2 if you are up
 1. Stop Rundeck
 2. Run the following SQL script, to rename the `user` column in the `job_file_record` table to `rduser`.
 
-```{.sql}
+```sql
 use rundeck;
 alter table job_file_record change column user rduser varchar(255) not null;
 ```
@@ -90,13 +90,13 @@ To run the script you will need:
 
 Save this into a file `upgrade-2.8.1.sql`:
 
-```{.sql}
+```sql
 alter table job_file_record rename column user to rduser;
 ```
 
 Run this command:
 
-```{.bash}
+```bash
 H2_JAR_FILE=... #jar file location
 H2_URL=...      #jdbc URL
 java -cp $H2_JAR_FILE org.h2.tools.RunScript  \

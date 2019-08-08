@@ -27,7 +27,7 @@ Attributes of the `notification` element will include:
 
 _Example_
 
-```{.xml}
+```xml
 <notification trigger="success" executionId="[ID]" status="[STATUS]">
     <executions count="1">
         <execution ...>

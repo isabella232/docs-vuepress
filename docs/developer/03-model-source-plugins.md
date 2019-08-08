@@ -24,7 +24,7 @@ your Factory class will be invoked to produce it.
 Your provider class must implement the interface
 [ResourceModelSourceFactory](${javadocbase}/com/dtolabs/rundeck/core/resources/ResourceModelSourceFactory.html):
 
-```{.java}
+```java
 public interface ResourceModelSourceFactory {
     /**
      * Return a resource model source for the given configuration
@@ -58,7 +58,7 @@ of three different types (Integer, String, FreeSelect).
 
 Example: plugin.yaml
 
-```{.yaml .numberLines}
+```yaml .numberLines
 name: My Resource Model Source
 version: 1.0
 rundeckPluginVersion: 1.0
@@ -94,7 +94,7 @@ the plugin properties (see script below).
 
 Example script-file: nodes.sh
 
-```{.bash}
+```bash
 #!/usr/bin/env bash
 
 # variables set by plugin properties:

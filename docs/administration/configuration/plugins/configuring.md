@@ -78,7 +78,7 @@ _FileCopier provider attributes_:
 
 Example Node in YAML specifying `stub` NodeExecutor and FileCopier:
 
-```{.yaml}
+```yaml
 remotehost:
     hostname: remotehost
     node-executor: stub

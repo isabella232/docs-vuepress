@@ -23,7 +23,7 @@ When serializing/exporting Nodes data to this format, the generator will produce
 
 Map example:
 
-```{.json}
+```json
 {
   "node1": {
     "nodename":"node1",
@@ -38,7 +38,7 @@ Map example:
 
 Array example:
 
-```{.json}
+```json
 [
   {
     "nodename":"node1",
@@ -116,7 +116,7 @@ _Anything_
 Here's a document with two nodes, with several of the required and optional
 attributes discussed above.
 
-```{.json}
+```json
 {
   "madmartigan.local": {
     "tags": "local,server",

@@ -24,7 +24,7 @@ The administrator can create the project using the
 [rd] command line tool. Logged in on the
 rundeck server as the user "rundeck", the administrator executes:
 
-```{.bash}
+```bash
 rd projects create -p anvils
 ```
 
@@ -60,7 +60,7 @@ www1, www2, app1, app2, db1:
 
 File listing: /var/rundeck/projects/anvils/nodes/resources.xml
 
-```{.xml .numberLines}
+```xml .numberLines
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
   <node name="www1.anvils.com" description="A www server node." tags="www"

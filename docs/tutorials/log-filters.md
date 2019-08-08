@@ -20,7 +20,7 @@ First, we need to create a script to build the package. For convenience, let's s
 
 First we need to download the binary we want to distribute:
 
-```{.bash}
+```bash
 $!/bin/bash -xe
 
 # Change to a new temporary directory
@@ -41,14 +41,14 @@ unzip $(basename "$URL")
 
 Then we need to package the binary into a .deb format. We'll use the very handy [fpm](https://github.com/jordansissel/fpm) utility to abstract the gory details into a one-liner:
 
-```{.bash}
+```bash
 # Call fpm with a directory as the source and a deb as the target. Name the package consul and give it the same version as what we downloaded.
 fpm -s dir -t deb --name "$NAME" --version "$VERSION" "$PKG_DIR"
 ```
 
 We want the consul binary to be executable in the system's executable path, so we create that directory structure before calling fpm:
 
-```{.bash}
+```bash
 PKG_DIR=usr
 mkdir -p "$PKG_DIR/bin"
 install ./consul "$PKG_DIR/bin"
@@ -57,7 +57,7 @@ fpm -s dir -t deb --name "$NAME" --version "$VERSION" "$PKG_DIR"
 
 The full script so far looks like:
 
-```{.bash}
+```bash
 $!/bin/bash -xe
 
 # Change to a new temporary directory
@@ -88,7 +88,7 @@ fpm -s dir -t deb --name "$NAME" --version "$VERSION" --deb-no-default-config-fi
 
 If you run that you might get:
 
-```{.bash}
+```bash
 + fpm -s dir -t deb --name consul --version 1.2.3 --deb-no-default-config-files usr
 Created package {:path=>"consul_1.2.3_amd64.deb"}
 ```
@@ -97,7 +97,7 @@ Created package {:path=>"consul_1.2.3_amd64.deb"}
 
 You could do that, especially if you had a custom script plugin to do uploads. However for this tutorial, we'll just do the uploading from the same script, so we'll capture the outputted filename like this:
 
-```{.bash}
+```bash
 DEB_FILE=$(fpm -s dir -t deb --name "$NAME" --version "$VERSION" --deb-no-default-config-files  "$PKG_DIR" \
     | ruby -e 'puts eval(STDIN.read)[:path]')
 ```
@@ -106,7 +106,7 @@ Here we're piping the fpm output into a Ruby snippet to parse the map and print 
 
 Now we upload the .deb file using the AWS CLI tool and a set of AWS credentials passed into the script:
 
-```{.bash}
+```bash
 S3_URL="s3://rundeck-playground/consul/${DEB_FILE}"
 echo "INFO - Uploading $DEB_FILE to $S3_URL"
 export AWS_ACCESS_KEY_ID=$1
@@ -120,7 +120,7 @@ In the Rundeck Playground environment, you don't need to create the bucket befor
 
 Lastly, we want to generate a presigned url that we want Rundeck to pass to the destination nodes that will install the package. To do that:
 
-```{.bash}
+```bash
 echo "INFO - Generating presigned url for $S3_URL"
 DOWNLOAD_URL=$(aws s3 presign "$S3_URL")
 echo "RUNDECK:DATA:DOWNLOAD_URL = $DOWNLOAD_URL"
@@ -133,7 +133,7 @@ Now, we print out the variables we want to use in subsequent Rundeck steps in a 
 
 The full build.sh script:
 
-```{.bash}
+```bash
 #!/bin/bash -xe
 
 S3_BASE=rundeck-playground/consul/
@@ -180,7 +180,7 @@ To trigger build script we just created, we could use a Rundeck script step. How
 
 The build script's plugin.yaml would look like:
 
-```{.yaml}
+```yaml
 name: deb builder
 version: 1
 rundeckPluginVersion: 1.2
@@ -211,7 +211,7 @@ Note the `renderingOptions:valueConversion: "STORAGE_PATH_AUTOMATIC_READ"` setti
 
 Now we need a job to trigger the script step. It might look like this:
 
-```{.yaml}
+```yaml
 - uuid: PackageDeb
   name: PackageDeb
   nodefilters:
@@ -235,7 +235,7 @@ If we test it out in the web UI, the output might look like:
 
 Here we can apply our first log filter to call out our high level logging output so that it stands out from the low level script commands.
 
-```{.yaml}
+```yaml
 - uuid: PackageDeb
   name: PackageDeb
   nodefilters:
@@ -264,7 +264,7 @@ Now we can more easily skim the log output for the important steps.
 
 Remember this snippet of our build script?
 
-```{.bash}
+```bash
 set +x
 export AWS_SECRET_ACCESS_KEY=$2
 set -x
@@ -276,7 +276,7 @@ What if we didn't have the foresight to supress that output? Could we prevent ou
 
 We can partially protect ourselves using the `quiet-output` log filter:
 
-```{.yaml}
+```yaml
   sequence:
     pluginConfig:
       LogFilter:
@@ -292,13 +292,13 @@ Here we're saying at any log level, if you see the string `AWS_SECRET_ACCESS_KEY
 
 Additionally, it won't prevent something like:
 
-```{.bash}
+```bash
 echo $AWS_SECRET_ACCESS_KEY
 ```
 
 Because `bash -x` logging would have evaluated the variable already and it will show up as:
 
-```{.bash}
+```bash
 + echo whatever_the_value_is
 ```
 
@@ -310,7 +310,7 @@ We want to install the package on different nodes than we built it on, but there
 
 We can create another job to install the package and reference the build job to trigger the build. Here is the new job:
 
-```{.yaml}
+```yaml
 - name: InstallDeb
   nodefilters:
     filter: web_.*
@@ -339,7 +339,7 @@ The second step is an inline script to download and install the package. We don'
 
 But wait, how does this job know what the download url and the name of the package file are? At last, this is where the key value log filter comes into play:
 
-```{.yaml}
+```yaml
 - name: InstallDeb
   nodefilters:
     filter: web_.*
@@ -371,7 +371,7 @@ However! If the InstallDeb's own log output printed out `RUNDECK:DATA:DOWNLOAD_U
 
 Instead, we need to export the variables from the build job so that the install job has access to them. Modifying the PackageDeb job:
 
-```{.yaml}
+```yaml
 - uuid: PackageDeb
   name: PackageDeb
   nodefilters:
@@ -407,7 +407,7 @@ The key here is the `export-var` steps to move the `data.DOWNLOAD_URL` and `data
 
 Now our InstallDeb job can use those global variables:
 
-```{.yaml}
+```yaml
 - name: InstallDeb
   nodefilters:
     filter: web_.*

@@ -65,7 +65,7 @@ Annotate your class with `@Plugin` and use the service name `WorkflowStep`.
 
 Implement the interface [StepPlugin](${javadocbase}/com/dtolabs/rundeck/plugins/step/StepPlugin.html):
 
-```{.java}
+```java
 /**
   * Execute the step.
   *
@@ -86,7 +86,7 @@ Annotate your class with `@Plugin` and use the service name `WorkflowNodeStep`.
 
 Implement the interface [NodeStepPlugin](${javadocbase}/com/dtolabs/rundeck/plugins/step/NodeStepPlugin.html):
 
-```{.java}
+```java
 /**
  * Execute the plugin step logic for the given node.
  *
@@ -115,7 +115,7 @@ Annotate your class with `@Plugin` and use the service name `RemoteScriptNodeSte
 
 Implement the interface [RemoteScriptNodeStepPlugin](${javadocbase}/com/dtolabs/rundeck/plugins/step/RemoteScriptNodeStepPlugin.html):
 
-```{.java}
+```java
 /**
  * Generate a full script or command string to execute on the remote node
  *
@@ -135,7 +135,7 @@ Your implementation should return a [GeneratedScript](${javadocbase}/com/dtolabs
 [GeneratedScriptBuilder](${javadocbase}/com/dtolabs/rundeck/plugins/step/GeneratedScriptBuilder.html) class to generate the appropriate return type using these
 two factory methods:
 
-```{.java}
+```java
 /**
  * Create a script
  *
@@ -157,7 +157,7 @@ public static GeneratedScript command(final String... command);
 Each plugin is passed a [PluginStepContext](${javadocbase}/com/dtolabs/rundeck/plugins/step/PluginStepContext.html) instance that provides access to
 details about the step and its configuration:
 
-```{.java}
+```java
 public interface PluginStepContext {
     /**
      * Return the logger
@@ -220,7 +220,7 @@ Two additional [provider metadata properties](/developer/01-plugin-development.m
 To define [property scopes](/developer/02-plugin-annotations.md#property-scopes],
 add a `scope` entry in the map for a configuration property:
 
-```{.yaml}
+```yaml
   config:
     - type: Integer
       name: count

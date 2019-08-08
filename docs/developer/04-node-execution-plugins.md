@@ -12,7 +12,7 @@ local node.
 Your provider class must implement the interface
 [NodeExecutor](${javadocbase}/com/dtolabs/rundeck/core/execution/service/NodeExecutor.html):
 
-```{.java}
+```java
 public interface NodeExecutor {
      public NodeExecutorResult executeCommand(ExecutionContext context,
               String[] command, INodeEntry node);

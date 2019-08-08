@@ -26,7 +26,7 @@ Attributes of `@PluginDescription`:
 
 Example:
 
-```{.java}
+```java
 @Plugin(name="myplugin", service=ServiceNameConstants.WorkflowStep)
 @PluginDescription(title="My Plugin", description="Performs a custom step")
 public class MyPlugin implements StepPlugin{
@@ -46,7 +46,7 @@ annotation, which can contain multiple [\@PluginMetadata][] values.
 
 Example:
 
-```{.java}
+```java
 @Plugin(name="myplugin", service=ServiceNameConstants.WorkflowStep)
 @PluginMetadata(key="anykey", value="anyvalue")
 public class MyPlugin implements StepPlugin{
@@ -105,7 +105,7 @@ Attributes:
 
 Examples:
 
-```{.java}
+```java
 @PluginProperty(title = "Name", description = "What is your name?", required = true)
 private String name;
 

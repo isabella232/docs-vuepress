@@ -101,7 +101,7 @@ Set Policy:
 
 ![](~@assets/img/aws-s3-policy.png)
 
-```{.json}
+```json
 {
     "Version": "2012-10-17",
     "Statement": [

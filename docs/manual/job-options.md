@@ -208,7 +208,7 @@ The arguments passed to the script are defined as `${option.message}`.
 Here's the content of this simple script that shows the various
 forms to access the value of the "message" option.
 
-```{.bash .numberLines}
+```bash .numberLines
 #!/bin/sh
 echo envvar=$RD_OPTION_MESSAGE ;# access message as environment variable.
 echo args=$1                   ;# read value passed into argument vector
@@ -223,7 +223,7 @@ When the user runs the "hello" job they will be prompted for the
 Let's assume they chose the word "howdy" in response.
 The output of the Job will be:
 
-```{.bash}
+```bash
 envar=howdy
 args=howdy
 message=howdy
@@ -233,7 +233,7 @@ If you define the option to be _Required_, then the Job will fail to run unless 
 
 If you define the option to not be _Required_, then the option value is allowed to be blank, and specifying a blank value would result in:
 
-```{.bash}
+```bash
 envar=
 args=
 message=
@@ -249,14 +249,14 @@ As a precaution you might test existence for the variable and
 perhaps set a default value.
 To test its existence you might use:
 
-```{.bash}
+```bash
 test -s "$RD_OPTION_NAME"
 ```
 
 You might also use a Bash feature that tests and defaults it to a
 value:
 
-```{.bash}
+```bash
 ${RD_OPTION_NAME:=mydefault}
 ```
 
@@ -266,7 +266,7 @@ If the option is blank or unset the token will be replaced with a blank
 string. You might write your script a bit more defensively and
 change the implementation like so:
 
-```{.bash}
+```bash
 message="@option.message@"
 if [ -z "$message" ]
 then
@@ -281,7 +281,7 @@ fi
 If you want to use the `@` char in a way that looks like a replacement token
 you can escape it using `@@`, i.e. doubling it.
 
-```{.bash}
+```bash
 # escaping of @ sign to avoid expansion before the @option.domain@
 email="user@@mail.@option.domain@"
 
@@ -299,7 +299,7 @@ You do not need to escape the `@` sign in all cases, only when it might look
 like an expansion token. If there are any whitespace characters
 before the next `@` sign, it does not need to be escaped:
 
-```{.bash}
+```bash
 # first @ sign does not need to be escaped
 text="Hi user@somewhere, @option.greeting@!"
 ```
@@ -316,7 +316,7 @@ You should also be careful in how arguments to scripts are used within a script.
 
 For example, if you have a Shell script step with argument string `${option.message}`, and script:
 
-```{.bash}
+```bash
 #!/bin/bash
 
 echo $1
@@ -326,7 +326,7 @@ Then this script will partially expand the `${option.message}` value a second ti
 
 You should do something like this instead:
 
-```{.bash}
+```bash
 #!/bin/bash
 
 echo "$1"
@@ -461,7 +461,7 @@ _Examples_
 
 Simple List:
 
-```{.json}
+```json
 ["x value for test","y value for test"]
 ```
 
@@ -469,7 +469,7 @@ This will populate the select menu with the given values.
 
 Simple Object:
 
-```{.json}
+```json
 { "Name": "value1", "Name2":"value2" }
 ```
 
@@ -477,7 +477,7 @@ This will populate the select menu to show the names and use the values.
 
 Name Value List:
 
-```{.json}
+```json
 [
   {"name":"X Label", "value":"x value"},
   {"name":"Y Label", "value":"y value"},
@@ -492,7 +492,7 @@ For a single valued option, the first result with `selected=true` will be select
 
 Name Value List with default selections:
 
-```{.json}
+```json
 [
   {"name":"X Label", "value":"x value", "selected": true},
   {"name":"Y Label", "value":"y value"},
