@@ -448,7 +448,7 @@ inject the private key the job would normally use in the agent,
 make the agent available on the newly created jsch connection
 and enable agent forwarding on the connection.
 Once the job is done the ssh-agent is killed.
-Optionally ssh-agent can be started with "-t <ttl>"
+Optionally ssh-agent can be started with `-t <ttl>`
 which will guarantee the private key will be flushed at that time
 if by some chance it's not killed.
 

@@ -5562,7 +5562,7 @@ Response, based on `Accept` header:
 
 `Content-Type: text/plain` ([Java Properties](https://en.wikipedia.org/wiki/.properties)-formatted text.)
 
-``` text
+```
 key=value
 key2=value
 ```
@@ -5597,7 +5597,7 @@ Content:
 
 `Content-Type: text/plain` ([Java Properties](https://en.wikipedia.org/wiki/.properties)-formatted text.)
 
-``` text
+```
 key=value
 key2=value
 ```
@@ -5628,7 +5628,7 @@ Request and response formats:
 
 `text/plain`: the plain text key value
 
-``` text
+```
 key value
 ```
 

@@ -253,7 +253,7 @@ By default, these headers are enabled, but they can be individually disabled, or
 
 Additionally, custom headers can be enabled if required.
 
-```.properties
+```properties
 # enable security headers filter to add these headers (default: true)
 rundeck.security.httpHeaders.enabled=true
 
