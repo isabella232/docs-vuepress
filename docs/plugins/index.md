@@ -18,30 +18,30 @@ More plugins can be found via:
 
 Type|Plugin|Description|Availability
 ----|----|--------|----
-Node Step | [Command](/manual/node-steps/builtin.md#command-step] | Calls system commands on remote nodes | Built-in
-Node Step | [Script](/manual/node-steps/builtin.md#script-step] | Executes script contents | Built-in
-Node Step | [Script File](/manual/node-steps/builtin.md#script-file-step] | Executes script files | Built-in
-Node Step | [Script URL](/manual/node-steps/builtin.md#script-url-step] | Downloads and executes scripts from URLs | Built-in
-Node Step | [Job Reference](/manual/node-steps/builtin.md#job-reference-step] | Calls other jobs | Built-in
-Node Step | [Copy File](/manual/node-steps/builtin.md#copy-file-step] | Copies a file to a remote node | Built-in
-Node Step | [Local Command](/manual/node-steps/builtin.md#local-command-step] | Execute system commands locally | Built-in
-Node Step | [Data Node](/manual/node-steps/builtin.md#data-node-step] | Produces data values for a node | Built-in
+Node Step | [Command](/manual/node-steps/builtin.md#command-step) | Calls system commands on remote nodes | Built-in
+Node Step | [Script](/manual/node-steps/builtin.md#script-step) | Executes script contents | Built-in
+Node Step | [Script File](/manual/node-steps/builtin.md#script-file-step) | Executes script files | Built-in
+Node Step | [Script URL](/manual/node-steps/builtin.md#script-url-step) | Downloads and executes scripts from URLs | Built-in
+Node Step | [Job Reference](/manual/node-steps/builtin.md#job-reference-step) | Calls other jobs | Built-in
+Node Step | [Copy File](/manual/node-steps/builtin.md#copy-file-step) | Copies a file to a remote node | Built-in
+Node Step | [Local Command](/manual/node-steps/builtin.md#local-command-step) | Execute system commands locally | Built-in
+Node Step | [Data Node](/manual/node-steps/builtin.md#data-node-step) | Produces data values for a node | Built-in
 Node Step | [Jira](/manual/node-steps/jira.md) | Creates or updates Jira issues | Enterprise
 Node Step | [SQL Runner](/manual/node-steps/sqlrunner.md) | Executes SQL scripts against JDBC URLs | Enterprise
 Node Step | [VMware](/manual/node-steps/vmware.md) | Controls VMware VMs' power state | Enterprise
-Workflow Step | [Ansible module](/manual/workflow-steps/builtin.md#ansible-module] | Runs Ansible modules | Built-in
-Workflow Step | [Ansible playbook inline](/manual/workflow-steps/builtin.md#ansible-playbook-inline] | Runs Ansible playbooks inline | Built-in
-Workflow Step | [Ansible playbook](/manual/workflow-steps/builtin.md#ansible-playbook] | Runs Ansible playbooks | Built-in
-Workflow Step | [Global variable](/manual/workflow-steps/builtin.md#global-variable] | | Built-in
-Workflow Step | [Flow control](/manual/workflow-steps/builtin.md#flow-control] | | Built-in
-Workflow Step | [Job state conditional](/manual/workflow-steps/builtin.md#job-state-conditional] | | Built-in
-Workflow Step | [Log data step](/manual/workflow-steps/builtin.md#log-data-step] | | Built-in
-Workflow Step | [Refresh project nodes](/manual/workflow-steps/builtin.md#refresh-project-nodes] | | Built-in
-Workflow Step | [Data step](/manual/workflow-steps/builtin.md#data-step] | | Built-in
+Workflow Step | [Ansible module](/manual/workflow-steps/builtin.md#ansible-module) | Runs Ansible modules | Built-in
+Workflow Step | [Ansible playbook inline](/manual/workflow-steps/builtin.md#ansible-playbook-inline) | Runs Ansible playbooks inline | Built-in
+Workflow Step | [Ansible playbook](/manual/workflow-steps/builtin.md#ansible-playbook) | Runs Ansible playbooks | Built-in
+Workflow Step | [Global variable](/manual/workflow-steps/builtin.md#global-variable) | | Built-in
+Workflow Step | [Flow control](/manual/workflow-steps/builtin.md#flow-control) | | Built-in
+Workflow Step | [Job state conditional](/manual/workflow-steps/builtin.md#job-state-conditional) | | Built-in
+Workflow Step | [Log data step](/manual/workflow-steps/builtin.md#log-data-step) | | Built-in
+Workflow Step | [Refresh project nodes](/manual/workflow-steps/builtin.md#refresh-project-nodes) | | Built-in
+Workflow Step | [Data step](/manual/workflow-steps/builtin.md#data-step) | | Built-in
 Workflow Step | [Jira](/manual/workflow-steps/jira.md) | Creates or updates Jira issues | Enterprise
 Workflow Step | [File Transfer](/manual/workflow-steps/file-transfer.md) | Transfers files via FTP, SFTP or HTTP | Enterprise
 Workflow Step | [Github](/manual/workflow-steps/github.md) | Runs scripts from a GitHub repo | Enterprise
-Workflow Step | [Progress Badge](/manual/workflow-steps/progress-badge.md#progress-badge-workflow-step-plugin] | Create graphic badges in log output | Enterprise
+Workflow Step | [Progress Badge](/manual/workflow-steps/progress-badge.md#progress-badge-workflow-step-plugin) | Create graphic badges in log output | Enterprise
 Workflow Step | [ServiceNow](/manual/workflow-steps/servicenow.md) | Creates or modifies ServiceNow cases | Enterprise
 Workflow Step | [VMware](/manual/workflow-steps/vmware.md) | Creates or modifies VMware VMs | Enterprise
 Notifications | [Email](/manual/notifications/email.md) | Sends emails when a job finishes | Built-in
@@ -49,9 +49,9 @@ Notifications | [Webhooks](/manual/notifications/webhooks.md) | Sends HTTP POST 
 Notifications | [Jira](/manual/notifications/jira.md) | Creates or modifies Jira issues when a job finishes | Enterprise
 Notifications | [ServiceNow](/manual/notifications/servicenow.md) | Comment or Create an Incident on Service Now | Enterprise
 Workflow Strategy | [Ruleset](/manual/workflow-strategies/ruleset.md) | Defines rules for when steps in a workflow should run | Enterprise
-Node Orchestrator | [Random Subset](/manual/orchestrator-plugins/bundled.md#random-subset] | Selects a maximum number of the target nodes at random | Built-in
-Node Orchestrator | [Ranked Tiered](/manual/orchestrator-plugins/bundled.md#ranked-tired] | Processes nodes in a tiered manner, ordered by rank | Built-in
-Node Orchestrator | [Max Percentage](/manual/orchestrator-plugins/bundled.md#max-percentage] | Processes at maximum a percentage of the target nodes | Built-in
+Node Orchestrator | [Random Subset](/manual/orchestrator-plugins/bundled.md#random-subset) | Selects a maximum number of the target nodes at random | Built-in
+Node Orchestrator | [Ranked Tiered](/manual/orchestrator-plugins/bundled.md#ranked-tired) | Processes nodes in a tiered manner, ordered by rank | Built-in
+Node Orchestrator | [Max Percentage](/manual/orchestrator-plugins/bundled.md#max-percentage) | Processes at maximum a percentage of the target nodes | Built-in
 Node Orchestrator | [Highest/Lowest Attribute Value](/manual/orchestrator-plugins/highest-lowest.md) | Picks one node with either the highest or lowest value of a certain attribute | Enterprise
 Log Filter | [Mask Passwords](/manual/log-filters/mask-passwords.md) | Masks secure input option values from being emitted in the logs | Built-in
 Log Filter | [Render Formatted Data](/manual/log-filters/render-formatted-data.md) | Allows marking formatted data as a certain data type | Built-in
@@ -85,4 +85,4 @@ Resource Format | [JSON](/manpages/man5/resource-json-v10.md) | JSON Format for 
 SCM | [Git](/administration/projects/scm/git.md) | Imports or exports jobs from a Git repository | Community
 SCM | [Job Replication](/administration/projects/scm/job-replication.md) | Replicates job state between Rundeck Cluster instances | Enterprise
 SSO | [Okta](/administration/security/sso.md) | Allows you to use Okta to log into Rundeck | Enterprise
-Storage Converter | [Encyption](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin] | Encrypts Key Storage and Project configuration data | Built-in
+Storage Converter | [Encyption](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin) | Encrypts Key Storage and Project configuration data | Built-in

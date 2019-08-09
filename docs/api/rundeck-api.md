@@ -1,4 +1,4 @@
-# API Reference | Version 31
+# API Reference | Version {{ $themeConfig.apiVersion }}
 
 Rundeck provides a Web API for use with your application.
 
@@ -59,14 +59,14 @@ Changes introduced by API Version number:
     - [`GET /api/V/system/executions/status`][/api/V/system/executions/status] - Gets the current execution mode.
     
 * Updated Endpoints:
-    - [`GET /api/V/project/[PROJECT*]/executions/running`][/api/V/project/[PROJECT*]/executions/running] - Added `jobIdFilter` parameter to return running executions for a specific job.
-    - [`GET /api/V/job/[ID]/forecast`][/api/V/job/[ID]/forecast] - Added `past` parameter to return inverse forecast.
+    - [`GET /api/V/project/[PROJECT]/executions/running`][/api/V/project/\[PROJECT\]/executions/running] - Added `jobIdFilter` parameter to return running executions for a specific job.
+    - [`GET /api/V/job/[ID]/forecast`][/api/V/job/\[ID\]/forecast] - Added `past` parameter to return inverse forecast.
     - [`PUT /api/V/scheduler/takeover`][/api/V/scheduler/takeover] - Added capability to specify multiple job ids.
 
 **Version 31**:
 
 * New Endpoint:
-    - [`GET /api/V/job/[ID]/forecast`][/api/V/job/[ID]/forecast] - Get a forecast for a specific amount of days of the job by ID.
+    - [`GET /api/V/job/[ID]/forecast`][/api/V/job/\[ID\]/forecast] - Get a forecast for a specific amount of days of the job by ID.
 
 **Version 30**:
 
@@ -77,13 +77,13 @@ Changes introduced by API Version number:
 
 * New Endpoints:
     - [`GET /api/V/executions/metrics`][/api/V/executions/metrics] - Get metrics over a system-wide execution query.
-    - [`GET /api/V/project/[PROJECT]/executions/metrics`][/api/V/project/[PROJECT]/executions/metrics] - Get metrics over a project-wide execution query.
+    - [`GET /api/V/project/[PROJECT]/executions/metrics`][/api/V/project/\[PROJECT\]/executions/metrics] - Get metrics over a project-wide execution query.
 
 **Version 28**:
 
 * Updated Endpoints:
-    - [`GET /api/V/project/[PROJECT]/export`][/api/V/project/[PROJECT]/export] - exportScm parameter.
-    - [`PUT /api/V/project/[PROJECT]/import`][/api/V/project/[PROJECT]/import] - importScm parameter.
+    - [`GET /api/V/project/[PROJECT]/export`][/api/V/project/\[PROJECT\]/export] - exportScm parameter.
+    - [`PUT /api/V/project/[PROJECT]/import`][/api/V/project/\[PROJECT\]/import] - importScm parameter.
 
 **Version 27**:
 
@@ -110,24 +110,24 @@ Changes introduced by API Version number:
 **Version 24**:
 
 * New Endpoints.
-    - [`POST /api/V/job/[ID]/retry/[EXECID]`][POST /api/V/job/[ID]/retry/[EXECID]] - Retry a Job based on execution
+    - [`POST /api/V/job/[ID]/retry/[EXECID]`][POST /api/V/job/\[ID\]/retry/\[EXECID\]] - Retry a Job based on execution
 
 **Version 23**:
 
 * New Endpoints. (replacing removed `POST /api/2/project/[PROJECT]/resources` endpoint)
-    - [`GET /api/V/project/[PROJECT]/sources`][/api/V/project/[PROJECT]/sources] - List project resource model sources
-    - [`GET /api/V/project/[PROJECT]/source/[INDEX]`][/api/V/project/[PROJECT]/source/[INDEX]] - Get a specific project resource model source by index
-    - [`GET /api/V/project/[PROJECT]/source/[INDEX]/resources`][GET /api/V/project/[PROJECT]/source/[INDEX]/resources] - Get Nodes content from a specific resource model source by index
-    - [`POST /api/V/project/[PROJECT]/source/[INDEX]/resources`][POST /api/V/project/[PROJECT]/source/[INDEX]/resources] - Update Nodes content for a specific Writeable resource model source by index
+    - [`GET /api/V/project/[PROJECT]/sources`][/api/V/project/\[PROJECT\]/sources] - List project resource model sources
+    - [`GET /api/V/project/[PROJECT]/source/[INDEX]`][/api/V/project/\[PROJECT\]/source/\[INDEX\]] - Get a specific project resource model source by index
+    - [`GET /api/V/project/[PROJECT]/source/[INDEX]/resources`][GET /api/V/project/\[PROJECT\]/source/\[INDEX\]/resources] - Get Nodes content from a specific resource model source by index
+    - [`POST /api/V/project/[PROJECT]/source/[INDEX]/resources`][POST /api/V/project/\[PROJECT\]/source/\[INDEX\]/resources] - Update Nodes content for a specific Writeable resource model source by index
 * Updated Endpoints.
-    - [`GET /api/V/project/[PROJECT]/resources`][/api/V/project/[PROJECT]/resources] - Default response format is `application/json` for API v23 and later
-    - [`GET /api/V/project/[PROJECT]/resource/[NAME]`][/api/V/project/[PROJECT]/resource/[NAME]] - Default response format is `application/json` for API v23 and later
+    - [`GET /api/V/project/[PROJECT]/resources`][/api/V/project/\[PROJECT\]/resources] - Default response format is `application/json` for API v23 and later
+    - [`GET /api/V/project/[PROJECT]/resource/[NAME]`][/api/V/project/\[PROJECT\]/resource/\[NAME\]] - Default response format is `application/json` for API v23 and later
 
 **Version 22**:
 
 * Updated Endpoints.
-    - [`GET /api/V/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]/input`][/api/V/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]/input] - Include Job `status`, and `deleted` whether the job file was deleted for Import integration
-    - [`POST /api/V/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]`][/api/V/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]] - Can include `deletedJobs` to delete jobs for Import integration.
+    - [`GET /api/V/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]/input`][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]/input] - Include Job `status`, and `deleted` whether the job file was deleted for Import integration
+    - [`POST /api/V/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]`][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]] - Can include `deletedJobs` to delete jobs for Import integration.
 
 **Version 21**:
 
@@ -135,42 +135,43 @@ Changes introduced by API Version number:
     - `POST /api/2/project/[PROJECT]/resources`
     - `POST /api/2/project/[PROJECT]/resources/refresh`
 * Updated Endpoints.
-    - [`/api/21/execution/[ID]/output`][/api/V/execution/[ID]/output] - Execution output, supports `compacted=true` query parameter for less verbose xml/json results
+    - [`/api/21/execution/[ID]/output`][/api/V/execution/\[ID\]/output] - Execution output, supports `compacted=true` query parameter for less verbose xml/json results
 * New Endpoints.
     - [`GET /api/21/user/list`][/api/V/user/list] - List user profiles
     - [`GET /api/21/user/info`][/api/V/user/info] - Get current user profile
     - [`POST /api/21/user/info`][POST /api/V/user/info] - Modify current user profile
-    - [`GET /api/21/user/info/[USER]`][/api/V/user/info/[USER]] - Get another user's profile
-    - [`POST /api/21/user/info/[USER]`][POST /api/V/user/info/[USER]] - Modify another user's profile
+    - [`GET /api/21/user/info/[USER]`][/api/V/user/info/\[USER\]] - Get another user's profile
+
+    - [`POST /api/21/user/info/[USER]`][POST /api/V/user/info/\[USER\]] - Modify another user's profile
 
 **Version 20**:
 
 * Updated Endpoints.
-    - [`GET /api/20/project/[PROJECT]/executions`][/api/V/project/[PROJECT]/executions] - Executions query, add `executionTypeFilter`
+    - [`GET /api/20/project/[PROJECT]/executions`][/api/V/project/\[PROJECT\]/executions] - Executions query, add `executionTypeFilter`
 
 **Version 19**:
 
 * New Endpoints.
-    - [`POST /api/19/job/[ID]/input/file`][/api/V/job/[ID]/input/file] - Upload file(s) to use for job option values
-    - [`GET /api/19/job/[ID]/input/files`][/api/V/job/[ID]/input/files] - List uploaded files for a job
-    - [`GET /api/19/execution/[ID]/input/files`][/api/V/execution/[ID]/input/files] - List input files used for an execution
-    - [`GET /api/19/jobs/file/[ID]`][/api/V/jobs/file/[ID]] - Get info for an uploaded file
-    - [`GET /api/19/project/[PROJECT]/export/async`][/api/V/project/[PROJECT]/export/async] - Async project archive export
-    - [`GET /api/19/project/[PROJECT]/export/status/[TOKEN]`][/api/V/project/[PROJECT]/export/status/[TOKEN]] - Async project archive export status
-    - [`GET /api/19/project/[PROJECT]/export/download/[TOKEN]`][/api/V/project/[PROJECT]/export/download/[TOKEN]] - Async project archive export download
+    - [`POST /api/19/job/[ID]/input/file`][/api/V/job/\[ID\]/input/file] - Upload file(s) to use for job option values
+    - [`GET /api/19/job/[ID]/input/files`][/api/V/job/\[ID\]/input/files] - List uploaded files for a job
+    - [`GET /api/19/execution/[ID]/input/files`][/api/V/execution/\[ID\]/input/files] - List input files used for an execution
+    - [`GET /api/19/jobs/file/[ID]`][/api/V/jobs/file/\[ID\]] - Get info for an uploaded file
+    - [`GET /api/19/project/[PROJECT]/export/async`][/api/V/project/\[PROJECT\]/export/async] - Async project archive export
+    - [`GET /api/19/project/[PROJECT]/export/status/[TOKEN]`][/api/V/project/\[PROJECT\]/export/status/\[TOKEN\]] - Async project archive export status
+    - [`GET /api/19/project/[PROJECT]/export/download/[TOKEN]`][/api/V/project/\[PROJECT\]/export/download/\[TOKEN\]] - Async project archive export download
 
 * Updated Endpoints.
-    - [`POST /api/19/tokens/[USER]`][POST /api/V/tokens/[USER]] - Specify token roles and expiration
-    - [`GET /api/19/tokens/[USER]`][/api/V/tokens/[USER]] - List tokens for users
-    - [`GET /api/19/token/[ID]`][/api/V/token/[ID]] - Get Token string for Token ID
-    - [`GET /api/19/project/[PROJECT]/export`][/api/V/project/[PROJECT]/export] - Additional parameters to select archive contents.
+    - [`POST /api/19/tokens/[USER]`][POST /api/V/tokens/\[USER\]] - Specify token roles and expiration
+    - [`GET /api/19/tokens/[USER]`][/api/V/tokens/\[USER\]] - List tokens for users
+    - [`GET /api/19/token/[ID]`][/api/V/token/\[ID\]] - Get Token string for Token ID
+    - [`GET /api/19/project/[PROJECT]/export`][/api/V/project/\[PROJECT\]/export] - Additional parameters to select archive contents.
 
 **Version 18**:
 
 * New Endpoints.
-    - [`GET /api/18/job/[ID]/info`][/api/V/job/[ID]/info] - Get metadata about a Job: Project name and scheduling info.
+    - [`GET /api/18/job/[ID]/info`][/api/V/job/\[ID\]/info] - Get metadata about a Job: Project name and scheduling info.
 * Updated Endpoints:
-    - [`/api/18/job/[ID]/run`][/api/V/job/[ID]/run]
+    - [`/api/18/job/[ID]/run`][/api/V/job/\[ID\]/run]
         - new `runAtTime` parameter to run once at a certain time.
         - Job options can now be specified separately outside of the `argString`. Use `option.NAME=value` parameters,
        or specify `options` entry in JSON body.
@@ -182,14 +183,14 @@ Changes introduced by API Version number:
 **Version 17**:
 
 * New Endpoints.
-    - [`/api/17/scheduler/server/[UUID]/jobs`][/api/V/scheduler/server/[UUID]/jobs] - List scheduled jobs owned by the server with given UUID.
+    - [`/api/17/scheduler/server/[UUID]/jobs`][/api/V/scheduler/server/\[UUID\]/jobs] - List scheduled jobs owned by the server with given UUID.
     - [`/api/17/scheduler/jobs`][/api/V/scheduler/jobs] - List scheduled jobs owned by the target server.
     - [`/api/17/system/logstorage`][/api/V/system/logstorage] - Get stats about the Log File storage system.
     - [`/api/17/system/logstorage/incomplete`][/api/V/system/logstorage/incomplete] - List all executions with incomplete logstorage.
     - [`/api/17/system/logstorage/incomplete/resume`][/api/V/system/logstorage/incomplete/resume] - Resume incomplete log storage processing.
 
 * Updated Endpoints.
-    - [`/api/17/project/[PROJECT]/jobs`][/api/V/project/[PROJECT]/jobs]
+    - [`/api/17/project/[PROJECT]/jobs`][/api/V/project/\[PROJECT\]/jobs]
         - Response now includes whether a job is enabled, scheduled, schedule is enabled, and in Cluster mode includes the cluster mode server UUID of the schedule owner, and whether that is the current server or not.
         - add `?scheduledFilter=true/false` returns scheduled/unscheduled jobs only
         - and `?serverNodeUUIDFilter=[uuid]` returns scheduled jobs owned by the given cluster member
@@ -209,19 +210,19 @@ Changes introduced by API Version number:
 **Version 15**:
 
 * New Endpoints.
-    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/plugins`][/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugins] - List SCM plugins for a project.
-    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/input`][/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/input] - Get SCM plugin setup input fields.
-    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/setup`][/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/setup] - Setup SCM for a project.
-    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/enable`][/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/enable] - Enable SCM for a project.
-    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/disable`][/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/disable] - Disable SCM for a project.
-    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/status`][/api/V/project/[PROJECT]/scm/[INTEGRATION]/status] - Get SCM status for a project.
-    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/config`][/api/V/project/[PROJECT]/scm/[INTEGRATION]/config] - Get SCM config for a project.
-    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]/input`][/api/V/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]/input] - Get Project SCM Action Input Fields.
-    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]`][/api/V/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]] - Perform SCM action for a project.
+    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/plugins`][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugins] - List SCM plugins for a project.
+    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/input`][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/input] - Get SCM plugin setup input fields.
+    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/setup`][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/setup] - Setup SCM for a project.
+    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/enable`][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/enable] - Enable SCM for a project.
+    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/disable`][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/disable] - Disable SCM for a project.
+    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/status`][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/status] - Get SCM status for a project.
+    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/config`][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/config] - Get SCM config for a project.
+    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]/input`][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]/input] - Get Project SCM Action Input Fields.
+    - [`/api/15/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]`][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]] - Perform SCM action for a project.
 
-    - [`/api/15/job/[ID]/scm/[INTEGRATION]/status`][/api/V/job/[ID]/scm/[INTEGRATION]/status] - Get SCM status for a Job.
-    - [`/api/15/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]`][/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]] - Perform SCM action for a Job.
-    - [`/api/15/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]/input`][/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]/input] - Get Job SCM Action Input Fields
+    - [`/api/15/job/[ID]/scm/[INTEGRATION]/status`][/api/V/job/\[ID\]/scm/\[INTEGRATION\]/status] - Get SCM status for a Job.
+    - [`/api/15/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]`][/api/V/job/\[ID\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]] - Perform SCM action for a Job.
+    - [`/api/15/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]/input`][/api/V/job/\[ID\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]/input] - Get Job SCM Action Input Fields
 
 
 **Version 14**:
@@ -229,70 +230,70 @@ Changes introduced by API Version number:
 **Note**: this document now has an [Index](#index) listing API paths.
 
 * Deprecated Endpoints.  These endpoints are deprecated, and new versions are added which include the Project name in the URL path
-    - `/api/14/executions/running` replacement: [`/api/14/project/[PROJECT*]/executions/running`][/api/V/project/[PROJECT*]/executions/running]
-    - `/api/14/executions` replacement: [`/api/14/project/[PROJECT]/executions`][/api/V/project/[PROJECT]/executions]
-    - `/api/14/history` replacement: [`/api/14/project/[PROJECT]/history`][/api/V/project/[PROJECT]/history]
-    - `/api/14/jobs/export` replacement: [`/api/14/project/[PROJECT]/jobs/export`][/api/V/project/[PROJECT]/jobs/export]
-    - `/api/14/jobs/import` replacement: [`/api/14/project/[PROJECT]/jobs/import`][/api/V/project/[PROJECT]/jobs/import]
-    - `/api/14/jobs` replacement: [`/api/14/project/[PROJECT]/jobs`][/api/V/project/[PROJECT]/jobs]
-    - `/api/14/resource/[NAME]` replacement: [`/api/14/project/[PROJECT]/resource/[NAME]`][/api/V/project/[PROJECT]/resource/[NAME]]
-    - `/api/14/resources(/*)` replacement: [`/api/14/project/[PROJECT]/resources`][/api/V/project/[PROJECT]/resources]
-    - `/api/14/run/command` replacement: [`/api/14/project/[PROJECT]/run/command`][/api/V/project/[PROJECT]/run/command]
-    - `/api/14/run/script` replacement: [`/api/14/project/[PROJECT]/run/script`][/api/V/project/[PROJECT]/run/script]
-    - `/api/14/run/url` replacement: [`/api/14/project/[PROJECT]/run/url`][/api/V/project/[PROJECT]/run/url]
+    - `/api/14/executions/running` replacement: [`/api/14/project/[PROJECT*]/executions/running`][/api/V/project/\[PROJECT\]/executions/running]
+    - `/api/14/executions` replacement: [`/api/14/project/[PROJECT]/executions`][/api/V/project/\[PROJECT\]/executions]
+    - `/api/14/history` replacement: [`/api/14/project/[PROJECT]/history`][/api/V/project/\[PROJECT\]/history]
+    - `/api/14/jobs/export` replacement: [`/api/14/project/[PROJECT]/jobs/export`][/api/V/project/\[PROJECT\]/jobs/export]
+    - `/api/14/jobs/import` replacement: [`/api/14/project/[PROJECT]/jobs/import`][/api/V/project/\[PROJECT\]/jobs/import]
+    - `/api/14/jobs` replacement: [`/api/14/project/[PROJECT]/jobs`][/api/V/project/\[PROJECT\]/jobs]
+    - `/api/14/resource/[NAME]` replacement: [`/api/14/project/[PROJECT]/resource/[NAME]`][/api/V/project/\[PROJECT\]/resource/\[NAME\]]
+    - `/api/14/resources(/*)` replacement: [`/api/14/project/[PROJECT]/resources`][/api/V/project/\[PROJECT\]/resources]
+    - `/api/14/run/command` replacement: [`/api/14/project/[PROJECT]/run/command`][/api/V/project/\[PROJECT\]/run/command]
+    - `/api/14/run/script` replacement: [`/api/14/project/[PROJECT]/run/script`][/api/V/project/\[PROJECT\]/run/script]
+    - `/api/14/run/url` replacement: [`/api/14/project/[PROJECT]/run/url`][/api/V/project/\[PROJECT\]/run/url]
 * Deprecated Endpoints with no replacement
     - `/api/2/project/[PROJECT]/resources/refresh`
 * New Endpoints
     - [`/api/14/system/executions/enable`][/api/V/system/executions/enable] - Enable executions (ACTIVE mode)
     - [`/api/14/system/executions/disable`][/api/V/system/executions/disable] - Disable executions (PASSIVE mode)
     - [`/api/14/system/acl/*`][/api/V/system/acl/*] - Manage system ACLs
-    - [`/api/14/project/[PROJECT]/acl/*`][/api/V/project/[PROJECT]/acl/*] - Manage project ACLs
-    - [`/api/14/job/[ID]/execution/enable`][/api/V/job/[ID]/execution/enable] - Enable executions for a job
-    - [`/api/14/job/[ID]/execution/disable`][/api/V/job/[ID]/execution/disable] - Disable executions for a job
-    - [`/api/14/job/[ID]/schedule/enable`][/api/V/job/[ID]/schedule/enable] - Enable scheduling for a job
-    - [`/api/14/job/[ID]/schedule/disable`][/api/V/job/[ID]/schedule/disable] - Disable scheduling for a job
+    - [`/api/14/project/[PROJECT]/acl/*`][/api/V/project/\[PROJECT\]/acl/*] - Manage project ACLs
+    - [`/api/14/job/[ID]/execution/enable`][/api/V/job/\[ID\]/execution/enable] - Enable executions for a job
+    - [`/api/14/job/[ID]/execution/disable`][/api/V/job/\[ID\]/execution/disable] - Disable executions for a job
+    - [`/api/14/job/[ID]/schedule/enable`][/api/V/job/\[ID\]/schedule/enable] - Enable scheduling for a job
+    - [`/api/14/job/[ID]/schedule/disable`][/api/V/job/\[ID\]/schedule/disable] - Disable scheduling for a job
 * New Endpoints, replacing deprecated versions:
-    - [`/api/14/project/[PROJECT*]/executions/running`][/api/V/project/[PROJECT*]/executions/running]
-    - [`/api/14/project/[PROJECT]/executions`][/api/V/project/[PROJECT]/executions]
-    - [`/api/14/project/[PROJECT]/history`][/api/V/project/[PROJECT]/history]
-    - [`/api/14/project/[PROJECT]/jobs/export`][/api/V/project/[PROJECT]/jobs/export]
-    - [`/api/14/project/[PROJECT]/jobs/import`][/api/V/project/[PROJECT]/jobs/import]
-    - [`/api/14/project/[PROJECT]/resource/[NAME]`][/api/V/project/[PROJECT]/resource/[NAME]]
+    - [`/api/14/project/[PROJECT*]/executions/running`][/api/V/project/[PROJECT\]/executions/running]
+    - [`/api/14/project/[PROJECT]/executions`][/api/V/project/\[PROJECT\]/executions]
+    - [`/api/14/project/[PROJECT]/history`][/api/V/project/\[PROJECT\]/history]
+    - [`/api/14/project/[PROJECT]/jobs/export`][/api/V/project/\[PROJECT\]/jobs/export]
+    - [`/api/14/project/[PROJECT]/jobs/import`][/api/V/project/\[PROJECT\]/jobs/import]
+    - [`/api/14/project/[PROJECT]/resource/[NAME]`][/api/V/project/\[PROJECT\]/resource/\[NAME\]]
     - `/api/14/project/[PROJECT]/resources(/*)`
-    - [`/api/14/project/[PROJECT]/run/command`][/api/V/project/[PROJECT]/run/command]
-    - [`/api/14/project/[PROJECT]/run/script`][/api/V/project/[PROJECT]/run/script]
-    - [`/api/14/project/[PROJECT]/run/url`][/api/V/project/[PROJECT]/run/url]
+    - [`/api/14/project/[PROJECT]/run/command`][/api/V/project/\[PROJECT\]/run/command]
+    - [`/api/14/project/[PROJECT]/run/script`][/api/V/project/\[PROJECT\]/run/script]
+    - [`/api/14/project/[PROJECT]/run/url`][/api/V/project/\[PROJECT\]/run/url]
 * Added JSON support for endpoints, when using API v14:
-    - [`/api/14/execution/[ID]/abort`][/api/V/execution/[ID]/abort]
-    - [`/api/14/execution/[ID]`][/api/V/execution/[ID]]
-    - [`/api/14/job/[ID]/executions`][/api/V/job/[ID]/executions]
-    - [`/api/14/job/[ID]/run`][/api/V/job/[ID]/run] and [`POST /api/14/job/[ID]/executions`][POST /api/V/job/[ID]/executions]
+    - [`/api/14/execution/[ID]/abort`][/api/V/execution/\[ID\]/abort]
+    - [`/api/14/execution/[ID]`][/api/V/execution/\[ID\]]
+    - [`/api/14/job/[ID]/executions`][/api/V/job/\[ID\]/executions]
+    - [`/api/14/job/[ID]/run`][/api/V/job/\[ID\]/run] and [`POST /api/14/job/[ID]/executions`][POST /api/V/job/\[ID\]/executions]
     - [`/api/14/jobs/delete`][/api/V/jobs/delete]
     - [`/api/14/project/[PROJECT*]/executions/running`][/api/V/project/[PROJECT*]/executions/running]
-    - [`/api/14/project/[PROJECT]/executions`][/api/V/project/[PROJECT]/executions]
-    - [`/api/14/project/[PROJECT]/history`][/api/V/project/[PROJECT]/history]
-    - [`/api/14/project/[PROJECT]/jobs/import`][/api/V/project/[PROJECT]/jobs/import]
-    - [`/api/14/project/[PROJECT]/jobs`][/api/V/project/[PROJECT]/jobs]
-    - [`/api/14/project/[PROJECT]/resource/[NAME]`][/api/V/project/[PROJECT]/resource/[NAME]]
-    - [`/api/14/project/[PROJECT]/resources`][/api/V/project/[PROJECT]/resources]
-    - [`/api/14/project/[PROJECT]/run/command`][/api/V/project/[PROJECT]/run/command]
-    - [`/api/14/project/[PROJECT]/run/script`][/api/V/project/[PROJECT]/run/script]
-    - [`/api/14/project/[PROJECT]/run/url`][/api/V/project/[PROJECT]/run/url]
+    - [`/api/14/project/[PROJECT]/executions`][/api/V/project/\[PROJECT\]/executions]
+    - [`/api/14/project/[PROJECT]/history`][/api/V/project/\[PROJECT\]/history]
+    - [`/api/14/project/[PROJECT]/jobs/import`][/api/V/project/\[PROJECT\]/jobs/import]
+    - [`/api/14/project/[PROJECT]/jobs`][/api/V/project/\[PROJECT\]/jobs]
+    - [`/api/14/project/[PROJECT]/resource/[NAME]`][/api/V/project/\[PROJECT\]/resource/\[NAME\]]
+    - [`/api/14/project/[PROJECT]/resources`][/api/V/project/\[PROJECT\]/resources]
+    - [`/api/14/project/[PROJECT]/run/command`][/api/V/project/\[PROJECT\]/run/command]
+    - [`/api/14/project/[PROJECT]/run/script`][/api/V/project/\[PROJECT\]/run/script]
+    - [`/api/14/project/[PROJECT]/run/url`][/api/V/project/\[PROJECT\]/run/url]
     - [`/api/14/system/info`][/api/V/system/info]
 * TODO json support:
-    - [`/api/14/project/[PROJECT]/jobs/export`][/api/V/project/[PROJECT]/jobs/export]
+    - [`/api/14/project/[PROJECT]/jobs/export`][/api/V/project/\[PROJECT\]/jobs/export]
 * Updated endpoints:
-    - [`/api/14/job/[ID]/run`][/api/V/job/[ID]/run] action `GET` is no longer allowed (v14+), `POST` is required. For POST, this endpoint is now equivalent to `/api/14/job/[ID]/executions`. JSON request content is now supported.
-    - [`/api/14/project/[PROJECT]/jobs/import`][/api/V/project/[PROJECT]/jobs/import]
+    - [`/api/14/job/[ID]/run`][/api/V/job/\[ID\]/run] action `GET` is no longer allowed (v14+), `POST` is required. For POST, this endpoint is now equivalent to `/api/14/job/[ID]/executions`. JSON request content is now supported.
+    - [`/api/14/project/[PROJECT]/jobs/import`][/api/V/project/\[PROJECT\]/jobs/import]
         * Both XML and YAML job definitions can now be posted directly using the appropriate MIME type
         * Add API `href` and GUI `permalink` values into XML response
         * JSON response support
-    - [`/api/14/project/[PROJECT]/jobs`][/api/V/project/[PROJECT]/jobs] - added API/GUI href/permalink to XML responses.
-    - [`/api/14/execution/[ID]/abort`][/api/V/execution/[ID]/abort] - added API/GUI href/permalink to XML responses.
-    - [`/api/14/project/[PROJECT]/history`][/api/V/project/[PROJECT]/history] - added API/GUI href/permalink to XML responses.
+    - [`/api/14/project/[PROJECT]/jobs`][/api/V/project/\[PROJECT\]/jobs] - added API/GUI href/permalink to XML responses.
+    - [`/api/14/execution/[ID]/abort`][/api/V/execution/\[ID\]/abort] - added API/GUI href/permalink to XML responses.
+    - [`/api/14/project/[PROJECT]/history`][/api/V/project/\[PROJECT\]/history] - added API/GUI href/permalink to XML responses.
     - `/api/14/project/[PROJECT]/run/*` - added API/GUI href/permalink to XML responses for adhoc command/script/url.
     - [`/api/14/system/info`][/api/V/system/info] - added information about Rundeck Execution Mode
-    - [`/api/14/project/[PROJECT]/import`][/api/V/project/[PROJECT]/import] - Added parameters for importing Configuration and ACL Policies from the archive.
+    - [`/api/14/project/[PROJECT]/import`][/api/V/project/\[PROJECT\]/import] - Added parameters for importing Configuration and ACL Policies from the archive.
 * Endpoints promoted out of "incubator" status:
     - [`/api/14/scheduler/takeover`][/api/V/scheduler/takeover] - Can specify `all` servers, or jobs within a specific `project`. Added API/GUI href/permalink to XML responses for adhoc command/script/url. Note: `href` was modified as mentioned below.
 * Modified `href` meaning for XML responses:
@@ -7107,34 +7108,34 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 ## Index
 
-[/api/V/execution/[ID]][]
+[/api/V/execution/\[ID\]][]
 
 * `GET` [Execution Info](#execution-info)
 * `DELETE` [Delete an Execution](#delete-an-execution)
 
-[/api/V/execution/[ID]/abort][]
+[/api/V/execution/\[ID\]/abort][]
 
 * `GET` [Aborting Executions](#aborting-executions)
 
-[/api/V/execution/[ID]/output/state][]
+[/api/V/execution/\[ID\]/output/state][]
 
 * `GET` [Execution Output with State](#execution-output-with-state)
 
-[/api/V/execution/[ID]/output][]
+[/api/V/execution/\[ID\]/output][]
 
 * `GET` [Tailing Output](#tailing-output)
 
-[/api/V/execution/[ID]/output/step/[STEPCTX]][]
+[/api/V/execution/\[ID\]/output/step/\[STEPCTX\]][]
 
-[/api/V/execution/[ID]/output/node/[NODE]/step/[STEPCTX]][]
+[/api/V/execution/\[ID\]/output/node/\[NODE\]/step/\[STEPCTX\]][]
 
-[/api/V/execution/[ID]/output/node/[NODE]][]
+[/api/V/execution/\[ID\]/output/node/\[NODE\]][]
 
-[/api/V/execution/[ID]/output][]
+[/api/V/execution/\[ID\]/output][]
 
 * `GET` [Execution Output](#execution-output)
 
-[/api/V/execution/[ID]/state][]
+[/api/V/execution/\[ID\]/state][]
 
 * `GET` [Execution State](#execution-state)
 
@@ -7146,73 +7147,73 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 * `GET` [Execution Query Metrics](#execution-query-metrics)
 
-[/api/V/job/[ID]][]
+[/api/V/job/\[ID\]][]
 
 * `GET` [Getting a Job Definition](#getting-a-job-definition)
 * `DELETE` [Deleting a Job Definition](#deleting-a-job-definition)
 
-[/api/V/job/[ID]/executions][]
+[/api/V/job/\[ID\]/executions][]
 
 * `POST` [Running a Job](#running-a-job)
 * `GET` [Getting Executions for a Job](#getting-executions-for-a-job)
 * `DELETE` [Delete all Executions for a Job](#delete-all-executions-for-a-job)
 
 
-[/api/V/job/[ID]/execution/enable][]
+[/api/V/job/\[ID\]/execution/enable][]
 
 * `POST` [Enable Executions for a Job](#enable-executions-for-a-job)
 
-[/api/V/job/[ID]/execution/disable][]
+[/api/V/job/\[ID\]/execution/disable][]
 
 * `POST` [Disable Executions for a Job](#disable-executions-for-a-job)
 
-[/api/V/job/[ID]/input/file][]
+[/api/V/job/\[ID\]/input/file][]
 
 * `POST` [Upload a File for a Job Option](#upload-a-file-for-a-job-option)
 
-[/api/V/job/[ID]/input/files][]
+[/api/V/job/\[ID\]/input/files][]
 
 * `GET` [List Files Uploaded for a Job](#list-files-uploaded-for-a-job)
 
-[/api/V/job/[ID]/retry/[EXECID]][]
+[/api/V/job/\[ID\]/retry/\[EXECID\]][]
 
 * `POST` [Retry a Job Based on Execution](#retry-a-job-based-on-execution)
 
-[/api/V/execution/[ID]/input/files][]
+[/api/V/execution/\[ID\]/input/files][]
 
 * `GET` [List Input Files for an Execution](#list-input-files-for-an-execution)
 
-[/api/V/jobs/file/[ID]][]
+[/api/V/jobs/file/\[ID\]][]
 
 * `GET` [Get Info About an Uploaded File](#get-info-about-an-uploaded-file)
 
-[/api/V/job/[ID]/info][]
+[/api/V/job/\[ID\]/info][]
 
 * `GET` [Get Job Metadata](#get-job-metadata)
 
-[/api/V/job/[ID]/run][]
+[/api/V/job/\[ID\]/run][]
 
 * `POST` [Running a Job](#running-a-job)
 
-[/api/V/job/[ID]/schedule/enable][]
+[/api/V/job/\[ID\]/schedule/enable][]
 
 * `POST` [Enable Scheduling for a Job](#enable-scheduling-for-a-job)
 
-[/api/V/job/[ID]/schedule/disable][]
+[/api/V/job/\[ID\]/schedule/disable][]
 
 * `POST` [Disable Scheduling for a Job](#disable-scheduling-for-a-job)
 
-[/api/V/job/[ID]/scm/[INTEGRATION]/status][]
+[/api/V/job/\[ID\]/scm/\[INTEGRATION\]/status][]
 
-- `GET` [Get SCM status for a Job][/api/V/job/[ID]/scm/[INTEGRATION]/status]
+- `GET` [Get SCM status for a Job][/api/V/job/\[ID\]/scm/\[INTEGRATION\]/status]
 
-[/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]][]
+[/api/V/job/\[ID\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]][]
 
-- `POST` [Perform SCM action for a Job.][/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]]
+- `POST` [Perform SCM action for a Job.][/api/V/job/\[ID\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]]
 
-[/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]/input][]
+[/api/V/job/\[ID\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]/input][]
 
-- `GET` [Get Job SCM Action Input Fields.][/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]/input]
+- `GET` [Get Job SCM Action Input Fields.][/api/V/job/\[ID\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]/input]
 
 [/api/V/jobs/delete][]
 
@@ -7254,12 +7255,12 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 * `GET` [Metrics Threads](#metrics-threads)
 
-[/api/V/project/[PROJECT]][]
+[/api/V/project/\[PROJECT\]][]
 
 * `GET` [Getting Project Info](#getting-project-info)
 * `DELETE` [Project Deletion](#project-deletion)
 
-[/api/V/project/[PROJECT]/acl/*][]
+[/api/V/project/\[PROJECT\]/acl/*][]
 
 * `GET` [List Project ACL Policies](#list-project-acl-policies)
 * `GET` [Get a Project ACL Policy](#get-a-project-acl-policy)
@@ -7267,139 +7268,139 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 * `PUT` [Update a Project ACL Policy](#update-a-project-acl-policy)
 * `DELETE` [Delete a Project ACL Policy](#delete-a-project-acl-policy)
 
-[/api/V/project/[PROJECT]/config][]
+[/api/V/project/\[PROJECT\]/config][]
 
 * `GET` [GET Project Configuration](#get-project-configuration)
 * `PUT` [PUT Project Configuration](#put-project-configuration)
 
-[/api/V/project/[PROJECT]/config/[KEY]][]
+[/api/V/project/\[PROJECT\]/config/\[KEY\]][]
 
 * `GET` [GET Project Configuration Key](#get-project-configuration-key)
 * `PUT` [PUT Project Configuration Key](#put-project-configuration-key)
 * `DELETE` [DELETE Project Configuration Key](#delete-project-configuration-key)
 
-[/api/V/project/[PROJECT]/executions][]
+[/api/V/project/\[PROJECT\]/executions][]
 
 * `GET` [Execution Query](#execution-query)
 
-[/api/V/project/[PROJECT]/executions/metrics][]
+[/api/V/project/\[PROJECT\]/executions/metrics][]
 
 * `GET` [Execution Query Metrics](#execution-query-metrics)
 
-[/api/V/project/[PROJECT*]/executions/running][]
+[/api/V/project/\[PROJECT\]/executions/running][]
 
 * `GET` [Listing Running Executions](#listing-running-executions)
 
-[/api/V/project/[PROJECT]/export][]
+[/api/V/project/\[PROJECT\]/export][]
 
 * `GET` [Project Archive Export](#project-archive-export)
 
-[/api/V/project/[PROJECT]/export/async][]
+[/api/V/project/\[PROJECT\]/export/async][]
 
 * `GET` [Project Archive Export Async](#project-archive-export-async)
 
-[/api/V/project/[PROJECT]/export/status/[TOKEN]][]
+[/api/V/project/\[PROJECT\]/export/status/\[TOKEN\]][]
 
 * `GET` [Project Archive Export Async Status](#project-archive-export-async-status)
 
-[/api/V/project/[PROJECT]/export/download/[TOKEN]][]
+[/api/V/project/\[PROJECT\]/export/download/\[TOKEN\]][]
 
 * `GET` [Project Archive Export Async Download](#project-archive-export-async-download)
 
-[/api/V/project/[PROJECT]/[FILE.md)[]
+[/api/V/project/\[PROJECT\]/\[FILE.md\]][]
 
 * `GET` [GET Readme File](#get-readme-file)
 * `PUT` [PUT Readme File](#put-readme-file)
 * `DELETE` [DELETE Readme File](#delete-readme-file)
 
-[/api/V/project/[PROJECT]/history][]
+[/api/V/project/\[PROJECT\]/history][]
 
 * `GET` [Listing History](#listing-history)
 
-[/api/V/project/[PROJECT]/import][]
+[/api/V/project/\[PROJECT\]/import][]
 
 * `PUT` [Project Archive Import](#project-archive-import)
 
-[/api/V/project/[PROJECT]/jobs][]
+[/api/V/project/\[PROJECT\]/jobs][]
 
 * `GET` [Listing Jobs](#listing-jobs)
 
-[/api/V/project/[PROJECT]/jobs/export][]
+[/api/V/project/\[PROJECT\]/jobs/export][]
 
 * `GET` [Exporting Jobs](#exporting-jobs)
 
-[/api/V/project/[PROJECT]/jobs/import][]
+[/api/V/project/\[PROJECT\]/jobs/import][]
 
 * `POST` [Importing Jobs](#importing-jobs)
 
-[/api/V/project/[PROJECT]/resources][]
+[/api/V/project/\[PROJECT\]/resources][]
 
 * `GET` [Listing Resources](#listing-resources)
 
-[/api/V/project/[PROJECT]/resource/[NAME]][]
+[/api/V/project/\[PROJECT\]/resource/\[NAME\]][]
 
 * `GET` [Getting Resource Info](#getting-resource-info)
 
-[/api/V/project/[PROJECT]/run/command][]
+[/api/V/project/\[PROJECT\]/run/command][]
 
 * `POST` [Running Adhoc Commands](#running-adhoc-commands)
 
-[/api/V/project/[PROJECT]/run/script][]
+[/api/V/project/\[PROJECT\]/run/script][]
 
 * `POST` [Running Adhoc Scripts](#running-adhoc-scripts)
 
-[/api/V/project/[PROJECT]/run/url][]
+[/api/V/project/\[PROJECT\]/run/url][]
 
 * `POST` [Running Adhoc Script URLs](#running-adhoc-script-urls)
 
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugins][]
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugins][]
 
-* `GET` [List SCM plugins for a project.][/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugins]
+* `GET` [List SCM plugins for a project.][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugins]
 
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/input][]
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/input][]
 
-* `GET` [Get SCM plugin setup input fields.][/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/input]
+* `GET` [Get SCM plugin setup input fields.][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/input]
 
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/setup][]
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/setup][]
 
-* `POST` [Setup SCM for a project.][/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/setup]
+* `POST` [Setup SCM for a project.][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/setup]
 
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/enable][]
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/enable][]
 
-* `POST` [Enable SCM for a project.][/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/enable]
+* `POST` [Enable SCM for a project.][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/enable]
 
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/disable][]
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/disable][]
 
-* `POST` [Disable SCM for a project.][/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/disable]
+* `POST` [Disable SCM for a project.][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/disable]
 
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/status][]
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/status][]
 
-* `GET` [Get SCM status for a project.][/api/V/project/[PROJECT]/scm/[INTEGRATION]/status]
+* `GET` [Get SCM status for a project.][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/status]
 
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/config][]
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/config][]
 
-* `GET` [Get SCM config for a project.][/api/V/project/[PROJECT]/scm/[INTEGRATION]/config]]
+* `GET` [Get SCM config for a project.][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/config]]
 
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]][]
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]][]
 
-* `POST` [Perform SCM action for a project.][/api/V/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]]
+* `POST` [Perform SCM action for a project.][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]]
 
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]/input][]
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]/input][]
 
-* `GET` [Get Project SCM Action Input Fields.][/api/V/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]/input]
+* `GET` [Get Project SCM Action Input Fields.][/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]/input]
 
-[/api/V/project/[PROJECT]/sources][]
+[/api/V/project/\[PROJECT\]/sources][]
 
-* `GET` [List Resource Model Sources for a Project][/api/V/project/[PROJECT]/sources]
+* `GET` [List Resource Model Sources for a Project][/api/V/project/\[PROJECT\]/sources]
 
-[/api/V/project/[PROJECT]/source/[INDEX]][]
+[/api/V/project/\[PROJECT\]/source/\[INDEX\]][]
 
-* `GET` [Get a Resource Model Source for a Project][GET /api/V/project/[PROJECT]/source/[INDEX]]
+* `GET` [Get a Resource Model Source for a Project][GET /api/V/project/\[PROJECT\]/source/\[INDEX\]]
 
-[/api/V/project/[PROJECT]/source/[INDEX]/resources][]
+[/api/V/project/\[PROJECT\]/source/\[INDEX\]/resources][]
 
-* `GET` [List Resources for a Resource Model Source][GET /api/V/project/[PROJECT]/source/[INDEX]/resources]
-* `POST` [Update Resources for a Resource Model Source][POST /api/V/project/[PROJECT]/source/[INDEX]/resources]
+* `GET` [List Resources for a Resource Model Source][GET /api/V/project/\[PROJECT\]/source/\[INDEX\]/resources]
+* `POST` [Update Resources for a Resource Model Source][POST /api/V/project/\[PROJECT\]/source/\[INDEX\]/resources]
 
 [/api/V/projects][]
 
@@ -7414,11 +7415,11 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 * `GET` [List Scheduled Jobs For this Cluster Server][/api/V/scheduler/jobs]
 
-[/api/V/scheduler/server/[UUID]/jobs][]
+[/api/V/scheduler/server/\[UUID\]/jobs][]
 
-* `GET` [List Scheduled Jobs For a Cluster Server][/api/V/scheduler/server/[UUID]/jobs]
+* `GET` [List Scheduled Jobs For a Cluster Server][/api/V/scheduler/server/\[UUID\]/jobs]
 
-[/api/V/storage/keys/[PATH]/[FILE]][]
+[/api/V/storage/keys/\[PATH\]/\[FILE\]][]
 
 * `PUT` [Upload Keys](#upload-keys)
 * `GET` [List keys](#list-keys)
@@ -7464,12 +7465,12 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 [/api/V/tokens][]
 
-[/api/V/tokens/[USER]][]
+[/api/V/tokens/\[USER\]][]
 
 * `GET` [List Tokens](#list-tokens)
 * `POST` [Create a Token](#create-a-token)
 
-[/api/V/token/[ID]][]
+[/api/V/token/\[ID\]][]
 
 * `GET` [Get a token](#get-a-token)
 * `DELETE` [Delete a token](#delete-a-token)
@@ -7485,10 +7486,10 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 * `POST`[Modify user profile][POST /api/V/user/info]
 
 
-[/api/V/user/info/[USER]][]
+[/api/V/user/info/\[USER\]][]
 
-* `GET` [Get another user profile][/api/V/user/info/[USER]]
-* `POST` [Modify another user profile][POST /api/V/user/info/[USER]]
+* `GET` [Get another user profile][/api/V/user/info/\[USER\]]
+* `POST` [Modify another user profile][POST /api/V/user/info/\[USER\]]
 
 
 [/api/V/user/roles][]
@@ -7498,84 +7499,84 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [Response Format]:#xml-response-format
 
 
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugins]:#list-scm-plugins
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/input]:#get-scm-plugin-input-fields
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/setup]:#setup-scm-plugin-for-a-project
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/enable]:#enable-scm-plugin-for-a-project
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/plugin/[TYPE]/disable]:#disable-scm-plugin-for-a-project
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/status]:#get-project-scm-status
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/config]:#get-project-scm-config
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]]:#perform-project-scm-action
-[/api/V/project/[PROJECT]/scm/[INTEGRATION]/action/[ACTION_ID]/input]:#get-project-scm-action-input-fields
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugins]:#list-scm-plugins
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/input]:#get-scm-plugin-input-fields
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/setup]:#setup-scm-plugin-for-a-project
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/enable]:#enable-scm-plugin-for-a-project
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/disable]:#disable-scm-plugin-for-a-project
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/status]:#get-project-scm-status
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/config]:#get-project-scm-config
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]]:#perform-project-scm-action
+[/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]/input]:#get-project-scm-action-input-fields
 
-[/api/V/project/[PROJECT]/sources]:#list-resource-model-sources-for-a-project
-[/api/V/project/[PROJECT]/source/[INDEX]]:#get-a-resource-model-source-for-a-project
-[/api/V/project/[PROJECT]/source/[INDEX]/resources]:#list-resources-of-a-resource-model-source
-[GET /api/V/project/[PROJECT]/source/[INDEX]/resources]:#list-resources-of-a-resource-model-source
-[POST /api/V/project/[PROJECT]/source/[INDEX]/resources]:#update-resources-of-a-resource-model-source
+[/api/V/project/\[PROJECT\]/sources]:#list-resource-model-sources-for-a-project
+[/api/V/project/\[PROJECT\]/source/\[INDEX\]]:#get-a-resource-model-source-for-a-project
+[/api/V/project/\[PROJECT\]/source/\[INDEX\]/resources]:#list-resources-of-a-resource-model-source
+[GET /api/V/project/\[PROJECT\]/source/\[INDEX\]/resources]:#list-resources-of-a-resource-model-source
+[POST /api/V/project/\[PROJECT\]/source/\[INDEX\]/resources]:#update-resources-of-a-resource-model-source
 
-[/api/V/job/[ID]/scm/[INTEGRATION]/status]:#get-job-scm-status
-[/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]]:#perform-job-scm-action
-[/api/V/job/[ID]/scm/[INTEGRATION]/action/[ACTION_ID]/input]:#get-job-scm-action-input-fields
+[/api/V/job/\[ID\]/scm/\[INTEGRATION\]/status]:#get-job-scm-status
+[/api/V/job/\[ID\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]]:#perform-job-scm-action
+[/api/V/job/\[ID\]/scm/\[INTEGRATION\]/action/\[ACTION_ID\]/input]:#get-job-scm-action-input-fields
 
 
-[/api/V/execution/[ID]]: #execution-info
+[/api/V/execution/\[ID\]]: #execution-info
 
-[/api/V/execution/[ID]/abort]:#aborting-executions
+[/api/V/execution/\[ID\]/abort]:#aborting-executions
 
-[/api/V/execution/[ID]/input/files]:#list-input-files-for-an-execution
+[/api/V/execution/\[ID\]/input/files]:#list-input-files-for-an-execution
 
-[/api/V/execution/[ID]/output/state]:#execution-output-with-state
+[/api/V/execution/\[ID\]/output/state]:#execution-output-with-state
 
-[/api/V/execution/[ID]/output/step/[STEPCTX]]:#execution-output
+[/api/V/execution/\[ID\]/output/step/\[STEPCTX\]]:#execution-output
 
-[/api/V/execution/[ID]/output/node/[NODE]/step/[STEPCTX]]:#execution-output
+[/api/V/execution/\[ID\]/output/node/\[NODE\]/step/\[STEPCTX\]]:#execution-output
 
-[/api/V/execution/[ID]/output/node/[NODE]]:#execution-output
+[/api/V/execution/\[ID\]/output/node/\[NODE\]]:#execution-output
 
-[/api/V/execution/[ID]/output]:#execution-output
+[/api/V/execution/\[ID\]/output]:#execution-output
 
-[/api/V/execution/[ID]/state]:#execution-state
+[/api/V/execution/\[ID\]/state]:#execution-state
 
 [/api/V/executions/delete]:#bulk-delete-executions
 
 
 
-[/api/V/job/[ID]]:#getting-a-job-definition
-[DELETE /api/V/job/[ID]]:#deleting-a-job-definition
+[/api/V/job/\[ID\]]:#getting-a-job-definition
+[DELETE /api/V/job/\[ID\]]:#deleting-a-job-definition
 
-[/api/V/job/[ID]/executions]:#getting-executions-for-a-job
+[/api/V/job/\[ID\]/executions]:#getting-executions-for-a-job
 
-[/api/V/job/[ID]/execution/enable]:#enable-executions-for-a-job
+[/api/V/job/\[ID\]/execution/enable]:#enable-executions-for-a-job
 
-[/api/V/job/[ID]/execution/disable]:#disable-executions-for-a-job
+[/api/V/job/\[ID\]/execution/disable]:#disable-executions-for-a-job
 
-[POST /api/V/job/[ID]/executions]:#running-a-job
-[DELETE /api/V/job/[ID]/executions]:#delete-all-executions-for-a-job
+[POST /api/V/job/\[ID\]/executions]:#running-a-job
+[DELETE /api/V/job/\[ID\]/executions]:#delete-all-executions-for-a-job
 
-[/api/V/job/[ID]/retry/[EXECID]]:#retry-a-job-based-on-execution
-[POST /api/V/job/[ID]/retry/[EXECID]]:#retry-a-job-based-on-execution
+[/api/V/job/\[ID\]/retry/\[EXECID\]]:#retry-a-job-based-on-execution
+[POST /api/V/job/\[ID\]/retry/\[EXECID\]]:#retry-a-job-based-on-execution
 
-[/api/V/job/[ID]/info]:#get-job-metadata
-[GET /api/V/job/[ID]/info]:#get-job-metadata
-[/api/V/job/[ID]/input/file]:#upload-a-file-for-a-job-option
-[POST /api/V/job/[ID]/input/file]:#upload-a-file-for-a-job-option
-[/api/V/job/[ID]/input/files]:#list-files-uploaded-for-a-job
+[/api/V/job/\[ID\]/info]:#get-job-metadata
+[GET /api/V/job/\[ID\]/info]:#get-job-metadata
+[/api/V/job/\[ID\]/input/file]:#upload-a-file-for-a-job-option
+[POST /api/V/job/\[ID\]/input/file]:#upload-a-file-for-a-job-option
+[/api/V/job/\[ID\]/input/files]:#list-files-uploaded-for-a-job
 
-[/api/V/job/[ID]/forecast]:#get-job-forecast
-[GET /api/V/job/[ID]/forecast]:#get-job-forecast
+[/api/V/job/\[ID\]/forecast]:#get-job-forecast
+[GET /api/V/job/\[ID\]/forecast]:#get-job-forecast
 
-[/api/V/job/[ID]/schedule/enable]:#enable-scheduling-for-a-job
+[/api/V/job/\[ID\]/schedule/enable]:#enable-scheduling-for-a-job
 
-[/api/V/job/[ID]/schedule/disable]:#disable-scheduling-for-a-job
+[/api/V/job/\[ID\]/schedule/disable]:#disable-scheduling-for-a-job
 
 
-[/api/V/job/[ID]/run]:#running-a-job
+[/api/V/job/\[ID\]/run]:#running-a-job
 
 [/api/V/jobs/delete]:#bulk-job-delete
 [/api/V/jobs/execution/enable]:#bulk-toggle-job-execution
 [/api/V/jobs/execution/disable]:#bulk-toggle-job-execution
-[/api/V/jobs/file/[ID]]:#get-info-about-an-uploaded-file
+[/api/V/jobs/file/\[ID\]]:#get-info-about-an-uploaded-file
 [/api/V/jobs/schedule/enable]:#bulk-toggle-job-schedules
 [/api/V/jobs/schedule/disable]:#bulk-toggle-job-schedules
 
@@ -7590,69 +7591,69 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 [/api/V/metrics/threads]:#metrics-threads
 
-[/api/V/project/[PROJECT]]:#getting-project-info
-[DELETE /api/V/project/[PROJECT]]:#project-deletion
+[/api/V/project/\[PROJECT\]]:#getting-project-info
+[DELETE /api/V/project/\[PROJECT\]]:#project-deletion
 
-[/api/V/project/[PROJECT]/acl/*]:#project-acls
+[/api/V/project/\[PROJECT\]/acl/*]:#project-acls
 
-[/api/V/project/[PROJECT]/config]:#get-project-configuration
-[PUT /api/V/project/[PROJECT]/config]:#put-project-configuration
-
-
-[/api/V/project/[PROJECT]/config/[KEY]]:#get-project-configuration-key
-[PUT /api/V/project/[PROJECT]/config/[KEY]]:#put-project-configuration-key
-[DELETE /api/V/project/[PROJECT]/config/[KEY]]:#delete-project-configuration-key
+[/api/V/project/\[PROJECT\]/config]:#get-project-configuration
+[PUT /api/V/project/\[PROJECT\]/config]:#put-project-configuration
 
 
-[/api/V/project/[PROJECT]/executions]:#execution-query
+[/api/V/project/\[PROJECT\]/config/\[KEY\]]:#get-project-configuration-key
+[PUT /api/V/project/\[PROJECT\]/config/\[KEY\]]:#put-project-configuration-key
+[DELETE /api/V/project/\[PROJECT\]/config/\[KEY\]]:#delete-project-configuration-key
 
 
-[/api/V/project/[PROJECT*]/executions/running]:#listing-running-executions
+[/api/V/project/\[PROJECT\]/executions]:#execution-query
 
 
-[/api/V/project/[PROJECT]/export]:#project-archive-export
-[/api/V/project/[PROJECT]/export/async]:#project-archive-export-async
-[/api/V/project/[PROJECT]/export/status/[TOKEN]]:#project-archive-export-async-status
-[/api/V/project/[PROJECT]/export/download/[TOKEN]]:#project-archive-export-async-download
+[/api/V/project/\[PROJECT\]/executions/running]:#listing-running-executions
 
 
-[/api/V/project/[PROJECT]/[FILE.md):#get-readme-file
-[PUT /api/V/project/[PROJECT]/[FILE.md):#put-readme-file
-[DELETE /api/V/project/[PROJECT]/[FILE.md):#delete-readme-file
+[/api/V/project/\[PROJECT\]/export]:#project-archive-export
+[/api/V/project/\[PROJECT\]/export/async]:#project-archive-export-async
+[/api/V/project/\[PROJECT\]/export/status/\[TOKEN\]]:#project-archive-export-async-status
+[/api/V/project/\[PROJECT\]/export/download/\[TOKEN\]]:#project-archive-export-async-download
 
-[/api/V/project/[PROJECT]/history]:#listing-history
 
-[/api/V/project/[PROJECT]/import]:#project-archive-import
+[/api/V/project/\[PROJECT\]/\[FILE.md\]]:#get-readme-file
+[PUT /api/V/project/\[PROJECT\]/\[FILE.md\]]:#put-readme-file
+[DELETE /api/V/project/\[PROJECT\]/\[FILE.md\]]:#delete-readme-file
 
-[/api/V/project/[PROJECT]/jobs]:#listing-jobs
+[/api/V/project/\[PROJECT\]/history]:#listing-history
 
-[/api/V/project/[PROJECT]/jobs/export]:#exporting-jobs
+[/api/V/project/\[PROJECT\]/import]:#project-archive-import
 
-[/api/V/project/[PROJECT]/jobs/import]:#importing-jobs
+[/api/V/project/\[PROJECT\]/jobs]:#listing-jobs
 
-[/api/V/project/[PROJECT]/resources]:#listing-resources
+[/api/V/project/\[PROJECT\]/jobs/export]:#exporting-jobs
 
-[/api/V/project/[PROJECT]/resource/[NAME]]:#getting-resource-info
+[/api/V/project/\[PROJECT\]/jobs/import]:#importing-jobs
+
+[/api/V/project/\[PROJECT\]/resources]:#listing-resources
+
+[/api/V/project/\[PROJECT\]/resource/\[NAME\]]:#getting-resource-info
 
 [/api/V/projects]:#listing-projects
 
 [POST /api/V/projects]:#project-creation
 
-[/api/V/project/[PROJECT]/run/command]:#running-adhoc-commands
+[/api/V/project/\[PROJECT\]/run/command]:#running-adhoc-commands
 
-[/api/V/project/[PROJECT]/run/script]:#running-adhoc-scripts
+[/api/V/project/\[PROJECT\]/run/script]:#running-adhoc-scripts
 
-[/api/V/project/[PROJECT]/run/url]:#running-adhoc-script-urls
+[/api/V/project/\[PROJECT\]/run/url]:#running-adhoc-script-urls
 
 [/api/V/scheduler/takeover]:#takeover-schedule-in-cluster-mode
 
 [/api/V/scheduler/jobs]:#list-scheduled-jobs-for-this-cluster-server
 
-[/api/V/scheduler/server/[UUID]/jobs]:#list-scheduled-jobs-for-a-cluster-server
+[/api/V/scheduler/server/\[UUID\]/jobs]:#list-scheduled-jobs-for-a-cluster-server
 
-[/api/V/storage/keys/[PATH]/[FILE]]:#list-keys
-[PUT /api/V/storage/keys/[PATH]/[FILE]]:#upload-keys
-[DELETE /api/V/storage/keys/[PATH]/[FILE]]:#delete-keys
+[/api/V/storage/keys/\[PATH\]/\[FILE\]]:#list-keys
+[PUT /api/V/storage/keys/\[PATH\]/\[FILE\]]:#upload-keys
+[DELETE /api/V/storage/keys/\[PATH\]/\[FILE\]]:#delete-keys
 
 
 [/api/V/system/acl/*]:#acls
@@ -7667,17 +7668,17 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [POST /api/V/system/logstorage/incomplete/resume]:#resume-incomplete-log-storage
 
 [/api/V/tokens]:#list-tokens
-[/api/V/tokens/[USER]]:#list-tokens
-[POST /api/V/tokens/[USER]]:#create-a-token
-[/api/V/token/[ID]]:#get-a-token
-[DELETE /api/V/token/[ID]]:#delete-a-token
+[/api/V/tokens/\[USER\]]:#list-tokens
+[POST /api/V/tokens/\[USER\]]:#create-a-token
+[/api/V/token/\[ID\]]:#get-a-token
+[DELETE /api/V/token/\[ID\]]:#delete-a-token
 
 
 [/api/V/user/list]:#list-users
 [/api/V/user/info]:#get-user-profile
 [POST /api/V/user/info]:#modify-user-profile
-[/api/V/user/info/[USER]]:#get-another-user-profile
-[POST /api/V/user/info/[USER]]:#modify-another-user-profile
+[/api/V/user/info/\[USER\]]:#get-another-user-profile
+[POST /api/V/user/info/\[USER\]]:#modify-another-user-profile
 [/api/V/user/roles]:#list-roles
 
 [ACLPOLICY]:../man5/aclpolicy.html

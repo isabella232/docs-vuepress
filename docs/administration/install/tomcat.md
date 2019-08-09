@@ -23,7 +23,7 @@ http://support.rundeck.com/customer/en/portal/articles/2859551-authentication-wi
 - [Download](https://rundeck.org/downloads.html) the latest version of Rundeck war file and place it in \$tomcat.base/webapps/ as e.g. rundeck.war
 - Create \$tomcat.base/bin/setenv.sh
 
-```
+```bash
 $ cat setenv.sh
    JAVA_OPTS="$JAVA_OPTS -XX:MaxPermSize=512m -Xmx2048m -Xms512m -server -Drdeck.base=/path/to/rundeck.base -Drundeck.config.location=/path/to/rundeck.base/server/config/rundeck-config.properties"
 ```
@@ -33,13 +33,13 @@ $ cat setenv.sh
 - Go to http://localhost:8080/rundeck, then at login screen: stop Tomcat
 - Edit \$rdeck.base/server/config/rundeck-config.properties to match Tomcat's url:
 
-```
+```properties
 grails.serverURL=http://localhost:8080/rundeck
 ```
 
 - Edit \$rdeck.base/etc/framework.properties to match Tomcat's url:
 
-```
+```properties
 framework.server.name = localhost
 framework.server.hostname = localhost
 framework.server.port = 8080
@@ -55,7 +55,7 @@ framework.server.url = http://localhost:8080/rundeck
 - [Download](https://rundeck.org/downloads.html) the latest version of Rundeck war file and place it in tomcat.base\\webapps\\ as e.g. rundeck.war
 - Create tomcat.base\\bin\\setenv.bat
 
-```
+```bash
 setenv.bat content:
    set "JRE_HOME=C:\Program Files\Java\jre1.8.0_181"
    set "JAVA_OPTS=-XX:MaxPermSize=512m -Xmx2048m -Xms512m -server -Drdeck.base=C:\path\to\rundeck.base -Drundeck.config.location=C:\path\to\rundeck.base\server\config\rundeck-config.properties"
@@ -66,13 +66,13 @@ setenv.bat content:
 - Go to http://localhost:8080/rundeck, then at login screen: stop Tomcat
 - Edit rdeck.base\\server\\config\\rundeck-config.properties to match Tomcat's url:
 
-```
+```properties
 grails.serverURL=http://localhost:8080/rundeck
 ```
 
 - Edit rdeck.base\\etc\\framework.properties to match Tomcat's url:
 
-```
+```properties
 framework.server.name = localhost
 framework.server.hostname = localhost
 framework.server.port = 8080
@@ -90,7 +90,7 @@ This setting allow Rundeck to use JNDI database connections instead of the defau
 
 - Add the following entry on `$tomcat.base/conf/server.xml` under the `<GlobalNamingResources>` tag:
 
-```
+```xml
 <!-- Global JNDI resources
       Documentation at /docs/jndi-resources-howto.html
  -->
@@ -121,7 +121,7 @@ This setting allow Rundeck to use JNDI database connections instead of the defau
 
 - Add the Resource link on `$tomcat.base/conf/context.xml`
 
-```
+```xml
 <ResourceLink name="jdbc/rundeckdb"
                         global="jdbc/rundeckdb"
                         type="javax.sql.DataSource"/>
@@ -129,7 +129,7 @@ This setting allow Rundeck to use JNDI database connections instead of the defau
 
 - on `$rundeck.base/server/config/rundeck-config.properties` add the `dataSource.jndiName` entry:
 
-```
+```properties
 dataSource.jndiName=java:/comp/env/jdbc/rundeckdb
 ```
 
@@ -141,7 +141,7 @@ To use a custom authentication method using database tables:
 
 - It is necessary to have tables like this:
 
-```
+```sql
 create table users (
 user_name varchar(15) not null primary key,
 user_pass varchar(15) not null
@@ -160,7 +160,7 @@ insert into user_roles values('samuel','admin');
 
 - Define the Resource connection in `$tomcat.base/conf/server.xml`:
 
-```
+```xml
 <!-- Global JNDI resources
       Documentation at /docs/jndi-resources-howto.html
  -->
@@ -190,7 +190,7 @@ insert into user_roles values('samuel','admin');
 
 - Define the JNDI entry in `$tomcat.base/conf/server.xml`:
 
-```
+```xml
      <!-- Use the LockOutRealm to prevent attempts to guess user passwords
           via a brute-force attack -->
      <Realm className="org.apache.catalina.realm.LockOutRealm">
@@ -224,6 +224,6 @@ Note for Linux and Windows installations: users are no longer in Tomcat's config
 
 If ldap/AD authentication is configured, you will need to copy below file (use proper path on Windows) and then restart Tomcat:
 
-```
-cp $tomcat.base/webapps/rundeck/WEB-INF/lib-provided/jetty-util-9.4.11.v20180605.jar $tomcat.base/webapps/rundeck/WEB-INF/lib/
+```bash
+cp $tomcat_base/webapps/rundeck/WEB-INF/lib-provided/jetty-util-9.4.11.v20180605.jar $tomcat_base/webapps/rundeck/WEB-INF/lib/
 ```

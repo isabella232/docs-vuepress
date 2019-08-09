@@ -22,7 +22,7 @@ servers, however you may want go higher if your server has more than 32G of RAM.
 
 Configuration:
 
-```
+```properties
 innodb_file_format=barracuda
 innodb_file_per_table=true
 innodb_large_prefix=true
@@ -30,7 +30,7 @@ innodb_large_prefix=true
 
 After first Rundeck start run the following SQL queries:
 
-```
+```sql
 use <rundeck_database>;
 ALTER TABLE `event_subscription` ROW_FORMAT=dynamic;
 ALTER TABLE `reaction` ROW_FORMAT=dynamic;
@@ -86,11 +86,12 @@ Update your `rundeck-config.properties` and configure the datasource:
 - Launcher location: `$RDECK_BASE/server/config/rundeck-config.properties`
 
 Contents:
-
-    dataSource.url = jdbc:mysql://myserver/rundeck?autoReconnect=true&useSSL=false
-    dataSource.username=rundeckuser
-    dataSource.password=rundeckpassword
-    dataSource.driverClassName=com.mysql.jdbc.Driver
+```properties
+dataSource.url = jdbc:mysql://myserver/rundeck?autoReconnect=true&useSSL=false
+dataSource.username=rundeckuser
+dataSource.password=rundeckpassword
+dataSource.driverClassName=com.mysql.jdbc.Driver
+```
 
 Finally you can start rundeck. If you see a startup error about database access, make sure that the hostname that the Mysql server sees from the client is the same one you granted access to.
 
