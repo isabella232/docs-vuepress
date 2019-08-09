@@ -28,6 +28,13 @@ module.exports = {
   },
   head: [
   ],
+  extendMarkdown: md => {
+    // use more markdown-it plugins!
+    md.use(require('markdown-it-deflist'))
+    md.use(require('markdown-it-implicit-figures'), {
+      figcaption: true
+    })
+  },
   themeConfig: {
     logo: '/images/rundecklogo-black.png',
     repo: 'rundeck/docs-vuepress',
@@ -35,6 +42,7 @@ module.exports = {
     editLinks: true,
     displayAllHeaders: true,
     apiVersion: 32,
+    version: '3.1.0',
     algolia: {
       apiKey: 'b83a4def9dea3b0d8b9c7f68f5c8f3eb',
       indexName: 'rundeck'

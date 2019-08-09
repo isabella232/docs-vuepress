@@ -67,7 +67,7 @@ Some important settings:
 - `framework.server.password`: Password for connection to the Rundeck server
 - `framework.rundeck.url`: Base URL for Rundeck server.
 
-SSH Connection settings (See (/administration/projects/node-execution/ssh.md)):
+SSH Connection settings (See [Projects - Node Execution - SSH](/administration/projects/node-execution/ssh.md)):
 
 - `framework.ssh.keypath`: Path to the SSH private key file used for SSH connections
 - `framework.ssh.user`: Default username for SSH Connections, if not overridden by Node specific value.
@@ -77,7 +77,7 @@ SSH Connection settings (See (/administration/projects/node-execution/ssh.md)):
 Other settings:
 
 - `framework.log.dispatch.console.format`: Default format for non-terse node execution logging run by the `dispatch` CLI tool.
-- `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in (/manual/job-workflows.md#context-variables) is disabled.
+- `execution.script.tokenexpansion.enabled`: Whether inline script token expansion is enabled, default `true`. If `false`, the "Inline Script Content" syntax described in [User Guide - Creating Job Workflows - Context Variables](/manual/job-workflows.md#context-variables) is disabled.
 - `communityNews.disabled`: Default is not set, or false. Disables the external polling of Community News feed. Link will persist but will not poll, and clicking this link will open a new browser tab and navigate to the web-based version of Community News.
 
 Static authentication tokens for API access:
@@ -92,7 +92,7 @@ The `tokens.properties` file should contain static authentication tokens you wis
     username2: token_string2
     ...
 
-The token_strings can be used as Authentication tokens to the [API](/api/rundeck-api.md#token-authentication].
+The token_strings can be used as Authentication tokens to the [API](/api/rundeck-api.md#token-authentication).
 
 ### Global execution variables
 
@@ -126,21 +126,19 @@ generated at project setup time. Each project has a directory within the Rundeck
 
     $RDECK_BASE/projects/[PROJECT-NAME]/etc/project.properties
 
-Property Description
-
----
-
-`project.name` Declare the project name.
-`project.ssh-authentication` SSH authentication type (eg, privateKey).
-`project.ssh-keypath` SSH identify file.
-`service.FileCopier.default.provider` Default script file copier plugin.
-`service.NodeExecutor.default.provider` Default node executor plugin.
-`resources.source.N...` Defines a Resource model source see [Resource Model Sources](/manual/09-configure.md#resource-model-sources-configuration].
-`project.globals.X` [Defines a Project Global variable](#project-global-execution-variables)
+| Property | Description |
+| --- | --- |
+| `project.name`                           | Declare the project name. |
+| `project.ssh-authentication`             | SSH authentication type (eg, privateKey). |
+| `project.ssh-keypath`                    | SSH identify file. |
+| `service.FileCopier.default.provider`    | Default script file copier plugin. |
+| `service.NodeExecutor.default.provider`  | Default node executor plugin. |
+| `resources.source.N...`                  | Defines a Resource model source see [Resource Model Sources](/manual/09-configure.md#resource-model-sources-configuration). |
+| `project.globals.X` | [Defines a Project Global variable](#project-global-execution-variables) |
 
 Here's an example that configures a File source:
 
-```
+```properties
 resources.source.1.config.file=/var/rundeck/projects/${project.name}/etc/resources.xml
 resources.source.1.config.generateFileAutomatically=true
 resources.source.1.config.includeServerNode=true
@@ -149,7 +147,7 @@ resources.source.1.type=file
 
 Another that configures a URL source:
 
-```
+```properties
 resources.source.2.config.cache=true
 resources.source.2.config.timeout=30
 resources.source.2.config.url=http\://example.com/nodes
@@ -158,7 +156,7 @@ resources.source.2.type=url
 
 And one that configures a Directory source:
 
-```
+```properties
 resources.source.3.config.directory=/var/rundeck/projects/${project.name}/site_nodes
 resources.source.3.type=directory
 ```
@@ -197,7 +195,7 @@ used. Specified from [jaas-loginmodule.conf](#jaas-loginmodule.conf).
 
 See [rundeck-config.properties > Server Settings](#server-settings)
 
-Or set `server.session.timeout` via (/administration/configuration/system-properties.md).
+Or set `server.session.timeout` via [System Properties Configuration](/administration/configuration/system-properties.md).
 
 ## rundeck-config.properties
 
@@ -243,7 +241,7 @@ The following sections describe configuration values for this file.
 
 - `rundeck.security.maxSessions`: If enforceMaxSessions is true, this setting controls the number of active sessions a user is allowed to have. `Default: 1`
 
-- `rundeck.security.jaasRolePrefix`: Prefix string to add to each _role_ determined via [JAAS Authentication](/administration/security/authentication.md#jetty-and-jaas-authentication]. Default: none.
+- `rundeck.security.jaasRolePrefix`: Prefix string to add to each _role_ determined via [JAAS Authentication](/administration/security/authentication.md#jetty-and-jaas-authentication). Default: none.
 
 ### Security HTTP Headers
 
@@ -383,7 +381,7 @@ system and is useful when managing Rundeck server clusters.
 
 ### Project Configuration Storage settings
 
-The [Project Setup - Project Definitions](/administration/projects/project-create.md#project-definitions] mechanism is configured within this file, see:
+The [Project Setup - Project Definitions](/administration/projects/project-create.md#project-definitions) mechanism is configured within this file, see:
 
 - [Project Storage](/administration/configuration/storage-facility.md#project-storage)
 
@@ -408,13 +406,15 @@ If a sporadic DB connection failure happens when an execution finishes, Rundeck 
 
 Rundeck now attempts to retry the update to correctly register the final state of the execution. You can tune how many times and how often this retry occurs with these config values:
 
-    # attempt to retry the final state update
-    rundeck.execution.finalize.retryMax=10
-    rundeck.execution.finalize.retryDelay=5000
+```properties
+# attempt to retry the final state update
+rundeck.execution.finalize.retryMax=10
+rundeck.execution.finalize.retryDelay=5000
 
-    # attempt to retry updating job statistics after execution finishes
-    rundeck.execution.stats.retryMax=3
-    rundeck.execution.stats.retryDelay=5000
+# attempt to retry updating job statistics after execution finishes
+rundeck.execution.stats.retryMax=3
+rundeck.execution.stats.retryDelay=5000
+```
 
 Delay is in milliseconds. If a max is set to `-1`, then retries will happen indefinitely.
 
@@ -424,15 +424,19 @@ Rundeck captures metrics using the [Metrics](http://metrics.dropwizard.io/3.0.2/
 
 You can disable all metrics capturing with:
 
-    rundeck.metrics.enabled=true/false
+```properties
+rundeck.metrics.enabled=true/false
+```
 
 Additional configuration for metrics:
 
-    # capture metrics for requests via a filter
-    rundeck.metrics.requestFilterEnabled=true/false
+```properties
+# capture metrics for requests via a filter
+rundeck.metrics.requestFilterEnabled=true/false
 
-    # use JMX
-    rundeck.metrics.jmxEnabled=true/false
+# use JMX
+rundeck.metrics.jmxEnabled=true/false
+```
 
 #### Metrics API Endpoints
 
@@ -440,11 +444,15 @@ Rundeck exposes Metrics data via API endpoints, which are enabled by default.
 
 You can disable all metrics API endpoints with:
 
-    rundeck.metrics.api.enabled=true/false
+```properties
+rundeck.metrics.api.enabled=true/false
+```
 
 You can also selectively disable each endpoing by setting these config values:
 
-    rundeck.metrics.api.[name].enabled=true/false
+```properties
+rundeck.metrics.api.[name].enabled=true/false
+```
 
 Metrics names are:
 
@@ -453,17 +461,19 @@ Metrics names are:
 - `ping`
 - `healthcheck`
 
-See: [API > List Metrics](/api/rundeck-api.md#list-metrics].
+See: [API > List Metrics](/api/rundeck-api.md#list-metrics).
 
 ### Pagination defaults
 
 Default paging size for the Activity page and results from execution API queries can be changed.
 
-    rundeck.pagination.default.max=20
+```properties
+rundeck.pagination.default.max=20
+```
 
 ### Job Remote Option URL connection parameters
 
-Change the defaults for for [Job Remote Option Value URLs](/manual/job-options.md#remote-option-values] loading.
+Change the defaults for for [Job Remote Option Value URLs](/manual/job-options.md#remote-option-values) loading.
 
 **Socket read timeout**
 
@@ -473,7 +483,9 @@ Default value: `10` (seconds)
 
 Change this by setting:
 
-    rundeck.jobs.options.remoteUrlTimeout=[seconds]
+```properties
+rundeck.jobs.options.remoteUrlTimeout=[seconds]
+```
 
 **Connection timeout**
 
@@ -483,7 +495,9 @@ Default value: (no timeout)
 
 Change this by setting:
 
-    rundeck.jobs.options.remoteUrlConnectionTimeout=[seconds]
+```properties
+rundeck.jobs.options.remoteUrlConnectionTimeout=[seconds]
+```
 
 **No response retry**
 
@@ -493,7 +507,9 @@ Default value: 3
 
 Change this by setting:
 
-    rundeck.jobs.options.remoteUrlRetry=[total]
+```properties
+rundeck.jobs.options.remoteUrlRetry=[total]
+```
 
 ### Job File Option Uploads
 
@@ -502,15 +518,19 @@ Values to configure file uploads for File type Job options:
 Max temp file size.
 File size in bytes or with a suffix of `k`,`m`,`g`,`t` (kilo,mega,giga,tera).
 
-    rundeck.fileUploadService.tempfile.maxsize=200M
+```properties
+rundeck.fileUploadService.tempfile.maxsize=200M
+```
 
 Max temp file expiration (duration in milliseconds).
 The uploaded file will be removed if not used as a job option within ths time period.
 (This primarily affects Job executions performed via API
 because the File Upload and Job Run are performed as separate steps.)
 
-    # default is 10 minutes
-    rundeck.fileUploadService.tempfile.expiration=600000
+```properties
+# default is 10 minutes
+rundeck.fileUploadService.tempfile.expiration=600000
+```
 
 ### Node Cache
 
@@ -521,7 +541,7 @@ Enabled: true/false (default true).
 : `rundeck.nodeService.nodeCache.enabled=true` If set to false, no caching is performed.
 
 First Load Asynch: true/false
-: `rundeck.nodeService.nodeCache.firstLoadAsynch=false` The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load](/administration/projects/project-create.md#project-nodes] value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
+: `rundeck.nodeService.nodeCache.firstLoadAsynch=false` The default for whether the first load of a project's nodes should be performed synchronously or not. If set to `true`, and the [Project Nodes > Synchronous First Load](/administration/projects/project-create.md#project-nodes) value is unset, then the initial load of a Project's nodes when the cache is empty will be done in the background asynchronously. Otherwise the initial load is done synchronously, possibly causing a delay at Rundeck startup or Job execution startup. A Project level configuration value will override this default.
 
 ### Groovy config format
 

@@ -5,8 +5,8 @@ the Container provides Rundeck
 with a list of "group" or "role" names
 that the user belongs to.
 Rundeck uses this list to determine what access rights the user has.
-(For more about the role list,
-refer to [Authenticating Users - Container authentication and authorization](/administration/security/authentication.md#container-authentication-and-authorization].)
+For more about the role list,
+refer to [Authenticating Users - Container authentication and authorization](/administration/security/authentication.md#container-authentication-and-authorization).
 
 A Rundeck _access control policy_ grants users
 and user groups certain
@@ -56,7 +56,7 @@ Rundeck loads ACL Policy definitions from these locations:
 - All `*.aclpolicy` files found in the rundeck `etc` dir, which is either `/etc/rundeck` (rpm and debian install defaults),
   or `$RDECK_BASE/etc` (launcher/war configuration).
 - System level policies created via the [System ACLs API](/api/rundeck-api.md#acls)
-- Project level policies created via the [Project ACLs API](/api/rundeck-api.md#project-acls], limited only to project context policies for a specific project.
+- Project level policies created via the [Project ACLs API](/api/rundeck-api.md#project-acls), limited only to project context policies for a specific project.
 
 ### Lifecycle
 
@@ -153,7 +153,7 @@ information.
 
 ## Specific Resources and Resource Types
 
-As described in the [ACL Policy)](/manpages/man5/aclpolicy-v10.md) definition, access
+As described in the [ACL Policy](/manpages/man5/aclpolicy-v10.md) definition, access
 is granted or denied to specific "resources". Resources can take two forms:
 
 - A specific resource, with a type and properties
@@ -172,11 +172,11 @@ job. Which means this corresponds to a generic resource with a "kind" called "jo
 In Rundeck 2.8.x and later, Authentication Tokens are given a set of _Authorization Roles_ at generation time,
 so the access levels for the Token depend on how it was generated.
 
-See: [API Token](/api/rundeck-api.md#token-authentication] usage instructions.
+See: [API Token](/api/rundeck-api.md#token-authentication) usage instructions.
 
 See below: [API Token Authorization][].
 
-(**Note:** In Rundeck 2.7.x and earlier, clients of the [Web API](/api/rundeck-api.md) may use the [Token Authentication](/api/rundeck-api.md#token-authentication] method. These clients are
+(**Note:** In Rundeck 2.7.x and earlier, clients of the [Web API](/api/rundeck-api.md) may use the [Token Authentication](/api/rundeck-api.md#token-authentication) method. These clients are
 placed in the special authorization group called `api_token_group`.)
 
 [api token authorization]: #api-token-authorization
@@ -242,55 +242,49 @@ aclpolicy:
 The following table summarizes the generic and specific resources and the
 actions you can restrict in the application scope:
 
-Type Resource Kind Properties Actions Description
-
----
-
-`resource` `project` none `create` Create a new project
-" `system` none `read` Read system information
-" " none `enable_executions` Enable executions
-" " none `disable_executions` Disable executions
-" " none `admin` Enable or disable executions
-" `system_acl` none `read` Read system ACL policy files
-" " none `create` Create system ACL policy files
-" " none `update` Update system ACL policy files
-" " none `delete` Delete system ACL policy files
-" " none `admin` All access to system ACL policy files
-" `user` none `admin` Modify user profiles
-" `job` none `admin` Manage job schedules
-" `apitoken` none `generate_user_token` Create a "user" token
-" " none `generate_service_token` Create a "service" token
-" " none `admin` Full access
-" `plugin` none `read` List installed and available plugins
-" " none `install` Install plugins
-" " none `uninstall` Uninstall plugins
-" " none `admin` Full access
-
----
+| Type       | Resource Kind | Properties | Actions                  | Description                           |
+|------------|---------------|------------|--------------------------|---------------------------------------|
+| `resource` | `project`     | none       | `create`                 | Create a new project                  |
+| "          | `system`      | none       | `read`                   | Read system information               |
+| "          | "             | none       | `enable_executions`      | Enable executions                     |
+| "          | "             | none       | `disable_executions`     | Disable executions                    |
+| "          | "             | none       | `admin`                  | Enable or disable executions          |
+| "          | `system_acl`  | none       | `read`                   | Read system ACL policy files          |
+| "          | "             | none       | `create`                 | Create system ACL policy files        |
+| "          | "             | none       | `update`                 | Update system ACL policy files        |
+| "          | "             | none       | `delete`                 | Delete system ACL policy files        |
+| "          | "             | none       | `admin`                  | All access to system ACL policy files |
+| "          | `user`        | none       | `admin`                  | Modify user profiles                  |
+| "          | `job`         | none       | `admin`                  | Manage job schedules                  |
+| "          | `apitoken`    | none       | `generate_user_token`    | Create a "user" token                 |
+| "          | "             | none       | `generate_service_token` | Create a "service" token              |
+| "          | "             | none       | `admin`                  | Full access                           |
+| "          | `plugin`      | none       | `read`                   | List installed and available plugins  |
+| "          | "             | none       | `install`                | Install plugins                       |
+| "          | "             | none       | `uninstall`              | Uninstall plugins                     |
+| "          | "             | none       | `admin`                  | Full access                           |
 
 Table: Application scope generic type actions
 
-Type Properties Actions Description
-
----
-
-`project` "name" `read` View a project in the project list
-" " `configure` View and modify project configuration
-" " `delete` Delete project
-" " `import` Import archive contents to the project
-" " `export` Export the project as an archive
-" " `delete_execution` Delete executions
-" " `admin` Full access to project
-`project_acl` "name" `read` Read project ACL Policy files
-" " `create` Create project ACL Policy files
-" " `update` Update project ACL Policy files
-" " `delete` Delete project ACL Policy files
-" " `admin` All access to project ACL Policy files
-`storage` "path","name" `create` Create files in the storage facility
-" " `update` Modify files in the storage facility
-" " `read` Read files and list directories in the storage facility
-" " `delete` Delete files in the storage facility
-`apitoken` "username","roles" `create` Create an API Token with specified roles or username
+| Type          | Properties         | Actions            | Description                                             |
+|---------------|--------------------|--------------------|---------------------------------------------------------|
+| `project`     | "name"             | `read`             | View a project in the project list                      |
+| "             | "                  | `configure`        | View and modify project configuration                   |
+| "             | "                  | `delete`           | Delete project                                          |
+| "             | "                  | `import`           | Import archive contents to the project                  |
+| "             | "                  | `export`           | Export the project as an archive                        |
+| "             | "                  | `delete_execution` | Delete executions                                       |
+| "             | "                  | `admin`            | Full access to project                                  |
+| `project_acl` | "name"             | `read`             | Read project ACL Policy files                           |
+| "             | "                  | `create`           | Create project ACL Policy files                         |
+| "             | "                  | `update`           | Update project ACL Policy files                         |
+| "             | "                  | `delete`           | Delete project ACL Policy files                         |
+| "             | "                  | `admin`            | All access to project ACL Policy files                  |
+| `storage`     | "path","name"      | `create`           | Create files in the storage facility                    |
+| "             | "                  | `update`           | Modify files in the storage facility                    |
+| "             | "                  | `read`             | Read files and list directories in the storage facility |
+| "             | "                  | `delete`           | Delete files in the storage facility                    |
+| `apitoken`    | "username","roles" | `create`           | Create an API Token with specified roles or username    |
 
 ---
 
@@ -403,60 +397,51 @@ aclpolicy:
 The following table summarizes the generic and specific resources and the
 actions you can restrict in the project scope:
 
-Type Resource Kind Actions Description
-
----
-
-`resource` `job` `create` Create a new Job
-" " `delete` Delete jobs
-" " `scm_create` Create a new job only using SCM import plugin
-" " `scm_delete` Delete jobs only using SCM import plugin
-" `node` `read` Read node information
-" " `create` Create new node entries
-" " `update` Modify node entries
-" " `refresh` Refresh node entry from a URL
-" `event` `read` Read history event information
-" " `create` Create arbitrary history event entries
-
----
-
-Table: Project scope generic type actions
+| Type       | Resource Kind | Actions      | Description                                   |
+|------------|---------------|--------------|-----------------------------------------------|
+| `resource` | `job`         | `create`     | Create a new Job                              |
+| "          | "             | `delete`     | Delete jobs                                   |
+| "          | "             | `scm_create` | Create a new job only using SCM import plugin |
+| "          | "             | `scm_delete` | Delete jobs only using SCM import plugin      |
+| "          | `node`        | `read`       | Read node information                         |
+| "          | "             | `create`     | Create new node entries                       |
+| "          | "             | `update`     | Modify node entries                           |
+| "          | "             | `refresh`    | Refresh node entry from a URL                 |
+| "          | `event`       | `read`       | Read history event information                |
+| "          | "             | `create`     | Create arbitrary history event entries        |
 
 Type Properties Actions Description
 
----
+| Type    | Properties                        | Actions            | Description                                                                         |
+|---------|-----------------------------------|--------------------|-------------------------------------------------------------------------------------|
+| `adhoc` |                                   | `read`             | Read adhoc execution output                                                         |
+| "       |                                   | `run`              | Run an adhoc execution                                                              |
+| "       |                                   | `runAs`            | Run an adhoc execution as another user                                              |
+| "       |                                   | `kill`             | Kill an adhoc execution                                                             |
+| "       |                                   | `killAs`           | Kill an adhoc execution as another user                                             |
+| `job`   | "name","group","uuid"             | `read`             | View a Job, its executions, and read its definition                                 |
+| "       |                                   | `view`             | View a Job and its executions                                                       |
+| "       |                                   | `update`           | Modify a job                                                                        |
+| "       |                                   | `delete`           | Delete a job                                                                        |
+| "       |                                   | `run`              | Run a job                                                                           |
+| "       |                                   | `runAs`            | Run a job as another user                                                           |
+| "       |                                   | `kill`             | Kill a running job                                                                  |
+| "       |                                   | `killAs`           | Kill a running job as another user                                                  |
+| "       |                                   | `create`           | Create the matching job                                                             |
+| "       |                                   | `toggle_schedule`  | Enable/disable the job's schedule                                                   |
+| "       |                                   | `toggle_execution` | Enable/disable the job for execution                                                |
+| "       |                                   | `scm_create`       | Create a Job only using SCM import plugin                                           |
+| "       |                                   | `scm_update`       | Import changes to a job using SCM import plugin                                     |
+| "       |                                   | `scm_delete`       | Delete a job only using SCM import plugin                                           |
+| `node`  | "rundeck_server", "nodename", ... | `read`             | View the node in the UI (see [Node resource properties](#node-resource-properties)) |
+| "       |                                   | `run`              | Run jobs/adhoc on the node                                                          |
 
-`adhoc` `read` Read adhoc execution output
-" `run` Run an adhoc execution
-" `runAs` Run an adhoc execution as another user
-" `kill` Kill an adhoc execution
-" `killAs` Kill an adhoc execution as another user
-`job` "name","group","uuid" `read` View a Job, its executions, and read its definition
-" `view` View a Job and its executions
-" `update` Modify a job
-" `delete` Delete a job
-" `run` Run a job
-" `runAs` Run a job as another user
-" `kill` Kill a running job
-" `killAs` Kill a running job as another user
-" `create` Create the matching job
-" `toggle_schedule` Enable/disable the job's schedule
-" `toggle_execution` Enable/disable the job for execution
-" `scm_create` Create a Job only using SCM import plugin
-" `scm_update` Import changes to a job using SCM import plugin
-" `scm_delete` Delete a job only using SCM import plugin
-`node` "rundeck_server", "nodename", ... `read` View the node in the UI (see [Node resource properties](#node-resource-properties))
-" `run` Run jobs/adhoc on the node
-
----
-
-Table: Project scope specific resource actions
 
 _Note_: see [Node resource properties](#node-resource-properties) for more node resource properties for authorization.
 
 _Note_: Jobs can be referenced using "name" and "group" or using "uuid".
 
-_Note_: `runAs` and `killAs` actions only apply to certain API endpoints, and allow running jobs or adhoc executions or killing executions to be performed with a different username attached as the author of the action. See [Rundeck API - Running a Job](/api/rundeck-api.md#running-a-job].
+_Note_: `runAs` and `killAs` actions only apply to certain API endpoints, and allow running jobs or adhoc executions or killing executions to be performed with a different username attached as the author of the action. See [Rundeck API - Running a Job](/api/rundeck-api.md#running-a-job).
 
 _Note_:
 Job deletion requires allowing the 'delete' action
@@ -500,24 +485,19 @@ The properties available are the attributes that are defined on the node, so you
 
 Any custom attributes can be used as well.
 
-Name Description
-
----
-
-`nodename` Name of the node
-`username` Authentication username
-`hostname` Hostname of the node
-`description` Description of the node
-`tags` Set of tags. Can use with the `contains:` filter.
-`osName` Operating System name
-`osFamily` Operating System family, e.g. "unix" or "windows"
-`osVersion` Operating System version
-`osArch` Operating System architecture
-`rundeck_server` A value set to "true" if the node is the Rundeck server node
-
----
-
-Table: Pre-defined Node resource properties for authorization filters
+Pre-defined Node resource properties for authorization filters
+| Name             | Description                                                  |
+|------------------|--------------------------------------------------------------|
+| `nodename`       | Name of the node                                             |
+| `username`       | Authentication username                                      |
+| `hostname`       | Hostname of the node                                         |
+| `description`    | Description of the node                                      |
+| `tags`           | Set of tags.  Can use with the `contains:` filter.           |
+| `osName`         | Operating System name                                        |
+| `osFamily`       | Operating System family, e.g. "unix" or "windows"            |
+| `osVersion`      | Operating System version                                     |
+| `osArch`         | Operating System architecture                                |
+| `rundeck_server` | A value set to "true" if the node is the Rundeck server node |
 
 ### Access control policy actions example
 

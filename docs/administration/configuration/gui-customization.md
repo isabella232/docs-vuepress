@@ -1,7 +1,7 @@
 # GUI Customization
 
 You can modify some display features of the Rundeck GUI by setting
-these properties in the [rundeck-config.properties](/administration/configuration/config-file-reference.md#rundeck-config.properties] file:
+these properties in the [rundeck-config.properties](/administration/configuration/config-file-reference.md#rundeck-config.properties) file:
 
 ---
 

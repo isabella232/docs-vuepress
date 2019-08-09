@@ -10,7 +10,7 @@ Also, the main dependency is Java Development Kit 1.8 (JDK 8), you can download 
 
 The first step is to download Rundeck WAR file and save it on the main work directory, e.g. `C:\rundeck`, you can download [Community](https://www.rundeck.com/open-source/download) version or [Enterprise](https://download.rundeck.com/) and save it on `C:\rundeck` folder, now you will set Rundeck path environment variable, for that set it on a Powershell window and :
 
-```
+```powershell
 set RDECK_BASE=C:\rundeck
 ```
 
@@ -67,19 +67,19 @@ After installing Rundeck, the first run and know the files/folders structure, yo
 
 To publish Rundeck to be available in your network, open `C:\rundeck\server\config\rundeck-config.properties` with your favorite text editor and change this line:
 
-```
+```properties
 server.address=yourhostname
 ```
 
 by:
 
-```
+```properties
 server.address=0.0.0.0
 ```
 
 Save the file it and now is time to create a .bat script that launch rundeck properly. For that create a file called `start_rundeck.bat` with your favorite text editor and put this in the for Rundeck Community version:
 
-```
+```batch
 set CURDIR=%~dp0
 call %CURDIR%etc\profile.bat
 java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeck-3.0.X.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
@@ -87,7 +87,7 @@ java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeck-3.0.X.war --skipinstall -d  
 
 Or for Rundeck Enterprise version:
 
-```
+```batch
 set CURDIR=%~dp0
 call %CURDIR%etc\profile.bat
 java %RDECK_CLI_OPTS% %RDECK_SSL_OPTS% -jar rundeckpro-[edition]-3.0.X.war --skipinstall -d  >> %CURDIR%\var\logs\service.log  2>&1
@@ -112,7 +112,7 @@ This section will install Rundeck Community or Enterprise as a Service on a Wind
 - Place the executable under `%RDECK_BASE%` (you can place it elsewhere, but for the sake of the example let's use always the root dir)
 - Open a prompt and issue these commands (Administrator user profile is required to install a service)
 
-```
+```batch
     cd C:\rundeck
     nssm.exe install RUNDECK
 ```
@@ -129,7 +129,7 @@ This section will install Rundeck Community or Enterprise as a Service on a Wind
 
 Replace the `RDECK_CLI_OPTS` variable with the amount of memory that you need, for example:
 
-```
+```batch
 ....
 
 set RDECK_CLI_OPTS=-Xms1024m -Xmx4096m

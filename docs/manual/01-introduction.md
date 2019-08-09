@@ -1,9 +1,5 @@
 # Introduction
 
----
-
-Updated July 23, 2018
-
 ## What is this guide about?
 
 Welcome to the Rundeck user guide. This guide was written to help
@@ -23,7 +19,7 @@ Out of the box, Rundeck gives you capabilities that would be expensive to develo
 
 #### Rundeck
 
-At its core, Rundeck is free open source software licensed under the [Apache Software License](v2.0), and you can participate in the project on [GitHub]. For those who write and run Rundeck jobs at small-scale usage (e.g., limited use or within a team), the open-source Rundeck delivers you the features you need, for free, forever.
+At its core, Rundeck is free open source software licensed under the [Apache Software License](v2.0), and you can participate in the project on [GitHub]. For those who write and run Rundeck jobs at small-scale usage (e.g., limited use or within a team), the open-source Rundeck delivers you the features you need, for free, _forever_.
 
 #### Rundeck Enterpise (fka Rundeck Pro)
 
@@ -58,4 +54,4 @@ Rundeck is developed by Rundeck, Inc. and the Rundeck community. All new users a
 - Use any scripting language
 
 Already itching to install it? Jump ahead to
-[Installing Rundeck](/manual/03-getting-started.md#download-and-installation].
+[Installing Rundeck](/manual/03-getting-started.md#download-and-installation).

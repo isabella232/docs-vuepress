@@ -1,7 +1,5 @@
 # Tutorials
 
-Updated November 20, 2010
-
 This chapter presents working examples reflecting a variety of
 solutions you can create with Rundeck. Helping you apply concepts
 and features introduced in earlier chapters is the focus of these examples.

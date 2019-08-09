@@ -24,7 +24,7 @@ File: _none_ (built-in)
 
 ## Built-in Resource Model Formats
 
-Rundeck comes with three Resource Model Format plugins, see [Resource Model Source Plugins](/administration/projects/resource-model-sources/builtin.md#resource-model-document-formats]:
+Rundeck comes with three Resource Model Format plugins, see [Resource Model Source Plugins](/administration/projects/resource-model-sources/builtin.md#resource-model-document-formats):
 
 - XML: the [resourcexml](/manpages/man5/resource-v13.md) format
 - YAML: the [resourceyaml](/manpages/man5/resource-yaml-v13.md) format
@@ -98,20 +98,20 @@ Provides a Workflow Step:
 
 File: `rundeck-flow-control-plugin-${VERSION_FULL}.jar`
 
-## Jasypt Encryption Plugin {#jasypt-encryption-plugin}
+## Jasypt Encryption Plugin
 
-Provides an encryption [storage converter](/administration/configuration/storage-facility.md#storage-converters] for the Storage facility. Can be used to encrypt the contents of Key Storage,
+Provides an encryption [storage converter](/administration/configuration/storage-facility.md#storage-converters) for the Storage facility. Can be used to encrypt the contents of Key Storage,
 and Project Configuration stored in the DB or on disk.
 
 This plugin provides password based encryption for storage contents.
 It uses the [Jasypt][] encryption library. The built in Java JCE is used unless another provider is specified, [Bouncycastle][] can be used by specifying the 'BC' provider name.
 
-[jasypt]: http://jasypt.org
+[jasypt]: http://www.jasypt.org/
 [bouncycastle]: https://www.bouncycastle.org/
 
 Password, algorithm, provider, etc can be specified directly, or via environment variables (the `*EnvVarName` properties), or Java System properties (the `*SysPropName` properties).
 
-To enable it, see [Configuring - Storage Converter Plugins](/administration/configuration/plugins/configuring.md#storage-converter-plugins].
+To enable it, see [Configuring - Storage Converter Plugins](/administration/configuration/plugins/configuring.md#storage-converter-plugins).
 
 See also: [Key Storage](/administration/security/key-storage.md)
 
@@ -153,21 +153,25 @@ Configuration properties:
 
 Example configuration for the Key Storage facility:
 
-    rundeck.storage.converter.1.type=jasypt-encryption
-    rundeck.storage.converter.1.path=keys
-    rundeck.storage.converter.1.config.encryptorType=custom
-    rundeck.storage.converter.1.config.passwordEnvVarName=ENC_PASSWORD
-    rundeck.storage.converter.1.config.algorithm=PBEWITHSHA256AND128BITAES-CBC-BC
-    rundeck.storage.converter.1.config.provider=BC
+```properties
+rundeck.storage.converter.1.type=jasypt-encryption
+rundeck.storage.converter.1.path=keys
+rundeck.storage.converter.1.config.encryptorType=custom
+rundeck.storage.converter.1.config.passwordEnvVarName=ENC_PASSWORD
+rundeck.storage.converter.1.config.algorithm=PBEWITHSHA256AND128BITAES-CBC-BC
+rundeck.storage.converter.1.config.provider=BC
+```
 
 Example configuration for the Project Configuration storage facility:
 
-    rundeck.config.storage.converter.1.type=jasypt-encryption
-    rundeck.config.storage.converter.1.path=/
-    rundeck.config.storage.converter.1.config.password=sekrit
-    rundeck.config.storage.converter.1.config.encryptorType=custom
-    rundeck.config.storage.converter.1.config.algorithm=PBEWITHSHA256AND128BITAES-CBC-BC
-    rundeck.config.storage.converter.1.config.provider=BC
+```properties
+rundeck.config.storage.converter.1.type=jasypt-encryption
+rundeck.config.storage.converter.1.path=/
+rundeck.config.storage.converter.1.config.password=sekrit
+rundeck.config.storage.converter.1.config.encryptorType=custom
+rundeck.config.storage.converter.1.config.algorithm=PBEWITHSHA256AND128BITAES-CBC-BC
+rundeck.config.storage.converter.1.config.provider=BC
+```
 
 File: `rundeck-jasypt-encryption-plugin-${VERSION_FULL}.jar`
 

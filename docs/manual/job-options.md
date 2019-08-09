@@ -1,7 +1,5 @@
 # Job options
 
----
-
 Rundeck Jobs can be configured to prompt a user for input by defining
 one or more named _options_. An _option_ models a named parameter that
 can be required or optional and include a range of choices that will
@@ -29,7 +27,9 @@ Execution Options..." where input and menu choices must be configured.
 Command line users executing Jobs via the `run` shell
 tool also will specify options as an argument string.
 
-> Note, the `run` command does not prompt the user for required options so you must specify them directly.
+::: warning
+The `run` command does not prompt the user for required options so you must specify them directly.
+:::
 
 It is worth spending a moment to consider how options become
 part of the user interface to Jobs and give some thought to this next
@@ -83,7 +83,7 @@ aspects of that option.
 
 Options can also be defined as part of a job definition and later
 loaded to the Rundeck server. See [job-xml](/manpages/man5/job-v20.md) and [job-yaml](/manpages/man5/job-yaml-v12.md) and
-[rd jobs][https://rundeck.github.io/rundeck-cli/commands/#jobs] pages if you prefer using an textual Job definition.
+[rd jobs](https://rundeck.github.io/rundeck-cli/commands/#jobs) pages if you prefer using an textual Job definition.
 
 ## Defining an option
 
@@ -274,7 +274,9 @@ then
 fi
 ```
 
-> Note, The replacement token syntax is only supported in inline script steps (ie, not script file or command steps).
+::: warning
+The replacement token syntax is only supported in inline script steps (ie, not script file or command steps).
+:::
 
 **Escaping Replacement Token:**
 
@@ -359,7 +361,9 @@ is exposed to use in scripts and commands. Make sure you acknowledge these secur
 - as plaintext tokens expanded in remote scripts as `@option.name@`.
   - Inline Script workflow steps that contain a token expansion will be expanded into a temporary file, and the temp file will contain the plaintext option value.
 
-> Note, When passed as arguments to Job References, they can only be passed as the value of another Secure option. See [Using Secure Options with Job References](#using-secure-options-with-job-references).
+::: tip
+When passed as arguments to Job References, they can only be passed as the value of another Secure option. See [Using Secure Options with Job References](#using-secure-options-with-job-references).
+:::
 
 ### Secure Remote Authentication Options
 
@@ -449,7 +453,9 @@ e.g.:
 
     <option valuesUrl="http://site.example.com/values.json" ... />
 
-> Note, File URL scheme is also acceptable (e.g, `file:/path/to/job/options/optA.json`).
+::: tip
+File URL scheme is also acceptable (e.g, `file:/path/to/job/options/optA.json`).
+:::
 
 The value data must be returned in JSON data format described below.
 
@@ -566,7 +572,9 @@ It is possible to have dependencies on more than one option, and any change to
 one of the dependencies will cause the option values to be reloaded from the
 remote URL.
 
-> Note, It is also possible to declare a cycle of dependencies between option values, which will cause the automatic reloading to be disabled. In this case the user must manually click the reload button to reload the option values if a dependency has changed.
+::: tip
+It is also possible to declare a cycle of dependencies between option values, which will cause the automatic reloading to be disabled. In this case the user must manually click the reload button to reload the option values if a dependency has changed.
+:::
 
 ### Variable expansion in remote URLs
 

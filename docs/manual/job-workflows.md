@@ -1,7 +1,5 @@
 # Job Workflows
 
----
-
 The Job's most basic feature is its ability to execute one or more
 steps. This sequence of steps is called a _workflow_.
 
@@ -186,7 +184,9 @@ return success.)
 
 It is a good practice, when you are defining Error Handlers, to **always** have them fail (e.g. scripts/commands return a non-zero exit-code), unless you specifically want them to be used for Recovery.
 
-> Note, Error-handlers can be attached to either Node Steps or Workflow Steps, and the type of step and the Strategy of the Workflow determines what type of Error-handler steps can be attached to a step. The only restriction is in the case that the Workflow is "Node-oriented", which means that the workflow is executed independently for each node. In this case, Node Steps can only have other Node steps as Error Handlers. In other cases, the Error Handler can be other Workflow steps.
+::: tip
+Error-handlers can be attached to either Node Steps or Workflow Steps, and the type of step and the Strategy of the Workflow determines what type of Error-handler steps can be attached to a step. The only restriction is in the case that the Workflow is "Node-oriented", which means that the workflow is executed independently for each node. In this case, Node Steps can only have other Node steps as Error Handlers. In other cases, the Error Handler can be other Workflow steps.
+:::
 
 To add an error handler press the "+ error handler" button on the step you want to handle.
 The form presented includes the normal set of steps you can add to a workflow.
@@ -279,9 +279,13 @@ Context variables can be used in a few ways in a Job step, with slightly differe
 
   : @ctx.name@
 
-  > Note, The "Inline Script Content" variable expansion is **not** available for "Script File" steps. The Script File is not rewritten at all when used for execution.
+::: tip
+Note, The "Inline Script Content" variable expansion is **not** available for "Script File" steps. The Script File is not rewritten at all when used for execution.
+:::
 
-  > Note: This can be disabled, see [Administrator Guide > Configuration File Reference > framework.properties](/administration/configuration/config-file-reference.md#framework.properties].
+::: tip
+This can be disabled, see [Administrator Guide > Configuration File Reference > framework.properties](/administration/configuration/config-file-reference.md#framework.properties).
+:::
 
 - Environment Variables (_see note_)
 
@@ -289,14 +293,16 @@ Context variables can be used in a few ways in a Job step, with slightly differe
 
   The syntax for Environment variables is that all letters become uppercase, punctuation is replaced with underscore, and the name is prefixed with `RD_`.
 
-  > Note, See the chapter (/administration/projects/node-execution/ssh.md#configuring-remote-machine-for-ssh]] for information about requirements of the SSH server.
+::: tip
+See the chapter [Configuring Remote Machine for SSH](/administration/projects/node-execution/ssh.md#configuring-remote-machine-for-ssh) for information about requirements of the SSH server.
+:::
 
 ### Command Line Tools and API access
 
 Jobs can be exported or imported in XML or Yaml format using the API or the `rd` CLI tool.
 
-- (/api/rundeck-api.md#exporting-jobs])
-- (/api/rundeck-api.md#importing-jobs])
+- [Exporting Jobs](/api/rundeck-api.md#exporting-jobs)
+- [Importing Jobs](/api/rundeck-api.md#importing-jobs)
 - [RD CLI Tool](https://rundeck.github.io/rundeck-cli)
 
 [quartz scheduler crontrigger]: http://www.quartz-scheduler.org/api/2.2.1/org/quartz/CronTrigger.html

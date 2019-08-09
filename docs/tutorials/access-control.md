@@ -43,7 +43,9 @@ by:
   group: noc
 ```
 
-> Note, It is not required to restart Rundeck after changes to .aclpolicy files are made.
+::: tip
+It is not required to restart Rundeck after changes to .aclpolicy files are made.
+:::
 
 Login as the "noc" user (the password is probably "noc").
 Just the Jobs in the "web" group are

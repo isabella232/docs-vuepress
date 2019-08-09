@@ -35,7 +35,7 @@ The `<List of Allowed Members>` determines additional cluster members that the p
 
 - `Self` - Execute locally
 - `Other` - Any other member except this one
-- **UUID** - A particular UUID
+- `UUID` - A particular UUID
 - `/regex/` - A regular expression matching a UUID
 
 **Example**
@@ -50,7 +50,7 @@ The example configuration shows Self and a regular expression combined.
 
 The `<List of Member Tags>` parameter allows you to restrict the remote Cluster Members by using tags. The tags are similar to Node Tags. The special tag, Self, is automatically only assigned to the _local_ cluster node. Set tags for a cluster member in the framework.properties file.
 
-```
+```properties
 rundeck.clusterMode.remoteExecution.config.allowedTags = <List of Member Tags>
 rundeck.clusterMode.remoteExecution.config.preferredTags = <List of Member Tags>
 rundeck.clusterMode.remoteExecution.config.activeOnly = true/false
@@ -58,7 +58,7 @@ rundeck.clusterMode.remoteExecution.config.activeOnly = true/false
 
 **Example**
 
-```
+```properties
 rundeck.server.uuid=...
 rundeck.server.tags=worker,linux
 ```
@@ -67,7 +67,7 @@ Allowed Tags policy is configured in a similar way, using comma-separated allowe
 
 **Example**
 
-```
+```properties
 rundeck.clusterMode.remoteExecution.policy = RoundRobin
 rundeck.clusterMode.remoteExecution.config.allowed = other
 rundeck.clusterMode.remoteExecution.config.allowedTags = worker,secondary
@@ -79,7 +79,7 @@ Use Preferred Tags to indicate that certain members are preferred. When Preferre
 
 This configuration defines Allowed Tags and Preferred Tags for Round Robin execution on any worker or secondary members, if available. Otherwise, use Round Robin on all other members.
 
-```
+```properties
 rundeck.clusterMode.remoteExecution.policy = RoundRobin
 rundeck.clusterMode.remoteExecution.config.allowed = other
 rundeck.clusterMode.remoteExecution.config.allowedTags = *
@@ -90,7 +90,7 @@ rundeck.clusterMode.remoteExecution.config.preferredTags = worker,secondary
 
 Define additional profiles by name:
 
-```
+```properties
 rundeck.clusterMode.remoteExecution.profiles = profile1, profile2
 ```
 
@@ -98,13 +98,13 @@ rundeck.clusterMode.remoteExecution.profiles = profile1, profile2
 
 Assign projects to a profile by name:
 
-```
+```properties
 rundeck.clusterMode.remoteExecution.profile.profile1.projects=projectA, projectB
 ```
 
 The following example defines a policy type and configuration for profile1:
 
-```
+```properties
 rundeck.clusterMode.remoteExecution.profile.profile1.policy= <Policy>
 rundeck.clusterMode.remoteExecution.profile.profile1.config.allowed = <List of Allowed Members>
 rundeck.clusterMode.remoteExecution.profile.profile1.config.allowedTags = <List of Member Tags>
@@ -123,13 +123,13 @@ Note: You must be running Rundeck Enterprise 2.3.1 or a later release to use thi
 
 **Example**
 
-```
+```properties
 rundeck.clusterMode.remoteExecution.config.criteria = threadRatio,load
 ```
 
 Each criteria can be weighted using a relative value:
 
-```
+```properties
 rundeck.clusterMode.remoteExecution.config.weights = 1.0,1.5
 ```
 
@@ -140,7 +140,7 @@ used.
 
 **Example**
 
-```
+```properties
 rundeck.clusterMode.remoteExecution.config.groupWeight=1,0,0,0
 ```
 

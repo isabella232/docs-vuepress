@@ -4,21 +4,21 @@ Full usage information can be found on the Docker Hub image pages.
 
 ## Open Source Rundeck
 
-[rundeck/rundeck:\${VERSION}](https://hub.docker.com/r/rundeck/rundeck/)
+[rundeck/rundeck:\{{ $themeConfig.version }}](https://hub.docker.com/r/rundeck/rundeck/)
 
 ```bash
-docker run --name some-rundeck -v data:/home/rundeck/server/data rundeck/rundeck:${VERSION}
+docker run --name some-rundeck -v data:/home/rundeck/server/data rundeck/rundeck:{{ $themeConfig.version }}
 ```
 
 ## Rundeck Enterprise
 
-[rundeckpro/team:\${VERSION}](https://hub.docker.com/r/rundeckpro/team/)
+[rundeckpro/team:\{{ $themeConfig.version }}](https://hub.docker.com/r/rundeckpro/team/)
 
 ```bash
-docker run --name some-rundeck -v data:/home/rundeck/server/data rundeckpro/team:${VERSION}
+docker run --name some-rundeck -v data:/home/rundeck/server/data rundeckpro/team:{{ $themeConfig.version }}
 ```
 
-[rundeckpro/enterprise:\${VERSION}](https://hub.docker.com/r/rundeckpro/enterprise/)
+[rundeckpro/enterprise:\{{ $themeConfig.version }}](https://hub.docker.com/r/rundeckpro/enterprise/)
 The following example invocation will require an accessible MySQL instance
 with a database, user, and the required privileges setup:
 
@@ -30,7 +30,7 @@ docker run \
     -e RUNDECK_DATABASE_USERNAME="${DB_USERNAME}"
     -e RUNDECK_DATABASE_PASSWPRD="${DB_PASSWORD}"
     -e RUNDECK_DATABASE_URL="${DB_URL}"
-    rundeckpro/enterprise:${VERSION}
+    rundeckpro/enterprise:{{ $themeConfig.version }}
 ```
 
 ## Example Configurations

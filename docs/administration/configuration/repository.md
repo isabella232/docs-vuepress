@@ -1,4 +1,4 @@
-% Repository
+# Repository
 
 This document describes the Rundeck Repository features, which allow you to install plugins from the official Rundeck Repository, or to configure your own repositories for serving plugins to your own private installation.
 You can use the repositories to find plugins using the "Find Plugins" entry under the Plugins menu that is accessed from the gear icon in the GUI. You can also use the `rd` tool to install, uninstall, and upload plugins that are saved in these repositories.
@@ -19,13 +19,15 @@ to your rundeck-config.properties file.
 
 ## GUI Usage
 
-Each repository that is enabled will show up in the Rundeck user interface when you click the gear icon then go to Plugins>Find Plugin.  
+Each repository that is enabled will show up in the Rundeck user interface when you click the gear icon then go to Plugins>Find Plugin.
+
 ![Find Plugins](../../assets/img/plugins-find.png)
 
 When you go to the plugin page you will see each repository and the plugins they provide.
 
 The plugins are each represented by a card. The following image explains the content of the plugin card.  
-![Plugin Card](../../assets/img/plugin-card.png){ width=35% }
+
+![Plugin Card](../../assets/img/plugin-card.png)
 
 If you have the official repository enabled you will see some plugins with an install button. These plugins can be immediately installed by clicking the `Install` button. When the plugin is installed, it will be pulled from the Rundeck repository and copied into the correct location in your Rundeck installation. After installation, it is ready for immediate use. Some plugins do not have an install button. Manual installation is required for those plugins. To install those plugins you need to click on the source link icon ![source link icon](../../assets/img/repo-source-icon.png), which will take you to the plugins source page, and there you can check for instructions regarding the install of that plugin.
 

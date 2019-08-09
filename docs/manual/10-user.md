@@ -1,7 +1,5 @@
 # User
 
----
-
 ## User Menu
 
 The User menu contains items to view your Profile and log out.

@@ -1,10 +1,8 @@
 # Job plugins
 
----
-
 ## Node Steps
 
-- (/manual/node-steps/jira.md)
+- [Jira Node Step Plugins (Enterprise)](/manual/node-steps/jira.md)
 - [Command step](/manual/node-steps/builtin.md#command-step)
 - [Script step](/manual/node-steps/builtin.md#script-step)
 - [Scipt file](/manual/node-steps/builtin.md#script-file-step)
@@ -14,7 +12,7 @@
 - [Local command](/manual/node-steps/builtin.md#local-command-step)
 - [Data node](/manual/node-steps/builtin.md#data-node-step)
 - [SQL Runner (Enterprise)](/manual/node-steps/sqlrunner.md)
-- (/manual/node-steps/vmware.md)
+- [VMWare Operations Node Step Plugin (Enterprise)](/manual/node-steps/vmware.md)
 
 ## Workflow Steps
 
@@ -29,10 +27,10 @@
 - [Data step](/manual/workflow-steps/builtin.md#data-step)
 - [File Transfer ()](/manual/workflow-steps/file-transfer.md)
 - [Github (Enterprise)](/manual/workflow-steps/github.md)
-- (/manual/workflow-steps/jira.md)
+- [Jira Workflow Step Plugins (Enterprise)](/manual/workflow-steps/jira.md)
 - [Progress Badge (Enterprise)](/manual/workflow-steps/progress-badge.md#progress-badge-workflow-step-plugin)
 - [ServiceNow (Enterprise)](/manual/workflow-steps/servicenow.md)
-- (/manual/workflow-steps/vmware.md)
+- [VMWare Step Plugins (Enterprise)](/manual/workflow-steps/vmware.md)
 
 ## Notifications
 
@@ -41,7 +39,7 @@ starts or finishes, with either success or failure. For a general
 explanation on how job notifications work, see [Creating jobs#Job Notifications](/manual/creating-jobs.md#job-notifications)
 
 - [Email](/manual/notifications/email.md)
-- (/manual/notifications/jira.md)
+- [Jira Notification Plugins (Enterprise)](/manual/notifications/jira.md)
 - [Webhooks](/manual/notifications/webhooks.md)
 
 ## Workflow Strategy
@@ -58,8 +56,8 @@ in the order specified in your Job definition.
 However an Orchestrator plugin can choose which of the nodes should be used, and when. For example,
 to limit concurrent execution to a subset of the nodes, or to skip certain nodes.
 
-- (/manual/orchestrator-plugins/bundled.md)
-- (/manual/orchestrator-plugins/highest-lowest.md)
+- [Bundled Orchestrator Plugins](/manual/orchestrator-plugins/bundled.md)
+- [Highest/Lowest Attribute Value (Enterprise)](/manual/orchestrator-plugins/highest-lowest.md)
 
 ## Log Filters
 
@@ -76,4 +74,4 @@ Log Filters can filter/process/read output from specific Workflow Steps, or all 
 
 Content Converters are not added directly to Jobs, but can be used by Log Filters and Step plugins.
 
-See (/manual/content-converters/index.md).
+See [Content Converter Plugins](/manual/content-converters/index.md).

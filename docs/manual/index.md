@@ -1,9 +1,5 @@
 # User Guide
 
----
-
-Updated 1/16/2012
-
 This the Rundeck _User Guide_.
 
 For information about Rundeck Administration, see the [Administrator Guide](/administration/index.md)

@@ -14,9 +14,9 @@ A typical way to store shared keys might be under a "common" or "shared" root. S
 
 ## ACL Policies
 
-Access to the Keys in the Storage facility are restricted by use of [ACL policies](/administration/security/authorization.md#].
+Access to the Keys in the Storage facility are restricted by use of [ACL policies](/administration/security/authorization.md#).
 
-Access to the `keys` path requires an [Application scope](/administration/security/authorization.md#application-scope-resources-and-actions] authorization.
+Access to the `keys` path requires an [Application scope](/administration/security/authorization.md#application-scope-resources-and-actions) authorization.
 
 Within the application scope definition, define access with a `for` entry of `storage`.
 
@@ -48,7 +48,7 @@ for:
 
 ## API Usage
 
-The [Key Storage API](/api/rundeck-api.md#key-storage] is provided through the standard Rundeck HTTP API. Rundeck should be configured to use HTTPS, and all API access requires either an authentication token, or username and password authentication.
+The [Key Storage API](/api/rundeck-api.md#key-storage) is provided through the standard Rundeck HTTP API. Rundeck should be configured to use HTTPS, and all API access requires either an authentication token, or username and password authentication.
 
 Creating an key entry:
 
@@ -90,7 +90,7 @@ Rundeck provides these built-in implementations:
 
 ### Configuring Storage Plugins
 
-See [Plugins User Guide - Configuring Storage Plugins](/administration/configuration/plugins/configuring.md#storage-plugins].
+See [Plugins User Guide - Configuring Storage Plugins](/administration/configuration/plugins/configuring.md#storage-plugins).
 
 ## Key Data Storage Converter
 
@@ -102,7 +102,7 @@ Converter plugins do not have to manage storing the data, that will be handled b
 
 ### Configuring Storage Converter Plugins
 
-See [Plugins User Guide - Configuring Storage Converter Plugins](/administration/configuration/plugins/configuring.md#storage-converter-plugins].
+See [Plugins User Guide - Configuring Storage Converter Plugins](/administration/configuration/plugins/configuring.md#storage-converter-plugins).
 
 ## Using Keys via Rundeck Node Executors
 

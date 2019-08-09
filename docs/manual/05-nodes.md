@@ -1,9 +1,5 @@
 # Nodes
 
----
-
-Updated January 30, 2014
-
 ## Overview
 
 A _Node_ is a resource that is either a physical or virtual instance
@@ -14,7 +10,7 @@ describe the properties of a node or reflect the state of the node.
 One of a Node's built in attributes is called "tags" which is a list
 of classifications or categories about that Node.
 
-To add nodes to your Rundeck instances, see (/manual/09-configure.md#resource-model-sources-configuration])
+To add nodes to your Rundeck instances, see [Configure - Resource Model Sources Configuration](/manual/09-configure.md#resource-model-sources-configuration])
 
 ## Nodes tab overview
 

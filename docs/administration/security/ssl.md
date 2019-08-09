@@ -1,6 +1,7 @@
 # Configuring SSL
 
-This document describes how to configure Rundeck for SSL/HTTPS support, and assumes you are using the rundeck-launcher standalone launcher. If you are using RPM/DEB install, refer to the appropriate configuration file paths from (/administration/configuration/config-file-reference.md#configuration-layout]].
+This document describes how to configure Rundeck for SSL/HTTPS support, and assumes you are using the rundeck-launcher standalone launcher. If you are using RPM/DEB install, refer to the appropriate configuration file paths from
+[Rundeck Configuration - Configuration File Reference - Configuration Layout](/administration/configuration/config-file-reference.md#configuration-layout).
 
 (1) Before beginning, do a first-run of the launcher, as it will create the base directory for Rundeck and generate configuration files.
 
@@ -127,7 +128,7 @@ You can tell Jetty to honor
 `X-Forwarded-Proto`, `X-Forwarded-Host`,
 `X-Forwarded-Server` and `X-Forwarded-For` headers in two ways:
 
-In [rundeck-config.properties](/administration/configuration/config-file-reference.md#rundeck-config.properties] you can set:
+In [rundeck-config.properties](/administration/configuration/config-file-reference.md#rundeck-config.properties) you can set:
 
     server.useForwardHeaders=true
 
@@ -143,7 +144,7 @@ For RPM/DEB install you can export the `RDECK_JVM_OPTS` variable in the file `/e
 
 This will enable Jetty to respond correctly when a forwarded request is first received.
 
-**Note:** You will still need to modify the `grails.serverURL` value in [rundeck-config.properties](/administration/configuration/config-file-reference.md#rundeck-config.properties] to let Rundeck know how to properly generate absolute URLs.
+**Note:** You will still need to modify the `grails.serverURL` value in [rundeck-config.properties](/administration/configuration/config-file-reference.md#rundeck-config.properties) to let Rundeck know how to properly generate absolute URLs.
 
 ## Disabling SSL Protocols
 

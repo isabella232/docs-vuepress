@@ -113,8 +113,10 @@ _File Copier_
 
 Example `project.properties` to set default local providers to `stub`:
 
+```properties
     service.NodeExecutor.default.local.provider=stub
     service.FileCopier.default.local.provider=stub
+```
 
 ### Resource Model Sources
 
@@ -180,7 +182,9 @@ For example, to enable a particular Resource Format parser to be used by a File
 Resource Model Source (see [File Resource Model Source Configuration](/administration/projects/resource-model-sources/index.md#file-resource-model-source-configuration]), you should specify
 the Provider Name for the parser as the format for the source:
 
-    resources.source.1.format=myformat
+```properties
+resources.source.1.format=myformat
+```
 
 This would specify the use of "myformat" provider.
 
@@ -201,14 +205,14 @@ currently available triggers:
 - `onavgduration` - the Execution exceed the average duration of the Job
 - `onretryablefailure` - the Job failed but will be retried
 
-When you define the Job in the GUI or via [XML](/manpages/man5/job-v20.md#notification] or
-[Yaml](/manpages/man5/job-yaml-v12.md#notification], you can add any of the available Notification plugin types to happen for
+When you define the Job in the GUI or via [XML](/manpages/man5/job-v20.md#notification) or
+[Yaml](/manpages/man5/job-yaml-v12.md#notification), you can add any of the available Notification plugin types to happen for
 any of the possible triggers. Each Notification plugin type may have unique
 configuration properties that you can specify. Each combination of trigger and
 Notification type has a unique configuration.
 
 When defining configuration values for a plugin, you can usually substitute
-any "Job context variables" that are listed under (/manual/job-workflows.md#context-variables]]. (Note: Some configuration properties of a plugin may not support this feature.)
+any "Job context variables" that are listed under [User Guide - Creating Job Workflows - Context Variables](/manual/job-workflows.md#context-variables). (Note: Some configuration properties of a plugin may not support this feature.)
 
 In addition, you can also use these variables:
 
@@ -322,14 +326,18 @@ modify your `rundeck-config.properties` file:
 
 To use the `db` storage:
 
-    [prefix].1.type=db
-    [prefix].1.path=/
+```properties
+[prefix].1.type=db
+[prefix].1.path=/
+```
 
 To use the `file` storage:
 
-    [prefix].1.type=file
-    [prefix].1.path=/
-    [prefix].1.config.baseDir=${framework.var.dir}/storage
+```properties
+[prefix].1.type=file
+[prefix].1.path=/
+[prefix].1.config.baseDir=${framework.var.dir}/storage
+```
 
 Each Storage Plugin defines its own configuration properties, so if you are using a third-party plugin refer to its documentation. You can set the configuration properties via `[prefix].#.config.PROPERTY`.
 
@@ -354,16 +362,18 @@ You would defin multiple configurations using sequential index numbers, and appl
 
 Example:
 
-    rundeck.storage.provider.1.type=db
-    rundeck.storage.provider.1.path=/keys
+```properties
+rundeck.storage.provider.1.type=db
+rundeck.storage.provider.1.path=/keys
 
-    rundeck.storage.provider.2.type=file
-    rundeck.storage.provider.2.path=/keys/local
-    rundeck.storage.provider.2.config.baseDir=/var/local/rundeck
+rundeck.storage.provider.2.type=file
+rundeck.storage.provider.2.path=/keys/local
+rundeck.storage.provider.2.config.baseDir=/var/local/rundeck
 
-    rundeck.storage.provider.3.type=vault-plugin
-    rundeck.storage.provider.3.path=/keys/vault
-    rundeck.storage.provider.3.removePathPrefix=true
+rundeck.storage.provider.3.type=vault-plugin
+rundeck.storage.provider.3.path=/keys/vault
+rundeck.storage.provider.3.removePathPrefix=true
+```
 
 In this configuration, anything stored under `keys/vault` would be stored with the Vault plugin,
 and the `removePathPrefix` means that the Vault plugin would not see the `keys/vault` prefix in the path it uses internally.

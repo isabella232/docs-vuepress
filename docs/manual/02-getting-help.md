@@ -1,9 +1,5 @@
 # Getting Help
 
----
-
-Updated January 30, 2014
-
 ## Mailing list:
 
 - [https://groups.google.com/group/rundeck-discuss](https://groups.google.com/group/rundeck-discuss)

@@ -1,10 +1,5 @@
 # Jobs
 
----
-
-
-Updated November 20, 2010
-
 This chapter covers how to run and create _Jobs_.
 
 Why create a Job?

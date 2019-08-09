@@ -1,9 +1,5 @@
 # Getting Started
 
----
-
-Updated November 20, 2010
-
 This chapter helps new users get started with Rundeck. We will begin
 by explaining a few essential Rundeck concepts and
 terminology and then discuss installation, project setup and introduce
@@ -55,7 +51,7 @@ there are a couple ways you can try it.
   dynamic options, and a set of users, each with varying degrees of privilege.
 
 The default port for the web interface is `4440`. If you
-installed Rundeck on your local machine, go to this URL: <http://localhost:4440>
+installed Rundeck on your local machine, go to this URL: `http://<hostname>:4440`
 
 ## Login
 
@@ -72,7 +68,7 @@ you with a dialog to create one. Press the "New Project" button to create
 a project.
 Fill the project creation form with a desired name. Project names can
 contain letters and numbers but do not use spaces or special characters.
-The (/administration/projects/index.md)
+The [project](/administration/projects/index.md)
 section
 will show you how to learn to add Nodes, automate the creation and maintenance of
 Rundeck projects.

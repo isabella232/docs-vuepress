@@ -175,7 +175,9 @@ Simply set the filter value to `${option.name}`, where "name" is the name of the
 When the job is executed, the user will be prompted to enter the value of the option, and
 that will then be used in the node filter to determine the nodes to dispatch to.
 
-> Note, Since the dynamic option value is not set yet, the "Matched Nodes" shown in the node filtering input may indicate that there are "None" matched. Also, when the Job is executed, you may see a message saying "Warning: The Node filters specified for this Job do not match any nodes, execution may fail." The nodes matched will be determined after the user enters the option values.
+::: tip
+Since the dynamic option value is not set yet, the "Matched Nodes" shown in the node filtering input may indicate that there are "None" matched. Also, when the Job is executed, you may see a message saying "Warning: The Node filters specified for this Job do not match any nodes, execution may fail." The nodes matched will be determined after the user enters the option values.
+:::
 
 #### Orchestrator
 

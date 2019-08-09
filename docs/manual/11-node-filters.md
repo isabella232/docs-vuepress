@@ -1,9 +1,5 @@
 # Node Filters
 
----
-
-Updated February 10, 2014
-
 ## Node Filter Syntax
 
 The basic format is a sequence of `attributename: value` pairs to select nodes which match. You can negate a match by using `!attributename: value`. If you do not specify an attribute name, then the `nodename` is matched against the bare value.

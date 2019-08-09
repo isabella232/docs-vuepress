@@ -107,6 +107,6 @@ working directory where the executable war is located.
 
 ### System Properties
 
-See (/administration/configuration/system-properties.md)
+See [Rundeck Configuration - System Properties Configuration](/administration/configuration/system-properties.md)
 
 For more information about using SSL, see [Configuring Rundeck for SSL](/administration/security/ssl.md).

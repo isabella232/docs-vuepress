@@ -1,9 +1,5 @@
 # Commands
 
----
-
-Updated January 30, 2014
-
 A _command_ is a single executable string executed on a Node.
 Rundeck invokes commands on nodes via a _node executor_
 which evaluates the command string and executes it.
@@ -17,8 +13,10 @@ commands to a set of filtered Node resources.
 The Command page can accept any command string you might run
 via an SSH command or via the [rd adhoc](https://rundeck.github.io/rundeck-cli/commands/#adhoc) shell tool.
 
-> Note, your ability to view Nodes and execute commands on them
-> depends on your ACL policy.
+::: tip
+Your ability to view Nodes and execute commands on them
+depends on your ACL policy.
+:::
 
 ## Commands tab overview
 
@@ -46,7 +44,7 @@ string must be a valid command statement that can be executed on the nodes.
 
 ### Dispatch settings
 
-![Choose dispatch settings](~@assets/img/fig0208-b.png)
+![Choose dispatch settings](~@assets/img/fig0208-b.png "Foo")
 
 The dispatch settings let you control the amount of concurrency and error
 handling for the command execution.

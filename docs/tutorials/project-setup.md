@@ -109,7 +109,9 @@ reflects the server role (tags="web" vs tags="app").
 
 You will also notice there are two ways to define attributes using inline attribute names like `osName` or a separate xml element like `anvils-location`. It's purely up to your preference which format you use.
 
-> Note, this tutorial is a trivial sized example so to conserve space (and VMs) the nodes are located on the same VM (each node uses the same hostname but a different username).
+::: tip
+This tutorial is a trivial sized example so to conserve space (and VMs) the nodes are located on the same VM (each node uses the same hostname but a different username).
+:::
 
 A node in rundeck can model a single host on the
 network and represents a single management endpoint. In the end,
@@ -117,9 +119,9 @@ the ssh node executor plugin formulates an ssh command string similar to:
 "ssh username@hostname command". The ssh identity is resolved via configuration
 at run time. In this example, the project default is used as specified in the
 [project.properties] configuration file.
-(e.g., project.ssh-keypath=/var/lib/rundeck/.ssh/id_rsa).
+(e.g., `project.ssh-keypath=/var/lib/rundeck/.ssh/id_rsa`).
 
-See [ssh-plugins guide](/administration/projects/node-execution/ssh.md#configuring-remote-machine-for-ssh] to learn about configuring remote machines for ssh.
+See [ssh-plugins guide](/administration/projects/node-execution/ssh.md#configuring-remote-machine-for-ssh) to learn about configuring remote machines for ssh.
 
 This example uses the built in ssh plugin but you are not restricted to using
 ssh. There are other node executor plugins that invoke remote actions via
@@ -134,7 +136,7 @@ configuration file to declare a new resource model source.
 
 Below a directory type source is configured:
 
-```
+```properties
 resources.source.2.config.directory=/var/rundeck/projects/anvils/nodes
 resources.source.2.type=directory
 ```
@@ -151,6 +153,6 @@ New project sources can also be added in the Configure page:
 See [Managing Node Sources](/administration/projects/resource-model-sources/index.md)
 to learn more about configuring Rundeck to read node data from external providers.
 
-[resource-XML](/manpages/man5/resource-v13.md)
+[resource-XML]: /manpages/man5/resource-v13.md
 [rd]: https://rundeck.github.io/rundeck-cli/
 [tip1]: http://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/

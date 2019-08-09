@@ -1,7 +1,5 @@
 # Configurations
 
----
-
 The Rundeck GUI has a Configuration Page which contains lets you view and manage some configuration settings.
 
 If you have `admin` role access, when you log in you will see the "Configure" icon in the header:
@@ -48,7 +46,7 @@ To edit an item in the list click the "Edit" button. To delete an item in the li
 
 Each type of Resource Model Source will have different configuration settings of its own. The built-in Resource Model Source providers are shown below.
 
-You can install more sources as plugins, see [Resource Model Source Plugins](/administration/projects/resource-model-sources/builtin.md#resource-model-source-plugins].
+You can install more sources as plugins, see [Resource Model Source Plugins](/administration/projects/resource-model-sources/builtin.md#resource-model-source-plugins).
 
 #### File Resource Model Source
 
@@ -56,16 +54,16 @@ This is the File Resource Model Source configuration form:
 
 ![File Resource Model Source](~@assets/img/fig0707.png)
 
-See [File Resource Model Source Configuration](/administration/projects/resource-model-sources/builtin.md#file-resource-model-source-configuration] for more configuration information.
+See [File Resource Model Source Configuration](/administration/projects/resource-model-sources/builtin.md#file-resource-model-source-configuration) for more configuration information.
 
 #### Directory Resource Model Source
 
 Allows a directory to be scanned for resource document files. All files
-with an extension supported by one of the [Resource Model Document Formats](/administration/projects/resource-model-sources/builtin.md#resource-model-document-formats] are included.
+with an extension supported by one of the [Resource Model Document Formats](/administration/projects/resource-model-sources/builtin.md#resource-model-document-formats) are included.
 
 ![Directory Resource Model Source](~@assets/img/fig0709.png)
 
-See [Directory Resource Model Source Configuration](/administration/projects/resource-model-sources/builtin.md#directory-resource-model-source-configuration] for more configuration information.
+See [Directory Resource Model Source Configuration](/administration/projects/resource-model-sources/builtin.md#directory-resource-model-source-configuration) for more configuration information.
 
 #### Script Resource Model Source
 
@@ -74,7 +72,7 @@ definitions.
 
 ![Script Resource Model Source](~@assets/img/fig0710.png)
 
-See [Script Resource Model Source Configuration](/administration/projects/resource-model-sources/builtin.md#script-resource-model-source-configuration] for more configuration information.
+See [Script Resource Model Source Configuration](/administration/projects/resource-model-sources/builtin.md#script-resource-model-source-configuration) for more configuration information.
 
 #### URL Resource Model Source
 
@@ -83,7 +81,7 @@ resource definitions.
 
 ![URL Resource Model Source](~@assets/img/fig0711.png)
 
-See [URL Resource Model Source Configuration](/administration/projects/resource-model-sources/builtin.md#url-resource-model-source-configuration] for more configuration information.
+See [URL Resource Model Source Configuration](/administration/projects/resource-model-sources/builtin.md#url-resource-model-source-configuration) for more configuration information.
 
 ### Default Node Executor Configuration
 
@@ -95,7 +93,7 @@ Select the Default Node Executor you wish to use for all remote Nodes for the pr
 
 ![Default Node Executor Choice](~@assets/img/fig0712.png)
 
-You can install more types of Node Executors as plugins, see [Node Execution Plugins](/manual/job-plugins.md#node-execution].
+You can install more types of Node Executors as plugins, see [Node Execution Plugins](/manual/job-plugins.md#node-execution).
 
 ### Default File Copier Configuration
 
@@ -108,14 +106,14 @@ Select the Default File Copier you wish to use for all remote Nodes for the proj
 
 ![Default File Copier Choice](~@assets/img/fig0713.png)
 
-You can install more types of File Copiers as plugins, see [Node Execution Plugins](/manual/job-plugins.md#node-execution].
+You can install more types of File Copiers as plugins, see [Node Execution Plugins](/manual/job-plugins.md#node-execution).
 
 ## Key Storage
 
-The Key Storage facility provides an [API](/api/rundeck-api.md#key-storage] and GUI to manage public, private keys and passwords.
+The Key Storage facility provides an [API](/api/rundeck-api.md#key-storage) and GUI to manage public, private keys and passwords.
 These stored keys are used by both Node Executor and File Copier plugins.
 Project configuration settings allow you to reference a key path for both the default Node Executor and File Copier
-([see above](/manual/09-configure.md#default-node-executor-configuration]).
+([see above](/manual/09-configure.md#default-node-executor-configuration)).
 
 Keys can be stored either using an uploaded file or as text input. Public key data can be retrieved once stored. Private key and password data is only available to the node execution plugins.
 

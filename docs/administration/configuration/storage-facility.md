@@ -84,4 +84,4 @@ To develop your own storage converter plugin, see:
 
 Rundeck provides a bundled Storage Converter plugin implementation:
 
-- `jasypt-encryption` - encrypts the storage contents: (/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin])
+- `jasypt-encryption` - encrypts the storage contents: [Configuring Plugins - Bundled Plugins - Jasypt Encryption Plugin](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin)
