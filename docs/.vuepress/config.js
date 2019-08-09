@@ -18,7 +18,7 @@ const navbarDevelopment = require('./navbar-menus/development')
 module.exports = {
   title: 'Rundeck Docs',
   description: '',
-  base: '/docs-vuepress/',
+  base: '/docs/',
   configureWebpack: {
     resolve: {
       alias: {
@@ -27,16 +27,12 @@ module.exports = {
     }
   },
   head: [
-    [
-      "link",
-      {
-        rel: "stylesheet",
-        href: "/main.css"
-      }
-    ]
   ],
   themeConfig: {
     logo: '/images/rundecklogo-black.png',
+    repo: 'rundeck/docs-vuepress',
+    docsDir: 'docs',
+    editLinks: true,
     displayAllHeaders: true,
     apiVersion: 32,
     algolia: {
