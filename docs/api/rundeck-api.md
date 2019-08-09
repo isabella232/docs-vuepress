@@ -1,3 +1,7 @@
+---
+title: API Reference
+---
+
 # API Reference | Version {{ $themeConfig.apiVersion }}
 
 Rundeck provides a Web API for use with your application.
