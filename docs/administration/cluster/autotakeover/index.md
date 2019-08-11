@@ -11,7 +11,7 @@ Scheduled jobs are owned by the last cluster member who modified them. Jobs can 
 
 Configure the heartbeat by adding the following settings in `rundeck-config.properties`:
 
-```
+```properties
 # heartbeat interval in seconds
 rundeck.clusterMode.heartbeat.interval=30
 
@@ -30,7 +30,7 @@ rundeck.clusterMode.heartbeat.considerDead=300
 
 Then configure Autotakeover by adding the following settings in `rundeck-config.properties`:
 
-```
+```properties
 # enables autotakeover for members detected as "dead"
 rundeck.clusterMode.autotakeover.enabled=true
 
@@ -46,6 +46,6 @@ rundeck.clusterMode.autotakeover.sleep = 300
 
 If using static policy, you can configure a list of allowed member UUIDs to proceed with auto take-over if they are marked as dead. If a member is marked as dead and not in this list, auto take-over will not be performed. For example:
 
-```
+```properties
 rundeck.clusterMode.autotakeover.config.allowed=<uuid1>,<uuid2>,...
 ```

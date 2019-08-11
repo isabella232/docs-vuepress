@@ -17,13 +17,13 @@ What differentiates Rundeck Enterprise from the OSS Rundeck version is . . . .
 1. Once the download is finished verify that the file's checksum matches the expected checksum:
 
    ```
-   shasum -a 1 ~/Downloads/rundeckpro-launcher-cluster-${VERSION_FULL}.jar
+   shasum -a 1 ~/Downloads/rundeckpro-launcher-cluster-{{{apiVersionFull}}}.jar
    ```
 
 1. Run the `.jar` file:
 
    ```
-   java -XX:MaxPermSize=256m -Xmx1024m -jar ~/Downloads/rundeckpro-launcher-cluster-${VERSION_FULL}.jar
+   java -XX:MaxPermSize=256m -Xmx1024m -jar ~/Downloads/rundeckpro-launcher-cluster-{{{apiVersionFull}}}.jar
    ```
 
 1. Once you see something similar to following log output, you know the server is ready:
@@ -43,7 +43,7 @@ Encrypted key/config storage enabled by default. The default encryption algorith
 
 Note: If you receive an error message about encryption policy strength with creating projects or keys you will need to upgrade your Java 1.8 version, or set the encryption algorithm in `rundeck-config.properties` to a lower strength algorithm such as `PBEWithMD5AndDES`
 
-Further information about encrypted key/config storage on [this](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin] link.
+Further information about encrypted key/config storage on [this](/administration/configuration/plugins/bundled-plugins.md#jasypt-encryption-plugin) link.
 
 ### What is next?
 

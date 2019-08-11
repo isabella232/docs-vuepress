@@ -28,6 +28,26 @@ module.exports = {
   },
   head: [
   ],
+  extendPageData: page => {
+    // console.log(Object.keys(page))
+  },
+  // configureWebpack (config, isServer) {
+  //   console.log('Config', config)
+  //   for(let rule of config.module.rules) {
+  //     if (rule.test && '.md'.match(rule.test))
+  //       rule.use.push({loader: path.resolve(__dirname, './nunjucks')})
+  //   }
+  // },
+  chainWebpack: config => {
+    config.module
+      .rule('md')
+      .test(/\.md$/)
+      .use(path.resolve(__dirname, './nunjucks'))
+        .loader(path.resolve(__dirname, './nunjucks'))
+        .end()
+
+    console.log(config)
+  },
   extendMarkdown: md => {
     // use more markdown-it plugins!
     md.use(require('markdown-it-deflist'))
@@ -43,6 +63,7 @@ module.exports = {
     displayAllHeaders: true,
     apiVersion: 32,
     version: '3.1.0',
+    versionFull: '3.1.0-20190731',
     algolia: {
       apiKey: 'b83a4def9dea3b0d8b9c7f68f5c8f3eb',
       indexName: 'rundeck'

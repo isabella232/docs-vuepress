@@ -12,11 +12,15 @@ Starting in Rundeck 2.11, the default storage mechanism is the database.
 
 The storage type can be changed by a configuration flag in the `rundeck-config.properties` file:
 
-    rundeck.projectsStorageType=db
+```properties
+rundeck.projectsStorageType=db
+```
 
 or
 
-    rundeck.projectsStorageType=filesystem
+```properties
+rundeck.projectsStorageType=filesystem
+```
 
 If you wish to use _filesystem_ storage you must add this configuration entry.
 
@@ -26,7 +30,7 @@ The import process copies the contents of `etc/project.properties`, `readme.md` 
 Finally, the `etc/project.properties` file will be renamed on disk to `etc/project.properties.imported`.
 
 The DB storage type also uses the Rundeck **Storage Facility** to store the file contents, which can be
-configured to use an Encryption plugin. See [Storage Facility - Using Encryption](/administration/configuration/storage-facility.md#using-encryption].
+configured to use an Encryption plugin. See [Storage Facility - Using Encryption](/administration/configuration/storage-facility.md#using-encryption).
 
 ## Graphical Interface
 
@@ -64,7 +68,7 @@ Project configuration can be achieved via the [API](/api/rundeck-api.md).
 ## Filesystem
 
 When using _filesystem_ storage type, each Project has a configuration file called
-[project.properties](/administration/configuration/config-file-reference.md#project.properties],
+[project.properties](/administration/configuration/config-file-reference.md#project.properties),
 located at this path:
 
 - rpm/deb: /var/rundeck/projects/_project_/etc/project.properties

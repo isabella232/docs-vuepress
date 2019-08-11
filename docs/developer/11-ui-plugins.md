@@ -1,7 +1,5 @@
 # UI Plugins
 
-Updated December 4, 2017
-
 ## About
 
 UI Plugins provide a way to include Javascript and CSS files
@@ -141,17 +139,19 @@ See [Javascript API](#javascript-api) for additional Javascript information.
 
 ### Localization
 
-For the basics of zip plugin localization see: [Plugin Development - Internationalization/Localization for Zip files](/developer/01-plugin-development.md#internationalizationlocalization-for-zip-files].
+For the basics of zip plugin localization see: [Plugin Development - Internationalization/Localization for Zip files](/developer/01-plugin-development.md#internationalizationlocalization-for-zip-files).
 
 ### Icon
 
-See [Plugin Icons](/developer/01-plugin-development.md#plugin-icons].
+See [Plugin Icons](/developer/01-plugin-development.md#plugin-icons).
 
 ## Java Plugin Type
 
-- _Note_: Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development] for information about developing a Java plugin for Rundeck.
+::: tip
+Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development) for information about developing a Java plugin for Rundeck.
+:::
 
-The plugin interface is [UIPlugin][].
+The plugin interface is [UIPlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/rundeck/UIPlugin.html).
 
 ```java
 
@@ -210,7 +210,7 @@ For the basics of Java plugin localization see: [Plugin Development - Plugin Loc
 
 ### Icon
 
-See [Plugin Icons](/developer/01-plugin-development.md#plugin-icons].
+See [Plugin Icons](/developer/01-plugin-development.md#plugin-icons).
 
 ## Javascript API
 
@@ -298,7 +298,7 @@ function loadi18nHtmlTemplate(file){
 
 Here are some [UI Plugin Examples][example-code].
 
-[uiplugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/rundeck/UIPlugin.html
+[uiplugin]: {{{javaDocBase}}}/com/dtolabs/rundeck/plugins/rundeck/UIPlugin.html
 [knockout]: https://knockoutjs.com/
 [jquery]: https://jquery.com/
 [example-code]: https://github.com/rundeck-plugins/ui-plugin-examples/

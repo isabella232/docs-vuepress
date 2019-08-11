@@ -30,7 +30,7 @@ You can define the configuration values in `framework.properties` by prefixing t
 
 For example:
 
-```
+```properties
 #storage.storageAccount and storage.accessKey
 framework.plugin.ExecutionFileStorage.azure-storage.storageAccount=<ACCOUNT-NAME>
 framework.plugin.ExecutionFileStorage.azure-storage.accessKey=<ACCESS-KEY>

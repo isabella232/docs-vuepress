@@ -29,12 +29,16 @@ Rundeck server, to replicate the execution data
 
 Enable the plugin in rundeck-config.properties:
 
-    rundeck.execution.logs.fileStoragePlugin=ExecutionReplicationPlugin
+```properties
+rundeck.execution.logs.fileStoragePlugin=ExecutionReplicationPlugin
+```
 
 Configuration will be defined in framework.properties/project.properties:
 
-    framework.plugin.ExecutionFileStorage.ExecutionReplicationPlugin.rundeckUrl=http://host
-    framework.plugin.ExecutionFileStorage.ExecutionReplicationPlugin.apiToken=...
-    framework.plugin.ExecutionFileStorage.ExecutionReplicationPlugin.outputDir=/tmp
-    framework.plugin.ExecutionFileStorage.ExecutionReplicationPlugin.project=${execution.project}
-    framework.plugin.ExecutionFileStorage.ExecutionReplicationPlugin.timeout=30
+```properties
+framework.plugin.ExecutionFileStorage.ExecutionReplicationPlugin.rundeckUrl=http://host
+framework.plugin.ExecutionFileStorage.ExecutionReplicationPlugin.apiToken=...
+framework.plugin.ExecutionFileStorage.ExecutionReplicationPlugin.outputDir=/tmp
+framework.plugin.ExecutionFileStorage.ExecutionReplicationPlugin.project=${execution.project}
+framework.plugin.ExecutionFileStorage.ExecutionReplicationPlugin.timeout=30
+```

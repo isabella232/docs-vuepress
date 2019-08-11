@@ -1,7 +1,5 @@
 # Resource Model Source Plugin
 
-Updated November 20, 2010
-
 ## About
 
 Resource Model Sources provide the means to retrieve Node resources for a Project.
@@ -11,7 +9,7 @@ or a [Script Plugin Type](#script-plugin-type).
 ## Plugin configuration
 
 The `ResourceModelSource`
-[(javadoc)](${javadocbase}/com/dtolabs/rundeck/core/resources/ResourceModelSource.html) service allows the plugins to be configured via the Rundeck Web GUI. You are thus able to declare configuration properties for
+[(javadoc)]({{{javaDocBase}}}/com/dtolabs/rundeck/core/resources/ResourceModelSource.html) service allows the plugins to be configured via the Rundeck Web GUI. You are thus able to declare configuration properties for
 your plugin, which will be displayed as a web form when the Project is configured, or can be manually configured in the `project.properties` file.
 
 ## Java Plugin Type
@@ -22,7 +20,7 @@ re-used, so each time a new ResourceModelSource with a new configuration is requ
 your Factory class will be invoked to produce it.
 
 Your provider class must implement the interface
-[ResourceModelSourceFactory](${javadocbase}/com/dtolabs/rundeck/core/resources/ResourceModelSourceFactory.html):
+[ResourceModelSourceFactory]({{{javaDocBase}}}/com/dtolabs/rundeck/core/resources/ResourceModelSourceFactory.html):
 
 ```java
 public interface ResourceModelSourceFactory {
@@ -120,4 +118,4 @@ Exit code:
 Script output:
 
 - All output on `STDOUT` will be captured and passed to a
-  [ResourceFormatParser](/developer/03-model-source-format-parser-generator-plugins.md#resourceformatparser] for the specified `resource-format` to create the Node definitions.
+  [ResourceFormatParser](/developer/03-model-source-format-parser-generator-plugins.md#resourceformatparser) for the specified `resource-format` to create the Node definitions.

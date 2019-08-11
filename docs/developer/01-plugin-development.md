@@ -1,7 +1,5 @@
 # Plugin Development
 
-Updated November 20, 2010
-
 There are currently three ways to develop plugins:
 
 1. [Java plugin development](#java-plugin-development): Develop Java code that is distributed within a Jar file.
@@ -47,14 +45,15 @@ the same name and type is defined.
 Rundeck's jars are published to the central Maven repository, and [jCenter](https://jcenter.bintray.com), so you can simply specify a dependency in your build file.
 
 - `rundeck-core` is the primary build dependency for most plugin types
-  - [org.rundeck:rundeck-core:\${VERSION_FULL}](https://search.maven.org/artifact/org.rundeck/rundeck-core/${VERSION_FULL}/jar)
-- `rundeck-storage-api` is also required for (/developer/07-storage-plugin.md).
-  - [org.rundeck:rundeck-storage-api:\${VERSION_FULL}](https://search.maven.org/artifact/org.rundeck/rundeck-storage-api/${VERSION_FULL}/jar)
+  - [org.rundeck:rundeck-core:{{{ apiVersionFull }}}](https://search.maven.org/artifact/org.rundeck/rundeck-core/{{{ apiVersionFull }}}/jar)
+
+- `rundeck-storage-api` is also required for [Storage Plugin](/developer/07-storage-plugin.md).
+  - [org.rundeck:rundeck-storage-api:{{{apiVersionFull}}}](https://search.maven.org/artifact/org.rundeck/rundeck-storage-api/{{{apiVersionFull}}}/jar)
 
 For gradle, use:
 
 ```java
-compile(group:'org.rundeck', name: 'rundeck-core', version: '${VERSION_FULL}')
+compile(group:'org.rundeck', name: 'rundeck-core', version: '{{{apiVersionFull}}}')
 ```
 
 For maven use:
@@ -64,7 +63,7 @@ For maven use:
    <dependency>
       <groupId>org.rundeck</groupId>
       <artifactId>rundeck-core</artifactId>
-      <version>${VERSION_FULL}</version>
+      <version>{{{apiVersionFull}}}</version>
       <scope>compile</scope>
    </dependency>
 </dependencies>
@@ -110,14 +109,14 @@ however typically each plugin file would contain only providers related in some 
 
 Node Execution services:
 
-- `NodeExecutor` - executes a command on a node [javadoc](${javadocbase}/com/dtolabs/rundeck/core/execution/service/NodeExecutor.html).
-- `FileCopier` - copies a file to a node [javadoc](${javadocbase}/com/dtolabs/rundeck/core/execution/service/FileCopier.html).
+- `NodeExecutor` - executes a command on a node [javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/execution/service/NodeExecutor.html).
+- `FileCopier` - copies a file to a node [javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/execution/service/FileCopier.html).
 
 Resource model services:
 
-- `ResourceModelSource` - produces a set of Node definitions for a project [javadoc](${javadocbase}/com/dtolabs/rundeck/core/resources/ResourceModelSource.html).
-- `ResourceFormatParser` - parses a document into a set of Node resources [javadoc](${javadocbase}/com/dtolabs/rundeck/core/resources/format/ResourceFormatParser.html).
-- `ResourceFormatGenerator` - generates a document from a set of Node resources [javadoc](${javadocbase}/com/dtolabs/rundeck/core/resources/format/ResourceFormatGenerator.html).
+- `ResourceModelSource` - produces a set of Node definitions for a project [javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/resources/ResourceModelSource.html).
+- `ResourceFormatParser` - parses a document into a set of Node resources [javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/resources/format/ResourceFormatParser.html).
+- `ResourceFormatGenerator` - generates a document from a set of Node resources [javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/resources/format/ResourceFormatGenerator.html).
 
 Workflow Step services (described in [Workflow Step Plugin](/developer/03-step-plugins.md)):
 
@@ -156,7 +155,7 @@ provider of a particular service.
 You should choose a unique but simple name for your provider.
 
 Each plugin class must have the
-[Plugin](${javadocbase}/com/dtolabs/rundeck/core/plugins/Plugin.html) annotation applied to it.
+[Plugin]({{{javaDocBase}}}/com/dtolabs/rundeck/core/plugins/Plugin.html) annotation applied to it.
 
 ```java
 @Plugin(name="myprovider", service="NodeExecutor")
@@ -172,7 +171,7 @@ class will be constructed with this constructor and passed the Framework
 instance.
 
 You may log messages to the ExecutionListener available via
-[ExecutionContext#getExecutionListener()](${javadocbase}/com/dtolabs/rundeck/core/execution/ExecutionContext.html) method.
+[ExecutionContext#getExecutionListener()]({{{javaDocBase}}}/com/dtolabs/rundeck/core/execution/ExecutionContext.html) method.
 
 You can also send output to `System.err` and `System.out` and it will be
 captured as output of the execution.
@@ -193,14 +192,14 @@ careful not to use un-threadsafe operations.
 
 Some plugin methods return a "Result" interface which indicates the result status of the call to the plugin class. If there is an error, some plugins allow an Exception to be thrown or for the error to be included in the Result class. In both cases, there is a "FailureReason" that must be specified.
 See the javadoc:
-[FailureReason](${javadocbase}/com/dtolabs/rundeck/core/execution/workflow/steps/FailureReason.html).
+[FailureReason]({{{javaDocBase}}}/com/dtolabs/rundeck/core/execution/workflow/steps/FailureReason.html).
 
 This can be any implementation of the FailureReason interface, and this object's `toString()` method will be used to return the reason value (for example, it is passed to Error Handler steps in a Workflow as the "result.reason" string). The mechanism used internally is to provide an Enum implementation of the FailureReason interface, and to enumerate the possible reasons for failure within the enum.
 
 You are encouraged to re-use existing FailureReasons as much as possible as they provide some basic failure causes. Existing classes:
 
-- [NodeStepFailureReason](${javadocbase}/com/dtolabs/rundeck/core/execution/workflow/steps/node/NodeStepFailureReason.html)
-- [StepFailureReason](${javadocbase}/com/dtolabs/rundeck/core/execution/workflow/steps/StepFailureReason.html)
+- [NodeStepFailureReason]({{{javaDocBase}}}/com/dtolabs/rundeck/core/execution/workflow/steps/node/NodeStepFailureReason.html)
+- [StepFailureReason]({{{javaDocBase}}}/com/dtolabs/rundeck/core/execution/workflow/steps/StepFailureReason.html)
 
 ### Plugin Descriptions
 
@@ -215,18 +214,18 @@ There are several ways to declare your plugin's Description:
 **Collaborator interface**
 
 Implement the
-[DescriptionBuilder.Collaborator](${javadocbase}/com/dtolabs/rundeck/plugins/util/DescriptionBuilder.Collaborator.html) interface
+[DescriptionBuilder.Collaborator]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/util/DescriptionBuilder.Collaborator.html) interface
 in your plugin class, and it will be given an opportunity to perform actions on the Builder object before it finally constructs a Description.
 
 **Describable interface**
 
 If you want to build the Description object yourself, you can do so by
 implementing the
-[Describable](${javadocbase}/com/dtolabs/rundeck/core/plugins/configuration/Describable.html)
+[Describable]({{{javaDocBase}}}/com/dtolabs/rundeck/core/plugins/configuration/Describable.html)
 interface. Return a
-[Description](${javadocbase}/com/dtolabs/rundeck/core/plugins/configuration/Description.html) instance. You can
+[Description]({{{javaDocBase}}}/com/dtolabs/rundeck/core/plugins/configuration/Description.html) instance. You can
 construct one by using the
-[DescriptionBuilder](${javadocbase}/com/dtolabs/rundeck/plugins/util/DescriptionBuilder.html) builder class.
+[DescriptionBuilder]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/util/DescriptionBuilder.html) builder class.
 
 **Description Annotations**
 
@@ -235,7 +234,7 @@ See [Plugin Annotations](/developer/02-plugin-annotations.md).
 
 **Provider Metadata**
 
-See (/developer/02-plugin-annotations.md#plugin-provider-metadata]].
+See [Plugin Annotations - Plugin Provider Metadata](/developer/02-plugin-annotations.md#plugin-provider-metadata).
 
 #### Description Properties
 
@@ -243,7 +242,7 @@ Within a Description object you can define a set of Property objects, which repr
 
 Some plugin types support using Java Annotations to define properties, see [Plugin Annotations](/developer/02-plugin-annotations.md).
 
-For the remaining plugin types, the Properties must be defined using the other interfaces described above, typically with the use of a [PropertyBuilder](${javadocbase}/com/dtolabs/rundeck/plugins/util/PropertyBuilder.html).
+For the remaining plugin types, the Properties must be defined using the other interfaces described above, typically with the use of a [PropertyBuilder]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/util/PropertyBuilder.html).
 
 **Rendering Options**
 
@@ -254,7 +253,7 @@ You can specify "rendering options" to affect the property being rendered in the
 
 For more information see the options under [Property Rendering options](#property-rendering-options).
 
-A set of constants for the supported rendering option keys and some values are provided in the [StringRenderingConstants](${javadocbase}/com/dtolabs/rundeck/core/plugins/configuration/StringRenderingConstants.html).
+A set of constants for the supported rendering option keys and some values are provided in the [StringRenderingConstants]({{{javaDocBase}}}/com/dtolabs/rundeck/core/plugins/configuration/StringRenderingConstants.html).
 
 ### Internationalization/Localization for Jar files
 
@@ -309,7 +308,7 @@ author = "© 2018, me"
 metadata = [:] //a map defining *Provider Metadata*
 ```
 
-See [Provider Metadata] for information about what metadata keys may be used.
+See [Provider Metadata](#provider-metadata) for information about what metadata keys may be used.
 
 _Configuration_
 
@@ -377,7 +376,7 @@ The user is presented with any `Instance` scoped properties in the Rundeck GUI w
 
 ### Supported Groovy Plugin Types
 
-- (/developer/05-notification-plugins.md#groovy-plugin-type])
+- [Notification Plugin - Groovy Plugin Type](/developer/05-notification-plugins.md#groovy-plugin-type)
 - [Streaming Log Reader](/developer/06-logging-plugins.md#groovy-streaminglogreader)
 - [Streaming Log Writer](/developer/06-logging-plugins.md#groovy-streaminglogwriter)
 - [Execution File Storage](/developer/06-logging-plugins.md#groovy-executionfilestorage)
@@ -394,7 +393,7 @@ These Services support Script Plugins:
 - [NodeExecutor](/developer/04-node-execution-plugins.md#script-plugin-type)
 - [FileCopier](/developer/04-file-copier-plugins.md#script-plugin-type)
 - [ResourceModelSource](/developer/03-model-source-plugins.md#script-plugin-type)
-- [WorkflowNodeStep](/developer/03-step-plugins.md#script-plugin-type] and RemoteScriptNodeStep
+- [WorkflowNodeStep](/developer/03-step-plugins.md#script-plugin-type) and RemoteScriptNodeStep
 
 ### UI Plugin Development
 
@@ -493,13 +492,13 @@ Required provider entries:
   - `WorkflowNodeStep`
   - `RemoteScriptNodeStep`
 - `plugin-type` - must be `script` for these types (or `ui` for [UI Plugins](/developer/11-ui-plugins.md))
-- `plugin-meta` - an optional Map defining additional [Provider Metadata] entries. (Since rundeck 3.0.14)
+- `plugin-meta` - an optional Map defining additional [Provider Metadata](#provider-metadata) entries. (Since rundeck 3.0.14)
 - `script-file` - must be the name of a file relative to the `contents` directory
 
 For `ResourceModelSource` service, this additional entry is required:
 
 - `resource-format` - Must be the name of one of the supported
-  [Resource Model Document Formats](/administration/projects/resource-model-sources/builtin.md#resource-model-document-formats].
+  [Resource Model Document Formats](/administration/projects/resource-model-sources/builtin.md#resource-model-document-formats).
 
 Optional entries:
 
@@ -523,7 +522,7 @@ Optional entries:
   will be merged with the context environment variables provided to the script.
   If false (default for `rundeckPluginVersion: 1.0`), then
   only the context environment variables will be provided.
-- `config` - a Map defining custom [Plugin properties] (see below.)
+- `config` - a Map defining custom [Plugin properties](#plugin-properties) (see below.)
 
 ### Plugin properties
 
@@ -872,7 +871,7 @@ provider2.plugin.title=My Provider 2
 
 Since Rundeck Plugin Version 1.2 (Rundeck 2.6.10), Custom Icons can now be defined for your plugin.
 
-You can use an [Icon Image Files], or specify [Provider Metadata] to use a CSS icon, such as Glyphicon or Font Awesome icon.
+You can use an [Icon Image Files](#icon-image-files), or specify [Provider Metadata](#provider-metadata) to use a CSS icon, such as Glyphicon or Font Awesome icon.
 
 ### Icon Image Files
 

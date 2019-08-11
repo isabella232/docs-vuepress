@@ -1,7 +1,5 @@
 # Option Values Plugins
 
-Updated January 18, 2019
-
 ## About
 
 Option values plugins allow you to provide custom values to your job options.

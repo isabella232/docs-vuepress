@@ -1,7 +1,5 @@
 # User Group Source Plugins
 
-Updated April 15, 2019
-
 ## About
 
 User Group Source plugins allow you to add roles to a user when the user logs in.

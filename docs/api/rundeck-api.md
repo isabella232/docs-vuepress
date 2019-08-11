@@ -2,13 +2,13 @@
 title: API Reference
 ---
 
-# API Reference | Version {{ $themeConfig.apiVersion }}
+# API Reference | Version {{{ apiVersion }}}
 
-Rundeck provides a Web API for use with your application.
+Rundeck provides a Web API for use with your applications.
 
 ## API Version Number
 
-The current API version is {{ $themeConfig.apiVersion }} .
+The current API version is {{{ apiVersion }}} .
 
 For API endpoints described in this document, the *minimum* API version required for their
 use is indicated by the URL used, e.g.:

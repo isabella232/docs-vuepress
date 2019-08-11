@@ -1,7 +1,5 @@
 # Content Converter Plugins
 
-Updated April 26, 2018
-
 ## About
 
 Content Converter Plugins can convert log data into HTML or other data formats, to enable richer logs to be presented in the Rundeck GUI when viewing the Execution Output Logs.
@@ -50,7 +48,7 @@ Methods:
 - `String getOutputDataTypeForContentDataType(Class<?> clazz, String dataType)`: gets the data type string for the input data type.
 - `Object convert(Object data, String dataType, Map<String,String> metadata)`: Convert the input data type to the output object, includes metadata about the log event as described in [Log Metadata](#log-metadata).
 
-[contentconverterplugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/logs/ContentConverterPlugin.html
+[contentconverterplugin]: {{{javaDocBase}}}/com/dtolabs/rundeck/plugins/logs/ContentConverterPlugin.html
 
 ### Groovy ContentConverter
 
@@ -63,7 +61,7 @@ rundeckPlugin(ContentConverterPlugin){
 }
 ```
 
-To define metadata about your plugin, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development] chapter.
+To define metadata about your plugin, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development) chapter.
 
 The `ContentConverterPlugin` Groovy DSL supports defining conversions between data types.
 
@@ -141,7 +139,7 @@ convert(dataType(SomeClass,'application/x-another-type')) {
 
 ## Localization
 
-For the basics of plugin localization see: [Plugin Development - Plugin Localization](/developer/01-plugin-development.md#plugin-localization].
+For the basics of plugin localization see: [Plugin Development - Plugin Localization](/developer/01-plugin-development.md#plugin-localization).
 
 ## Example
 

@@ -26,17 +26,13 @@ To configure these providers use the following configuration properties.
 The `file` Resource Model Source provider reads a file in one of the supported
 Resource Model Document Formats.
 
-Name Value Notes
-
----
-
-`file` file path Path to a file on disk.
-`format` format name Can be used to declare the format explicitly. Otherwise the format is determined from the `file`'s extension.
-`requireFileExists` true/false If true and the file is missing, causes a failure to load the nodes. (Default: false)
-`includeServerNode` true/false If true, include the Project's server node automatically. (Default: false)
-`generateFileAutomatically` true/false If true, create the file automatically if it is missing. (Default: false)
-
----
+| Name                        | Value       | Notes                                                                                                         |
+|-----------------------------|-------------|---------------------------------------------------------------------------------------------------------------|
+| `file`                      | file path   | Path to a file on disk.                                                                                       |
+| `format`                    | format name | Can be used to declare the format explicitly. Otherwise the format is determined from the `file`'s extension. |
+| `requireFileExists`         | true/false  | If true and the file is missing, causes a failure to load the nodes. (Default: false)                         |
+| `includeServerNode`         | true/false  | If true, include the Project's server node automatically. (Default: false)                                    |
+| `generateFileAutomatically` | true/false  | If true, create the file automatically if it is missing. (Default: false)                                     |
 
 Table: Configuration properties for `file` Resource Model Source provider
 
@@ -104,15 +100,11 @@ The `url` Resource Model Source provider performs a HTTP GET request to retrieve
 
 Configuration properties:
 
-Name Value Notes
-
----
-
-`url` URL A valid URL, either `http:`, `https:` or `file:` protocol.
-`cache` true/false If true, use ETag/Last-Modified information from the server to only download new content if it has changed. If false, always download the content. (Default: true)
-`timeout` seconds Number of seconds before request fails due to timeout. `0` means no timeout. (Default: 30)
-
----
+| Name      | Value      | Notes                                                                                                                                                              |
+|-----------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `url`     | URL        | A valid URL, either `http:`, `https:` or `file:` protocol.                                                                                                         |
+| `cache`   | true/false | If true, use ETag/Last-Modified information from the server to only download new content if it has changed. If false, always download the content. (Default: true) |
+| `timeout` | seconds    | Number of seconds before request fails due to timeout. `0` means no timeout. (Default: 30)                                                                         |
 
 Table: Configuration properties for `url` Resource Model Source provider
 
@@ -131,13 +123,9 @@ _Example:_
 The `directory` Resource Model Source provider lists all files in a directory, and loads each one that has a supported file extension
 as File Resource Model Source with all default configuration options.
 
-Name Value Notes
-
----
-
-## `directory` directory path All files in the directory that have a supported file extension will be loaded
-
-Table: Configuration properties for `directory` Resource Model Source provider
+| Name        | Value          | Notes                                                                          |
+|-------------|----------------|--------------------------------------------------------------------------------|
+| `directory` | directory path | All files in the directory that have a supported file extension will be loaded |
 
 _Example:_
 
@@ -147,18 +135,14 @@ _Example:_
 ### Script Source
 
 The `script` Resource Model Source provider executes a script file and reads
-the output of the script as one of the supported [Resource Model Document Formats].
+the output of the script as one of the supported [Resource Model Document Formats](#resource-model-document-formats).
 
-Name Value Notes
-
----
-
-`file` Script file path If required by the `interpreter`, the file should be executable
-`interpreter` Command or interpreter to use e.g. "bash -c"
-`args` Additional arguments to pass The arguments will be added after the script file name to the executed commandline
-`format` Format name Must be used to declare the format explicitly.
-
----
+| Name           |  Value                          | Notes |
+| -----          |  ------                         | ------ |
+| `file`         |  Script file path               | If required by the `interpreter`, the file should be executable |
+| `interpreter`  |  Command or interpreter to use  | e.g. "bash -c" |
+| `args`         |  Additional arguments to pass   | The arguments will be added after the script file name to the executed commandline |
+| `format`       |  Format name                    | Must be used to declare the format explicitly. |
 
 Table: Configuration properties for `script` Resource Model Source provider
 

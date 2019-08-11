@@ -110,7 +110,7 @@ rd projects create -p MyProject -- \
 
 Project creation can be achieved via the [API](/api/rundeck-api.md).
 
-[Create projects](/api/rundeck-api.md#project-creation]:
+[Create projects](/api/rundeck-api.md#project-creation):
 
 ```
 POST /api/13/projects

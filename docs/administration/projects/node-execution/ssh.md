@@ -37,14 +37,14 @@ All SSH Keys and Passwords are stored under the `keys/` top-level path.
 
 **Note:** In general if a "key storage path" and another configuration option are both specified, the "key storage path" will be used.
 
-You can embed context property references within the key storage path such as `${job.project}`. See (/manual/job-workflows.md#context-variables]].
+You can embed context property references within the key storage path such as `${job.project}`. See [User Guide - Creating Job Workflows - Context Variables](/manual/job-workflows.md#context-variables).
 
 ### SCP File Copier
 
 In addition to the general SSH configuration mentioned for in this section, some additional configuration can be done for SCP.
 
 When a Script is executed on a remote node, it is copied over via SCP first, and then executed. In addition to the SSH connection properties, some attributes
-can be configured. See [File Copier destination directory](/administration/projects/node-execution/builtin.md#file-copier-destination-directory].
+can be configured. See [File Copier destination directory](/administration/projects/node-execution/builtin.md#file-copier-destination-directory).
 
 ### Authentication types
 
@@ -141,7 +141,7 @@ When connecting to the remote node, Rundeck will look for a property/attribute s
 
 If you private key is encrypted with a passphrase, then you can use a "Secure Remote Authentication Option" to prompt the user to enter the passphrase when executing on the Node. See below.
 
-You can embed context property references within the keypath such as `${job.project}`. See (/manual/job-workflows.md#context-variables]].
+You can embed context property references within the keypath such as `${job.project}`. See [User Guide - Creating Job Workflows - Context Variables](/manual/job-workflows.md#context-variables).
 
 #### SSH Private Key Storage
 
@@ -157,7 +157,7 @@ If you private key is encrypted with a passphrase, see [SSH Private Key Passphra
 
 ### SSH Private Key Passphrase
 
-To enable SSH Private Key authentication, first make sure the `ssh-authentication` value is set ([#authentication-types](#authentication-types). Second, configure the path to the private key file ([#ssh-private-keys](#ssh-private-keys)).
+To enable SSH Private Key authentication, first make sure the `ssh-authentication` value is set [#authentication-types](#authentication-types). Second, configure the path to the private key file ([#ssh-private-keys](#ssh-private-keys)).
 
 Choose a method to provide a passphrase:
 

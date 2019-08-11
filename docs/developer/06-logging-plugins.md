@@ -1,7 +1,5 @@
 # Logging Plugin
 
-Updated June 5, 2013
-
 ## About
 
 A Logging provider stores or forwards execution log data.
@@ -32,15 +30,15 @@ Rundeck has a plugin mechanism for all three of these components, allowing the l
 
 Log Events are written to all configured Writer plugins, as well as the **Local File Log** if not disabled:
 
-![Writer plugins](~@assets/img/log storage1.png)
+![Writer plugins](~@assets/img/log_storage1.png)
 
 Events are read from either a Reader plugin, or the **Local File Log**:
 
-![Reader plugins](~@assets/img/log storage2.png)
+![Reader plugins](~@assets/img/log_storage2.png)
 
 When the **Local File Log** is used, the logs can be asynchronously stored to a Storage plugin after they are completed. Later, the logs can be asynchronously retrieved via the Storage plugin to be used by the **Local File Log**:
 
-![Storage plugins](~@assets/img/log storage3.png)
+![Storage plugins](~@assets/img/log_storage3.png)
 
 Here are some examples of how it can be used:
 
@@ -69,9 +67,9 @@ Previous plugin implementations will work without modification.
 
 There are three types of plugins that can be created:
 
-- [StreamingLogWriter](#streaminglogwriter) - provides a stream-like mechanism for writing log events ([javadoc](${javadocbase}/com/dtolabs/rundeck/core/logging/StreamingLogWriter.html)).
-- [StreamingLogReader](#streaminglogreader) - provides a stream-like mechanism for reading log events ([javadoc](${javadocbase}/com/dtolabs/rundeck/core/logging/StreamingLogReader.html)).
-- [ExecutionFileStorage](#executionfilestorage) - provides a way to both store and retrieve entire log files and execution state files ([javadoc](${javadocbase}/com/dtolabs/rundeck/core/logging/ExecutionFileStorage.html)).
+- [StreamingLogWriter](#streaminglogwriter) - provides a stream-like mechanism for writing log events ([javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/StreamingLogWriter.html)).
+- [StreamingLogReader](#streaminglogreader) - provides a stream-like mechanism for reading log events ([javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/StreamingLogReader.html)).
+- [ExecutionFileStorage](#executionfilestorage) - provides a way to both store and retrieve entire log files and execution state files ([javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/ExecutionFileStorage.html)).
 
 ## Configuration
 
@@ -84,7 +82,9 @@ Rundeck supports two development modes for Logging plugins:
 1. Java-based development deployed as a Jar file.
 2. Groovy-based deployed as a single `.groovy` script.
 
-> Note, "script-based" plugins (shell scripts, that is) are not supported.
+::: warning
+"script-based" plugins (shell scripts, that is) are not supported.
+:::
 
 ### Java plugin type
 
@@ -129,7 +129,7 @@ Java examples.
 
 All three plugin types are given a Map of Execution "context data". This is a dataset with information about the Execution that produced the log events.
 
-This data map is the same as the "Job context variables" available when you execute a job or adhoc script, as described in the chapter [Job Workflows - Context Variables](/manual/job-workflows.md#context-variables].
+This data map is the same as the "Job context variables" available when you execute a job or adhoc script, as described in the chapter [Job Workflows - Context Variables](/manual/job-workflows.md#context-variables).
 
 Note that the Map keys will not start with `job.`, simply use the variable name, such as `execid`.
 
@@ -137,11 +137,11 @@ In addition, for ExecutionFileStorage plugins, another map entry named `filetype
 
 ## StreamingLogWriter
 
-The `StreamingLogWriter` ([javadoc](${javadocbase}/com/dtolabs/rundeck/core/logging/StreamingLogWriter.html)) system receives log events from an execution and writes them somewhere.
+The `StreamingLogWriter` ([javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/StreamingLogWriter.html)) system receives log events from an execution and writes them somewhere.
 
 ### Java StreamingLogWriter
 
-Create a Java class that implements the interface [StreamingLogWriterPlugin](${javadocbase}/com/dtolabs/rundeck/plugins/logging/StreamingLogWriterPlugin.html):
+Create a Java class that implements the interface [StreamingLogWriterPlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/logging/StreamingLogWriterPlugin.html):
 
 ```java
 /**
@@ -203,7 +203,7 @@ rundeckPlugin(StreamingLogWriterPlugin){
 }
 ```
 
-To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development] chapter.
+To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development) chapter.
 
 Define these closures inside your definition:
 
@@ -266,7 +266,7 @@ Additionally, these plugins should be able to report a `totalSize` (in an opaque
 
 ### Java StreamingLogReader
 
-Create a Java class that implements the interface [StreamingLogReaderPlugin](${javadocbase}/com/dtolabs/rundeck/plugins/logging/StreamingLogReaderPlugin.html):
+Create a Java class that implements the interface [StreamingLogReaderPlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/logging/StreamingLogReaderPlugin.html):
 
 ```java
 /**
@@ -286,7 +286,7 @@ public interface StreamingLogReaderPlugin extends StreamingLogReader {
 }
 ```
 
-This extends the interface [StreamingLogReader](${javadocbase}/com/dtolabs/rundeck/core/logging/StreamingLogReader.html):
+This extends the interface [StreamingLogReader]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/StreamingLogReader.html):
 
 ```java
 /**
@@ -375,7 +375,7 @@ rundeckPlugin(StreamingLogReaderPlugin){
 }
 ```
 
-To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development] chapter.
+To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development) chapter.
 
 Define these closures inside your definition:
 
@@ -475,12 +475,12 @@ The plugin is used in this manner:
 
 The `ExecutionFileStorage` system is asked to store and retrieve entire log files and state files for a specific execution.
 
-The Java interface for these plugins is [ExecutionFileStoragePlugin](${javadocbase}/com/dtolabs/rundeck/plugins/logging/ExecutionFileStoragePlugin.html).
+The Java interface for these plugins is [ExecutionFileStoragePlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/logging/ExecutionFileStoragePlugin.html).
 
 Additional optional interfaces provide extended behaviors that your plugin can adopt:
 
-- [ExecutionMultiFileStorage](#executionmultifilestorage) - adds a method to store all available files in one method call ([javadoc](${javadocbase}/com/dtolabs/rundeck/core/logging/ExecutionMultiFileStorage.html)).
-- [ExecutionFileStorageOptions](#executionfilestorageoptions) - define whether both retrieve and store are supported ([javadoc](${javadocbase}/com/dtolabs/rundeck/core/logging/ExecutionFileStorageOptions.html)).
+- [ExecutionMultiFileStorage](#executionmultifilestorage) - adds a method to store all available files in one method call ([javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/ExecutionMultiFileStorage.html)).
+- [ExecutionFileStorageOptions](#executionfilestorageoptions) - define whether both retrieve and store are supported ([javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/ExecutionFileStorageOptions.html)).
 
 Execution file storage allows Rundeck to store the files elsewhere, in case local file storage is not suitable for long-term retention.
 
@@ -526,7 +526,7 @@ If there is an error discovering availability, your plugin should throw an Excep
 
 This optional interface for you Java plugin indicates that `store` requests should all be made at once via the `storeMultiple` method.
 
-- [ExecutionMultiFileStorage javadoc](${javadocbase}/com/dtolabs/rundeck/core/logging/ExecutionMultiFileStorage.html)
+- [ExecutionMultiFileStorage javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/ExecutionMultiFileStorage.html)
 
 `storeMultiple` will be passed a [MultiFileStorageRequest][] allowing access to the available file data, and a callback method for
 your plugin to use to indicate the success/failure for storage of each file type. Your plugin must call `storageResultForFiletype(filetype, boolean)`
@@ -544,11 +544,11 @@ will be given access to a `execution.xml` filetype. This file is the XML seriali
 This optional interface allows your plugin to indicate whether both `store` and `retrieve` operations are available.
 The default if you do not implement this is that both operations are available.
 
-- [ExecutionFileStorageOptions javadoc](${javadocbase}/com/dtolabs/rundeck/core/logging/ExecutionFileStorageOptions.html)
+- [ExecutionFileStorageOptions javadoc]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/ExecutionFileStorageOptions.html)
 
 ### Java ExecutionFileStorage
 
-Create a Java class that implements the interface [ExecutionFileStoragePlugin](${javadocbase}/com/dtolabs/rundeck/plugins/logging/ExecutionFileStoragePlugin.html):
+Create a Java class that implements the interface [ExecutionFileStoragePlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/logging/ExecutionFileStoragePlugin.html):
 
 ```java
 /**
@@ -578,7 +578,7 @@ public interface ExecutionFileStoragePlugin extends ExecutionFileStorage {
 }
 ```
 
-This extends the interface [ExecutionFileStorage](${javadocbase}/com/dtolabs/rundeck/core/logging/ExecutionFileStorage.html):
+This extends the interface [ExecutionFileStorage]({{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/ExecutionFileStorage.html):
 
 ```java
 /**
@@ -646,7 +646,7 @@ rundeckPlugin(ExecutionFileStoragePlugin){
 }
 ```
 
-To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development] chapter.
+To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development) chapter.
 
 Define these closures inside your definition:
 
@@ -731,4 +731,4 @@ The plugin is used in this manner:
 3. Else if `store` is defined:
    - The `store` closure is called when a file needs to be stored, with the filetype, the [contextual data](#execution-context-data), configuration Map, and InputStream which will produce the log data. Additionally `length` and `lastModified` properties are in the closure binding, providing the file length, and last modification Date.
 
-[multifilestoragerequest]: ${javadocbase}/com/dtolabs/rundeck/core/logging/MultiFileStorageRequest.html
+[multifilestoragerequest]: {{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/MultiFileStorageRequest.html

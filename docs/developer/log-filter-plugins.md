@@ -1,12 +1,10 @@
 # Log Filter Plugins
 
-Updated April 26, 2018
-
 ## About
 
 Log Filter plugins provide a way to process logging output from commands, scripts and other workflow step types. They can filter the output (remove, add, modify), or they can be used to capture or convert the output. They can also add metadata to the logs, or emit new log data.
 
-Log Filter plugins implement the [LogFilterPlugin] interface, and provider the `LogFilter` service.
+Log Filter plugins implement the [LogFilterPlugin]({{{javaDocBase}}}/com/dtolabs/rundeck/plugins/logging/LogFilterPlugin.html) interface, and provider the `LogFilter` service.
 
 ## Behavior
 
@@ -17,7 +15,7 @@ Users creating Workflows can configure Log Filter plugins within their workflow 
 
 ## Java Plugin Type
 
-- _Note_: Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development] for information about developing a Java plugin for Rundeck.
+- _Note_: Refer to [Java Development](/developer/01-plugin-development.md#java-plugin-development) for information about developing a Java plugin for Rundeck.
 
 The plugin interface is [LogFilterPlugin][]. You can use the [PluginLoggingContext] to get the data context and add data to it via the Output context.
 
@@ -32,10 +30,10 @@ It can also control how the log event is handled:
 - `quiet`: the final loglevel should be set to VERBOSE
 - `remove`: the log event should not be processed further
 
-[logfilterplugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/logging/LogFilterPlugin.html
-[pluginloggingcontext]: ${javadocbase}/com/dtolabs/rundeck/core/logging/PluginLoggingContext.html
-[logeventcontrol]: ${javadocbase}/com/dtolabs/rundeck/core/logging/LogEventControl.html
-[logevent]: ${javadocbase}/com/dtolabs/rundeck/core/logging/LogEvent.html
+[logfilterplugin]: {{{javaDocBase}}}/com/dtolabs/rundeck/plugins/logging/LogFilterPlugin.html
+[pluginloggingcontext]: {{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/PluginLoggingContext.html
+[logeventcontrol]: {{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/LogEventControl.html
+[logevent]: {{{javaDocBase}}}/com/dtolabs/rundeck/core/logging/LogEvent.html
 
 ### Groovy LogFilter
 
@@ -48,7 +46,7 @@ rundeckPlugin(LogFilterPlugin){
 }
 ```
 
-To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development] chapter.
+To define metadata about your plugin, and configuration properties, see the [Plugin Development - Groovy Plugin Development](/developer/01-plugin-development.md#groovy-plugin-development) chapter.
 
 The `LogFilterPlugin` Groovy DLS supports these closure definitions:
 
@@ -93,7 +91,7 @@ complete { PluginLoggingContext context, Map configuration ->
 
 ## Localization
 
-For the basics of plugin localization see: [Plugin Development - Plugin Localization](/developer/01-plugin-development.md#plugin-localization].
+For the basics of plugin localization see: [Plugin Development - Plugin Localization](/developer/01-plugin-development.md#plugin-localization).
 
 ## Example
 

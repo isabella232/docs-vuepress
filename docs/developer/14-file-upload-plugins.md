@@ -1,7 +1,5 @@
 # File Upload Plugins
 
-Updated May 21, 2019
-
 ## About
 
 File Upload plugins are used to receive uploaded files for Job Options that are of type File, store them, and retrieve them when needed by a running Execution.
@@ -34,7 +32,7 @@ and the plugin `transitionState` method is called with a state of `Deleted`.
 
 ## Configuration
 
-To enable the plugin, The plugin provider is specified in [rundeck-config.properties](/administration/configuration/config-file-reference.md#rundeck-config.properties]:
+To enable the plugin, The plugin provider is specified in [rundeck-config.properties](/administration/configuration/config-file-reference.md#rundeck-config.properties):
 
     rundeck.fileupload.plugin.type=[provider]
 
@@ -59,4 +57,4 @@ Methods:
 - `removeFile(String refid)`: (unused) may be called to remove the file
 - `InternalState transitionState(String reference, ExternalState state)`: plugin should retain or delete the file
 
-[fileuploadplugin]: ${javadocbase}/com/dtolabs/rundeck/plugins/file/FileUploadPlugin.html
+[fileuploadplugin]: {{{javaDocBase}}}/com/dtolabs/rundeck/plugins/file/FileUploadPlugin.html

@@ -1,7 +1,5 @@
 # Node Executor Plugin
 
-Updated November 20, 2010
-
 ## About
 
 A Node Executor provider executes a certain command on a remote or
@@ -10,7 +8,7 @@ local node.
 ## Java Plugin Type
 
 Your provider class must implement the interface
-[NodeExecutor](${javadocbase}/com/dtolabs/rundeck/core/execution/service/NodeExecutor.html):
+[NodeExecutor]({{{javaDocBase}}}/com/dtolabs/rundeck/core/execution/service/NodeExecutor.html):
 
 ```java
 public interface NodeExecutor {
