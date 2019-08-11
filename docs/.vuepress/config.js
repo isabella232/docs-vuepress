@@ -28,16 +28,6 @@ module.exports = {
   },
   head: [
   ],
-  extendPageData: page => {
-    // console.log(Object.keys(page))
-  },
-  // configureWebpack (config, isServer) {
-  //   console.log('Config', config)
-  //   for(let rule of config.module.rules) {
-  //     if (rule.test && '.md'.match(rule.test))
-  //       rule.use.push({loader: path.resolve(__dirname, './nunjucks')})
-  //   }
-  // },
   chainWebpack: config => {
     config.module
       .rule('md')
@@ -45,8 +35,6 @@ module.exports = {
       .use(path.resolve(__dirname, './nunjucks'))
         .loader(path.resolve(__dirname, './nunjucks'))
         .end()
-
-    console.log(config)
   },
   extendMarkdown: md => {
     // use more markdown-it plugins!
