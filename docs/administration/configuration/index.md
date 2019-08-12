@@ -7,7 +7,7 @@
 - [GUI Customization](/administration/configuration/gui-customization.md)
 - [Localization](/administration/configuration/localization.md)
 - [Configuration File Reference](/administration/configuration/config-file-reference.md)
-- (/administration/configuration/system-properties.md)
+- [System Properties](/administration/configuration/system-properties.md)
 - [Encryptable Config Properties (Enterprise)](/administration/configuration/encryptable-properties.md)
 - [Plugins](/administration/configuration/plugins/index.md)
 - [Storage Facility](/administration/configuration/storage-facility.md)

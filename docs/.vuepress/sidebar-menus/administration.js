@@ -43,7 +43,7 @@ module.exports = [{
         '/administration/configuration/gui-customization',
         '/administration/configuration/localization',
         '/administration/configuration/config-file-reference',
-        '/administration/configuration/system-properties.md',
+        '/administration/configuration/system-properties',
         '/administration/configuration/encryptable-properties',
         {
           title: 'Plugins',
