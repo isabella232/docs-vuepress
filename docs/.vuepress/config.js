@@ -48,7 +48,6 @@ module.exports = {
     repo: 'rundeck/docs-vuepress',
     docsDir: 'docs',
     editLinks: true,
-    displayAllHeaders: true,
     apiVersion: 32,
     version: '3.1.0',
     versionFull: '3.1.0-20190731',
