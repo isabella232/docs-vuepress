@@ -13,7 +13,7 @@ Like in the earlier example, begin by pressing the "New Job" menu item.
 
 Within the new job form:
 
-For "Job Name", enter "info" and for the "Group", enter "adm/resources".
+For "Job Name", enter "info" and for the "Group", enter "administration/resources".
 If you want to specify your own UUID you can enter it in the field.
 Otherwise a unique value will be set for you.
 Providing a description will be come helpful to other users to understand the intent and purpose for the Job.
@@ -34,9 +34,13 @@ Press the "Create" button at the bottom of the page.
 
 ![Simple saved job form](~@assets/img/fig0303.png)
 
-After the the job is created, the browser is directed to the Jobs page.
-You will see folder icons reflecting the Job's group.
-Navigate through to the adm/resources folder. Notice the extra information is displayed, markdown now rendered as HTML.
+After the the job is created, the browser is directed to the page of the job you just created. The job can be run by clicking the Run Job Now button.
+
+![Simple job form](~@assets/img/fig0303-a.png)
+
+
+When you go to the Jobs page, you will see folder icons reflecting the Job's group.
+Navigate through to the administration/resources folder. Notice the extra information is displayed, markdown now rendered as HTML.
 
 Notice the play button before the job name.
 
@@ -45,10 +49,8 @@ Press the play button to run the Job.
 ![Simple saved job](~@assets/img/fig0304.png)
 
 Press the "Run Job Now" button to begin execution.
-The job will be queued and executed.
-
-Look in the "Now running" section.
-Press the progress bar in the Activity area to go to the execution follow page.
+The job will be queued and executed. You will be taken to the Job's
+execution details page.
 
 ![Simple saved job output](~@assets/img/fig0305.png)
 
@@ -252,7 +254,7 @@ In the Job view page, click the Action button for a menu of actions, and select 
 
 ![Job delete button](~@assets/img/fig0311.png)
 
-Click "Yes" when it says "Really delete this Job?"
+Click "Delete" when it says "Really delete this Job?"
 
 If you have access, you can choose to delete all executions for the job as well.
 
