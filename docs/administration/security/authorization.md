@@ -218,6 +218,8 @@ aclpolicy:
   - Configuring `configure`
   - Importing archives `import`
   - Exporting archives `export`
+  - Use SCM import plugin on GUI or API without having access to other import archive actions `scm_import`
+  - Use SCM export plugin on GUI or API calls without having access to other export archive actions `scm_export`
   - Deleting executions `delete_execution`
   - Export project to another Rundeck instance `promote`
   - Full access `admin`
@@ -273,6 +275,8 @@ Table: Application scope generic type actions
 | "             | "                  | `delete`           | Delete project                                          |
 | "             | "                  | `import`           | Import archive contents to the project                  |
 | "             | "                  | `export`           | Export the project as an archive                        |
+| "             | "                  | `scm_import`       | Use SCM import plugin                                   |
+| "             | "                  | `scm_export`       | Use SCM export plugin                                   |
 | "             | "                  | `delete_execution` | Delete executions                                       |
 | "             | "                  | `admin`            | Full access to project                                  |
 | `project_acl` | "name"             | `read`             | Read project ACL Policy files                           |
