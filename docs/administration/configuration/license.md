@@ -6,7 +6,7 @@ While Rundeck is an open source project maintained by Rundeck Inc, Rundeck Enter
 
 Rundeck Enterprise is available under an annual subscription license and comes bundled with support. You can renew the right to use the software and receive access to support on an annual basis. Multi-year subscription purchases can also be made.
 
-Rundeck Enterprise is licensed per Rundeck Enterprise server instance. There are no restrictions on the number of users, projects, nodes, or jobs run.
+Rundeck Enterprise is licensed per a combination of Rundeck Enterprise clusters (consisting of two servers), any additional servers, and the number of users using Rundeck Enterprise. There are no restrictions on the number of projects, nodes, or jobs run.
 
 No software with GPL or other “copyleft” licenses are used in Rundeck Enterprise. All license rights for using Rundeck Enterprise are contained within the single Rundeck Enterprise license.
 
@@ -32,7 +32,11 @@ Click on "Upload License File"
 
 Select the license key file and press "Upload License File"
 
-![Select the license key file and press "Upload License File"](~@assets/img/license-key-gui-4.png)
+![Agree to the Rundeck Master Software License Agreement](~@assets/img/license-key-gui-3-a.png)
+
+Agree to the Rundeck Master Software License Agreement and Rundeck Support Policy then click "Confirm"
+
+![View of installed license](~@assets/img/license-key-gui-4.png)
 
 ### Via filesystem
 
