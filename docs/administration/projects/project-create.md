@@ -5,15 +5,25 @@ A project can be created either from the graphical console or using the
 
 ## Graphical Interface
 
-In the graphical console, you will notice a Project
-menu in the navigation bar. If no projects exist, you will be prompted to
-create a new project.
+In the graphical console, you will notice a Project menu in the navigation bar and a list of projects on the homepage if any projects exist.
+
+![List of projects](~@assets/img/fig203-b.png)
+
+If no projects exist, the project menu will not be displayed you will be prompted to create a new project.
+
+![Creat a project](~@assets/img/fig0203-c.png)
+
+When one or more projects exist, a project can be created by either
+clicking on the "New Project" link in the navigation menu or by pressing the "New Project" button home
+page.
+
+![Creat a project](~@assets/img/fig0203-d.png)
 
 Press the "New Project" button to create a project.
 
 ![Figure: Create project prompt](~@assets/img/fig0203-a.png)
 
-_Basic information_
+_Details_
 
 Name
 
@@ -26,6 +36,12 @@ Label
 Description
 
 : A brief explanation about the project. Normally, this is just one phrase or sentence explaining the project purpose. If you have large amounts of text, consider creating a project README.
+
+
+_Execution History Clean_
+
+When you enable Execution History Clean, you can control the frequency
+which Rundeck removes your execution history.
 
 _Execution Mode_
 
@@ -65,7 +81,7 @@ After filling in the project create form, Rundeck initializes it and returns
 you to the default page (eg, "Jobs").
 
 Projects can be created at any time by going back to the Project menu
-and selecting the "Create a new project..." item.
+and clicking on the "New Project" link in the navigation menu or by going to the home page and pressing the "New Project" button.
 
 The project setup process generates Project configuration in the server, and
 a local resource model containing information about the rundeck server node.
