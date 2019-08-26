@@ -458,9 +458,7 @@ display the three stored Jobs.
 
 Clicking the "Run" button for the Restart job, will display the
 options selection page. The menu for the "method" option displays the
-two choices: "normal" and "force". No other choices can be made, nor a
-textfield for free form entry, because the "method" option was defined
-with the restriction "enforced from allowed values".
+two choices: "anviles:stop" and "anvils:stop --force". No other choices can be made, nor a textfield for free form entry, because the "method" option was defined with the restriction "enforced from allowed values".
 
 ![Restart run page](~@assets/img/fig0608.png)
 
