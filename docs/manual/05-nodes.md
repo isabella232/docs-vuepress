@@ -14,8 +14,8 @@ To add nodes to your Rundeck instances, see [Configure - Resource Model Sources 
 
 ## Nodes tab overview
 
-Navigate to this page by clicking on the "Nodes" tab in the navigation
-bar.
+Navigate to this page by clicking on the "Nodes" link in the navigation
+menu.
 
 ![Nodes page](~@assets/img/fig0204-a.png)
 
@@ -25,8 +25,7 @@ The screenshot above shows the elements of the Nodes page user interface.
 2. Tags - Category or classification of Nodes. Each tag shows the number of nodes that reference that tag. You can click the tag name and list other nodes with that tag.
 3. Node detail - Clicking on the node name will show a dialogue that lets you view the attributes and values for that Node.
 4. Attributes - Node attributes describe the characteristics or state of a Node
-5. Node actions - Run a command or create a Job for the nodes matching the filter.
-6. Single node view - Click the arrow next to the node name to drill down to a single node.
+5. Actions- Run a command or create a Job for the nodes matching the filter.
 
 ## Attribute name spaces
 
@@ -38,10 +37,7 @@ When Rundeck sees an attribute with a name containing a colon it automatically g
 
 ![Attribute namespace](~@assets/img/fig0204-h.png)
 
-The two attributes are:
-
-- web:pid = 4872
-- web:state = RUNNING
+In this example, there are 9 attributes listed.
 
 This naming convention is really just a graphical treatment to reduce the amount of data being shown all at once. This convention also helps add structure to your resource model.
 
@@ -61,8 +57,8 @@ The screenshot below shows a case where two nodes were found that were tagged "w
 
 1. Clicking the single node view icon filters the list down to just that node.
 2. Find nodes with this Tag (e,g just nodes with tagged "www").
-3. Find nodes with this Attribute name (e.g., any node with the "web:pid" attribute).
-4. Find nodes with this Attribute value (e.g., any node with attribute "web:state=RUNNING" ).
+3. Find nodes with this Attribute name (e.g., any node with the "anvils:customer" attribute).
+4. Find nodes with this Attribute value (e.g., any node with attribute "anvils:location=US-East" ).
 
 The next screenshot shows a single node view. Notice the nodes unique name is entered in the filter form.
 
@@ -94,7 +90,11 @@ To exclude nodes that match a pattern place a "!" (exclamation point) to negate 
 
 ### Saving filters
 
-Often times you will want to go back to a set of nodes that matched a filter. You can save the filter and give it a name by pressing the "save filter" button to the right of the filter form.
+Often times you will want to go back to a set of nodes that matched a filter. You can save the filter and give it a name by pressing the "down arrow" button to the left of the search field.
+
+![Create a filter](~@assets/img/fig0204-d1.png)
+
+
 The example below shows the dialog to confirm saving a new filter.
 
 ![Filtered nodes](~@assets/img/fig0204-d.png)
