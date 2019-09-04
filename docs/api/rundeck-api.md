@@ -257,7 +257,7 @@ Changes introduced by API Version number:
     - [`/api/14/job/[ID]/schedule/enable`][/api/V/job/\[ID\]/schedule/enable] - Enable scheduling for a job
     - [`/api/14/job/[ID]/schedule/disable`][/api/V/job/\[ID\]/schedule/disable] - Disable scheduling for a job
 * New Endpoints, replacing deprecated versions:
-    - [`/api/14/project/[PROJECT*]/executions/running`][/api/V/project/[PROJECT\]/executions/running]
+    - [`/api/14/project/[PROJECT*]/executions/running`][/api/V/project/\[PROJECT\]/executions/running]
     - [`/api/14/project/[PROJECT]/executions`][/api/V/project/\[PROJECT\]/executions]
     - [`/api/14/project/[PROJECT]/history`][/api/V/project/\[PROJECT\]/history]
     - [`/api/14/project/[PROJECT]/jobs/export`][/api/V/project/\[PROJECT\]/jobs/export]
@@ -273,7 +273,7 @@ Changes introduced by API Version number:
     - [`/api/14/job/[ID]/executions`][/api/V/job/\[ID\]/executions]
     - [`/api/14/job/[ID]/run`][/api/V/job/\[ID\]/run] and [`POST /api/14/job/[ID]/executions`][POST /api/V/job/\[ID\]/executions]
     - [`/api/14/jobs/delete`][/api/V/jobs/delete]
-    - [`/api/14/project/[PROJECT*]/executions/running`][/api/V/project/[PROJECT*]/executions/running]
+    - [`/api/14/project/[PROJECT]/executions/running`][/api/V/project/\[PROJECT\]/executions/running]
     - [`/api/14/project/[PROJECT]/executions`][/api/V/project/\[PROJECT\]/executions]
     - [`/api/14/project/[PROJECT]/history`][/api/V/project/\[PROJECT\]/history]
     - [`/api/14/project/[PROJECT]/jobs/import`][/api/V/project/\[PROJECT\]/jobs/import]
@@ -310,7 +310,7 @@ Changes introduced by API Version number:
 
 Corrections:
 
-* The response for [DELETE /api/V/job/[ID]][] incorrectly stated it would return XML response, when the actual response is `204 No Content`.
+* The response for [DELETE /api/V/job/[ID]][DELETE /api/V/job/\[ID\]] incorrectly stated it would return XML response, when the actual response is `204 No Content`.
 
 **Version 13**:
 
@@ -482,7 +482,7 @@ The root URL path for all calls to the API in this version is:
 
 The API supports both XML and JSON.  Some import/export features support YAML or `text/plain` formatted documents, but XML and JSON are used for all API-level information.
 
-As of API version 14, all endpoints support JSON format, with content type `application/json`, with one exception ([/api/V/project/[PROJECT]/jobs/export][]).
+As of API version 14, all endpoints support JSON format, with content type `application/json`, with one exception ([/api/V/project/[PROJECT]/jobs/export][/api/V/project/\[PROJECT\]/jobs/export]).
 
 JSON results can be retrieved by sending the HTTP "Accept" header with a `application/json` value.  JSON request content is supported when the HTTP "Content-Type" header specifies `application/json`.
 
@@ -506,14 +506,14 @@ To obtain an API Token, you must first log in to the Rundeck GUI using a user ac
 Click on your username in the header of the page, and you will be shown your User Profile page.
 From this page you can manage your API Tokens.
 
-**Note**: You must have appropriate authorization to generate a token. See [API Token Authorization](/administration/security/authorization.md#api-token-authorization].
+**Note**: You must have appropriate authorization to generate a token. See [API Token Authorization](/administration/security/authorization.md#api-token-authorization).
 
 Depending on what authorization level you have, you can generate a token with a certain set of *Authorization Roles*
 and an *Expiration Period*.
 
 Click "Generate API Token" to create a new one. The unique string that is shown is the API Token.
 
-Alternately you can define tokens in static file, by setting the `rundeck.tokens.file` in [framework.properties](/administration/configuration/config-file-reference.md#framework.properties].
+Alternately you can define tokens in static file, by setting the `rundeck.tokens.file` in [framework.properties](/administration/configuration/config-file-reference.md#framework.properties).
 
 You must include one of the following with every HTTP request to the API:
 
@@ -629,7 +629,7 @@ Authentication tokens can be managed via the API itself.
 
 Note: as of Rundeck 2.8, Authentication tokens are generated with a unique ID as well as a token string. Listing
 tokens will show the ID instead of the token string, and the ID should be used to manage the token instead of the
-token string itself.  Token strings can be retrieved with the [/api/V/token/[ID]][] endpoint.
+token string itself.  Token strings can be retrieved with the [/api/V/token/[ID]][/api/V/token/\[ID\]] endpoint.
 
 ### List Tokens ####
 
@@ -1235,11 +1235,11 @@ List enabled Metrics endpoints.
 
 *Configuration*
 
-The Metrics endpoints are enabled by default, but can be disabled based on application configuration.  See: [Administration > Configuration File Reference](/administration/configuration/config-file-reference.md#metrics-api-endpoints].
+The Metrics endpoints are enabled by default, but can be disabled based on application configuration.  See: [Administration > Configuration File Reference](/administration/configuration/config-file-reference.md#metrics-api-endpoints).
 
 *ACL Requirement*
 
-They require `read` access to the `system` application scope resource.  See: [Access Control Policy > Application Scope](/administration/security/authorization.md#application-scope-resources-and-actions].
+They require `read` access to the `system` application scope resource.  See: [Access Control Policy > Application Scope](/administration/security/authorization.md#application-scope-resources-and-actions).
 
 **Request:**
 
@@ -3509,7 +3509,7 @@ A single object:
 
 Job Options of type `file` require a file input. You can upload multiple files individually, or en-masse.
 Each uploaded file is assigned a unique "file key" identifier.
-You can then [Run the Job][/api/V/job/[ID]/run] using the "file key" as the option value.
+You can then [Run the Job][/api/V/job/\[ID\]/run] using the "file key" as the option value.
 
 **Single File Upload Request:**
 
@@ -5662,7 +5662,7 @@ Response will be
 ### Project Archive Export ###
 
 Export a zip archive of the project.  Requires `export` authorization for the project. Performs the export synchronously.
-(See [Project Archive Export Async][/api/V/project/[PROJECT]/export/async] for asynchronous export.)
+(See [Project Archive Export Async][/api/V/project/\[PROJECT\]/export/async] for asynchronous export.)
 
     GET /api/11/project/[PROJECT]/export
 
@@ -5703,24 +5703,24 @@ Post:
 ### Project Archive Export Async
 
 Export a zip archive of the project asynchronously.  Requires `export` authorization for the project. Use the Token result
-to query the export status with [/api/V/project/[PROJECT]/export/status/[TOKEN]][], and retrieve the result once ready
-with [/api/V/project/[PROJECT]/export/download/[TOKEN]][].
+to query the export status with [/api/V/project/[PROJECT]/export/status/[TOKEN]][/api/V/project/\[PROJECT\]/export/status/\[TOKEN\]], and retrieve the result once ready
+with [/api/V/project/[PROJECT]/export/download/[TOKEN]][/api/V/project/\[PROJECT\]/export/download/\[TOKEN\]].
 
     GET /api/19/project/[PROJECT]/export/async
 
 **Request:**
 
-Same as [Project Archive Export][/api/V/project/[PROJECT]/export].
+Same as [Project Archive Export][/api/V/project/\[PROJECT\]/export].
 
 **Response:**
 
-Same as [Project Archive Export Async Status][/api/V/project/[PROJECT]/export/status/[TOKEN]].
+Same as [Project Archive Export Async Status][/api/V/project/\[PROJECT\]/export/status/\[TOKEN\]].
 
 
 ### Project Archive Export Async Status
 
 Get the status of an async export request. Retrieve the result once ready
-with [/api/V/project/[PROJECT]/export/download/[TOKEN]][].
+with [/api/V/project/[PROJECT]/export/download/[TOKEN]][/api/V/project/\[PROJECT\]/export/download/\[TOKEN\]].
 
     GET /api/19/project/[PROJECT]/export/status/[TOKEN]
 
@@ -5842,9 +5842,9 @@ Update or retrieve the Resources or Sources for a project.
 
 Each Project can have multiple resource Sources.  Sources can be read-only, or writeable.
 
-Use [/api/V/project/[PROJECT]/resources][] to get all resources from a project.
+Use [/api/V/project/[PROJECT]/resources][/api/V/project/\[PROJECT\]/resources] to get all resources from a project.
 
-Use [/api/V/project/[PROJECT]/sources][] to get all Sources from a project.  Individual Sources
+Use [/api/V/project/[PROJECT]/sources][/api/V/project/\[PROJECT\]/sources] to get all Sources from a project.  Individual Sources
 can be retrieved, or their Resources
 
 #### List Resources for a Project
@@ -5869,7 +5869,7 @@ The response contains a set of `source` objects, each describes the `index`, the
 source had any error, that is included as `errors`.
 
 Resources data includes any `description` provided by the source, whether it is `empty`, and
-whether it is `writeable`.  The `href` indicates the URL for [Listing and Updating the resources for the source][/api/V/project/[PROJECT]/source/[INDEX]/resources].
+whether it is `writeable`.  The `href` indicates the URL for [Listing and Updating the resources for the source][/api/V/project/\[PROJECT\]/source/\[INDEX\]/resources].
 
 `application/json`
 
@@ -5926,7 +5926,7 @@ whether it is `writeable`.  The `href` indicates the URL for [Listing and Updati
 
 **Response:**
 
-A single `source` for the given index, as described in [List Resource Model Sources For a Project][/api/V/project/[PROJECT]/sources].
+A single `source` for the given index, as described in [List Resource Model Sources For a Project][/api/V/project/\[PROJECT\]/sources].
 
 #### List Resources of a Resource Model Source
 
@@ -5961,7 +5961,7 @@ The resource model data in the format requested via the `Accept:` header.
 
 The `readme.md` and `motd.md` files,
 which are Markdown formatted and displayed in the Project listing page,
-can be managed via the API. (See [Project Readme.md)(http://rundeck.org/docs/administration/project-setup.html#project-readme.md).)
+can be managed via the API. (See [Project Readme.md](/administration/projects/project-readme.md).)
 
 **Request:**
 
