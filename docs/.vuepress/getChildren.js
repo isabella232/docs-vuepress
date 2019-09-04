@@ -9,7 +9,6 @@ const getChildren = function(parent_path, dir) {
     files = glob
         .sync(parent_path + (dir ? `/${dir}` : '') + '/*.md')
         .map(path => {
-            console.log(path)
             // Instantiate MarkdownIt
             md = new markdownIt();
             // Add markdown-it-meta
