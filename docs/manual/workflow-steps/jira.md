@@ -124,3 +124,27 @@ To use the plugin, configure the mandatory inputs.
 Optional input:
 
 - resolution: Resolution, only needed to Close or Resolve an Incident
+
+## Jira / Issue / Get Data
+
+Retrieve Jira Issue data by key.
+
+### Configuration
+
+The Jira connection credentials are set in the `project.properties` file
+for your project.
+Password it's a keystorage path to the password.
+
+```
+project.plugin.WorkflowStep.jira-get-issue.login=admin@instance.com
+project.plugin.WorkflowStep.jira-get-issue.password=keys/jira/password
+project.plugin.WorkflowStep.jira-get-issue.url=https://instance.atlassian.net
+```
+
+### Usage
+
+To use the plugin, configure the mandatory input.
+
+- key: Jira issue ID.
+- plainJson: to print the info in plain Json instead of formatted text.
+
