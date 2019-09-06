@@ -29,12 +29,12 @@ See [Command Line Tools and API Acccess][1].
 
 ## Workflow control settings
 
-Workflow execution is controlled by two important settings: _Keepgoing_
-and _Strategy_.
+Workflow execution is controlled by two important settings: _Handling a
+step failure_ and _Strategy_.
 
 ![Workflow controls](~@assets/img/fig0401.png)
 
-_Keepgoing_: This manages what to do if a step incurs an error:
+_If a step fails_: This manages what to do if a step incurs an error:
 
 - Stop at the failed step: Fail immediately (default).
 - Run remaining steps before failing: Continue to next steps and fail the job at the end.
@@ -47,15 +47,16 @@ hand you can choose to have the execution continue.
 _Strategy_: Controls the order of execution of steps and command
 dispatch to nodes: _Node-oriented_ and _Step-oriented_.
 
-- _Node-oriented_: Executes the full workflow on each node before the
+- _Node First_: Executes the full workflow on each node before the
   next node. (default)
-- _Step-oriented_: Executes each step on all nodes before the next
+- _Sequential_: Executes each step on all nodes before the next
   node.
+- _Parallel_: Run all steps in parallel.
 
 The following illustrations contrast the strategies showing how three
 steps proceed across two nodes.
 
-Node-oriented flow illustrated:
+Node First flow illustrated:
 
 ```
 1.   NodeA    step#1
@@ -66,7 +67,7 @@ Node-oriented flow illustrated:
 6.     "      step#3
 ```
 
-Step-oriented flow illustrated:
+Sequential flow illustrated:
 
 ```
 1.   NodeA    step#1
@@ -122,10 +123,14 @@ Steps in a workflow can be either _Node Steps_ or _Workflow Steps_.
 
 The order of the Workflow steps can be modified by hovering over any
 step and then clicking and dragging the double arrow icon to the
-desired position. A blue horizontal bar helps highlight the position
-where the Job will land.
+desired position. 
 
 ![Job step reorder](~@assets/img/fig0408.png)
+
+A blue horizontal bar helps highlight the position
+where the Job will land.
+
+![Job step reorder](~@assets/img/fig0408a.png)
 
 After releasing the select Job, it will land in the desired position
 and the step order will be updated.
@@ -188,15 +193,19 @@ It is a good practice, when you are defining Error Handlers, to **always** have 
 Error-handlers can be attached to either Node Steps or Workflow Steps, and the type of step and the Strategy of the Workflow determines what type of Error-handler steps can be attached to a step. The only restriction is in the case that the Workflow is "Node-oriented", which means that the workflow is executed independently for each node. In this case, Node Steps can only have other Node steps as Error Handlers. In other cases, the Error Handler can be other Workflow steps.
 :::
 
-To add an error handler press the "+ error handler" button on the step you want to handle.
-The form presented includes the normal set of steps you can add to a workflow.
+To add an error handler press the "settings" button on the step you want to handle.
 
 ![Adding an error handler](~@assets/img/fig0410.png)
 
+The form presented includes the normal set of steps you can add to a workflow.
+
+![Adding an error handler](~@assets/img/fig0410a.png)
+
+<!---
 The example below shows an error handler that calls a script by URL.
 
 ![Example error handler](~@assets/img/fig0411.png)
-
+--->
 ### Context information
 
 When the Error-handler step is executed, its execution context will contain some information about the nature
