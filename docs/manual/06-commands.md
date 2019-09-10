@@ -24,14 +24,14 @@ Navigate to this page by clicking on the "Commands" tab in the navigation
 bar. Alternatively, go to the Nodes tab and choose the "Node Actions" menu
 and select the "Run a command ..." menu item.
 
-![](~@assets/img/fig0207.png)
+![Ad hoc Command](~@assets/img/fig0207.png)
 
 The screenshot above shows the elements of the Commands page user interface.
 
-1. Command prompt - Enter the command string.
-2. Command dispatch settings - Optional settings to control concurrency and errors.
-3. Filter expression - Search expression to match nodes.
-4. Filter results list - Matching nodes presented as a list here.
+1. Filter expression - Search expression to match nodes.
+2. Filter results list - Matching nodes presented as a list here.
+3. Command prompt - Enter the command string.
+4. Command dispatch settings - Optional settings to control concurrency and errors.
 5. Run command button - Execute command for command string and matched nodes.
 6. Activity views - Historical views of command executions.
 
@@ -57,7 +57,7 @@ handling for the command execution.
 ![Filter the nodes](~@assets/img/fig0207-b.png)
 
 You can choose the nodes by either choosing a saved filter or typing in your own
-filter expression. Press the "Set Filter" button to find the matched nodes.
+filter expression. Press the "Search" button to find the matched nodes.
 You can get help on filter expression syntax by pressing the help button.
 
 ### Node detail
@@ -84,11 +84,9 @@ below.
 ![Command execution output](~@assets/img/fig0208.png)
 
 1. Link to execution page: Every execution has an ID an a separate page to follow it and view a report after it completes.
-2. View options: Output is automatically collated by node and contains time information. You can toggle these as desired.
-3. Collated output: All output is grouped by the node.
-4. Output log links: You can view the raw output in the browser or download it to your desktop.
-
-You can dismiss the output by pressing the "X" button above the Download link.
+2. Collated output: All output is grouped by the node.
+3. You can dismiss the output by pressing the "X" button next to the
+   command's status.
 
 ## Monitor the execution
 
@@ -98,33 +96,14 @@ Commands page or a separate execution follow page discussed later.
 ![Now running a command](~@assets/img/fig0207-c.png)
 
 1. Kill job button: You can kill the execution by pressing this button.
-2. Execution status bar: If you dismissed the output view, you can continue monitoring progress in the "running" tab in the Activity section.
-
-### Output view options
-
-This page section provides several views to read the output using different formats.
-
-![View options](~@assets/img/fig0209.png)
-
-Log view
-
-: Displays output messages from the command execution as if you were
-running the Unix `tail -f` command on the output log file.
-![Execution output](~@assets/img/fig0208.png)
-
-By Node
-
-: Output messages are sorted into Node specific sections and are not
-interlaced. By default, the messages are collapsed but can be
-revealed by pressing the disclosure icon to the right.
-![Collapsed output](~@assets/img/fig0210.png)
 
 ### Execution follow page
 
 Sometimes it is useful to have a page where just the execution output
 is displayed separately. One purpose is to share a link to others
-interested in following the output messages. Click the progress bar
-in the "Activity" section to go to the execution follow page.
+interested in following the output messages. Click on the execution id go to the execution follow page.
+
+![Click execution id to follow the execution](~@assets/img/fig0207-f.png)
 
 ![Execution follow view](~@assets/img/fig0207-d.png)
 
@@ -141,19 +120,6 @@ After execution completes, the command will have a status:
 - Failed: One or more errors occurred. A list of Nodes that incurred
   an error is displayed. The page will also contain a link "Retry
   Failed Nodes..." in case you would like to retry the command.
-
-## Execution history
-
-The Commands page provides several views about execution history.
-
-- running: Shows any currently running command executions.
-- recent: Shows any executions from the last 24 hours.
-- failed: Shows failed executions from last 24 hours.
-- by you: Shows executions started by you.
-
-![Recent history](~@assets/img/fig0207-e.png)
-
-You can further search activity history by clicking the "Filter activity..." link.
 
 ## Related Command line tools
 
