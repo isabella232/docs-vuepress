@@ -24,7 +24,7 @@ Navigate to this page by clicking on the "Commands" tab in the navigation
 bar. Alternatively, go to the Nodes tab and choose the "Node Actions" menu
 and select the "Run a command ..." menu item.
 
-![](~@assets/img/fig0207.png)
+![Ad hoc Command](~@assets/img/fig0207.png)
 
 The screenshot above shows the elements of the Commands page user interface.
 
