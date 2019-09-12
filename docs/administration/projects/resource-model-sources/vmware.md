@@ -36,6 +36,7 @@ For example, add this on the custom mapping: `nodename.selector=vm.name,vm.dataC
 
 - **Just Running VMs.**: Filter by running vms
 - **DataCenter**: (Optional) filter by DataCenter. Leave it blank for all DataCenters
+- **Ip Address Selector**: Filter Multiples IP Address. In case the Vms has more that one IP address, you can select one of them using a IP pattern like `192.168.0.*`
 - **Display attribute with subgroups**: Display node attribute with subgroups (format group.subgroup)
 - **Attributes group**: List attributes group to display of the VMs. Options are: Guest,Config,Runtime,Summary
 
