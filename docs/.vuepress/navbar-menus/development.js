@@ -8,6 +8,6 @@ module.exports = [{
   text: 'Command Line Tools',
   link: '/manual/command-line-tools/'
 }, {
-  text: 'Change Log',
-  link: '/history/index'
+  text: 'History',
+  link: '/history/'
 }]
