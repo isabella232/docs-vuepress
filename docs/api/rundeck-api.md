@@ -57,6 +57,10 @@ View the [Index](#index) listing API paths.
 
 Changes introduced by API Version number:
 
+**Version 33**:
+* Updated Endpoints:
+    - [`GET /api/V/projects`][/api/V/projects] - project creation date to response.
+
 **Version 32**:
 
 * New Endpoint:
@@ -5422,6 +5426,8 @@ An Item List of `projects`, each `project` of the form specified in the [Getting
 *Since API version 11*: JSON content can be retrieved with `Accept: application/json`
 
 *Since API version 26*: add the project `label` to the response
+
+*Since API version 33*: add the project `created` date to the response. This is based on the creation of the `project.properties` file in the file system or in the DB storage.
 
 ``` json
 [
