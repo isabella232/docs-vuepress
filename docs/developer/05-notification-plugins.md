@@ -111,7 +111,9 @@ The following values may be available after the job is finished (not available f
 
 `execution.context` - this is a map containing all of the context variables available to the execution when it ran or will run, such as [Jobs - Context Variables](/manual/job-workflows.md#context-variables). The contents of this Map are the specific context namespaces and variables.
 
-`execution.context.option`: a Map containing the Job Option keys/values.
+`execution.context.option`: a Map containing all Job Option keys/values.
+
+`execution.context.secureOption`: a Map containing only the Job Option keys/values whose value is set from secure storage.
 
 `job`: a Map containing the Job context data, as provided to executions. This map will contain some duplicate information as the `execution.job` map previously described.
 
