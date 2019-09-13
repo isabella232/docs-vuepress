@@ -31,7 +31,14 @@ module.exports = [{
       sidebarDepth: 2,
       children: [
         '/manual/12-webhooks.md',
-        '/manual/webhooks/routing-run-job',
+        {
+          title: 'Webhooks Handlers',
+          sidebarDepth: 2,
+          children: [
+            '/manual/webhooks/run-job.md',
+            '/manual/webhooks/routing-run-job',
+          ]
+        },
       ]
     },
   ]

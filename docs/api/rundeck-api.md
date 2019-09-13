@@ -7123,7 +7123,11 @@ Only the `input` values need to be specified:
 
 Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-project).
 
-## Webhooks
+## Webhooks (beta)
+:::danger
+Webhooks are currently in beta.
+There may be breaking API changes between releases!
+:::
 
 ### List Project Webhooks
 

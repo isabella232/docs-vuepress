@@ -1,14 +1,27 @@
 # Webhooks
+:::danger
+Webhooks are currently in beta.
+There may be breaking API changes between releases!
+:::
 
 You can configure Rundeck to receive webhook events from external system and to run a job based on those actions.
 Webhook events are handled by [Webhook Event](/developer/15-webhook-plugins.md) Rundeck plugins, so you can write your own handling code if necessary.
 
 ### Enable the feature
 
+#### WAR/Deb/RPM
 To enable the use of webhooks for your Rundeck server add the following configuration property to
 your `rundeck-config.properties` or equivalent.
 
-```rundeck.feature.webhooks.enabled=true```
+```properties
+rundeck.feature.webhooks.enabled=true
+```
+
+#### Docker
+Set the following environment variable:
+```properties
+RUNDECK_FEATURE_WEBHOOKS_ENABLED=true
+```
 
 ### Webhook Administration
 
@@ -18,13 +31,18 @@ for your project.
 
 ![Webhook Administration](~@assets/img/webhook-admin.png)
 
-You can also manage webhooks using the [Webhook API](/api/rundeck-api.md#webhooks) or using the rd cli tool.  
+You can also manage webhooks using the [Webhook API](/api/rundeck-api.md#webhooks-beta) or using the rd cli tool.  
 
 #### Add a webhook
 
 Click the `Add` button to add a new webhook.
 
-Fill out the information in the form, then click save.
+Fill out the information in the form and select a Webhook event handler:
+* [Run Job](./webhooks/run-job.md)
+* [Routing Run Job (Enterprise)](./webhooks/routing-run-job.md)
+
+Click `Save`.
+
 Once you have saved the webhook you will see a `Post Url` field which represents the 
 url you can copy to your external system as the webhook endpoint.
 
