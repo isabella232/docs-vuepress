@@ -13,7 +13,7 @@ nunjucks.configure({
 })
 
 const config = {
-    apiVersion: 32,
+    apiVersion: 33,
     apiVersionFull: '3.1.0-20190731',
 
     javaDocBase: `https://static.javadoc.io/org.rundeck/rundeck-core/3.1.0-20190731`

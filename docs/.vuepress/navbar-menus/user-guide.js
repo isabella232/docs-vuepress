@@ -41,5 +41,9 @@ module.exports = [{
   {
     link: '/manual/11-node-filters',
     text: 'Node Filters'
+  },
+  {
+    link: '/manual/12-webhooks',
+    text: 'Webhooks'
   }
 ]
