@@ -198,7 +198,7 @@ definitions.
 
 While each job can be defined graphically in Rundeck, each can
 succinctly be defined using an XML file conforming to the
-[job-xml](/manpages/man5/job-v20.md)
+[job-xml](/manual/document-format-reference/job-v20.md)
 document format. This
 document contains a set of tags corresponding to the choices seen in
 the Rundeck GUI form.

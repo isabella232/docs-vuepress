@@ -79,9 +79,9 @@ Resource Model Source | [AWS](/administration/projects/resource-model-sources/aw
 Resource Model Source | [Azure](/administration/projects/resource-model-sources/azure.md) | Populates your nodes from Azure | Community
 Resource Model Source | [ServiceNow](/administration/projects/resource-model-sources/servicenow.md) | Populates your nodes from ServiceNow's CMDB | Enterprise
 Resource Model Source | [VMware](/administration/projects/resource-model-sources/vmware.md) | Populates your nodes from a VSphere ESXi server or VCenter Server | Enterprise
-Resource Format | [XML](/manpages/man5/resource-v13.md) | XML Format for Resource Models | Built-in
-Resource Format | [YAML](/manpages/man5/resource-yaml-v13.md) | YAML Format for Resource Models | Built-in
-Resource Format | [JSON](/manpages/man5/resource-json-v10.md) | JSON Format for Resource Models | Built-in
+Resource Format | [XML](/manual/document-format-reference/resource-v13.md) | XML Format for Resource Models | Built-in
+Resource Format | [YAML](/manual/document-format-reference/resource-yaml-v13.md) | YAML Format for Resource Models | Built-in
+Resource Format | [JSON](/manual/document-format-reference/resource-json-v10.md) | JSON Format for Resource Models | Built-in
 SCM | [Git](/administration/projects/scm/git.md) | Imports or exports jobs from a Git repository | Community
 SCM | [Job Replication](/administration/projects/scm/job-replication.md) | Replicates job state between Rundeck Cluster instances | Enterprise
 SSO | [Okta](/administration/security/sso.md) | Allows you to use Okta to log into Rundeck | Enterprise

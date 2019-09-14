@@ -82,7 +82,7 @@ Clicking the "edit" link opens a new form that lets you modify all
 aspects of that option.
 
 Options can also be defined as part of a job definition and later
-loaded to the Rundeck server. See [job-xml](/manpages/man5/job-v20.md) and [job-yaml](/manpages/man5/job-yaml-v12.md) and
+loaded to the Rundeck server. See [job-xml](/manual/document-format-reference/job-v20.md) and [job-yaml](/manual/document-format-reference/job-yaml-v12.md) and
 [rd jobs](https://rundeck.github.io/rundeck-cli/commands/#jobs) pages if you prefer using an textual Job definition.
 
 ## Defining an option
@@ -447,7 +447,7 @@ Option model providers are configured on a per-Option basis (where a Job may hav
 
 ### Configuration
 
-Each Option entry for a Job can be configured to get the set of possible values from a remote URL. If you are authoring the Jobs via [job.xml file format](/manpages/man5/job-v20.md#option], simply add a `valuesUrl` attribute for the `<option>`. If you are modifying the Job in the Rundeck web GUI, you can entry a URL in the "Remote URL" field for the Option.
+Each Option entry for a Job can be configured to get the set of possible values from a remote URL. If you are authoring the Jobs via [job.xml file format](/manual/document-format-reference/job-v20.md#option], simply add a `valuesUrl` attribute for the `<option>`. If you are modifying the Job in the Rundeck web GUI, you can entry a URL in the "Remote URL" field for the Option.
 
 e.g.:
 

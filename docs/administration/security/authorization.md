@@ -40,7 +40,7 @@ group is allowed to perform which actions.
 Please read over this document for information on how to define it, and how to
 grant access for certain actions to certain resources:
 
-- [aclpolicy](/manpages/man5/aclpolicy-v10.md)
+- [aclpolicy](/manual/document-format-reference/aclpolicy-v10.md)
 
 Policies can be organized into more than one file to help organize
 access by group or pattern of use. The normal Rundeck install will
@@ -153,7 +153,7 @@ information.
 
 ## Specific Resources and Resource Types
 
-As described in the [ACL Policy](/manpages/man5/aclpolicy-v10.md) definition, access
+As described in the [ACL Policy](/manual/document-format-reference/aclpolicy-v10.md) definition, access
 is granted or denied to specific "resources". Resources can take two forms:
 
 - A specific resource, with a type and properties

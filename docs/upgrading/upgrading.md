@@ -159,7 +159,7 @@ If you have customized `/etc/rundeck/profile`, look at the new contents and move
 
 You must now use `@@` (two at-signs) to produce a literal `@` in an inline script when it might be interpreted as a token, i.e. `@word@` looks like a token, but `@word space@` is ok.
 
-You can globally disable inline script token expansion, see [framework.properties](/administration/configuration/config-file-reference.md#framework.properties].
+You can globally disable inline script token expansion, see [framework.properties](/administration/configuration/config-file-reference.md#framework-properties].
 
 ### Jetty embedded server was upgraded to 9.0.x
 

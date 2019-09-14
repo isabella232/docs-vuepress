@@ -124,5 +124,5 @@ The example below shows that the user can't create Job for those nodes.
 
 ## Related Command line tools
 
-[dispatch](/manpages/man1/index.md)
+[dispatch](/manual/command-line-tools/)
 ~ List nodes or execute commands and scripts.

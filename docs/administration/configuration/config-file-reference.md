@@ -98,7 +98,7 @@ The token_strings can be used as Authentication tokens to the [API](/api/rundeck
 
 Entries in `framework.properties` in the form `framework.globals.X=Y` Adds a variable `X` available in all execution contexts as `${globals.X}`.
 
-Global variables can be overridden in the [`project.properties`](#project.properties) by adding a line in the form of `project.globals.X=Y` and then accessing it as `${globals.X}`.
+Global variables can be overridden in the [`project.properties`](#project-properties) by adding a line in the form of `project.globals.X=Y` and then accessing it as `${globals.X}`.
 
 ## log4j.properties
 
@@ -170,7 +170,7 @@ When executing a Script step, the destination file path to be used when copying 
 ### Project Global execution variables
 
 Project configuration entries of the form `project.globals.X=Y` Adds a variable `X` available in all execution contexts as `${globals.X}`, and overrides
-any global with the same name defined in [`framework.properties`](#framework.properties).
+any global with the same name defined in [`framework.properties`](#framework-properties).
 
 ## jaas-loginmodule.conf
 
@@ -189,7 +189,7 @@ specifies the use of the PropertyFileLoginModule:
 ## realm.properties
 
 Property file user directory when PropertyFileLoginModule is
-used. Specified from [jaas-loginmodule.conf](#jaas-loginmodule.conf).
+used. Specified from [jaas-loginmodule.conf](#jaas-loginmodule-conf).
 
 ## Session timeout
 

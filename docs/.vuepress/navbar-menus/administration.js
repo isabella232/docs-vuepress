@@ -24,7 +24,7 @@ module.exports = [{
   },
   {
     text: 'Upgrading',
-    link: '/administration/upgrading/index'
+    link: '/upgrading/index'
   },
   {
     text: 'Cluster',

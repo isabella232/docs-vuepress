@@ -16,8 +16,8 @@ can be added, edited, removed or reordered.
 
 Users preferring to define Jobs in a text format should refer to the two format definitions:
 
-- XML: [job-xml](/manpages/man5/job-v20.md)
-- YAML: [job-yaml](/manpages/man5/job-yaml-v12.md)
+- XML: [job-xml](/manual/document-format-reference/job-v20.md)
+- YAML: [job-yaml](/manual/document-format-reference/job-yaml-v12.md)
 
 It is also possible to author Jobs inside the graphical console
 and then export the definition as a file using the
@@ -293,7 +293,7 @@ Note, The "Inline Script Content" variable expansion is **not** available for "S
 :::
 
 ::: tip
-This can be disabled, see [Administrator Guide > Configuration File Reference > framework.properties](/administration/configuration/config-file-reference.md#framework.properties).
+This can be disabled, see [Administrator Guide > Configuration File Reference > framework.properties](/administration/configuration/config-file-reference.md#framework-properties).
 :::
 
 - Environment Variables (_see note_)
