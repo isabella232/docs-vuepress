@@ -190,4 +190,4 @@ endpoints and examples.
 If you prefer to manage job and resource definitions using text files
 you can do so using XML or YAML formats.
 
-See the [Document Format Reference](/manpages/man5/index.md).
+See the [Document Format Reference](/manual/document-format-reference/index.md).

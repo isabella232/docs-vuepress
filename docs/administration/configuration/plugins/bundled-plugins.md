@@ -26,9 +26,9 @@ File: _none_ (built-in)
 
 Rundeck comes with three Resource Model Format plugins, see [Resource Model Source Plugins](/administration/projects/resource-model-sources/builtin.md#resource-model-document-formats):
 
-- XML: the [resourcexml](/manpages/man5/resource-v13.md) format
-- YAML: the [resourceyaml](/manpages/man5/resource-yaml-v13.md) format
-- JSON: the [resourcejson](/manpages/man5/resource-json-v10.md) format
+- XML: the [resourcexml](/manual/document-format-reference/resource-v13.md) format
+- YAML: the [resourceyaml](/manual/document-format-reference/resource-yaml-v13.md) format
+- JSON: the [resourcejson](/manual/document-format-reference/resource-json-v10.md) format
 
 File: _none_ (built-in)
 

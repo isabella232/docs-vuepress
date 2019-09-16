@@ -205,8 +205,8 @@ currently available triggers:
 - `onavgduration` - the Execution exceed the average duration of the Job
 - `onretryablefailure` - the Job failed but will be retried
 
-When you define the Job in the GUI or via [XML](/manpages/man5/job-v20.md#notification) or
-[Yaml](/manpages/man5/job-yaml-v12.md#notification), you can add any of the available Notification plugin types to happen for
+When you define the Job in the GUI or via [XML](/manual/document-format-reference/job-v20.md#notification) or
+[Yaml](/manual/document-format-reference/job-yaml-v12.md#notification), you can add any of the available Notification plugin types to happen for
 any of the possible triggers. Each Notification plugin type may have unique
 configuration properties that you can specify. Each combination of trigger and
 Notification type has a unique configuration.

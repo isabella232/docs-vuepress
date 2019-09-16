@@ -531,7 +531,7 @@ and an *Expiration Period*.
 
 Click "Generate API Token" to create a new one. The unique string that is shown is the API Token.
 
-Alternately you can define tokens in static file, by setting the `rundeck.tokens.file` in [framework.properties](/administration/configuration/config-file-reference.md#framework.properties).
+Alternately you can define tokens in static file, by setting the `rundeck.tokens.file` in [framework.properties](/administration/configuration/config-file-reference.md#framework-properties).
 
 You must include one of the following with every HTTP request to the API:
 
@@ -3004,9 +3004,9 @@ The following parameters can also be used to narrow down the result set.
 
 **Response:**
 
-If you specify `format=xml`, then the output will be in [job-xml](/manpages/man5/job-v20.md) format.
+If you specify `format=xml`, then the output will be in [job-xml](/manual/document-format-reference/job-v20.md) format.
 
-If you specify `format=yaml`, then the output will be in [job-yaml](/manpages/man5/job-yaml-v12.md) format.
+If you specify `format=yaml`, then the output will be in [job-yaml](/manual/document-format-reference/job-yaml-v12.md) format.
 
 If an error occurs, then the output will be in XML format, using the common `result` element described in the [Response Format][] section.
 
@@ -3115,9 +3115,9 @@ Optional parameters:
 
 **Response:**
 
-If you specify `format=xml`, then the output will be in [job-xml](/manpages/man5/job-v20.md) format.
+If you specify `format=xml`, then the output will be in [job-xml](/manual/document-format-reference/job-v20.md) format.
 
-If you specify `format=yaml`, then the output will be in [job-yaml](/manpages/man5/job-yaml-v12.md) format.
+If you specify `format=yaml`, then the output will be in [job-yaml](/manual/document-format-reference/job-yaml-v12.md) format.
 
 If an error occurs, then the output will be in XML format, using the common `result` element described in the [Response Format][] section.
 
@@ -6235,7 +6235,7 @@ Specify a MIME type via the `Accept:` header to specify the requested format.
 
 **Response:**
 
-Depending on the `format` parameter, a value of "xml" will return [resource-xml](/manpages/man5/resource-v13.md) and "yaml" will return [resource-yaml](/manpages/man5/resource-yaml-v13.md), and "json" will return [resource-json](/manpages/man5/resource-json-v10.md) formatted results.  Any other supported format value will return content in the specified format.
+Depending on the `format` parameter, a value of "xml" will return [resource-xml](/manual/document-format-reference/resource-v13.md) and "yaml" will return [resource-yaml](/manual/document-format-reference/resource-yaml-v13.md), and "json" will return [resource-json](/manual/document-format-reference/resource-json-v10.md) formatted results.  Any other supported format value will return content in the specified format.
 
 ### Getting Resource Info
 
@@ -6255,7 +6255,7 @@ Optional Parameters:
 
 **Response:**
 
-Depending on the `format` parameter, a value of "xml" will return [resource-xml](/manpages/man5/resource-v13.md) and "yaml" will return [resource-yaml](/manpages/man5/resource-yaml-v13.md), and "json" will return [resource-json](/manpages/man5/resource-json-v10.md) formatted results.
+Depending on the `format` parameter, a value of "xml" will return [resource-xml](/manual/document-format-reference/resource-v13.md) and "yaml" will return [resource-yaml](/manual/document-format-reference/resource-yaml-v13.md), and "json" will return [resource-json](/manual/document-format-reference/resource-json-v10.md) formatted results.
 
 The result will contain a single item for the specified resource.
 

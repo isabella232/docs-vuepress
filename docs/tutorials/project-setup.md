@@ -131,7 +131,7 @@ other tools (eg, salt, mcollective, winrm, chef knife, etc).
 
 To make Rundeck aware of the new resource file containing the anvils nodes,
 the administrator modifies the
-[project.properties](/administration/configuration/config-file-reference.md#project.properties)
+[project.properties](/administration/configuration/config-file-reference.md#project-properties)
 configuration file to declare a new resource model source.
 
 Below a directory type source is configured:
@@ -153,6 +153,6 @@ New project sources can also be added in the Configure page:
 See [Managing Node Sources](/administration/projects/resource-model-sources/index.md)
 to learn more about configuring Rundeck to read node data from external providers.
 
-[resource-XML]: /manpages/man5/resource-v13.md
+[resource-XML]: /manual/document-format-reference/resource-v13.md
 [rd]: https://rundeck.github.io/rundeck-cli/
 [tip1]: http://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/

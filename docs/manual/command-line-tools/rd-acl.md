@@ -42,7 +42,7 @@ action as logged in the Rundeck AUDIT log.
 
 See:
 
-- [ACL Policy syntax](/manpages/man5/aclpolicy-v10.md)
+- [ACL Policy syntax](/manual/document-format-reference/aclpolicy-v10.md)
 - [Access Control Policy](/administration/security/authorization.md)
 
 ## Options
@@ -521,6 +521,6 @@ The validation failed
 
 ## See Also
 
-[`aclpolicy`](/manpages/man5/aclpolicy-v10.md)
+[`aclpolicy`](/manual/document-format-reference/aclpolicy-v10.md)
 
 [Access Control Policy](/administration/security/authorization.md)

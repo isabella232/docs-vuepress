@@ -173,7 +173,7 @@ Rundeck includes three built-in plugins in the core installation:
 
 `resourcexml`
 
-: Supports the Resource XML document format: [resource-XML](/manpages/man5/resource-v13.md).
+: Supports the Resource XML document format: [resource-XML](/manual/document-format-reference/resource-v13.md).
 
     Supported MIME types:
 
@@ -186,7 +186,7 @@ Rundeck includes three built-in plugins in the core installation:
 
 `resourceyaml`
 
-: Supports the Resource YAML document format: [resource-YAML](/manpages/man5/resource-yaml-v13.md).
+: Supports the Resource YAML document format: [resource-YAML](/manual/document-format-reference/resource-yaml-v13.md).
 
     Supported MIME types:
 
@@ -199,7 +199,7 @@ Rundeck includes three built-in plugins in the core installation:
 
 `resourcejson`
 
-: Supports the Resource JSON document format: [resource-JSON](/manpages/man5/resource-json-v10.md).
+: Supports the Resource JSON document format: [resource-JSON](/manual/document-format-reference/resource-json-v10.md).
 
     Supported MIME types:
 
