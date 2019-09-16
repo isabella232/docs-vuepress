@@ -58,6 +58,10 @@ View the [Index](#index) listing API paths.
 Changes introduced by API Version number:
 
 **Version 33**:
+
+* New Endpoint:
+    - [`GET /api/V/plugin/list`][/api/V/plugin/list] - List the installed plugins.
+    
 * Updated Endpoints:
     - [`GET /api/V/projects`][/api/V/projects] - project creation date to response.
 
@@ -7115,6 +7119,46 @@ Only the `input` values need to be specified:
 
 Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-project).
 
+## Plugins
+
+### List installed plugins
+
+**Request**
+
+    GET /api/33/plugin/list
+
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+[
+    {
+        "artifactName": "kubernetes-plugin",
+        "author": "Rundeck",
+        "builtin": false,
+        "description": "dispatch the command to the kubernetes pod",
+        "id": "15712f2421d1",
+        "name": "Kubernetes-node-executor",
+        "pluginVersion": "1.0.0",
+        "service": "NodeExecutor",
+        "title": "Kubernetes / Pods / Node Executor"
+    },
+    {
+        "artifactName": "py-winrm-plugin",
+        "author": "© 2017, Rundeck, Inc.",
+        "builtin": false,
+        "description": "Executing Scripts or Commands on remote Windows computer",
+        "id": "59ed572534b2",
+        "name": "WinRMPython",
+        "pluginVersion": "1.0.7",
+        "service": "NodeExecutor",
+        "title": "WinRM Node Executor Python"
+    },
+    ...
+]
+```
+
 
 ## Index
 
@@ -7508,6 +7552,9 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 
 [Response Format]:#xml-response-format
 
+[/api/V/plugin/list][]
+
+* `GET` [List Installed Plugins][/api/V/plugin/list]
 
 [/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugins]:#list-scm-plugins
 [/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/input]:#get-scm-plugin-input-fields
@@ -7690,5 +7737,7 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [/api/V/user/info/\[USER\]]:#get-another-user-profile
 [POST /api/V/user/info/\[USER\]]:#modify-another-user-profile
 [/api/V/user/roles]:#list-roles
+
+[/api/V/plugin/list]:#list-installed-plugins
 
 [ACLPOLICY]:../man5/aclpolicy.html
