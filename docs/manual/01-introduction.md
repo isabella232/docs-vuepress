@@ -7,9 +7,15 @@ you quickly become productive with the Rundeck server and tools.
 
 ## What is Rundeck?
 
-Rundeck is an operations management platform that helps you connect your people with the processes and tools they need to get their job done. Rundeck will help alleviate the time-consuming grunt work and toil that currently consumes too much of your team's time. With Rundeck you will get more done, respond quicker to incidents, and spend less time in ticket queues.
+Rundeck is runbook automation that gives you and your colleagues self-service access to the processes and tools they need to get their job done. 
 
-The most common usage of Rundeck is to create standard operating procedures from any of your existing tools or scripts. Trigger Rundeck jobs from the Web GUI, API, CLI, or by schedule. Rundeck's access control features make it easy to safely delegate control of tasks to those traditionally outside of operations.
+When used for incident management, Rundeck will help you have shorter incidents and fewer escalations. 
+
+When used for general operations work, Rundeck will help alleviate the time-consuming and repetitive toil that currently consumes too much of your team's time. 
+
+For more information on use cases, see the [New to Rundeck] page.
+
+With Rundeck, it is simple and easy to create workflows (called "jobs") from any of your existing tools or scripts. Trigger Rundeck jobs from the Web GUI, API, CLI, or by schedule. Rundeck's access control features make it easy to safely delegate control of tasks to those traditionally outside of operations.
 
 Rundeck was designed to accept the reality that heterogeneous infrastructure and tooling are a fact of life in any sizable organization. That is why Rundeck doesn't make you replace the scripts, commands, or tools you use today. You use Rundeck to execute workflows across your existing automation (e.g., Ansible, Puppet, Chef, Jenkins, Docker, Kubernetes, legacy tools, and all of your custom scripts/APIs) or quickly automate previously manual procedures. With Rundeck you can reuse the automation skills you already have and add new ones as needed.
 
@@ -29,7 +35,8 @@ Built and tested for the enterprise, Rundeck Enterpise includes exclusive featur
 
 _NOTE: Rundeck Enterprise was recently renamed from Rundeck Enterprise. You may still see refrences to "Pro" here and there, as we work to update our documentation. Just know that they are the same thing._
 
-[rundeck enterpise]: https://www.rundeck.com/rundeck-pro
+[New to Rundeck]: https://www.rundeck.com/new-to-rundeck
+[rundeck enterpise]: https://www.rundeck.com/rundecker
 [github]: https://github.com/rundeck/rundeck
 [apache software license]: http://www.apache.org/licenses/LICENSE-2.0.html
 
