@@ -71,7 +71,7 @@ class LogWebhookEventPlugin implements WebhookEventPlugin {
         LOG.info("contentType: " + data.contentType);
         LOG.info("custom header: " + data.getHeaders().get("X-My-Custom_header"));
         LOG.info("data:");
-        LOG.info(new BufferedReader(new InputStreamReader(inputStream))
+        LOG.info(new BufferedReader(new InputStreamReader(data.getData()))
                    .lines().collect(Collectors.joining("\n")));
     }
 }
