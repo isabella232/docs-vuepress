@@ -59,6 +59,7 @@ Changes introduced by API Version number:
 
 **Version 33**:
 
+<<<<<<< HEAD
 * New Endpoints:
     - [`POST /api/V/webhook/[WEBHOOK TOKEN]`](/api/V/webhook/\[TOKEN\]) - Trigger a webhook with the payload as the body of the post
     - [`GET /api/V/project/[PROJECT]/webhooks`](/api/V/project/\[PROJECT\]/webhooks) - Lists the webhooks configured for the project
@@ -66,6 +67,11 @@ Changes introduced by API Version number:
     - [`POST /api/V/project/[PROJECT]/webhook/[ID]`](/api/V/project/\[PROJECT\]/webhooks) - Create or update the webhook identified by ID. When creating a new webhook ID is not provided.
     - [`DELETE /api/V/project/[PROJECT]/webhook/[ID]`](/api/V/project/\[PROJECT\]/webhooks) - Delete the webhook identified by ID
 
+=======
+* New Endpoint:
+    - [`GET /api/V/plugin/list`][/api/V/plugin/list] - List the installed plugins.
+    
+>>>>>>> master
 * Updated Endpoints:
     - [`GET /api/V/projects`][/api/V/projects] - project creation date to response.
 
@@ -7123,6 +7129,46 @@ Only the `input` values need to be specified:
 
 Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-project).
 
+## Plugins
+
+### List installed plugins
+
+**Request**
+
+    GET /api/33/plugin/list
+
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+[
+    {
+        "artifactName": "kubernetes-plugin",
+        "author": "Rundeck",
+        "builtin": false,
+        "description": "dispatch the command to the kubernetes pod",
+        "id": "15712f2421d1",
+        "name": "Kubernetes-node-executor",
+        "pluginVersion": "1.0.0",
+        "service": "NodeExecutor",
+        "title": "Kubernetes / Pods / Node Executor"
+    },
+    {
+        "artifactName": "py-winrm-plugin",
+        "author": "© 2017, Rundeck, Inc.",
+        "builtin": false,
+        "description": "Executing Scripts or Commands on remote Windows computer",
+        "id": "59ed572534b2",
+        "name": "WinRMPython",
+        "pluginVersion": "1.0.7",
+        "service": "NodeExecutor",
+        "title": "WinRM Node Executor Python"
+    },
+    ...
+]
+```
+
 ## Webhooks (beta)
 :::danger
 Webhooks are currently in beta.
@@ -7340,6 +7386,7 @@ or error
     "err": "The error message"
 }
 ```
+
 
 ## Index
 
@@ -7751,6 +7798,9 @@ or error
 
 [Response Format]:#xml-response-format
 
+[/api/V/plugin/list][]
+
+* `GET` [List Installed Plugins][/api/V/plugin/list]
 
 [/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugins]:#list-scm-plugins
 [/api/V/project/\[PROJECT\]/scm/\[INTEGRATION\]/plugin/\[TYPE\]/input]:#get-scm-plugin-input-fields
@@ -7934,6 +7984,10 @@ or error
 [POST /api/V/user/info/\[USER\]]:#modify-another-user-profile
 [/api/V/user/roles]:#list-roles
 
+<<<<<<< HEAD
 [/api/V/project/\[PROJECT\]/webhooks]:#list-project-webhooks
+=======
+[/api/V/plugin/list]:#list-installed-plugins
+>>>>>>> master
 
 [ACLPOLICY]:../man5/aclpolicy.html
