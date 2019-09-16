@@ -17,5 +17,7 @@ module.exports = [
   '/developer/content-converter-plugins.md',
   '/developer/12-option-values-plugins.md',
   '/developer/13-user-group-source-plugin.md',
-  '/developer/14-file-upload-plugins.md'
+  '/developer/14-file-upload-plugins.md',
+  '/developer/15-password-encrypt-utility.md',
+  '/developer/16-webhook-plugins.md'
 ]

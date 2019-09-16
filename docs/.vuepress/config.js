@@ -48,7 +48,7 @@ module.exports = {
     repo: 'rundeck/docs-vuepress',
     docsDir: 'docs',
     editLinks: true,
-    apiVersion: 32,
+    apiVersion: 33,
     version: '3.1.0',
     versionFull: '3.1.0-20190731',
     algolia: {

@@ -20,3 +20,4 @@ For information about Rundeck Administration, see the [Administrator Guide](/adm
 - [Configure](/manual/09-configure.md)
 - [User](/manual/10-user.md)
 - [Node Filters](/manual/11-node-filters.md)
+- [Webhooks](/manual/12-webhooks.md)

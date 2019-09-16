@@ -59,9 +59,19 @@ Changes introduced by API Version number:
 
 **Version 33**:
 
+<<<<<<< HEAD
+* New Endpoints:
+    - [`POST /api/V/webhook/[WEBHOOK TOKEN]`](/api/V/webhook/\[TOKEN\]) - Trigger a webhook with the payload as the body of the post
+    - [`GET /api/V/project/[PROJECT]/webhooks`](/api/V/project/\[PROJECT\]/webhooks) - Lists the webhooks configured for the project
+    - [`GET /api/V/project/[PROJECT]/webhook/[ID]`](/api/V/project/\[PROJECT\]/webhooks) - Get the webhook identified by ID
+    - [`POST /api/V/project/[PROJECT]/webhook/[ID]`](/api/V/project/\[PROJECT\]/webhooks) - Create or update the webhook identified by ID. When creating a new webhook ID is not provided.
+    - [`DELETE /api/V/project/[PROJECT]/webhook/[ID]`](/api/V/project/\[PROJECT\]/webhooks) - Delete the webhook identified by ID
+
+=======
 * New Endpoint:
     - [`GET /api/V/plugin/list`][/api/V/plugin/list] - List the installed plugins.
     
+>>>>>>> master
 * Updated Endpoints:
     - [`GET /api/V/projects`][/api/V/projects] - project creation date to response.
 
@@ -7159,6 +7169,224 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 ]
 ```
 
+## Webhooks (beta)
+:::danger
+Webhooks are currently in beta.
+There may be breaking API changes between releases!
+:::
+
+### List Project Webhooks
+
+**Request**
+
+    GET /api/V/project/[PROJECT]/webhooks
+
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+[
+    {
+        "authToken": "Z1vnbhShhQF3B0dQq7UhJTZMnGS92TBl",
+        "config": {
+            "argString": "-payload ${raw}",
+            "jobId": "a54d07a1-033a-499f-9789-19bcacbd6e11"
+        },
+        "creator": "admin",
+        "enabled": true,
+        "eventPlugin": "webhook-run-job",
+        "id": 3,
+        "name": "Webhook Job Runner",
+        "project": "Webhook",
+        "roles": "admin,user",
+        "user": "admin"
+    },
+    {
+        "authToken": "p9ttreh05Zd222g5yBXocEMXmCJ1skOX",
+        "config": {},
+        "creator": "admin",
+        "enabled": true,
+        "eventPlugin": "log-webhook-event",
+        "id": 4,
+        "name": "Log it Hook",
+        "project": "Webhook",
+        "roles": "admin,user",
+        "user": "admin"
+    }
+]
+```
+
+### Get A Webhook
+
+**Request**
+
+    GET /api/V/project/[PROJECT]/webhook/[ID]
+
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+{
+    "authToken": "Z1vnbhShhQF3B0dQq7UhJTZMnGS92TBl",
+    "config": {
+        "argString": "-payload ${raw}",
+        "jobId": "a54d07a1-033a-499f-9789-19bcacbd6e11"
+    },
+    "creator": "admin",
+    "enabled": true,
+    "eventPlugin": "webhook-run-job",
+    "id": 3,
+    "name": "Webhook Job Runner",
+    "project": "Webhook",
+    "roles": "admin,user",
+    "user": "admin"
+}
+```
+
+### Update A Webhook
+
+**Request**
+
+    POST /api/V/project/[PROJECT]/webhook/[ID]
+
+Required Fields:    
+`id`  
+`project`
+
+Along with the required fields you may send only the fields you want to update. 
+
+When updating a webhook you may not change the user associated with a webhook,
+so suppling the `user` field will have no effect. Also, specifying an `authToken` field has no effect.
+    
+`Content-Type: application/json`:
+ 
+``` json
+{
+    "config": {
+        "argString": "-payload ${raw} -d ${data.one}",
+        "jobId": "a54d07a1-033a-499f-9789-19bcacbd6e11"
+    },
+    "id": 3,
+    "name": "Webhook Job Runner 1",
+    "roles": "admin,user,webhook",
+    "project": "Webhook"
+}
+```   
+
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+{
+    "msg": "Saved webhook"
+}
+```
+
+or error
+
+``` json
+{
+    "apiversion": 33,
+    "error": true,
+    "errorCode": "api.error.parameter.required",
+    "message": "parameter \"project\" is required"
+}
+```
+
+### Add A Webhook
+
+**Request**
+
+    POST /api/V/project/[PROJECT]/webhook
+    
+Required Fields:
+```
+project - the project that owns the webhook
+name - the name of the webhook
+user - string the webhook runs as this user
+roles - string containing comma separated list of roles to use for the webhook
+eventPlugin - string must be a valid plugin name
+config - object containing config values for the specified plugin
+enabled - boolean
+```   
+
+Do not specify and `authToken` or `creator` field. They will be ignored.
+
+`Content-Type: application/json`:
+
+``` json
+{
+    "config": {
+        "jobId": "a54d07a1-033a-499f-9789-19bcacbd6e11"
+    },
+    "enabled": true,
+    "eventPlugin": "webhook-run-job",
+    "name": "Add Me",
+    "project": "Webhook",
+    "roles": "webhook,admin,user",
+    "user": "admin"
+}
+```
+
+**Response**
+ 
+ `Content-Type: application/json`:
+ 
+ ``` json
+{
+    "msg": "Saved webhook"
+}
+```
+
+### Delete A Webhook
+
+**Request**
+
+    DELETE /api/V/project/[PROJECT]/webhook/[ID]
+
+**Response**
+
+`Content-Type: application/json`:
+
+``` json
+{
+    "msg": "Deleted [webhook name] webhook"
+}
+```
+
+### Send Webhook Event
+
+**Request**
+
+    POST /api/V/webhook/[AUTH_TOKEN]
+    
+You may post whatever data you wish to the webhook endpoint, however the plugin you are using must
+be able to handle the data you post. If the webhook plugin associated with the webhook can't handle
+the content type posted you will get an error response.
+    
+**Response**    
+
+`Content-Type: application/json`:
+
+``` json
+{
+    "msg": "ok"
+}
+```
+
+or error
+
+`Content-Type: application/json`:
+
+``` json
+{
+    "err": "The error message"
+}
+```
+
 
 ## Index
 
@@ -7461,6 +7689,24 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 * `GET` [Listing Projects](#listing-projects)
 * `POST` [Project Creation](#project-creation)
 
+[/api/V/project/\[PROJECT\]/webhooks][]
+
+* `GET` [List Webhooks](#list-project-webhooks)
+
+[/api/V/webhook/\[AUTH_TOKEN\]][]
+
+* `GET` [Send Webhook Event](#send-webhook-event)
+
+[/api/V/project/\[PROJECT\]/webhook/][]
+
+* `POST` [Add A Webhook](#add-a-webhook)
+
+[/api/V/project/\[PROJECT\]/webhook/\[ID\]][]
+
+* `GET` [Get A Webhook](#get-a-webhook)
+* `POST` [Update A Webhook](#update-a-webhook)
+* `DELETE` [Delete A Webhook](#delete-a-webhook)
+
 [/api/V/scheduler/takeover][]
 
 * `PUT` [Takeover Schedule in Cluster Mode](#takeover-schedule-in-cluster-mode)
@@ -7738,6 +7984,10 @@ Same response as [Setup SCM Plugin for a Project](#setup-scm-plugin-for-a-projec
 [POST /api/V/user/info/\[USER\]]:#modify-another-user-profile
 [/api/V/user/roles]:#list-roles
 
+<<<<<<< HEAD
+[/api/V/project/\[PROJECT\]/webhooks]:#list-project-webhooks
+=======
 [/api/V/plugin/list]:#list-installed-plugins
+>>>>>>> master
 
 [ACLPOLICY]:../man5/aclpolicy.html

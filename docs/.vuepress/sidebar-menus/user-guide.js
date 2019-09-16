@@ -24,6 +24,22 @@ module.exports = [{
     '/manual/08-activity',
     '/manual/09-configure',
     '/manual/10-user.md',
-    '/manual/11-node-filters.md'
+    '/manual/11-node-filters.md',
+    {
+      title: 'Webhooks (beta)',
+      collapsable: false,
+      sidebarDepth: 2,
+      children: [
+        '/manual/12-webhooks.md',
+        {
+          title: 'Webhooks Handlers',
+          sidebarDepth: 2,
+          children: [
+            '/manual/webhooks/run-job.md',
+            '/manual/webhooks/routing-run-job',
+          ]
+        },
+      ]
+    },
   ]
 }]
