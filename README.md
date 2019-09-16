@@ -1,16 +1,1 @@
-# doc_vuepress
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run docs:dev
-```
-
-### Compiles and minifies for production
-```
-npm run docs:build
-```
+> **ARCHIVED!:** VuePress docs have been merged back into [Docs](https://github.com/rundeck/docs).
